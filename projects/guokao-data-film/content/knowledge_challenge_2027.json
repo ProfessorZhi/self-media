@@ -1,0 +1,220 @@
+{
+  "schema_version": "1.0.0",
+  "title": "2027 国考知识挑战 / Remotion 视频互动揭晓内容卡",
+  "use": "pre-rendered_video_quiz_beats_not_live_participation",
+  "note": "视频中的互动题目是观众脑内作答和倒计时揭晓，并非已实现浏览器点选小游戏；若要真实交互需单独开发可运行界面。",
+  "verified_generated_at": "2026-10-17",
+  "total_cards": 6,
+  "cards": [
+    {
+      "id": "tax_share",
+      "category": "结构",
+      "interaction": "predict_ratio",
+      "question": "2027 国考招录名额中，税务系统占多少？",
+      "options": [
+        {
+          "id": "A",
+          "label": "约 40%",
+          "value": 40
+        },
+        {
+          "id": "B",
+          "label": "约 67%",
+          "value": 67
+        },
+        {
+          "id": "C",
+          "label": "约 85%",
+          "value": 85
+        }
+      ],
+      "correct_option": "B",
+      "answer": {
+        "numeric": 67.3,
+        "display": "67.3%"
+      },
+      "explanation": "税务系统 24,013 人，全国 35,691 人。",
+      "render_idea": "三个小光块展示选项→快速聚焦实际面积→35,691 个真实名额点中恰好 24,013 个税务名额着色。",
+      "source": {
+        "file": "data/observatory_2027_legacy_snapshot.json",
+        "pointer": "records[id=tax].hires / total_hires",
+        "status": "legacy_html_28_category_snapshot_aggregated"
+      }
+    },
+    {
+      "id": "without_tax",
+      "category": "结构",
+      "interaction": "remove_and_reflow",
+      "question": "如果暂时不看税务系统，全国还剩多少招录名额？",
+      "options": [
+        {
+          "id": "A",
+          "label": "9,426",
+          "value": 9426
+        },
+        {
+          "id": "B",
+          "label": "11,678",
+          "value": 11678
+        },
+        {
+          "id": "C",
+          "label": "17,678",
+          "value": 17678
+        }
+      ],
+      "correct_option": "B",
+      "answer": {
+        "numeric": 11678,
+        "display": "11,678 人"
+      },
+      "explanation": "35,691 − 24,013 = 11,678。",
+      "render_idea": "主屏熄灭 24,013 个税务光点，其余 11,678 个粒子缓慢占满新的画幅；禁止画成增加人数。",
+      "source": {
+        "file": "data/observatory_2027_legacy_snapshot.json",
+        "pointer": "total_hires - records[id=tax].hires",
+        "status": "legacy_html_28_category_snapshot_aggregated"
+      }
+    },
+    {
+      "id": "province_rank",
+      "category": "地区",
+      "interaction": "three_cards_sort",
+      "question": "这三个地区中，2027 国考招录人数谁最多？",
+      "options": [
+        {
+          "id": "A",
+          "label": "山东",
+          "value": 2316
+        },
+        {
+          "id": "B",
+          "label": "云南",
+          "value": 1925
+        },
+        {
+          "id": "C",
+          "label": "广东",
+          "value": 2969
+        }
+      ],
+      "correct_option": "C",
+      "answer": {
+        "numeric": 2969,
+        "display": "广东 2,969 人"
+      },
+      "explanation": "广东 2,969 人，山东 2,316 人，云南 1,925 人。",
+      "render_idea": "三个地区轮廓从水平排列切换到按真实高度排序的招录柱；地图随后按同源省份数据淡入其他地区。",
+      "source": {
+        "file": "data/2027_position_derived_aggregates.json",
+        "pointer": "by_province[广东/山东/云南].hires",
+        "status": "full_2027_third_party_cleaned_aggregate_crosschecked"
+      }
+    },
+    {
+      "id": "grassroots_share",
+      "category": "层级",
+      "interaction": "reveal_ratio",
+      "question": "按机构层级统计，县（区）级及以下招录人数占全国多少？",
+      "options": [
+        {
+          "id": "A",
+          "label": "约 35%",
+          "value": 35
+        },
+        {
+          "id": "B",
+          "label": "约 55%",
+          "value": 55
+        },
+        {
+          "id": "C",
+          "label": "约 75%",
+          "value": 75
+        }
+      ],
+      "correct_option": "C",
+      "answer": {
+        "numeric": 75.3,
+        "display": "75.3%"
+      },
+      "explanation": "机构层级为「县（区）级及以下」的职位合计招录 26,873 人。注意不是全部「基层工作」定义。",
+      "render_idea": "全国大图分层挤压，县（区）级及以下 26,873 个点沉入画幅前景，其余层级退暗。",
+      "source": {
+        "file": "data/2027_position_derived_aggregates.json",
+        "pointer": "by_org_level[name=县（区）级及以下].hires / totals.hires",
+        "status": "full_2027_third_party_cleaned_aggregate_crosschecked"
+      }
+    },
+    {
+      "id": "major_code_mentions",
+      "category": "专业代码",
+      "interaction": "code_signal_reveal",
+      "question": "在清洗字段中显式提到「030101K」代码的职位有多少条？",
+      "options": [
+        {
+          "id": "A",
+          "label": "82 条",
+          "value": 82
+        },
+        {
+          "id": "B",
+          "label": "316 条",
+          "value": 316
+        },
+        {
+          "id": "C",
+          "label": "1,012 条",
+          "value": 1012
+        }
+      ],
+      "correct_option": "B",
+      "answer": {
+        "numeric": 316,
+        "display": "316 条职位；对应 385 人"
+      },
+      "explanation": "030101K 为「法学」具体专业代码。本统计只计入清洗字段中显式包含该代码的职位，不能代表法学专业的全部可报职位。",
+      "render_idea": "虚拟查询框输入 030101K → 真实的省份×系统标签关系边依次点亮 → 数字锁定为 316 条职位；悬挂口径说明。",
+      "source": {
+        "file": "data/2027_position_derived_aggregates.json",
+        "pointer": "major_code_mentions.codes[code=030101K].explicit_mentions_positions",
+        "status": "third_party_explicit_code_mentions_only_not_eligibility"
+      }
+    },
+    {
+      "id": "yoy_2027",
+      "category": "趋势",
+      "interaction": "before_after",
+      "question": "与 2026 年相比，2027 年国考计划招录人数变化了多少？",
+      "options": [
+        {
+          "id": "A",
+          "label": "增加 2,428 人",
+          "value": 2428
+        },
+        {
+          "id": "B",
+          "label": "减少 1,288 人",
+          "value": -1288
+        },
+        {
+          "id": "C",
+          "label": "减少 2,428 人",
+          "value": -2428
+        }
+      ],
+      "correct_option": "C",
+      "answer": {
+        "numeric": -2428,
+        "display": "减少 2,428 人"
+      },
+      "explanation": "2026 年 38,119 人，2027 年 35,691 人；这里比较的是招录人数，非职位数。",
+      "render_idea": "两个年份点阵叠影，旧年份 38,119 个亮点逐步收敛到新年份 35,691 个，最终呈现减少 2,428。",
+      "source": {
+        "file": "data/annual_recruitment_2024_2027_secondary.json",
+        "pointer": "years[2027].hires - years[2026].hires",
+        "status": "historic_secondary_aggregates"
+      }
+    }
+  ]
+}
