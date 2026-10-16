@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.0.0",
+  "title": "2024–2027 国考全国招录规模对比（第三方历史汇总）",
+  "provenance": {
+    "classification": "secondary_aggregates_not_independently_recalculated_from_each_official_workbook",
+    "urls": [
+      "https://ah.huatu.com/zw/bmrs/",
+      "https://www.youtuzhian.cn/articles/guokao-compare.html"
+    ],
+    "observed_at": "2026-10-17",
+    "note": "2027数值与独立清洗的19426行数据加总一致；2024–2026数值来自第三方历年汇总，未逐年自行重算原始简章；各年份均以当年招考简章口径为准。"
+  },
+  "years": [
+    {
+      "year": 2024,
+      "positions": 18948,
+      "hires": 39561
+    },
+    {
+      "year": 2025,
+      "positions": 20810,
+      "hires": 39721
+    },
+    {
+      "year": 2026,
+      "positions": 20714,
+      "hires": 38119
+    },
+    {
+      "year": 2027,
+      "positions": 19426,
+      "hires": 35691
+    }
+  ],
+  "y2027_vs_y2026": {
+    "hires_change": -2428,
+    "hires_pct_change": -6.37,
+    "positions_change": -1288,
+    "positions_pct_change": -6.22
+  },
+  "selected_system_comparison_2026_2027": [
+    {
+      "name": "税务系统",
+      "hires_2026": 25004,
+      "hires_2027": 24013,
+      "delta": -991
+    },
+    {
+      "name": "海关（含缉私，聚合口径）",
+      "hires_2026": 2763,
+      "hires_2027": 2076,
+      "delta": -687
+    },
+    {
+      "name": "中国人民银行",
+      "hires_2026": 2780,
+      "hires_2027": 2366,
+      "delta": -414
+    },
+    {
+      "name": "国家金融监督管理系统",
+      "hires_2026": 2459,
+      "hires_2027": 2431,
+      "delta": -28
+    },
+    {
+      "name": "出入境边检总站（聚合口径）",
+      "hires_2026": 1163,
+      "hires_2027": 1020,
+      "delta": -143
+    },
+    {
+      "name": "铁路公安系统（聚合口径）",
+      "hires_2026": 479,
+      "hires_2027": 640,
+      "delta": 161
+    }
+  ],
+  "system_comparison_note": "所列系统为第三方/参考HTML分析归类，不是四张官方分类工作表；不能将比较项相加后代表所有系统。"
+}
