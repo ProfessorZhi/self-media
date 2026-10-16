@@ -47,4 +47,6 @@
 - 原始文件来源说明：https://github.com/icy-bean/civil-exam/blob/main/raw/national/2027/source.txt
 - 独立省份数值对照：https://ah.huatu.com/zw/bmrs/
 
+另外，视频内容侧的 [六道知识挑战数据卡](../content/knowledge_challenge_2027.json) 已按本目录中的 JSON 计算得到，便于 Opus 使用相同数值呈现猜测—揭晓镜头。这里的互动是**视频叙事**，不是已建成的可玩网页。
+
 更多使用边界见 [../research/DATA_SOURCES_AND_CHECKS.md](../research/DATA_SOURCES_AND_CHECKS.md) 与 [../research/MAJOR_CODE_MATCHING.md](../research/MAJOR_CODE_MATCHING.md)。
