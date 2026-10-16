@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0.0",
+  "title": "2027 国考官方公告主要时间点",
+  "timezone": "Asia/Shanghai",
+  "year": 2027,
+  "provenance": {
+    "classification": "official_announcement_transcribed",
+    "official_announcement_reprint": "https://www.xinhuanet.com/edu/20261013/ce6bf7dc36474dd68ecd90aa8b722f06/c.html",
+    "official_recruitment_site": "http://bm.scs.gov.cn/kl2027",
+    "source_date": "2026-10-13",
+    "note": "时间为2027考试年度对应的2026年报名与笔试；最终以官方专题最新通知为准。"
+  },
+  "events": [
+    {
+      "id": "registration_verify",
+      "label": "实名注册认证",
+      "start": "2026-10-14T08:00:00+08:00",
+      "end": "2026-10-23T18:00:00+08:00"
+    },
+    {
+      "id": "apply",
+      "label": "提交报考申请",
+      "start": "2026-10-15T08:00:00+08:00",
+      "end": "2026-10-24T18:00:00+08:00"
+    },
+    {
+      "id": "review",
+      "label": "资格审查结果查询",
+      "start": "2026-10-15T08:00:00+08:00",
+      "end": "2026-10-26T18:00:00+08:00"
+    },
+    {
+      "id": "registration_number",
+      "label": "报名序号查询开始",
+      "start": "2026-10-28T08:00:00+08:00"
+    },
+    {
+      "id": "payment",
+      "label": "报名确认缴费",
+      "start": "2026-11-01T00:00:00+08:00",
+      "end": "2026-11-06T24:00:00+08:00"
+    },
+    {
+      "id": "admit",
+      "label": "打印准考证",
+      "start": "2026-11-23T00:00:00+08:00",
+      "end": "2026-11-29T15:00:00+08:00"
+    },
+    {
+      "id": "specialty_exam",
+      "label": "专业科目笔试或外语水平测试（相关职位）",
+      "start": "2026-11-28T14:00:00+08:00",
+      "end": "2026-11-28T16:00:00+08:00"
+    },
+    {
+      "id": "xingce",
+      "label": "行政职业能力测验",
+      "start": "2026-11-29T09:00:00+08:00",
+      "end": "2026-11-29T11:00:00+08:00"
+    },
+    {
+      "id": "shenlun",
+      "label": "申论",
+      "start": "2026-11-29T14:00:00+08:00",
+      "end": "2026-11-29T17:00:00+08:00"
+    }
+  ],
+  "general_age_requirement": {
+    "age_min": 18,
+    "age_max": 38,
+    "eligible_graduating_masters_doctors_age_max": 43,
+    "official_reference_birth_months": "一般1987年10月至2008年10月；2027应届硕博1982年10月以后。",
+    "note": "具体职位及计算细节以官方公告和招考机关为准。"
+  },
+  "note": "原公告报名注册认证与正式职位申请起始日不同，视频不可笼统将两者合成同一开始日期。"
+}
