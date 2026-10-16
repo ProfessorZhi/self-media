@@ -1,0 +1,177 @@
+{
+  "schema_version": "1.0.0",
+  "title": "2027国考报名统计 / 2026-10-16 19:15 第三方页面快照",
+  "snapshot_time": "2026-10-16T19:15:00+08:00",
+  "source_url": "https://ah.huatu.com/zw/bmrs/",
+  "source_type": "third_party_live_aggregation_snapshot_not_official",
+  "status": "historical_snapshot_not_live",
+  "warn": [
+    "报名人数与资格审查通过人数均为华图教育当日抓取/汇总数字，非国家公务员局官方最终报名人数。",
+    "此快照仅代表标注时间点；后续报名会增长。不得把此数写作报名结束最终值。",
+    "报名人数/名额并非录取概率、考试难度或个人竞争胜率。",
+    "请勿将报考人数时间点数据与本目录固定2027招录计划数据混为同一时间性质。",
+    "2026-10-16 19:15源页31地区加总已核对为357631和97589。"
+  ],
+  "totals": {
+    "applicants": 357631,
+    "qualified": 97589,
+    "province_count": 31
+  },
+  "by_province": [
+    {
+      "province": "安徽",
+      "applicants": 11497,
+      "qualified": 4511
+    },
+    {
+      "province": "北京",
+      "applicants": 29530,
+      "qualified": 10640
+    },
+    {
+      "province": "重庆",
+      "applicants": 3372,
+      "qualified": 966
+    },
+    {
+      "province": "福建",
+      "applicants": 11929,
+      "qualified": 2682
+    },
+    {
+      "province": "甘肃",
+      "applicants": 7234,
+      "qualified": 3151
+    },
+    {
+      "province": "广东",
+      "applicants": 35860,
+      "qualified": 6343
+    },
+    {
+      "province": "广西",
+      "applicants": 17697,
+      "qualified": 1729
+    },
+    {
+      "province": "贵州",
+      "applicants": 6502,
+      "qualified": 1775
+    },
+    {
+      "province": "海南",
+      "applicants": 3377,
+      "qualified": 361
+    },
+    {
+      "province": "河北",
+      "applicants": 12264,
+      "qualified": 4209
+    },
+    {
+      "province": "黑龙江",
+      "applicants": 6614,
+      "qualified": 3010
+    },
+    {
+      "province": "河南",
+      "applicants": 21166,
+      "qualified": 4342
+    },
+    {
+      "province": "湖北",
+      "applicants": 13279,
+      "qualified": 3052
+    },
+    {
+      "province": "湖南",
+      "applicants": 12696,
+      "qualified": 5046
+    },
+    {
+      "province": "江苏",
+      "applicants": 12707,
+      "qualified": 5408
+    },
+    {
+      "province": "江西",
+      "applicants": 9993,
+      "qualified": 3754
+    },
+    {
+      "province": "吉林",
+      "applicants": 11797,
+      "qualified": 5537
+    },
+    {
+      "province": "辽宁",
+      "applicants": 10098,
+      "qualified": 3272
+    },
+    {
+      "province": "内蒙古",
+      "applicants": 6823,
+      "qualified": 882
+    },
+    {
+      "province": "宁夏",
+      "applicants": 3106,
+      "qualified": 1013
+    },
+    {
+      "province": "青海",
+      "applicants": 1871,
+      "qualified": 749
+    },
+    {
+      "province": "山东",
+      "applicants": 18168,
+      "qualified": 5131
+    },
+    {
+      "province": "上海",
+      "applicants": 8885,
+      "qualified": 3059
+    },
+    {
+      "province": "山西",
+      "applicants": 12639,
+      "qualified": 1740
+    },
+    {
+      "province": "陕西",
+      "applicants": 11133,
+      "qualified": 2475
+    },
+    {
+      "province": "四川",
+      "applicants": 20803,
+      "qualified": 2498
+    },
+    {
+      "province": "天津",
+      "applicants": 5515,
+      "qualified": 981
+    },
+    {
+      "province": "西藏",
+      "applicants": 1879,
+      "qualified": 448
+    },
+    {
+      "province": "新疆",
+      "applicants": 8544,
+      "qualified": 3601
+    },
+    {
+      "province": "云南",
+      "applicants": 9759,
+      "qualified": 3441
+    },
+    {
+      "province": "浙江",
+      "applicants": 10894,
+      "qualified": 1783
+    }
+  ]
+}
