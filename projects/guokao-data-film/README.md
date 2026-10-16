@@ -50,5 +50,6 @@
 - [research/DATA_SOURCES_AND_CHECKS.md](research/DATA_SOURCES_AND_CHECKS.md)：官方公告、职位表镜像来源与核验完成/未完成事项。
 - [research/MAJOR_CODE_MATCHING.md](research/MAJOR_CODE_MATCHING.md)：专业代码联动可做的镜头和不能冒充的报考资格。
 - [research/CONTENT_AND_VIDEO_PITCHES.md](research/CONTENT_AND_VIDEO_PITCHES.md)：技术英雄镜头、全片故事、互动竞猜与系列短片选题。
+- [content/knowledge_challenge_2027.json](content/knowledge_challenge_2027.json)：6 道有来源、选项、正确答案、画面揭晓机制的程序化「知识挑战」内容卡。
 
 **已真实提交研究成果与数据，但尚未建立 Remotion 工程、启动 Agent、渲染或交付任何成片。**
