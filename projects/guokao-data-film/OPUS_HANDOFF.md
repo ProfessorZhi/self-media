@@ -69,3 +69,13 @@
 本次仓库只做了**立项和资料归档**；此任务书是未来用于 Claude Code 的执行指令，不表示已经有 Agent 在运行，也不表示现在已获得远程设备、部署或渲染授权。
 
 在未来实际执行时，不碰仓库其他项目目录；重要覆盖、删除、权限改动和部署要单独确认。
+## Remotion Agent 执行入口
+
+当前 Remotion 官方为 Claude Code 提供了插件与 Agent Skills。执行时优先使用官方 Remotion Skill，而不是自己猜 API：
+
+1. 如果环境已安装 Remotion Claude Code 插件，先使用 `/remotion:remotion-create` 建立/初始化视频项目，并继续使用 `/remotion:remotion-best-practices`、`/remotion:remotion-markup`、`/remotion:remotion-render` 等适用 Skill。
+2. 如果插件不可用，按当前官方文档安装 Remotion Agent Skills，再开始实现。
+3. 需要 API/组件细节时使用 `/remotion:remotion-docs` 查当前文档，不要依据旧记忆猜版本行为。
+4. Remotion Studio 用于持续预览；最终仍以实际 render 结果作为验收依据。
+
+本项目的价值不在于证明“会使用 Remotion”，而在于证明 Agent 能把真实数据、艺术方向和确定性程序化动画统一成一支完成度高的影片。技能只是执行基础，创意与验收标准仍以本项目 Brief 为准。
