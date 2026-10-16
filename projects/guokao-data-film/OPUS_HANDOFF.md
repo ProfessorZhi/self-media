@@ -14,6 +14,7 @@
 6. `research/DATA_SOURCES_AND_CHECKS.md`
 7. `research/MAJOR_CODE_MATCHING.md`
 8. `research/CONTENT_AND_VIDEO_PITCHES.md`
+9. `content/knowledge_challenge_2027.json`（6 个已核对的知识挑战镜头数据卡；可作为叙事机制而非必须制作成小游戏）
 
 ## 你的角色与作品标准
 
