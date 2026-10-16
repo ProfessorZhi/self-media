@@ -10,6 +10,7 @@
 | [observatory_2027_legacy_snapshot.json](observatory_2027_legacy_snapshot.json) | 28 个系统及归集类别 | 用户上传 HTML 原始快照；内部加总校验通过，但 28 个类别尚未逐条复核 | 原观测台复刻、3 业务方向、排除税务的结构重组 |
 | [annual_recruitment_2024_2027_secondary.json](annual_recruitment_2024_2027_secondary.json) | 2024–2027 全国总量及精选 2026/2027 系统对比 | 公开第三方历史汇总；2027 总量与本地程序聚合一致 | 四年时间轴、同比变化、各系统涨跌 |
 | [official_2027_exam_timeline.json](official_2027_exam_timeline.json) | 2026 注册、报名、确认、笔试等时间节点及官方年龄规则 | 国家公务员局公告，新华网转载 | 报考时间线、科普短切片 |
+| [2027_registration_snapshot_20261016_secondary.json](2027_registration_snapshot_20261016_secondary.json) | 2026-10-16 19:15 第三方报名统计：报名 357,631、已通过 97,589 | 华图动态网页某一时刻快照，非官方、非实时 | 报名变化另一期，不能与全年招录计划混成一条曲线 |
 
 ## 关键校验
 
