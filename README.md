@@ -8,7 +8,7 @@
 
 | 编号 | 项目 | 方向 | 状态 | 入口 |
 | --- | --- | --- | --- | --- |
-| VIDEO-001 | 国考宇宙 · 2027 招录数据电影 | 国考知识可视化 × Remotion × AI Coding 展示 | 已立项，待制作 | [项目目录](projects/guokao-data-film/README.md) |
+| VIDEO-001 | 国考宇宙 · 2027 招录数据电影 | 国考知识可视化 × Remotion × AI Coding 展示 | 已立项，研究数据已归档，待制作 | [项目目录](projects/guokao-data-film/README.md) |
 
 ## 约定
 
@@ -23,4 +23,6 @@
 
 ## 当前进度
 
-此处首先保存策划素材和可复现的视觉参考，**还没有开始 Remotion 的编码、视频渲染或成片交付**。
+VIDEO-001 已归档参考 HTML、创意方案、2027 年官方公告调研、经程序聚合的 31 省招录统计、专业代码显式提及关系网络和可复核的数据校验脚本。参见 [数据目录](projects/guokao-data-film/data/README.md)、[内容研究与游戏化选题](projects/guokao-data-film/research/CONTENT_AND_VIDEO_PITCHES.md) 和 [来源核查](projects/guokao-data-film/research/DATA_SOURCES_AND_CHECKS.md)。
+
+**尚未启动 Remotion 编码、视频渲染或成片交付。**
