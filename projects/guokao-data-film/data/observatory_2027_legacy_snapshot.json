@@ -1,0 +1,230 @@
+{
+  "schema_version": "1.0.0",
+  "year": 2027,
+  "data_type": "legacy_html_embedded_snapshot",
+  "verification": "HTML_28_ROW_INTERNAL_SUM_VALIDATED_NOT_RAW_OFFICIAL_POSITION_TABLE_VERIFIED",
+  "source_path": "projects/guokao-data-film/reference/2027国考_招录观测台_交互修复完整版.html",
+  "source_github_blob_sha": "e0fa2236601f315d82a2d1db26de21177aa812f8",
+  "provenance_note": "直接来自用户上传并入库的交互 HTML 内嵌 dataset; 仅校验总量与记录数，不代表 28 个分组已经按官方逐职位表复算。",
+  "total_positions": 19426,
+  "total_hires": 35691,
+  "record_count": 28,
+  "analysis_groups": [
+    {
+      "id": "finance",
+      "name": "财税金融（分析性分组）",
+      "positions": 14898,
+      "hires": 29130
+    },
+    {
+      "id": "port",
+      "name": "海关海事边检（分析性分组）",
+      "positions": 2588,
+      "hires": 3763
+    },
+    {
+      "id": "other",
+      "name": "其他方向（分析性分组）",
+      "positions": 1940,
+      "hires": 2798
+    }
+  ],
+  "records": [
+    {
+      "group": "finance",
+      "name": "税务系统",
+      "jobs": 11232,
+      "hires": 24013,
+      "id": "tax"
+    },
+    {
+      "group": "finance",
+      "name": "中国人民银行",
+      "jobs": 1487,
+      "hires": 2366,
+      "id": "pboc"
+    },
+    {
+      "group": "finance",
+      "name": "国家金融监督管理总局",
+      "jobs": 2037,
+      "hires": 2431,
+      "id": "nfra"
+    },
+    {
+      "group": "finance",
+      "name": "中国证监会",
+      "jobs": 142,
+      "hires": 320,
+      "id": "csrc"
+    },
+    {
+      "group": "port",
+      "name": "海关系统（含缉私）",
+      "jobs": 1510,
+      "hires": 2076,
+      "id": "customs"
+    },
+    {
+      "group": "port",
+      "name": "海事局系统",
+      "jobs": 550,
+      "hires": 667,
+      "id": "maritime"
+    },
+    {
+      "group": "port",
+      "name": "出入境边检总站",
+      "jobs": 528,
+      "hires": 1020,
+      "id": "border"
+    },
+    {
+      "group": "other",
+      "name": "铁路公安局",
+      "jobs": 296,
+      "hires": 640,
+      "id": "rail"
+    },
+    {
+      "group": "other",
+      "name": "国家统计局调查系统",
+      "jobs": 379,
+      "hires": 386,
+      "id": "stats"
+    },
+    {
+      "group": "other",
+      "name": "气象部门",
+      "jobs": 192,
+      "hires": 192,
+      "id": "weather"
+    },
+    {
+      "group": "other",
+      "name": "水利系统",
+      "jobs": 136,
+      "hires": 149,
+      "id": "water"
+    },
+    {
+      "group": "other",
+      "name": "矿山安全监察",
+      "jobs": 69,
+      "hires": 141,
+      "id": "mine"
+    },
+    {
+      "group": "other",
+      "name": "民航管理系统",
+      "jobs": 101,
+      "hires": 111,
+      "id": "civilaviation"
+    },
+    {
+      "group": "other",
+      "name": "生态环境监管",
+      "jobs": 36,
+      "hires": 83,
+      "id": "eco"
+    },
+    {
+      "group": "other",
+      "name": "审计系统",
+      "jobs": 34,
+      "hires": 82,
+      "id": "audit"
+    },
+    {
+      "group": "other",
+      "name": "其他公安系统",
+      "jobs": 52,
+      "hires": 76,
+      "id": "police"
+    },
+    {
+      "group": "other",
+      "name": "财政部及监管机构",
+      "jobs": 41,
+      "hires": 70,
+      "id": "fiscal"
+    },
+    {
+      "group": "other",
+      "name": "移民管理其他机构",
+      "jobs": 42,
+      "hires": 69,
+      "id": "migration"
+    },
+    {
+      "group": "other",
+      "name": "邮政管理局",
+      "jobs": 52,
+      "hires": 53,
+      "id": "post"
+    },
+    {
+      "group": "other",
+      "name": "地震部门",
+      "jobs": 25,
+      "hires": 26,
+      "id": "quake"
+    },
+    {
+      "group": "other",
+      "name": "知识产权系统",
+      "jobs": 12,
+      "hires": 24,
+      "id": "ip"
+    },
+    {
+      "group": "other",
+      "name": "能源监管系统",
+      "jobs": 21,
+      "hires": 23,
+      "id": "energy"
+    },
+    {
+      "group": "other",
+      "name": "粮食和物资储备系统",
+      "jobs": 14,
+      "hires": 15,
+      "id": "grain"
+    },
+    {
+      "group": "other",
+      "name": "林业和草原系统",
+      "jobs": 13,
+      "hires": 13,
+      "id": "forest"
+    },
+    {
+      "group": "other",
+      "name": "外交部",
+      "jobs": 23,
+      "hires": 102,
+      "id": "foreign"
+    },
+    {
+      "group": "other",
+      "name": "商务部",
+      "jobs": 11,
+      "hires": 43,
+      "id": "commerce"
+    },
+    {
+      "group": "other",
+      "name": "中央党群机关",
+      "jobs": 99,
+      "hires": 138,
+      "id": "party"
+    },
+    {
+      "group": "other",
+      "name": "其他部委及未单列机构",
+      "jobs": 292,
+      "hires": 362,
+      "id": "unclassified"
+    }
+  ]
+}
