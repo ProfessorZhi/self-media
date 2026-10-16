@@ -397,7 +397,7 @@
         "code": "0809",
         "name_hints": [
           "计算机类",
-          "开头）",
+          "开头",
           "电子科学与技术"
         ],
         "explicit_mentions_positions": 736,
@@ -639,7 +639,7 @@
         "name_hints": [
           "法学类",
           "法学",
-          "开头）"
+          "开头"
         ],
         "explicit_mentions_positions": 730,
         "explicit_mentions_hires": 997,
@@ -1135,8 +1135,7 @@
         "code": "0351",
         "name_hints": [
           "法律",
-          "开头）",
-          "法律。"
+          "开头"
         ],
         "explicit_mentions_positions": 464,
         "explicit_mentions_hires": 657,
@@ -1612,8 +1611,8 @@
         "code": "0835",
         "name_hints": [
           "软件工程",
-          "）网络空间安全",
-          "开头）"
+          "网络空间安全",
+          "开头"
         ],
         "explicit_mentions_positions": 401,
         "explicit_mentions_hires": 587,
@@ -1864,7 +1863,7 @@
         "name_hints": [
           "信息与通信工程",
           "土木类",
-          "）计算机科学与技术"
+          "计算机科学与技术"
         ],
         "explicit_mentions_positions": 359,
         "explicit_mentions_hires": 580,
@@ -2099,7 +2098,7 @@
         "code": "0201",
         "name_hints": [
           "经济学类",
-          "开头）",
+          "开头",
           "理论经济学"
         ],
         "explicit_mentions_positions": 348,
@@ -2280,8 +2279,7 @@
         "code": "0839",
         "name_hints": [
           "网络空间安全",
-          "网络空间安全。",
-          "）电子信息"
+          "电子信息"
         ],
         "explicit_mentions_positions": 334,
         "explicit_mentions_hires": 491,
@@ -2525,9 +2523,7 @@
       {
         "code": "030101K",
         "name_hints": [
-          "）",
-          "法学",
-          ")"
+          "法学"
         ],
         "explicit_mentions_positions": 316,
         "explicit_mentions_hires": 385,
@@ -2742,7 +2738,7 @@
         "code": "0203",
         "name_hints": [
           "金融学类",
-          "开头）",
+          "开头",
           "统计学"
         ],
         "explicit_mentions_positions": 312,
@@ -2863,7 +2859,7 @@
         "code": "0807",
         "name_hints": [
           "电子信息类",
-          "开头）",
+          "开头",
           "动力工程及工程热物理"
         ],
         "explicit_mentions_positions": 289,
@@ -3094,8 +3090,7 @@
         "code": "120203K",
         "name_hints": [
           "会计学",
-          "）",
-          "）财务管理"
+          "财务管理"
         ],
         "explicit_mentions_positions": 268,
         "explicit_mentions_hires": 314,
@@ -3300,8 +3295,7 @@
         "code": "120204",
         "name_hints": [
           "财务管理",
-          "财务管理。",
-          "）会计"
+          "会计"
         ],
         "explicit_mentions_positions": 228,
         "explicit_mentions_hires": 271,
@@ -3497,7 +3491,7 @@
         "name_hints": [
           "审计学",
           "审计学。研究生：",
-          "）或研究生：工商管理学"
+          "或研究生：工商管理学"
         ],
         "explicit_mentions_positions": 222,
         "explicit_mentions_hires": 266,
@@ -3874,7 +3868,7 @@
         "name_hints": [
           "会计",
           "会计学。本科专业：",
-          "所有专业）"
+          "所有专业"
         ],
         "explicit_mentions_positions": 198,
         "explicit_mentions_hires": 247,
@@ -4114,8 +4108,7 @@
         "code": "1257",
         "name_hints": [
           "审计",
-          "审计。",
-          "所有专业）"
+          "所有专业"
         ],
         "explicit_mentions_positions": 185,
         "explicit_mentions_hires": 234,
@@ -4356,7 +4349,7 @@
         "name_hints": [
           "工商管理学",
           "工商管理类",
-          "开头）"
+          "开头"
         ],
         "explicit_mentions_positions": 183,
         "explicit_mentions_hires": 280,
@@ -4587,7 +4580,7 @@
         "name_hints": [
           "中国语言文学类",
           "中国语言文学",
-          "开头）"
+          "开头"
         ],
         "explicit_mentions_positions": 150,
         "explicit_mentions_hires": 262,
@@ -4802,8 +4795,8 @@
         "code": "0712",
         "name_hints": [
           "统计学类",
-          "开头）",
-          "）数学类"
+          "开头",
+          "数学类"
         ],
         "explicit_mentions_positions": 140,
         "explicit_mentions_hires": 153,
@@ -4923,7 +4916,7 @@
         "code": "0204",
         "name_hints": [
           "经济与贸易类",
-          "开头）"
+          "开头"
         ],
         "explicit_mentions_positions": 111,
         "explicit_mentions_hires": 120,
@@ -5150,7 +5143,7 @@
         "name_hints": [
           "数学类",
           "数学",
-          "）统计学"
+          "统计学"
         ],
         "explicit_mentions_positions": 96,
         "explicit_mentions_hires": 117,
@@ -5391,7 +5384,7 @@
         "name_hints": [
           "新闻传播学类",
           "新闻传播学",
-          "开头）"
+          "开头"
         ],
         "explicit_mentions_positions": 84,
         "explicit_mentions_hires": 133,
@@ -5695,7 +5688,6 @@
         "code": "080903",
         "name_hints": [
           "网络工程",
-          "网络工程。",
           "网络工程。研究生："
         ],
         "explicit_mentions_positions": 72,
@@ -5899,8 +5891,7 @@
       {
         "code": "080910T",
         "name_hints": [
-          "数据科学与大数据技术",
-          "）"
+          "数据科学与大数据技术"
         ],
         "explicit_mentions_positions": 64,
         "explicit_mentions_hires": 83,
@@ -6131,7 +6122,7 @@
         "name_hints": [
           "公共管理类",
           "公共管理学",
-          "）等相关专业"
+          "等相关专业"
         ],
         "explicit_mentions_positions": 57,
         "explicit_mentions_hires": 90,
@@ -6282,7 +6273,7 @@
         "name_hints": [
           "马克思主义理论类",
           "马克思主义理论",
-          "开头）"
+          "开头"
         ],
         "explicit_mentions_positions": 55,
         "explicit_mentions_hires": 90,
@@ -6731,8 +6722,7 @@
       {
         "code": "080904K",
         "name_hints": [
-          "信息安全",
-          ")"
+          "信息安全"
         ],
         "explicit_mentions_positions": 45,
         "explicit_mentions_hires": 47,
@@ -6808,7 +6798,7 @@
         "name_hints": [
           "政治学",
           "政治学类",
-          "开头）"
+          "开头"
         ],
         "explicit_mentions_positions": 44,
         "explicit_mentions_hires": 67,
@@ -6937,8 +6927,7 @@
       {
         "code": "120218T",
         "name_hints": [
-          "内部审计",
-          "）"
+          "内部审计"
         ],
         "explicit_mentions_positions": 44,
         "explicit_mentions_hires": 46,
@@ -7018,7 +7007,7 @@
         "code": "050101",
         "name_hints": [
           "汉语言文学",
-          "）汉语言"
+          "汉语言"
         ],
         "explicit_mentions_positions": 42,
         "explicit_mentions_hires": 53,
@@ -7268,8 +7257,8 @@
         "code": "0552",
         "name_hints": [
           "新闻与传播",
-          "）数学",
-          "开头）"
+          "数学",
+          "开头"
         ],
         "explicit_mentions_positions": 39,
         "explicit_mentions_hires": 62,
@@ -7434,8 +7423,7 @@
         "code": "1201",
         "name_hints": [
           "管理科学与工程",
-          "管理科学与工程类",
-          "）管理科学与工程"
+          "管理科学与工程类"
         ],
         "explicit_mentions_positions": 38,
         "explicit_mentions_hires": 56,
@@ -7770,9 +7758,7 @@
       {
         "code": "120213T",
         "name_hints": [
-          "财务会计教育",
-          "财务会计教育。",
-          "）"
+          "财务会计教育"
         ],
         "explicit_mentions_positions": 35,
         "explicit_mentions_hires": 39,
@@ -7916,8 +7902,7 @@
       {
         "code": "030104T",
         "name_hints": [
-          "信用风险管理与法律防控",
-          ")"
+          "信用风险管理与法律防控"
         ],
         "explicit_mentions_positions": 32,
         "explicit_mentions_hires": 35,
@@ -7977,7 +7962,7 @@
         "code": "050102",
         "name_hints": [
           "汉语言",
-          "）新闻学",
+          "新闻学",
           "语言学及应用语言学"
         ],
         "explicit_mentions_positions": 31,
@@ -8369,7 +8354,7 @@
         "code": "0775",
         "name_hints": [
           "计算机科学与技术",
-          "开头）"
+          "开头"
         ],
         "explicit_mentions_positions": 30,
         "explicit_mentions_hires": 40,
@@ -8874,8 +8859,7 @@
       {
         "code": "0452",
         "name_hints": [
-          "体育",
-          "体育。"
+          "体育"
         ],
         "explicit_mentions_positions": 28,
         "explicit_mentions_hires": 52,
@@ -9502,7 +9486,7 @@
         "code": "050301",
         "name_hints": [
           "新闻学",
-          "）统计学类"
+          "统计学类"
         ],
         "explicit_mentions_positions": 24,
         "explicit_mentions_hires": 31,
@@ -9835,8 +9819,7 @@
         "code": "0818",
         "name_hints": [
           "交通运输类",
-          "地质资源与地质工程",
-          "地质资源与地质工程。"
+          "地质资源与地质工程"
         ],
         "explicit_mentions_positions": 23,
         "explicit_mentions_hires": 27,
@@ -10441,7 +10424,6 @@
       {
         "code": "081803K",
         "name_hints": [
-          "）",
           "航海技术"
         ],
         "explicit_mentions_positions": 21,
@@ -10502,8 +10484,7 @@
         "code": "0820",
         "name_hints": [
           "航空航天类",
-          "石油与天然气工程",
-          "航空航天类。"
+          "石油与天然气工程"
         ],
         "explicit_mentions_positions": 21,
         "explicit_mentions_hires": 53,
@@ -10592,7 +10573,7 @@
       {
         "code": "0774",
         "name_hints": [
-          "开头）"
+          "开头"
         ],
         "explicit_mentions_positions": 20,
         "explicit_mentions_hires": 23,
@@ -10622,8 +10603,7 @@
         "code": "085405",
         "name_hints": [
           "软件工程",
-          "软件工程。",
-          "）网络空间安全"
+          "网络空间安全"
         ],
         "explicit_mentions_positions": 20,
         "explicit_mentions_hires": 24,
@@ -10703,7 +10683,6 @@
         "code": "085412",
         "name_hints": [
           "网络与信息安全",
-          "网络与信息安全)",
           "人工智能"
         ],
         "explicit_mentions_positions": 20,
@@ -10810,7 +10789,7 @@
         "name_hints": [
           "K纪检监察",
           "K纪检监察。研究生：",
-          "K）"
+          "K"
         ],
         "explicit_mentions_positions": 18,
         "explicit_mentions_hires": 28,
@@ -10880,7 +10859,7 @@
         "code": "0307",
         "name_hints": [
           "中共党史党建学",
-          "开头）"
+          "开头"
         ],
         "explicit_mentions_positions": 18,
         "explicit_mentions_hires": 28,
@@ -11060,7 +11039,6 @@
       {
         "code": "080717T",
         "name_hints": [
-          "）",
           "人工智能"
         ],
         "explicit_mentions_positions": 18,
@@ -11212,9 +11190,7 @@
       {
         "code": "081804K",
         "name_hints": [
-          "）",
-          "轮机工程",
-          "轮机工程。"
+          "轮机工程"
         ],
         "explicit_mentions_positions": 18,
         "explicit_mentions_hires": 21,
@@ -13464,9 +13440,7 @@
       {
         "code": "050106T",
         "name_hints": [
-          "应用语言学",
-          "）",
-          ")"
+          "应用语言学"
         ],
         "explicit_mentions_positions": 12,
         "explicit_mentions_hires": 23,
@@ -13525,9 +13499,7 @@
       {
         "code": "050107T",
         "name_hints": [
-          "秘书学",
-          "）",
-          "秘书学。"
+          "秘书学"
         ],
         "explicit_mentions_positions": 12,
         "explicit_mentions_hires": 14,
@@ -14019,9 +13991,7 @@
       {
         "code": "040202K",
         "name_hints": [
-          "运动训练",
-          ")",
-          "）"
+          "运动训练"
         ],
         "explicit_mentions_positions": 11,
         "explicit_mentions_hires": 26,
@@ -14801,8 +14771,7 @@
       {
         "code": "020301K",
         "name_hints": [
-          "金融学",
-          "）"
+          "金融学"
         ],
         "explicit_mentions_positions": 9,
         "explicit_mentions_hires": 13,
@@ -14954,9 +14923,7 @@
       {
         "code": "040208T",
         "name_hints": [
-          "体能训练",
-          "）",
-          ")"
+          "体能训练"
         ],
         "explicit_mentions_positions": 9,
         "explicit_mentions_hires": 23,
@@ -15395,7 +15362,7 @@
       {
         "code": "090202",
         "name_hints": [
-          "）：研究生：林学"
+          "：研究生：林学"
         ],
         "explicit_mentions_positions": 9,
         "explicit_mentions_hires": 11,
@@ -15485,7 +15452,7 @@
         "name_hints": [
           "档案学",
           "研究生：哲学",
-          "）或研究生：档案学"
+          "或研究生：档案学"
         ],
         "explicit_mentions_positions": 9,
         "explicit_mentions_hires": 12,
@@ -15663,7 +15630,7 @@
         "code": "020311T",
         "name_hints": [
           "K金融审计",
-          "K）"
+          "K"
         ],
         "explicit_mentions_positions": 8,
         "explicit_mentions_hires": 8,
@@ -15717,8 +15684,7 @@
       {
         "code": "0257",
         "name_hints": [
-          "审计",
-          "审计。"
+          "审计"
         ],
         "explicit_mentions_positions": 8,
         "explicit_mentions_hires": 12,
@@ -15936,8 +15902,7 @@
       {
         "code": "030504T",
         "name_hints": [
-          "马克思主义理论",
-          "）"
+          "马克思主义理论"
         ],
         "explicit_mentions_positions": 8,
         "explicit_mentions_hires": 8,
@@ -15976,7 +15941,7 @@
       {
         "code": "050302",
         "name_hints": [
-          "传播学。"
+          "传播学"
         ],
         "explicit_mentions_positions": 8,
         "explicit_mentions_hires": 10,
@@ -16148,7 +16113,7 @@
       {
         "code": "081808T",
         "name_hints": [
-          "K）",
+          "K",
           "K船舶电子电气工程"
         ],
         "explicit_mentions_positions": 8,
@@ -16538,7 +16503,7 @@
         "code": "0308",
         "name_hints": [
           "纪检监察学",
-          "开头）"
+          "开头"
         ],
         "explicit_mentions_positions": 7,
         "explicit_mentions_hires": 16,
@@ -16710,8 +16675,7 @@
       {
         "code": "050306T",
         "name_hints": [
-          "网络与新媒体",
-          "）"
+          "网络与新媒体"
         ],
         "explicit_mentions_positions": 7,
         "explicit_mentions_hires": 8,
@@ -17303,7 +17267,7 @@
         "code": "1252",
         "name_hints": [
           "公共管理",
-          "的所有专业）"
+          "的所有专业"
         ],
         "explicit_mentions_positions": 7,
         "explicit_mentions_hires": 11,
@@ -17493,8 +17457,7 @@
       {
         "code": "020201K",
         "name_hints": [
-          "财政学",
-          "）"
+          "财政学"
         ],
         "explicit_mentions_positions": 6,
         "explicit_mentions_hires": 6,
@@ -17597,7 +17560,6 @@
       {
         "code": "020310T",
         "name_hints": [
-          "）",
           "金融科技"
         ],
         "explicit_mentions_positions": 6,
@@ -17735,7 +17697,6 @@
       {
         "code": "055104",
         "name_hints": [
-          "俄语口译。",
           "俄语口译"
         ],
         "explicit_mentions_positions": 6,
@@ -18133,8 +18094,7 @@
       {
         "code": "1004",
         "name_hints": [
-          "公共卫生与预防医学",
-          "）公共卫生与预防医学"
+          "公共卫生与预防医学"
         ],
         "explicit_mentions_positions": 6,
         "explicit_mentions_hires": 8,
@@ -18242,9 +18202,8 @@
       {
         "code": "120105",
         "name_hints": [
-          "工程造价。",
-          "工程造价。研究生：",
-          "工程造价"
+          "工程造价",
+          "工程造价。研究生："
         ],
         "explicit_mentions_positions": 6,
         "explicit_mentions_hires": 10,
@@ -18435,8 +18394,7 @@
       {
         "code": "1354",
         "name_hints": [
-          "戏剧与影视",
-          "戏剧与影视。"
+          "戏剧与影视"
         ],
         "explicit_mentions_positions": 6,
         "explicit_mentions_hires": 8,
@@ -19258,9 +19216,7 @@
       {
         "code": "081801",
         "name_hints": [
-          "交通运输",
-          "）。",
-          "）"
+          "交通运输"
         ],
         "explicit_mentions_positions": 5,
         "explicit_mentions_hires": 8,
@@ -19329,8 +19285,7 @@
       {
         "code": "081805K",
         "name_hints": [
-          "飞行技术",
-          "）"
+          "飞行技术"
         ],
         "explicit_mentions_positions": 5,
         "explicit_mentions_hires": 5,
@@ -19414,7 +19369,6 @@
         "code": "082010T",
         "name_hints": [
           "智能飞行器技术",
-          "智能飞行器技术。",
           "智能飞行器技术。研究生："
         ],
         "explicit_mentions_positions": 5,
@@ -19648,7 +19602,6 @@
       {
         "code": "120108T",
         "name_hints": [
-          "）",
           "大数据管理与应用"
         ],
         "explicit_mentions_positions": 5,
@@ -20241,7 +20194,6 @@
       {
         "code": "040206T",
         "name_hints": [
-          "）",
           "运动康复"
         ],
         "explicit_mentions_positions": 4,
@@ -20660,8 +20612,7 @@
       {
         "code": "071102",
         "name_hints": [
-          "应用心理学",
-          "应用心理学。"
+          "应用心理学"
         ],
         "explicit_mentions_positions": 4,
         "explicit_mentions_hires": 11,
@@ -21450,7 +21401,6 @@
       {
         "code": "120201K",
         "name_hints": [
-          "）",
           "工商管理"
         ],
         "explicit_mentions_positions": 4,
@@ -21709,7 +21659,6 @@
       {
         "code": "020308T",
         "name_hints": [
-          "）",
           "精算学"
         ],
         "explicit_mentions_positions": 3,
@@ -21983,7 +21932,7 @@
         "code": "040203",
         "name_hints": [
           "社会体育指导与管理",
-          "）硕士：体育教育训练学"
+          "硕士：体育教育训练学"
         ],
         "explicit_mentions_positions": 3,
         "explicit_mentions_hires": 8,
@@ -22181,8 +22130,7 @@
       {
         "code": "071203T",
         "name_hints": [
-          "数据科学",
-          "）"
+          "数据科学"
         ],
         "explicit_mentions_positions": 3,
         "explicit_mentions_hires": 3,
@@ -23673,8 +23621,7 @@
       {
         "code": "120208",
         "name_hints": [
-          "资产评估",
-          "资产评估。"
+          "资产评估"
         ],
         "explicit_mentions_positions": 3,
         "explicit_mentions_hires": 5,
@@ -23829,8 +23776,7 @@
       {
         "code": "130311T",
         "name_hints": [
-          "影视摄影与制作",
-          "）"
+          "影视摄影与制作"
         ],
         "explicit_mentions_positions": 3,
         "explicit_mentions_hires": 7,
@@ -23898,7 +23844,7 @@
       {
         "code": "130502",
         "name_hints": [
-          "视觉传达设计）",
+          "视觉传达设计",
           "视觉传达设计。研究生："
         ],
         "explicit_mentions_positions": 3,
@@ -24140,7 +24086,6 @@
       {
         "code": "020109T",
         "name_hints": [
-          "）",
           "数字经济"
         ],
         "explicit_mentions_positions": 2,
@@ -25661,7 +25606,7 @@
       {
         "code": "081300",
         "name_hints": [
-          "建筑学。"
+          "建筑学"
         ],
         "explicit_mentions_positions": 2,
         "explicit_mentions_hires": 2,
@@ -25805,8 +25750,7 @@
       {
         "code": "082007T",
         "name_hints": [
-          "飞行器适航技术",
-          "）"
+          "飞行器适航技术"
         ],
         "explicit_mentions_positions": 2,
         "explicit_mentions_hires": 2,
@@ -26692,7 +26636,6 @@
       {
         "code": "120110T",
         "name_hints": [
-          "）",
           "计算金融"
         ],
         "explicit_mentions_positions": 2,
@@ -26766,8 +26709,7 @@
       {
         "code": "125601",
         "name_hints": [
-          "工程管理",
-          "）。"
+          "工程管理"
         ],
         "explicit_mentions_positions": 2,
         "explicit_mentions_hires": 2,
@@ -27462,9 +27404,7 @@
       },
       {
         "code": "020305T",
-        "name_hints": [
-          "）"
-        ],
+        "name_hints": [],
         "explicit_mentions_positions": 1,
         "explicit_mentions_hires": 1,
         "by_province": [
@@ -27576,9 +27516,7 @@
       },
       {
         "code": "030103T",
-        "name_hints": [
-          "）"
-        ],
+        "name_hints": [],
         "explicit_mentions_positions": 1,
         "explicit_mentions_hires": 1,
         "by_province": [
@@ -27661,9 +27599,7 @@
       },
       {
         "code": "030304T",
-        "name_hints": [
-          "）"
-        ],
+        "name_hints": [],
         "explicit_mentions_positions": 1,
         "explicit_mentions_hires": 1,
         "by_province": [
@@ -27691,7 +27627,7 @@
       {
         "code": "030307T",
         "name_hints": [
-          "）社会工作"
+          "社会工作"
         ],
         "explicit_mentions_positions": 1,
         "explicit_mentions_hires": 1,
@@ -28109,9 +28045,7 @@
       },
       {
         "code": "050108T",
-        "name_hints": [
-          ")"
-        ],
+        "name_hints": [],
         "explicit_mentions_positions": 1,
         "explicit_mentions_hires": 5,
         "by_province": [
@@ -28991,7 +28925,7 @@
       {
         "code": "070700",
         "name_hints": [
-          "海洋科学。"
+          "海洋科学"
         ],
         "explicit_mentions_positions": 1,
         "explicit_mentions_hires": 1,
@@ -29725,7 +29659,7 @@
       {
         "code": "081005T",
         "name_hints": [
-          "城市地下空间工程。"
+          "城市地下空间工程"
         ],
         "explicit_mentions_positions": 1,
         "explicit_mentions_hires": 1,
@@ -29838,9 +29772,7 @@
       },
       {
         "code": "081205T",
-        "name_hints": [
-          "）"
-        ],
+        "name_hints": [],
         "explicit_mentions_positions": 1,
         "explicit_mentions_hires": 2,
         "by_province": [
@@ -31190,9 +31122,7 @@
       },
       {
         "code": "090505T",
-        "name_hints": [
-          "）"
-        ],
+        "name_hints": [],
         "explicit_mentions_positions": 1,
         "explicit_mentions_hires": 1,
         "by_province": [
@@ -31556,7 +31486,7 @@
       {
         "code": "0972",
         "name_hints": [
-          "）食品科学与工程"
+          "食品科学与工程"
         ],
         "explicit_mentions_positions": 1,
         "explicit_mentions_hires": 1,
@@ -31584,9 +31514,7 @@
       },
       {
         "code": "100201K",
-        "name_hints": [
-          "）"
-        ],
+        "name_hints": [],
         "explicit_mentions_positions": 1,
         "explicit_mentions_hires": 1,
         "by_province": [
@@ -31755,7 +31683,7 @@
       {
         "code": "101005",
         "name_hints": [
-          "康复治疗学。"
+          "康复治疗学"
         ],
         "explicit_mentions_positions": 1,
         "explicit_mentions_hires": 2,
@@ -32262,9 +32190,7 @@
       },
       {
         "code": "120211T",
-        "name_hints": [
-          "）"
-        ],
+        "name_hints": [],
         "explicit_mentions_positions": 1,
         "explicit_mentions_hires": 1,
         "by_province": [
@@ -32492,9 +32418,7 @@
       },
       {
         "code": "120504T",
-        "name_hints": [
-          "）"
-        ],
+        "name_hints": [],
         "explicit_mentions_positions": 1,
         "explicit_mentions_hires": 1,
         "by_province": [
