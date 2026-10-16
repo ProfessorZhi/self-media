@@ -28,7 +28,7 @@
 - 全国/业务方向筛选、隐藏税务、人数/职位数切换、悬停预览与点击锁定、跨图高亮、最多四系统对比、SVG/PNG/CSV/JSON 导出。
 - 来源为此前会话汇总数据快照：**未独立核验官方原始 2027 职位表**，不可称作官方最终数据。
 
-原始 HTML 本身只含 28 类系统级汇总，不含专业代码、具体岗位、省份、学历条件数据。**2027 年正式招考公告与职位表已于 2026-10-13 发布**；本项目现已从第三方规范化岗位文件程序化聚合 31 省、机构类型、学历、考试类别及 649 个显式提及的专业代码，并存入 data/。**专业代码提及统计不等于某专业实际可报岗位全集**；完整资格计算需要另建原始岗位审核逻辑。
+原始 HTML 本身只含 28 类系统级汇总，不含专业代码、具体岗位、省份、学历条件数据。**截至2026-10-13，2027年公告与职位查询资料已公开（新华网当日刊载公告）**；本项目现已从第三方规范化岗位文件程序化聚合 31 省、机构类型、学历、考试类别及 649种第三方抽取的代码词元，并存入 data/。**本轮确认代码存在跨学历目录碰撞和TK截断；649词元不等于649个已核验专业，也不等于可报岗位全集**；完整资格计算需要另建原始岗位审核逻辑。
 
 ## 创作路线
 
@@ -46,10 +46,19 @@
 ## 2026-10-17 数据研究补充
 
 - [data/README.md](data/README.md)：已入库 JSON、校验过程与渲染口径。
-- [data/2027_position_derived_aggregates.json](data/2027_position_derived_aggregates.json)：19,426 岗、35,691 人、31 地区、649 种显式专业代码，含代码×地区×系统标签真实交叉统计。
+- [data/2027_position_derived_aggregates.json](data/2027_position_derived_aggregates.json)：19,426 岗、35,691 人、31 地区、649种第三方抽取代码词元，含代码×地区×系统标签真实交叉统计。
 - [research/DATA_SOURCES_AND_CHECKS.md](research/DATA_SOURCES_AND_CHECKS.md)：官方公告、职位表镜像来源与核验完成/未完成事项。
 - [research/MAJOR_CODE_MATCHING.md](research/MAJOR_CODE_MATCHING.md)：专业代码联动可做的镜头和不能冒充的报考资格。
 - [research/CONTENT_AND_VIDEO_PITCHES.md](research/CONTENT_AND_VIDEO_PITCHES.md)：技术英雄镜头、全片故事、互动竞猜与系列短片选题。
-- [content/knowledge_challenge_2027.json](content/knowledge_challenge_2027.json)：6 道有来源、选项、正确答案、画面揭晓机制的程序化「知识挑战」内容卡。
+- [content/knowledge_challenge_2027.json](content/knowledge_challenge_2027.json)：10道有来源、选项、正确答案、画面揭晓机制的程序化「知识挑战」内容卡。
 
 **已真实提交研究成果与数据，但尚未建立 Remotion 工程、启动 Agent、渲染或交付任何成片。**
+
+## 本轮复核结果与下一镜头
+
+- [研究复核](research/RESEARCH_REVIEW_20261017.md)：来源分级、专业解析问题、19标签与28类差异、验收记录。
+- [官方移民管理机构数据](data/official_2027_immigration_plan.json)：29机构合计1,089人，含29个官方附件入口。
+- [M1同源镜头数据](data/m1_hero_scene_2027.json)：用410个真实地区×标签单元拍35,691→24,013→11,678。
+- [专业词元审计](data/major_code_namespace_audit_2027.json)：明确已知错误和暂不允许的业务解释。
+
+**建议制作顺序：** 先税务筛选试镜，再确定主片；专业语义修复与专业高潮镜头分开验收。当前数据和题库已准备，Remotion与设备执行仍未启动。

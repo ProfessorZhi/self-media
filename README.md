@@ -23,6 +23,8 @@
 
 ## 当前进度
 
-VIDEO-001 已归档参考 HTML、创意方案、2027 年官方公告调研、经程序聚合的 31 省招录统计、专业代码显式提及关系网络和可复核的数据校验脚本。参见 [数据目录](projects/guokao-data-film/data/README.md)、[内容研究与游戏化选题](projects/guokao-data-film/research/CONTENT_AND_VIDEO_PITCHES.md) 和 [来源核查](projects/guokao-data-film/research/DATA_SOURCES_AND_CHECKS.md)。
+VIDEO-001 已归档参考 HTML、创意方案、2027 年官方公告调研、经程序聚合的 31 省招录统计、代码词元提及统计与解析问题审计和可复核的数据校验脚本。参见 [数据目录](projects/guokao-data-film/data/README.md)、[内容研究与游戏化选题](projects/guokao-data-film/research/CONTENT_AND_VIDEO_PITCHES.md) 和 [来源核查](projects/guokao-data-film/research/DATA_SOURCES_AND_CHECKS.md)。
 
-**尚未启动 Remotion 编码、视频渲染或成片交付。**
+新增官方移民管理机构29单位/1,089名额数据、10题知识挑战，以及M1同源场景包。专业数据发现跨学历代码碰撞与TK截断，已明确降为词元探索；见 [本轮复核](projects/guokao-data-film/research/RESEARCH_REVIEW_20261017.md)。
+
+**尚未启动 Remotion 编码、设备Agent、视频渲染或成片交付。**

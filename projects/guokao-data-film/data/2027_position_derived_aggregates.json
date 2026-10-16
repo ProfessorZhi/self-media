@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.0.1",
   "year": 2027,
   "provenance": {
     "level": "third_party_normalized_official_position_table",
@@ -18,6 +18,11 @@
       "专业代码取自第三方清洗字段 major_codes，仅做显式代码提及统计，非可报资格或完整候选岗位统计。",
       "system_tags 是第三方分类，非官方制度分类；与参考 HTML 28 系统分组不可无条件等同。",
       "新增省份×第三方系统标签交叉单元、专业代码×省份×第三方系统标签交叉单元；单元加总与各自父级一致，可做真实关系流向动画。"
+    ],
+    "reviewed_at": "2026-10-17",
+    "review_notes": [
+      "本轮未重读全国原始CSV或官方XLS，保留先前聚合数值；对仓库JSON及公开来源作复核。",
+      "major_codes语义复核发现跨学历代码碰撞和TK截断。649仅为旧提取器的代码词元数量，不是有效专业数。"
     ]
   },
   "totals": {
@@ -389,7 +394,7 @@
     }
   ],
   "major_code_mentions": {
-    "semantics": "EXPLICIT_MENTION_ONLY: Only positions whose preprocessed major_codes field explicitly contains a code are counted. Codes for broad categories, unspecified majors, tax special catalog and degree-specific conditions are NOT expanded. This is not applicant eligibility.",
+    "semantics": "RAW_TOKEN_MENTION_ONLY: Counts describe tokens extracted by an upstream parser, not validated distinct majors. Cross-catalog code collisions and TK suffix truncation are confirmed. Not eligibility, not complete major coverage. Read major_code_namespace_audit_2027.json.",
     "coded_positions": 3252,
     "uncoded_positions": 16174,
     "unique_codes": 649,
@@ -55287,7 +55292,16 @@
           }
         ]
       }
-    ]
+    ],
+    "semantic_audit_file": "data/major_code_namespace_audit_2027.json",
+    "validated_unique_major_count": null,
+    "known_issues": [
+      "mixed_education_catalog_namespaces",
+      "TK_suffix_truncation",
+      "name_hints_are_unvalidated",
+      "incomplete_extraction_coverage"
+    ],
+    "repaired_from_raw_in_this_revision": false
   },
   "by_province_and_source_system_tag": [
     {

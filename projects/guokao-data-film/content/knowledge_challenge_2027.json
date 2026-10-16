@@ -1,10 +1,9 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "title": "2027 国考知识挑战 / Remotion 视频互动揭晓内容卡",
   "use": "pre-rendered_video_quiz_beats_not_live_participation",
   "note": "视频中的互动题目是观众脑内作答和倒计时揭晓，并非已实现浏览器点选小游戏；若要真实交互需单独开发可运行界面。",
-  "verified_generated_at": "2026-10-17",
-  "total_cards": 6,
+  "total_cards": 10,
   "cards": [
     {
       "id": "tax_share",
@@ -34,11 +33,11 @@
         "display": "67.3%"
       },
       "explanation": "税务系统 24,013 人，全国 35,691 人。",
-      "render_idea": "三个小光块展示选项→快速聚焦实际面积→35,691 个真实名额点中恰好 24,013 个税务名额着色。",
+      "render_idea": "选项→实际面积→按M1同源交叉单元生成35,691个名额代表点，其中24,013个归入tax标签；编号只是视觉索引。",
       "source": {
-        "file": "data/observatory_2027_legacy_snapshot.json",
-        "pointer": "records[id=tax].hires / total_hires",
-        "status": "legacy_html_28_category_snapshot_aggregated"
+        "file": "data/2027_position_derived_aggregates.json",
+        "pointer": "by_source_system_tag[name=tax].hires / totals.hires",
+        "status": "third_party_cleaned_aggregate_arithmetic_checked_not_official_row_verified"
       }
     },
     {
@@ -69,11 +68,11 @@
         "display": "11,678 人"
       },
       "explanation": "35,691 − 24,013 = 11,678。",
-      "render_idea": "主屏熄灭 24,013 个税务光点，其余 11,678 个粒子缓慢占满新的画幅；禁止画成增加人数。",
+      "render_idea": "同一M1点场熄灭24,013个税务代表点，余下11,678个重排；缩放表示更清楚地观看，不表示扩招。",
       "source": {
-        "file": "data/observatory_2027_legacy_snapshot.json",
-        "pointer": "total_hires - records[id=tax].hires",
-        "status": "legacy_html_28_category_snapshot_aggregated"
+        "file": "data/2027_position_derived_aggregates.json",
+        "pointer": "totals.hires - by_source_system_tag[name=tax].hires",
+        "status": "third_party_cleaned_aggregate_arithmetic_checked_not_official_row_verified"
       }
     },
     {
@@ -108,7 +107,7 @@
       "source": {
         "file": "data/2027_position_derived_aggregates.json",
         "pointer": "by_province[广东/山东/云南].hires",
-        "status": "full_2027_third_party_cleaned_aggregate_crosschecked"
+        "status": "third_party_cleaned_aggregate_arithmetic_checked_not_official_row_verified"
       }
     },
     {
@@ -139,18 +138,18 @@
         "display": "75.3%"
       },
       "explanation": "机构层级为「县（区）级及以下」的职位合计招录 26,873 人。注意不是全部「基层工作」定义。",
-      "render_idea": "全国大图分层挤压，县（区）级及以下 26,873 个点沉入画幅前景，其余层级退暗。",
+      "render_idea": "先收拢并重建机构层级点阵，再突出26,873个名额代表点；没有层级×地区×系统联合表，不延续上一题的筛选状态或岗位身份。",
       "source": {
         "file": "data/2027_position_derived_aggregates.json",
         "pointer": "by_org_level[name=县（区）级及以下].hires / totals.hires",
-        "status": "full_2027_third_party_cleaned_aggregate_crosschecked"
+        "status": "third_party_cleaned_aggregate_arithmetic_checked_not_official_row_verified"
       }
     },
     {
       "id": "major_code_mentions",
       "category": "专业代码",
       "interaction": "code_signal_reveal",
-      "question": "在清洗字段中显式提到「030101K」代码的职位有多少条？",
+      "question": "旧清洗字段中，提取到词元「030101K」的职位记录有多少条？",
       "options": [
         {
           "id": "A",
@@ -173,12 +172,13 @@
         "numeric": 316,
         "display": "316 条职位；对应 385 人"
       },
-      "explanation": "030101K 为「法学」具体专业代码。本统计只计入清洗字段中显式包含该代码的职位，不能代表法学专业的全部可报职位。",
-      "render_idea": "虚拟查询框输入 030101K → 真实的省份×系统标签关系边依次点亮 → 数字锁定为 316 条职位；悬挂口径说明。",
+      "explanation": "本科2026目录的030101K为法学。当前316条/385人来自旧清洗字段词元统计，不是法学可报全集；其他词元还存在学历碰撞与TK截断，详见审计。",
+      "render_idea": "输入030101K→该词元的54个地区×标签统计单元依次点亮→316条职位记录/385个名额；展示聚合卡，字幕保留“清洗字段词元提及，非全部可报岗位”。",
       "source": {
         "file": "data/2027_position_derived_aggregates.json",
         "pointer": "major_code_mentions.codes[code=030101K].explicit_mentions_positions",
-        "status": "third_party_explicit_code_mentions_only_not_eligibility"
+        "status": "raw_token_mentions_with_known_namespace_and_suffix_issues_not_eligibility",
+        "audit_file": "data/major_code_namespace_audit_2027.json"
       }
     },
     {
@@ -209,12 +209,166 @@
         "display": "减少 2,428 人"
       },
       "explanation": "2026 年 38,119 人，2027 年 35,691 人；这里比较的是招录人数，非职位数。",
-      "render_idea": "两个年份点阵叠影，旧年份 38,119 个亮点逐步收敛到新年份 35,691 个，最终呈现减少 2,428。",
+      "render_idea": "两个年份独立点阵对比38,119和35,691，差值为2,428；运动表示规模变化，不给跨年度点建立真实岗位对应。",
       "source": {
         "file": "data/annual_recruitment_2024_2027_secondary.json",
         "pointer": "years[2027].hires - years[2026].hires",
         "status": "historic_secondary_aggregates"
       }
+    },
+    {
+      "id": "immigration_scope",
+      "category": "机构口径",
+      "interaction": "nested_groups_reveal",
+      "question": "2027国家移民管理机构整体计划招录多少人？",
+      "options": [
+        {
+          "id": "A",
+          "label": "1,020 人",
+          "value": 1020
+        },
+        {
+          "id": "B",
+          "label": "1,089 人",
+          "value": 1089
+        },
+        {
+          "id": "C",
+          "label": "1,810 人",
+          "value": 1810
+        }
+      ],
+      "correct_option": "B",
+      "answer": {
+        "numeric": 1089,
+        "display": "1,089 人 = 1,020 + 69"
+      },
+      "explanation": "官方公告29个机构合计1,089人；22个边检总站合计1,020，机关、遣返中心和常备力量总队另有69。",
+      "render_idea": "新建官方机构场景：1,020个点组成总站簇，69个点组成其他机构簇，框定整体1,089；不与第三方immigration标签134直接替换。",
+      "source": {
+        "file": "data/official_2027_immigration_plan.json",
+        "pointer": "totals.hires",
+        "url": "https://www.nia.gov.cn/n741440/n741542/c1818347/content.html",
+        "status": "official_announcement_transcribed_and_summed"
+      }
+    },
+    {
+      "id": "register_vs_apply",
+      "category": "时间规则",
+      "interaction": "two_gates_timeline",
+      "question": "2026年10月14日8:00，2027国考先开放的是哪一步？",
+      "options": [
+        {
+          "id": "A",
+          "label": "注册和实名认证",
+          "value": "registration_verify"
+        },
+        {
+          "id": "B",
+          "label": "提交报考申请",
+          "value": "apply"
+        },
+        {
+          "id": "C",
+          "label": "缴费确认",
+          "value": "payment"
+        }
+      ],
+      "correct_option": "A",
+      "answer": {
+        "value": "registration_verify",
+        "display": "先认证，10月15日8:00开始提交申请"
+      },
+      "explanation": "完整公告将注册认证与提交申请分为两段。画面全部使用北京时间；认证截止10月23日18:00，申请截止10月24日18:00。",
+      "render_idea": "两道时间门相差一天：10/14 08:00认证门先亮，10/15 08:00申请门再亮；用双轨时间线保留不同截止日期。",
+      "source": {
+        "file": "data/official_2027_exam_timeline.json",
+        "pointer": "events[id=registration_verify/apply]",
+        "url": "https://www.xinhuanet.com/edu/20261013/ce6bf7dc36474dd68ecd90aa8b722f06/c.html",
+        "status": "official_full_announcement_timeline"
+      }
+    },
+    {
+      "id": "same_code_different_catalog",
+      "category": "数据认知",
+      "interaction": "split_code_node",
+      "question": "代码0809，在本科与研究生目录里代表同一个专业吗？",
+      "options": [
+        {
+          "id": "A",
+          "label": "都代表计算机类",
+          "value": "both_computing"
+        },
+        {
+          "id": "B",
+          "label": "都代表电子科学与技术",
+          "value": "both_electronics"
+        },
+        {
+          "id": "C",
+          "label": "要先区分学历和目录",
+          "value": "depends_on_catalog"
+        }
+      ],
+      "correct_option": "C",
+      "answer": {
+        "value": "depends_on_catalog",
+        "display": "本科：计算机类；研究生：电子科学与技术"
+      },
+      "explanation": "本科2026与研究生2022目录的0809含义不同；既有汇总736条职位混在一个裸码节点，不能直接标成本科计算机岗位总数。",
+      "render_idea": "同一个0809节点分成两条带目录标签的路径；只说明代码含义，不凭现有汇总猜测各路径人数。",
+      "source": {
+        "file": "data/major_code_namespace_audit_2027.json",
+        "pointer": "confirmed_namespace_collisions[raw_code_token=0809]",
+        "urls": [
+          "http://www.moe.gov.cn/srcsite/A08/moe_1034/s3882/202604/W020260427440749576927.pdf",
+          "http://www.moe.gov.cn/srcsite/A22/moe_833/202209/W020220914572994461110.pdf"
+        ],
+        "status": "official_catalog_meanings_and_observed_raw_token_collision"
+      }
+    },
+    {
+      "id": "tax_count_down_share_up",
+      "category": "数量与占比",
+      "interaction": "two_denominators",
+      "question": "税务招录从25,004降到24,013，它在国考中的占比怎样变？",
+      "options": [
+        {
+          "id": "A",
+          "label": "人数减少，占比一定下降",
+          "value": "must_fall"
+        },
+        {
+          "id": "B",
+          "label": "占比提高约1.69个百分点",
+          "value": 1.69
+        },
+        {
+          "id": "C",
+          "label": "占比没有变化",
+          "value": 0
+        }
+      ],
+      "correct_option": "B",
+      "answer": {
+        "numeric": 1.69,
+        "display": "65.59% → 67.28%，提高约1.69个百分点"
+      },
+      "explanation": "按公开历史汇总：2026为25,004/38,119，2027为24,013/35,691。税务少991人，全国总量也减少，占比提高不等于扩招。",
+      "render_idea": "独立年份面板同时缩短分子与分母的条，税务占比线向上、绝对名额线向下；禁用“扩招”或“历史最高”。",
+      "source": {
+        "file": "data/annual_recruitment_2024_2027_secondary.json",
+        "pointer": "selected_system_comparison_2026_2027[name=税务系统] / years[2026,2027].hires",
+        "url": "https://www.eoffcn.com/kszx/detail/2219333.html",
+        "status": "secondary_history_crosschecked_percent_point_calculation"
+      }
     }
+  ],
+  "generated_at": "2026-10-17",
+  "validation_scope": "answers_recomputed_from_repository_data_and_named_official_web_sources_not_official_workbook_row_validation",
+  "scene_rules": [
+    "每题来源与量纲单独保留。前3题使用M1地区×系统联合单元；同源不代表任意维度可联合筛选。",
+    "机构层级、历年对比和官方移民管理机构镜头重新建场，不延用上一题的具体岗位身份。",
+    "专业题只演示旧清洗字段词元提及；先读取major_code_namespace_audit_2027.json。"
   ]
 }

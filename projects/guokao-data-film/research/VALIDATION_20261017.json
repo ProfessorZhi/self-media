@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "date": "2026-10-17",
+  "timezone": "Asia/Tokyo",
+  "base_commit": "da1ab73d553d8259655daf5a636616a12abb1f94",
+  "scope": "repository_artifact_integrity_and_named_official_announcement_transcription",
+  "execution": {
+    "pure_verifier_core_executed_in_chat_runtime": true,
+    "node_cli_executed_on_device": false,
+    "remote_agent_dispatched": false,
+    "remotion_rendered": false
+  },
+  "result": {
+    "integrity_verified": true,
+    "checks": 50637,
+    "positions": 19426,
+    "hires": 35691,
+    "national_cells": 410,
+    "raw_code_tokens": 649,
+    "valid_semantic_majors": null,
+    "official_nia_units": 29,
+    "official_nia_hires": 1089,
+    "content_cards": 10,
+    "official_workbook_row_validation": false,
+    "raw_major_parser_repaired": false,
+    "render_verified": false
+  },
+  "source_boundaries": {
+    "national_raw_csv_reparsed_this_revision": false,
+    "national_official_workbook_downloaded": false,
+    "national_official_workbook_rows_compared": false,
+    "official_nia_web_plan_transcribed": true,
+    "official_nia_job_attachments_downloaded": false,
+    "raw_major_parser_repaired": false,
+    "existing_aggregate_numeric_values_changed": false
+  }
+}

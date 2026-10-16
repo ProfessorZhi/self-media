@@ -1,0 +1,2951 @@
+{
+  "schema_version": "1.0.0",
+  "title": "M1 税务集中与余量重排：同源场景数据",
+  "year": 2027,
+  "status": "data_ready_visual_not_implemented",
+  "provenance": {
+    "classification": "projection_of_existing_third_party_aggregate_not_new_official_validation",
+    "source_file": "data/2027_position_derived_aggregates.json",
+    "source_blob_sha": "870f522f19c9db3738bb04fae02fd6a827cc5713",
+    "source_commit": "da1ab73d553d8259655daf5a636616a12abb1f94",
+    "source_field": "by_province_and_source_system_tag",
+    "generated_date": "2026-10-17"
+  },
+  "totals": {
+    "positions": 19426,
+    "hires": 35691,
+    "cells": 410,
+    "provinces": 31,
+    "source_system_tags": 19
+  },
+  "beats": [
+    {
+      "id": "all",
+      "filter": null,
+      "positions": 19426,
+      "hires": 35691,
+      "denominator_hires": 35691,
+      "share_pct": 100
+    },
+    {
+      "id": "tax",
+      "filter": {
+        "source_system_tag": "tax"
+      },
+      "positions": 11232,
+      "hires": 24013,
+      "denominator_hires": 35691,
+      "share_pct": 67.3
+    },
+    {
+      "id": "without_tax",
+      "filter": {
+        "exclude_source_system_tag": "tax"
+      },
+      "positions": 8194,
+      "hires": 11678,
+      "denominator_hires": 35691,
+      "share_pct": 32.7
+    }
+  ],
+  "particle_contract": {
+    "meaning": "one_visual_point_per_planned_hire_in_aggregate_cell",
+    "index_rule": "cell.id + '#' + integer_index_0_to_hires_minus_1",
+    "official_position_id": false,
+    "stable_across": [
+      "national_count",
+      "province_group",
+      "source_system_tag_group",
+      "tax_filter"
+    ],
+    "do_not_carry_identity_into": [
+      "legacy_28_categories",
+      "org_level",
+      "education",
+      "exam_category",
+      "historical_year",
+      "multiple_code_queries"
+    ],
+    "note": "视觉索引仅是聚合计数编号；无职位明细ID，不能给一个点补写具体岗位信息。"
+  },
+  "display_contract": {
+    "required_source_label": "2027 职位表第三方清洗汇总",
+    "metric_label": "计划招录名额",
+    "group_label": "第三方分析标签",
+    "after_exclusion_label": "不含税务：11,678 名额",
+    "source_note": "未完成全国官方原始文件逐行核验",
+    "scale_change_note": "重排放大剩余部分，不增加名额；若展示剩余内占比须更新分母为11678。"
+  },
+  "cells": [
+    {
+      "id": "上海|audit",
+      "province": "上海",
+      "source_system_tag": "audit",
+      "positions": 2,
+      "hires": 6
+    },
+    {
+      "id": "上海|can_gong",
+      "province": "上海",
+      "source_system_tag": "can_gong",
+      "positions": 4,
+      "hires": 15
+    },
+    {
+      "id": "上海|civil_aviation",
+      "province": "上海",
+      "source_system_tag": "civil_aviation",
+      "positions": 9,
+      "hires": 11
+    },
+    {
+      "id": "上海|csrc",
+      "province": "上海",
+      "source_system_tag": "csrc",
+      "positions": 3,
+      "hires": 12
+    },
+    {
+      "id": "上海|customs",
+      "province": "上海",
+      "source_system_tag": "customs",
+      "positions": 80,
+      "hires": 101
+    },
+    {
+      "id": "上海|default",
+      "province": "上海",
+      "source_system_tag": "default",
+      "positions": 9,
+      "hires": 18
+    },
+    {
+      "id": "上海|finance_reg",
+      "province": "上海",
+      "source_system_tag": "finance_reg",
+      "positions": 4,
+      "hires": 8
+    },
+    {
+      "id": "上海|immigration",
+      "province": "上海",
+      "source_system_tag": "immigration",
+      "positions": 3,
+      "hires": 7
+    },
+    {
+      "id": "上海|maritime",
+      "province": "上海",
+      "source_system_tag": "maritime",
+      "positions": 49,
+      "hires": 67
+    },
+    {
+      "id": "上海|meteorology",
+      "province": "上海",
+      "source_system_tag": "meteorology",
+      "positions": 1,
+      "hires": 1
+    },
+    {
+      "id": "上海|pboc",
+      "province": "上海",
+      "source_system_tag": "pboc",
+      "positions": 5,
+      "hires": 19
+    },
+    {
+      "id": "上海|police",
+      "province": "上海",
+      "source_system_tag": "police",
+      "positions": 9,
+      "hires": 15
+    },
+    {
+      "id": "上海|post",
+      "province": "上海",
+      "source_system_tag": "post",
+      "positions": 4,
+      "hires": 4
+    },
+    {
+      "id": "上海|survey",
+      "province": "上海",
+      "source_system_tag": "survey",
+      "positions": 9,
+      "hires": 12
+    },
+    {
+      "id": "上海|tax",
+      "province": "上海",
+      "source_system_tag": "tax",
+      "positions": 230,
+      "hires": 406
+    },
+    {
+      "id": "上海|telecom",
+      "province": "上海",
+      "source_system_tag": "telecom",
+      "positions": 2,
+      "hires": 3
+    },
+    {
+      "id": "上海|water",
+      "province": "上海",
+      "source_system_tag": "water",
+      "positions": 5,
+      "hires": 6
+    },
+    {
+      "id": "云南|audit",
+      "province": "云南",
+      "source_system_tag": "audit",
+      "positions": 1,
+      "hires": 4
+    },
+    {
+      "id": "云南|can_gong",
+      "province": "云南",
+      "source_system_tag": "can_gong",
+      "positions": 2,
+      "hires": 2
+    },
+    {
+      "id": "云南|civil_aviation",
+      "province": "云南",
+      "source_system_tag": "civil_aviation",
+      "positions": 2,
+      "hires": 2
+    },
+    {
+      "id": "云南|csrc",
+      "province": "云南",
+      "source_system_tag": "csrc",
+      "positions": 1,
+      "hires": 2
+    },
+    {
+      "id": "云南|customs",
+      "province": "云南",
+      "source_system_tag": "customs",
+      "positions": 54,
+      "hires": 60
+    },
+    {
+      "id": "云南|default",
+      "province": "云南",
+      "source_system_tag": "default",
+      "positions": 6,
+      "hires": 9
+    },
+    {
+      "id": "云南|finance_reg",
+      "province": "云南",
+      "source_system_tag": "finance_reg",
+      "positions": 65,
+      "hires": 67
+    },
+    {
+      "id": "云南|immigration",
+      "province": "云南",
+      "source_system_tag": "immigration",
+      "positions": 17,
+      "hires": 26
+    },
+    {
+      "id": "云南|meteorology",
+      "province": "云南",
+      "source_system_tag": "meteorology",
+      "positions": 12,
+      "hires": 12
+    },
+    {
+      "id": "云南|pboc",
+      "province": "云南",
+      "source_system_tag": "pboc",
+      "positions": 78,
+      "hires": 116
+    },
+    {
+      "id": "云南|police",
+      "province": "云南",
+      "source_system_tag": "police",
+      "positions": 105,
+      "hires": 198
+    },
+    {
+      "id": "云南|post",
+      "province": "云南",
+      "source_system_tag": "post",
+      "positions": 4,
+      "hires": 4
+    },
+    {
+      "id": "云南|survey",
+      "province": "云南",
+      "source_system_tag": "survey",
+      "positions": 21,
+      "hires": 21
+    },
+    {
+      "id": "云南|tax",
+      "province": "云南",
+      "source_system_tag": "tax",
+      "positions": 817,
+      "hires": 1400
+    },
+    {
+      "id": "云南|telecom",
+      "province": "云南",
+      "source_system_tag": "telecom",
+      "positions": 2,
+      "hires": 2
+    },
+    {
+      "id": "内蒙古|csrc",
+      "province": "内蒙古",
+      "source_system_tag": "csrc",
+      "positions": 1,
+      "hires": 1
+    },
+    {
+      "id": "内蒙古|customs",
+      "province": "内蒙古",
+      "source_system_tag": "customs",
+      "positions": 32,
+      "hires": 39
+    },
+    {
+      "id": "内蒙古|default",
+      "province": "内蒙古",
+      "source_system_tag": "default",
+      "positions": 14,
+      "hires": 22
+    },
+    {
+      "id": "内蒙古|finance_reg",
+      "province": "内蒙古",
+      "source_system_tag": "finance_reg",
+      "positions": 141,
+      "hires": 151
+    },
+    {
+      "id": "内蒙古|immigration",
+      "province": "内蒙古",
+      "source_system_tag": "immigration",
+      "positions": 4,
+      "hires": 8
+    },
+    {
+      "id": "内蒙古|meteorology",
+      "province": "内蒙古",
+      "source_system_tag": "meteorology",
+      "positions": 10,
+      "hires": 10
+    },
+    {
+      "id": "内蒙古|pboc",
+      "province": "内蒙古",
+      "source_system_tag": "pboc",
+      "positions": 67,
+      "hires": 108
+    },
+    {
+      "id": "内蒙古|police",
+      "province": "内蒙古",
+      "source_system_tag": "police",
+      "positions": 51,
+      "hires": 79
+    },
+    {
+      "id": "内蒙古|post",
+      "province": "内蒙古",
+      "source_system_tag": "post",
+      "positions": 4,
+      "hires": 4
+    },
+    {
+      "id": "内蒙古|survey",
+      "province": "内蒙古",
+      "source_system_tag": "survey",
+      "positions": 23,
+      "hires": 23
+    },
+    {
+      "id": "内蒙古|tax",
+      "province": "内蒙古",
+      "source_system_tag": "tax",
+      "positions": 438,
+      "hires": 750
+    },
+    {
+      "id": "内蒙古|telecom",
+      "province": "内蒙古",
+      "source_system_tag": "telecom",
+      "positions": 1,
+      "hires": 1
+    },
+    {
+      "id": "内蒙古|water",
+      "province": "内蒙古",
+      "source_system_tag": "water",
+      "positions": 1,
+      "hires": 1
+    },
+    {
+      "id": "北京|audit",
+      "province": "北京",
+      "source_system_tag": "audit",
+      "positions": 4,
+      "hires": 12
+    },
+    {
+      "id": "北京|can_gong",
+      "province": "北京",
+      "source_system_tag": "can_gong",
+      "positions": 56,
+      "hires": 105
+    },
+    {
+      "id": "北京|civil_aviation",
+      "province": "北京",
+      "source_system_tag": "civil_aviation",
+      "positions": 11,
+      "hires": 11
+    },
+    {
+      "id": "北京|csrc",
+      "province": "北京",
+      "source_system_tag": "csrc",
+      "positions": 4,
+      "hires": 13
+    },
+    {
+      "id": "北京|customs",
+      "province": "北京",
+      "source_system_tag": "customs",
+      "positions": 23,
+      "hires": 31
+    },
+    {
+      "id": "北京|default",
+      "province": "北京",
+      "source_system_tag": "default",
+      "positions": 10,
+      "hires": 19
+    },
+    {
+      "id": "北京|finance_reg",
+      "province": "北京",
+      "source_system_tag": "finance_reg",
+      "positions": 6,
+      "hires": 25
+    },
+    {
+      "id": "北京|immigration",
+      "province": "北京",
+      "source_system_tag": "immigration",
+      "positions": 6,
+      "hires": 27
+    },
+    {
+      "id": "北京|maritime",
+      "province": "北京",
+      "source_system_tag": "maritime",
+      "positions": 2,
+      "hires": 2
+    },
+    {
+      "id": "北京|meteorology",
+      "province": "北京",
+      "source_system_tag": "meteorology",
+      "positions": 5,
+      "hires": 5
+    },
+    {
+      "id": "北京|party_central",
+      "province": "北京",
+      "source_system_tag": "party_central",
+      "positions": 93,
+      "hires": 128
+    },
+    {
+      "id": "北京|pboc",
+      "province": "北京",
+      "source_system_tag": "pboc",
+      "positions": 17,
+      "hires": 51
+    },
+    {
+      "id": "北京|police",
+      "province": "北京",
+      "source_system_tag": "police",
+      "positions": 84,
+      "hires": 216
+    },
+    {
+      "id": "北京|post",
+      "province": "北京",
+      "source_system_tag": "post",
+      "positions": 1,
+      "hires": 1
+    },
+    {
+      "id": "北京|state_central",
+      "province": "北京",
+      "source_system_tag": "state_central",
+      "positions": 261,
+      "hires": 421
+    },
+    {
+      "id": "北京|survey",
+      "province": "北京",
+      "source_system_tag": "survey",
+      "positions": 3,
+      "hires": 6
+    },
+    {
+      "id": "北京|tax",
+      "province": "北京",
+      "source_system_tag": "tax",
+      "positions": 84,
+      "hires": 207
+    },
+    {
+      "id": "北京|telecom",
+      "province": "北京",
+      "source_system_tag": "telecom",
+      "positions": 2,
+      "hires": 3
+    },
+    {
+      "id": "北京|water",
+      "province": "北京",
+      "source_system_tag": "water",
+      "positions": 3,
+      "hires": 8
+    },
+    {
+      "id": "吉林|audit",
+      "province": "吉林",
+      "source_system_tag": "audit",
+      "positions": 1,
+      "hires": 3
+    },
+    {
+      "id": "吉林|civil_aviation",
+      "province": "吉林",
+      "source_system_tag": "civil_aviation",
+      "positions": 2,
+      "hires": 2
+    },
+    {
+      "id": "吉林|csrc",
+      "province": "吉林",
+      "source_system_tag": "csrc",
+      "positions": 1,
+      "hires": 1
+    },
+    {
+      "id": "吉林|customs",
+      "province": "吉林",
+      "source_system_tag": "customs",
+      "positions": 37,
+      "hires": 37
+    },
+    {
+      "id": "吉林|default",
+      "province": "吉林",
+      "source_system_tag": "default",
+      "positions": 13,
+      "hires": 20
+    },
+    {
+      "id": "吉林|finance_reg",
+      "province": "吉林",
+      "source_system_tag": "finance_reg",
+      "positions": 30,
+      "hires": 37
+    },
+    {
+      "id": "吉林|immigration",
+      "province": "吉林",
+      "source_system_tag": "immigration",
+      "positions": 21,
+      "hires": 36
+    },
+    {
+      "id": "吉林|pboc",
+      "province": "吉林",
+      "source_system_tag": "pboc",
+      "positions": 35,
+      "hires": 60
+    },
+    {
+      "id": "吉林|police",
+      "province": "吉林",
+      "source_system_tag": "police",
+      "positions": 63,
+      "hires": 94
+    },
+    {
+      "id": "吉林|post",
+      "province": "吉林",
+      "source_system_tag": "post",
+      "positions": 1,
+      "hires": 1
+    },
+    {
+      "id": "吉林|survey",
+      "province": "吉林",
+      "source_system_tag": "survey",
+      "positions": 14,
+      "hires": 14
+    },
+    {
+      "id": "吉林|tax",
+      "province": "吉林",
+      "source_system_tag": "tax",
+      "positions": 271,
+      "hires": 800
+    },
+    {
+      "id": "吉林|telecom",
+      "province": "吉林",
+      "source_system_tag": "telecom",
+      "positions": 1,
+      "hires": 1
+    },
+    {
+      "id": "吉林|water",
+      "province": "吉林",
+      "source_system_tag": "water",
+      "positions": 8,
+      "hires": 8
+    },
+    {
+      "id": "四川|can_gong",
+      "province": "四川",
+      "source_system_tag": "can_gong",
+      "positions": 2,
+      "hires": 6
+    },
+    {
+      "id": "四川|civil_aviation",
+      "province": "四川",
+      "source_system_tag": "civil_aviation",
+      "positions": 7,
+      "hires": 7
+    },
+    {
+      "id": "四川|csrc",
+      "province": "四川",
+      "source_system_tag": "csrc",
+      "positions": 2,
+      "hires": 8
+    },
+    {
+      "id": "四川|customs",
+      "province": "四川",
+      "source_system_tag": "customs",
+      "positions": 14,
+      "hires": 20
+    },
+    {
+      "id": "四川|default",
+      "province": "四川",
+      "source_system_tag": "default",
+      "positions": 9,
+      "hires": 17
+    },
+    {
+      "id": "四川|finance_reg",
+      "province": "四川",
+      "source_system_tag": "finance_reg",
+      "positions": 45,
+      "hires": 81
+    },
+    {
+      "id": "四川|maritime",
+      "province": "四川",
+      "source_system_tag": "maritime",
+      "positions": 7,
+      "hires": 7
+    },
+    {
+      "id": "四川|meteorology",
+      "province": "四川",
+      "source_system_tag": "meteorology",
+      "positions": 8,
+      "hires": 8
+    },
+    {
+      "id": "四川|pboc",
+      "province": "四川",
+      "source_system_tag": "pboc",
+      "positions": 103,
+      "hires": 143
+    },
+    {
+      "id": "四川|police",
+      "province": "四川",
+      "source_system_tag": "police",
+      "positions": 20,
+      "hires": 36
+    },
+    {
+      "id": "四川|survey",
+      "province": "四川",
+      "source_system_tag": "survey",
+      "positions": 16,
+      "hires": 16
+    },
+    {
+      "id": "四川|tax",
+      "province": "四川",
+      "source_system_tag": "tax",
+      "positions": 589,
+      "hires": 1300
+    },
+    {
+      "id": "四川|telecom",
+      "province": "四川",
+      "source_system_tag": "telecom",
+      "positions": 1,
+      "hires": 1
+    },
+    {
+      "id": "天津|audit",
+      "province": "天津",
+      "source_system_tag": "audit",
+      "positions": 2,
+      "hires": 4
+    },
+    {
+      "id": "天津|can_gong",
+      "province": "天津",
+      "source_system_tag": "can_gong",
+      "positions": 1,
+      "hires": 1
+    },
+    {
+      "id": "天津|csrc",
+      "province": "天津",
+      "source_system_tag": "csrc",
+      "positions": 1,
+      "hires": 4
+    },
+    {
+      "id": "天津|customs",
+      "province": "天津",
+      "source_system_tag": "customs",
+      "positions": 34,
+      "hires": 60
+    },
+    {
+      "id": "天津|default",
+      "province": "天津",
+      "source_system_tag": "default",
+      "positions": 3,
+      "hires": 6
+    },
+    {
+      "id": "天津|finance_reg",
+      "province": "天津",
+      "source_system_tag": "finance_reg",
+      "positions": 6,
+      "hires": 8
+    },
+    {
+      "id": "天津|immigration",
+      "province": "天津",
+      "source_system_tag": "immigration",
+      "positions": 1,
+      "hires": 1
+    },
+    {
+      "id": "天津|maritime",
+      "province": "天津",
+      "source_system_tag": "maritime",
+      "positions": 15,
+      "hires": 15
+    },
+    {
+      "id": "天津|meteorology",
+      "province": "天津",
+      "source_system_tag": "meteorology",
+      "positions": 2,
+      "hires": 2
+    },
+    {
+      "id": "天津|pboc",
+      "province": "天津",
+      "source_system_tag": "pboc",
+      "positions": 11,
+      "hires": 15
+    },
+    {
+      "id": "天津|police",
+      "province": "天津",
+      "source_system_tag": "police",
+      "positions": 18,
+      "hires": 28
+    },
+    {
+      "id": "天津|post",
+      "province": "天津",
+      "source_system_tag": "post",
+      "positions": 1,
+      "hires": 1
+    },
+    {
+      "id": "天津|survey",
+      "province": "天津",
+      "source_system_tag": "survey",
+      "positions": 5,
+      "hires": 5
+    },
+    {
+      "id": "天津|tax",
+      "province": "天津",
+      "source_system_tag": "tax",
+      "positions": 72,
+      "hires": 100
+    },
+    {
+      "id": "天津|water",
+      "province": "天津",
+      "source_system_tag": "water",
+      "positions": 11,
+      "hires": 12
+    },
+    {
+      "id": "宁夏|can_gong",
+      "province": "宁夏",
+      "source_system_tag": "can_gong",
+      "positions": 3,
+      "hires": 3
+    },
+    {
+      "id": "宁夏|civil_aviation",
+      "province": "宁夏",
+      "source_system_tag": "civil_aviation",
+      "positions": 2,
+      "hires": 2
+    },
+    {
+      "id": "宁夏|csrc",
+      "province": "宁夏",
+      "source_system_tag": "csrc",
+      "positions": 1,
+      "hires": 3
+    },
+    {
+      "id": "宁夏|customs",
+      "province": "宁夏",
+      "source_system_tag": "customs",
+      "positions": 1,
+      "hires": 1
+    },
+    {
+      "id": "宁夏|default",
+      "province": "宁夏",
+      "source_system_tag": "default",
+      "positions": 6,
+      "hires": 8
+    },
+    {
+      "id": "宁夏|finance_reg",
+      "province": "宁夏",
+      "source_system_tag": "finance_reg",
+      "positions": 20,
+      "hires": 23
+    },
+    {
+      "id": "宁夏|meteorology",
+      "province": "宁夏",
+      "source_system_tag": "meteorology",
+      "positions": 7,
+      "hires": 7
+    },
+    {
+      "id": "宁夏|pboc",
+      "province": "宁夏",
+      "source_system_tag": "pboc",
+      "positions": 26,
+      "hires": 37
+    },
+    {
+      "id": "宁夏|survey",
+      "province": "宁夏",
+      "source_system_tag": "survey",
+      "positions": 4,
+      "hires": 4
+    },
+    {
+      "id": "宁夏|tax",
+      "province": "宁夏",
+      "source_system_tag": "tax",
+      "positions": 67,
+      "hires": 130
+    },
+    {
+      "id": "安徽|can_gong",
+      "province": "安徽",
+      "source_system_tag": "can_gong",
+      "positions": 1,
+      "hires": 2
+    },
+    {
+      "id": "安徽|csrc",
+      "province": "安徽",
+      "source_system_tag": "csrc",
+      "positions": 1,
+      "hires": 3
+    },
+    {
+      "id": "安徽|customs",
+      "province": "安徽",
+      "source_system_tag": "customs",
+      "positions": 15,
+      "hires": 15
+    },
+    {
+      "id": "安徽|default",
+      "province": "安徽",
+      "source_system_tag": "default",
+      "positions": 8,
+      "hires": 11
+    },
+    {
+      "id": "安徽|finance_reg",
+      "province": "安徽",
+      "source_system_tag": "finance_reg",
+      "positions": 126,
+      "hires": 141
+    },
+    {
+      "id": "安徽|maritime",
+      "province": "安徽",
+      "source_system_tag": "maritime",
+      "positions": 14,
+      "hires": 17
+    },
+    {
+      "id": "安徽|meteorology",
+      "province": "安徽",
+      "source_system_tag": "meteorology",
+      "positions": 4,
+      "hires": 4
+    },
+    {
+      "id": "安徽|pboc",
+      "province": "安徽",
+      "source_system_tag": "pboc",
+      "positions": 71,
+      "hires": 105
+    },
+    {
+      "id": "安徽|police",
+      "province": "安徽",
+      "source_system_tag": "police",
+      "positions": 11,
+      "hires": 13
+    },
+    {
+      "id": "安徽|tax",
+      "province": "安徽",
+      "source_system_tag": "tax",
+      "positions": 451,
+      "hires": 1200
+    },
+    {
+      "id": "山东|audit",
+      "province": "山东",
+      "source_system_tag": "audit",
+      "positions": 2,
+      "hires": 3
+    },
+    {
+      "id": "山东|can_gong",
+      "province": "山东",
+      "source_system_tag": "can_gong",
+      "positions": 1,
+      "hires": 1
+    },
+    {
+      "id": "山东|civil_aviation",
+      "province": "山东",
+      "source_system_tag": "civil_aviation",
+      "positions": 2,
+      "hires": 2
+    },
+    {
+      "id": "山东|csrc",
+      "province": "山东",
+      "source_system_tag": "csrc",
+      "positions": 2,
+      "hires": 6
+    },
+    {
+      "id": "山东|customs",
+      "province": "山东",
+      "source_system_tag": "customs",
+      "positions": 80,
+      "hires": 88
+    },
+    {
+      "id": "山东|default",
+      "province": "山东",
+      "source_system_tag": "default",
+      "positions": 10,
+      "hires": 16
+    },
+    {
+      "id": "山东|finance_reg",
+      "province": "山东",
+      "source_system_tag": "finance_reg",
+      "positions": 131,
+      "hires": 171
+    },
+    {
+      "id": "山东|immigration",
+      "province": "山东",
+      "source_system_tag": "immigration",
+      "positions": 8,
+      "hires": 8
+    },
+    {
+      "id": "山东|maritime",
+      "province": "山东",
+      "source_system_tag": "maritime",
+      "positions": 57,
+      "hires": 74
+    },
+    {
+      "id": "山东|meteorology",
+      "province": "山东",
+      "source_system_tag": "meteorology",
+      "positions": 8,
+      "hires": 8
+    },
+    {
+      "id": "山东|pboc",
+      "province": "山东",
+      "source_system_tag": "pboc",
+      "positions": 73,
+      "hires": 124
+    },
+    {
+      "id": "山东|police",
+      "province": "山东",
+      "source_system_tag": "police",
+      "positions": 5,
+      "hires": 5
+    },
+    {
+      "id": "山东|post",
+      "province": "山东",
+      "source_system_tag": "post",
+      "positions": 3,
+      "hires": 3
+    },
+    {
+      "id": "山东|survey",
+      "province": "山东",
+      "source_system_tag": "survey",
+      "positions": 21,
+      "hires": 22
+    },
+    {
+      "id": "山东|tax",
+      "province": "山东",
+      "source_system_tag": "tax",
+      "positions": 785,
+      "hires": 1750
+    },
+    {
+      "id": "山东|telecom",
+      "province": "山东",
+      "source_system_tag": "telecom",
+      "positions": 1,
+      "hires": 1
+    },
+    {
+      "id": "山东|water",
+      "province": "山东",
+      "source_system_tag": "water",
+      "positions": 34,
+      "hires": 34
+    },
+    {
+      "id": "山西|audit",
+      "province": "山西",
+      "source_system_tag": "audit",
+      "positions": 3,
+      "hires": 6
+    },
+    {
+      "id": "山西|can_gong",
+      "province": "山西",
+      "source_system_tag": "can_gong",
+      "positions": 1,
+      "hires": 1
+    },
+    {
+      "id": "山西|civil_aviation",
+      "province": "山西",
+      "source_system_tag": "civil_aviation",
+      "positions": 1,
+      "hires": 1
+    },
+    {
+      "id": "山西|csrc",
+      "province": "山西",
+      "source_system_tag": "csrc",
+      "positions": 1,
+      "hires": 2
+    },
+    {
+      "id": "山西|customs",
+      "province": "山西",
+      "source_system_tag": "customs",
+      "positions": 1,
+      "hires": 3
+    },
+    {
+      "id": "山西|default",
+      "province": "山西",
+      "source_system_tag": "default",
+      "positions": 7,
+      "hires": 28
+    },
+    {
+      "id": "山西|finance_reg",
+      "province": "山西",
+      "source_system_tag": "finance_reg",
+      "positions": 144,
+      "hires": 153
+    },
+    {
+      "id": "山西|meteorology",
+      "province": "山西",
+      "source_system_tag": "meteorology",
+      "positions": 5,
+      "hires": 5
+    },
+    {
+      "id": "山西|pboc",
+      "province": "山西",
+      "source_system_tag": "pboc",
+      "positions": 38,
+      "hires": 57
+    },
+    {
+      "id": "山西|police",
+      "province": "山西",
+      "source_system_tag": "police",
+      "positions": 11,
+      "hires": 19
+    },
+    {
+      "id": "山西|tax",
+      "province": "山西",
+      "source_system_tag": "tax",
+      "positions": 400,
+      "hires": 1000
+    },
+    {
+      "id": "山西|water",
+      "province": "山西",
+      "source_system_tag": "water",
+      "positions": 2,
+      "hires": 2
+    },
+    {
+      "id": "广东|audit",
+      "province": "广东",
+      "source_system_tag": "audit",
+      "positions": 3,
+      "hires": 11
+    },
+    {
+      "id": "广东|can_gong",
+      "province": "广东",
+      "source_system_tag": "can_gong",
+      "positions": 6,
+      "hires": 15
+    },
+    {
+      "id": "广东|civil_aviation",
+      "province": "广东",
+      "source_system_tag": "civil_aviation",
+      "positions": 7,
+      "hires": 8
+    },
+    {
+      "id": "广东|csrc",
+      "province": "广东",
+      "source_system_tag": "csrc",
+      "positions": 4,
+      "hires": 15
+    },
+    {
+      "id": "广东|customs",
+      "province": "广东",
+      "source_system_tag": "customs",
+      "positions": 427,
+      "hires": 780
+    },
+    {
+      "id": "广东|default",
+      "province": "广东",
+      "source_system_tag": "default",
+      "positions": 20,
+      "hires": 38
+    },
+    {
+      "id": "广东|finance_reg",
+      "province": "广东",
+      "source_system_tag": "finance_reg",
+      "positions": 78,
+      "hires": 90
+    },
+    {
+      "id": "广东|immigration",
+      "province": "广东",
+      "source_system_tag": "immigration",
+      "positions": 7,
+      "hires": 14
+    },
+    {
+      "id": "广东|maritime",
+      "province": "广东",
+      "source_system_tag": "maritime",
+      "positions": 95,
+      "hires": 104
+    },
+    {
+      "id": "广东|meteorology",
+      "province": "广东",
+      "source_system_tag": "meteorology",
+      "positions": 2,
+      "hires": 2
+    },
+    {
+      "id": "广东|pboc",
+      "province": "广东",
+      "source_system_tag": "pboc",
+      "positions": 112,
+      "hires": 173
+    },
+    {
+      "id": "广东|police",
+      "province": "广东",
+      "source_system_tag": "police",
+      "positions": 121,
+      "hires": 301
+    },
+    {
+      "id": "广东|post",
+      "province": "广东",
+      "source_system_tag": "post",
+      "positions": 9,
+      "hires": 9
+    },
+    {
+      "id": "广东|survey",
+      "province": "广东",
+      "source_system_tag": "survey",
+      "positions": 4,
+      "hires": 4
+    },
+    {
+      "id": "广东|tax",
+      "province": "广东",
+      "source_system_tag": "tax",
+      "positions": 618,
+      "hires": 1400
+    },
+    {
+      "id": "广东|telecom",
+      "province": "广东",
+      "source_system_tag": "telecom",
+      "positions": 1,
+      "hires": 1
+    },
+    {
+      "id": "广东|water",
+      "province": "广东",
+      "source_system_tag": "water",
+      "positions": 2,
+      "hires": 4
+    },
+    {
+      "id": "广西|can_gong",
+      "province": "广西",
+      "source_system_tag": "can_gong",
+      "positions": 1,
+      "hires": 1
+    },
+    {
+      "id": "广西|customs",
+      "province": "广西",
+      "source_system_tag": "customs",
+      "positions": 52,
+      "hires": 70
+    },
+    {
+      "id": "广西|default",
+      "province": "广西",
+      "source_system_tag": "default",
+      "positions": 4,
+      "hires": 5
+    },
+    {
+      "id": "广西|finance_reg",
+      "province": "广西",
+      "source_system_tag": "finance_reg",
+      "positions": 46,
+      "hires": 52
+    },
+    {
+      "id": "广西|maritime",
+      "province": "广西",
+      "source_system_tag": "maritime",
+      "positions": 24,
+      "hires": 25
+    },
+    {
+      "id": "广西|meteorology",
+      "province": "广西",
+      "source_system_tag": "meteorology",
+      "positions": 4,
+      "hires": 4
+    },
+    {
+      "id": "广西|pboc",
+      "province": "广西",
+      "source_system_tag": "pboc",
+      "positions": 46,
+      "hires": 63
+    },
+    {
+      "id": "广西|police",
+      "province": "广西",
+      "source_system_tag": "police",
+      "positions": 60,
+      "hires": 77
+    },
+    {
+      "id": "广西|survey",
+      "province": "广西",
+      "source_system_tag": "survey",
+      "positions": 11,
+      "hires": 11
+    },
+    {
+      "id": "广西|tax",
+      "province": "广西",
+      "source_system_tag": "tax",
+      "positions": 380,
+      "hires": 800
+    },
+    {
+      "id": "新疆|civil_aviation",
+      "province": "新疆",
+      "source_system_tag": "civil_aviation",
+      "positions": 3,
+      "hires": 3
+    },
+    {
+      "id": "新疆|csrc",
+      "province": "新疆",
+      "source_system_tag": "csrc",
+      "positions": 3,
+      "hires": 7
+    },
+    {
+      "id": "新疆|customs",
+      "province": "新疆",
+      "source_system_tag": "customs",
+      "positions": 49,
+      "hires": 50
+    },
+    {
+      "id": "新疆|default",
+      "province": "新疆",
+      "source_system_tag": "default",
+      "positions": 10,
+      "hires": 14
+    },
+    {
+      "id": "新疆|finance_reg",
+      "province": "新疆",
+      "source_system_tag": "finance_reg",
+      "positions": 56,
+      "hires": 98
+    },
+    {
+      "id": "新疆|meteorology",
+      "province": "新疆",
+      "source_system_tag": "meteorology",
+      "positions": 11,
+      "hires": 11
+    },
+    {
+      "id": "新疆|pboc",
+      "province": "新疆",
+      "source_system_tag": "pboc",
+      "positions": 70,
+      "hires": 131
+    },
+    {
+      "id": "新疆|police",
+      "province": "新疆",
+      "source_system_tag": "police",
+      "positions": 104,
+      "hires": 239
+    },
+    {
+      "id": "新疆|post",
+      "province": "新疆",
+      "source_system_tag": "post",
+      "positions": 7,
+      "hires": 7
+    },
+    {
+      "id": "新疆|survey",
+      "province": "新疆",
+      "source_system_tag": "survey",
+      "positions": 6,
+      "hires": 6
+    },
+    {
+      "id": "新疆|tax",
+      "province": "新疆",
+      "source_system_tag": "tax",
+      "positions": 168,
+      "hires": 400
+    },
+    {
+      "id": "新疆|telecom",
+      "province": "新疆",
+      "source_system_tag": "telecom",
+      "positions": 1,
+      "hires": 2
+    },
+    {
+      "id": "江苏|csrc",
+      "province": "江苏",
+      "source_system_tag": "csrc",
+      "positions": 2,
+      "hires": 10
+    },
+    {
+      "id": "江苏|customs",
+      "province": "江苏",
+      "source_system_tag": "customs",
+      "positions": 108,
+      "hires": 122
+    },
+    {
+      "id": "江苏|default",
+      "province": "江苏",
+      "source_system_tag": "default",
+      "positions": 9,
+      "hires": 17
+    },
+    {
+      "id": "江苏|finance_reg",
+      "province": "江苏",
+      "source_system_tag": "finance_reg",
+      "positions": 88,
+      "hires": 90
+    },
+    {
+      "id": "江苏|maritime",
+      "province": "江苏",
+      "source_system_tag": "maritime",
+      "positions": 42,
+      "hires": 55
+    },
+    {
+      "id": "江苏|meteorology",
+      "province": "江苏",
+      "source_system_tag": "meteorology",
+      "positions": 6,
+      "hires": 6
+    },
+    {
+      "id": "江苏|pboc",
+      "province": "江苏",
+      "source_system_tag": "pboc",
+      "positions": 58,
+      "hires": 88
+    },
+    {
+      "id": "江苏|police",
+      "province": "江苏",
+      "source_system_tag": "police",
+      "positions": 17,
+      "hires": 23
+    },
+    {
+      "id": "江苏|survey",
+      "province": "江苏",
+      "source_system_tag": "survey",
+      "positions": 12,
+      "hires": 12
+    },
+    {
+      "id": "江苏|tax",
+      "province": "江苏",
+      "source_system_tag": "tax",
+      "positions": 577,
+      "hires": 1200
+    },
+    {
+      "id": "江苏|telecom",
+      "province": "江苏",
+      "source_system_tag": "telecom",
+      "positions": 1,
+      "hires": 1
+    },
+    {
+      "id": "江苏|water",
+      "province": "江苏",
+      "source_system_tag": "water",
+      "positions": 6,
+      "hires": 6
+    },
+    {
+      "id": "江西|can_gong",
+      "province": "江西",
+      "source_system_tag": "can_gong",
+      "positions": 2,
+      "hires": 2
+    },
+    {
+      "id": "江西|csrc",
+      "province": "江西",
+      "source_system_tag": "csrc",
+      "positions": 1,
+      "hires": 4
+    },
+    {
+      "id": "江西|customs",
+      "province": "江西",
+      "source_system_tag": "customs",
+      "positions": 16,
+      "hires": 16
+    },
+    {
+      "id": "江西|default",
+      "province": "江西",
+      "source_system_tag": "default",
+      "positions": 8,
+      "hires": 10
+    },
+    {
+      "id": "江西|finance_reg",
+      "province": "江西",
+      "source_system_tag": "finance_reg",
+      "positions": 106,
+      "hires": 109
+    },
+    {
+      "id": "江西|maritime",
+      "province": "江西",
+      "source_system_tag": "maritime",
+      "positions": 6,
+      "hires": 6
+    },
+    {
+      "id": "江西|meteorology",
+      "province": "江西",
+      "source_system_tag": "meteorology",
+      "positions": 2,
+      "hires": 2
+    },
+    {
+      "id": "江西|party_central",
+      "province": "江西",
+      "source_system_tag": "party_central",
+      "positions": 1,
+      "hires": 3
+    },
+    {
+      "id": "江西|pboc",
+      "province": "江西",
+      "source_system_tag": "pboc",
+      "positions": 33,
+      "hires": 47
+    },
+    {
+      "id": "江西|police",
+      "province": "江西",
+      "source_system_tag": "police",
+      "positions": 14,
+      "hires": 23
+    },
+    {
+      "id": "江西|survey",
+      "province": "江西",
+      "source_system_tag": "survey",
+      "positions": 38,
+      "hires": 38
+    },
+    {
+      "id": "江西|tax",
+      "province": "江西",
+      "source_system_tag": "tax",
+      "positions": 419,
+      "hires": 1000
+    },
+    {
+      "id": "河北|can_gong",
+      "province": "河北",
+      "source_system_tag": "can_gong",
+      "positions": 2,
+      "hires": 2
+    },
+    {
+      "id": "河北|csrc",
+      "province": "河北",
+      "source_system_tag": "csrc",
+      "positions": 1,
+      "hires": 2
+    },
+    {
+      "id": "河北|customs",
+      "province": "河北",
+      "source_system_tag": "customs",
+      "positions": 33,
+      "hires": 40
+    },
+    {
+      "id": "河北|default",
+      "province": "河北",
+      "source_system_tag": "default",
+      "positions": 10,
+      "hires": 19
+    },
+    {
+      "id": "河北|finance_reg",
+      "province": "河北",
+      "source_system_tag": "finance_reg",
+      "positions": 138,
+      "hires": 169
+    },
+    {
+      "id": "河北|maritime",
+      "province": "河北",
+      "source_system_tag": "maritime",
+      "positions": 29,
+      "hires": 37
+    },
+    {
+      "id": "河北|meteorology",
+      "province": "河北",
+      "source_system_tag": "meteorology",
+      "positions": 20,
+      "hires": 20
+    },
+    {
+      "id": "河北|party_central",
+      "province": "河北",
+      "source_system_tag": "party_central",
+      "positions": 2,
+      "hires": 3
+    },
+    {
+      "id": "河北|pboc",
+      "province": "河北",
+      "source_system_tag": "pboc",
+      "positions": 48,
+      "hires": 75
+    },
+    {
+      "id": "河北|police",
+      "province": "河北",
+      "source_system_tag": "police",
+      "positions": 33,
+      "hires": 67
+    },
+    {
+      "id": "河北|survey",
+      "province": "河北",
+      "source_system_tag": "survey",
+      "positions": 27,
+      "hires": 27
+    },
+    {
+      "id": "河北|tax",
+      "province": "河北",
+      "source_system_tag": "tax",
+      "positions": 610,
+      "hires": 1300
+    },
+    {
+      "id": "河北|water",
+      "province": "河北",
+      "source_system_tag": "water",
+      "positions": 6,
+      "hires": 6
+    },
+    {
+      "id": "河南|audit",
+      "province": "河南",
+      "source_system_tag": "audit",
+      "positions": 2,
+      "hires": 5
+    },
+    {
+      "id": "河南|csrc",
+      "province": "河南",
+      "source_system_tag": "csrc",
+      "positions": 1,
+      "hires": 5
+    },
+    {
+      "id": "河南|customs",
+      "province": "河南",
+      "source_system_tag": "customs",
+      "positions": 19,
+      "hires": 22
+    },
+    {
+      "id": "河南|default",
+      "province": "河南",
+      "source_system_tag": "default",
+      "positions": 10,
+      "hires": 21
+    },
+    {
+      "id": "河南|finance_reg",
+      "province": "河南",
+      "source_system_tag": "finance_reg",
+      "positions": 128,
+      "hires": 183
+    },
+    {
+      "id": "河南|meteorology",
+      "province": "河南",
+      "source_system_tag": "meteorology",
+      "positions": 5,
+      "hires": 5
+    },
+    {
+      "id": "河南|pboc",
+      "province": "河南",
+      "source_system_tag": "pboc",
+      "positions": 74,
+      "hires": 127
+    },
+    {
+      "id": "河南|police",
+      "province": "河南",
+      "source_system_tag": "police",
+      "positions": 16,
+      "hires": 29
+    },
+    {
+      "id": "河南|survey",
+      "province": "河南",
+      "source_system_tag": "survey",
+      "positions": 20,
+      "hires": 20
+    },
+    {
+      "id": "河南|tax",
+      "province": "河南",
+      "source_system_tag": "tax",
+      "positions": 753,
+      "hires": 1300
+    },
+    {
+      "id": "河南|water",
+      "province": "河南",
+      "source_system_tag": "water",
+      "positions": 38,
+      "hires": 38
+    },
+    {
+      "id": "浙江|csrc",
+      "province": "浙江",
+      "source_system_tag": "csrc",
+      "positions": 2,
+      "hires": 8
+    },
+    {
+      "id": "浙江|customs",
+      "province": "浙江",
+      "source_system_tag": "customs",
+      "positions": 62,
+      "hires": 85
+    },
+    {
+      "id": "浙江|default",
+      "province": "浙江",
+      "source_system_tag": "default",
+      "positions": 8,
+      "hires": 17
+    },
+    {
+      "id": "浙江|finance_reg",
+      "province": "浙江",
+      "source_system_tag": "finance_reg",
+      "positions": 96,
+      "hires": 99
+    },
+    {
+      "id": "浙江|maritime",
+      "province": "浙江",
+      "source_system_tag": "maritime",
+      "positions": 51,
+      "hires": 70
+    },
+    {
+      "id": "浙江|pboc",
+      "province": "浙江",
+      "source_system_tag": "pboc",
+      "positions": 61,
+      "hires": 131
+    },
+    {
+      "id": "浙江|police",
+      "province": "浙江",
+      "source_system_tag": "police",
+      "positions": 15,
+      "hires": 21
+    },
+    {
+      "id": "浙江|post",
+      "province": "浙江",
+      "source_system_tag": "post",
+      "positions": 2,
+      "hires": 2
+    },
+    {
+      "id": "浙江|survey",
+      "province": "浙江",
+      "source_system_tag": "survey",
+      "positions": 15,
+      "hires": 15
+    },
+    {
+      "id": "浙江|tax",
+      "province": "浙江",
+      "source_system_tag": "tax",
+      "positions": 419,
+      "hires": 660
+    },
+    {
+      "id": "浙江|telecom",
+      "province": "浙江",
+      "source_system_tag": "telecom",
+      "positions": 1,
+      "hires": 1
+    },
+    {
+      "id": "海南|can_gong",
+      "province": "海南",
+      "source_system_tag": "can_gong",
+      "positions": 1,
+      "hires": 1
+    },
+    {
+      "id": "海南|civil_aviation",
+      "province": "海南",
+      "source_system_tag": "civil_aviation",
+      "positions": 2,
+      "hires": 2
+    },
+    {
+      "id": "海南|csrc",
+      "province": "海南",
+      "source_system_tag": "csrc",
+      "positions": 1,
+      "hires": 2
+    },
+    {
+      "id": "海南|customs",
+      "province": "海南",
+      "source_system_tag": "customs",
+      "positions": 34,
+      "hires": 40
+    },
+    {
+      "id": "海南|default",
+      "province": "海南",
+      "source_system_tag": "default",
+      "positions": 5,
+      "hires": 5
+    },
+    {
+      "id": "海南|finance_reg",
+      "province": "海南",
+      "source_system_tag": "finance_reg",
+      "positions": 36,
+      "hires": 36
+    },
+    {
+      "id": "海南|immigration",
+      "province": "海南",
+      "source_system_tag": "immigration",
+      "positions": 1,
+      "hires": 1
+    },
+    {
+      "id": "海南|maritime",
+      "province": "海南",
+      "source_system_tag": "maritime",
+      "positions": 42,
+      "hires": 55
+    },
+    {
+      "id": "海南|meteorology",
+      "province": "海南",
+      "source_system_tag": "meteorology",
+      "positions": 1,
+      "hires": 1
+    },
+    {
+      "id": "海南|pboc",
+      "province": "海南",
+      "source_system_tag": "pboc",
+      "positions": 20,
+      "hires": 39
+    },
+    {
+      "id": "海南|police",
+      "province": "海南",
+      "source_system_tag": "police",
+      "positions": 42,
+      "hires": 68
+    },
+    {
+      "id": "海南|survey",
+      "province": "海南",
+      "source_system_tag": "survey",
+      "positions": 3,
+      "hires": 3
+    },
+    {
+      "id": "海南|tax",
+      "province": "海南",
+      "source_system_tag": "tax",
+      "positions": 75,
+      "hires": 130
+    },
+    {
+      "id": "湖北|audit",
+      "province": "湖北",
+      "source_system_tag": "audit",
+      "positions": 3,
+      "hires": 6
+    },
+    {
+      "id": "湖北|civil_aviation",
+      "province": "湖北",
+      "source_system_tag": "civil_aviation",
+      "positions": 1,
+      "hires": 1
+    },
+    {
+      "id": "湖北|csrc",
+      "province": "湖北",
+      "source_system_tag": "csrc",
+      "positions": 2,
+      "hires": 4
+    },
+    {
+      "id": "湖北|customs",
+      "province": "湖北",
+      "source_system_tag": "customs",
+      "positions": 10,
+      "hires": 10
+    },
+    {
+      "id": "湖北|default",
+      "province": "湖北",
+      "source_system_tag": "default",
+      "positions": 5,
+      "hires": 5
+    },
+    {
+      "id": "湖北|finance_reg",
+      "province": "湖北",
+      "source_system_tag": "finance_reg",
+      "positions": 69,
+      "hires": 73
+    },
+    {
+      "id": "湖北|maritime",
+      "province": "湖北",
+      "source_system_tag": "maritime",
+      "positions": 40,
+      "hires": 51
+    },
+    {
+      "id": "湖北|meteorology",
+      "province": "湖北",
+      "source_system_tag": "meteorology",
+      "positions": 5,
+      "hires": 5
+    },
+    {
+      "id": "湖北|pboc",
+      "province": "湖北",
+      "source_system_tag": "pboc",
+      "positions": 30,
+      "hires": 39
+    },
+    {
+      "id": "湖北|police",
+      "province": "湖北",
+      "source_system_tag": "police",
+      "positions": 29,
+      "hires": 38
+    },
+    {
+      "id": "湖北|post",
+      "province": "湖北",
+      "source_system_tag": "post",
+      "positions": 2,
+      "hires": 2
+    },
+    {
+      "id": "湖北|survey",
+      "province": "湖北",
+      "source_system_tag": "survey",
+      "positions": 16,
+      "hires": 16
+    },
+    {
+      "id": "湖北|tax",
+      "province": "湖北",
+      "source_system_tag": "tax",
+      "positions": 566,
+      "hires": 1300
+    },
+    {
+      "id": "湖北|telecom",
+      "province": "湖北",
+      "source_system_tag": "telecom",
+      "positions": 1,
+      "hires": 1
+    },
+    {
+      "id": "湖北|water",
+      "province": "湖北",
+      "source_system_tag": "water",
+      "positions": 12,
+      "hires": 15
+    },
+    {
+      "id": "湖南|audit",
+      "province": "湖南",
+      "source_system_tag": "audit",
+      "positions": 2,
+      "hires": 4
+    },
+    {
+      "id": "湖南|can_gong",
+      "province": "湖南",
+      "source_system_tag": "can_gong",
+      "positions": 1,
+      "hires": 1
+    },
+    {
+      "id": "湖南|csrc",
+      "province": "湖南",
+      "source_system_tag": "csrc",
+      "positions": 1,
+      "hires": 4
+    },
+    {
+      "id": "湖南|customs",
+      "province": "湖南",
+      "source_system_tag": "customs",
+      "positions": 9,
+      "hires": 10
+    },
+    {
+      "id": "湖南|default",
+      "province": "湖南",
+      "source_system_tag": "default",
+      "positions": 8,
+      "hires": 12
+    },
+    {
+      "id": "湖南|finance_reg",
+      "province": "湖南",
+      "source_system_tag": "finance_reg",
+      "positions": 30,
+      "hires": 41
+    },
+    {
+      "id": "湖南|maritime",
+      "province": "湖南",
+      "source_system_tag": "maritime",
+      "positions": 8,
+      "hires": 8
+    },
+    {
+      "id": "湖南|meteorology",
+      "province": "湖南",
+      "source_system_tag": "meteorology",
+      "positions": 2,
+      "hires": 2
+    },
+    {
+      "id": "湖南|pboc",
+      "province": "湖南",
+      "source_system_tag": "pboc",
+      "positions": 49,
+      "hires": 53
+    },
+    {
+      "id": "湖南|police",
+      "province": "湖南",
+      "source_system_tag": "police",
+      "positions": 15,
+      "hires": 31
+    },
+    {
+      "id": "湖南|survey",
+      "province": "湖南",
+      "source_system_tag": "survey",
+      "positions": 8,
+      "hires": 8
+    },
+    {
+      "id": "湖南|tax",
+      "province": "湖南",
+      "source_system_tag": "tax",
+      "positions": 451,
+      "hires": 1000
+    },
+    {
+      "id": "甘肃|audit",
+      "province": "甘肃",
+      "source_system_tag": "audit",
+      "positions": 1,
+      "hires": 4
+    },
+    {
+      "id": "甘肃|can_gong",
+      "province": "甘肃",
+      "source_system_tag": "can_gong",
+      "positions": 4,
+      "hires": 5
+    },
+    {
+      "id": "甘肃|civil_aviation",
+      "province": "甘肃",
+      "source_system_tag": "civil_aviation",
+      "positions": 4,
+      "hires": 4
+    },
+    {
+      "id": "甘肃|csrc",
+      "province": "甘肃",
+      "source_system_tag": "csrc",
+      "positions": 1,
+      "hires": 2
+    },
+    {
+      "id": "甘肃|customs",
+      "province": "甘肃",
+      "source_system_tag": "customs",
+      "positions": 7,
+      "hires": 7
+    },
+    {
+      "id": "甘肃|default",
+      "province": "甘肃",
+      "source_system_tag": "default",
+      "positions": 5,
+      "hires": 8
+    },
+    {
+      "id": "甘肃|finance_reg",
+      "province": "甘肃",
+      "source_system_tag": "finance_reg",
+      "positions": 56,
+      "hires": 58
+    },
+    {
+      "id": "甘肃|meteorology",
+      "province": "甘肃",
+      "source_system_tag": "meteorology",
+      "positions": 8,
+      "hires": 8
+    },
+    {
+      "id": "甘肃|pboc",
+      "province": "甘肃",
+      "source_system_tag": "pboc",
+      "positions": 43,
+      "hires": 67
+    },
+    {
+      "id": "甘肃|police",
+      "province": "甘肃",
+      "source_system_tag": "police",
+      "positions": 11,
+      "hires": 21
+    },
+    {
+      "id": "甘肃|post",
+      "province": "甘肃",
+      "source_system_tag": "post",
+      "positions": 3,
+      "hires": 3
+    },
+    {
+      "id": "甘肃|survey",
+      "province": "甘肃",
+      "source_system_tag": "survey",
+      "positions": 25,
+      "hires": 25
+    },
+    {
+      "id": "甘肃|tax",
+      "province": "甘肃",
+      "source_system_tag": "tax",
+      "positions": 217,
+      "hires": 500
+    },
+    {
+      "id": "甘肃|telecom",
+      "province": "甘肃",
+      "source_system_tag": "telecom",
+      "positions": 1,
+      "hires": 2
+    },
+    {
+      "id": "福建|can_gong",
+      "province": "福建",
+      "source_system_tag": "can_gong",
+      "positions": 2,
+      "hires": 2
+    },
+    {
+      "id": "福建|civil_aviation",
+      "province": "福建",
+      "source_system_tag": "civil_aviation",
+      "positions": 2,
+      "hires": 2
+    },
+    {
+      "id": "福建|csrc",
+      "province": "福建",
+      "source_system_tag": "csrc",
+      "positions": 2,
+      "hires": 7
+    },
+    {
+      "id": "福建|customs",
+      "province": "福建",
+      "source_system_tag": "customs",
+      "positions": 92,
+      "hires": 106
+    },
+    {
+      "id": "福建|default",
+      "province": "福建",
+      "source_system_tag": "default",
+      "positions": 7,
+      "hires": 10
+    },
+    {
+      "id": "福建|finance_reg",
+      "province": "福建",
+      "source_system_tag": "finance_reg",
+      "positions": 119,
+      "hires": 133
+    },
+    {
+      "id": "福建|maritime",
+      "province": "福建",
+      "source_system_tag": "maritime",
+      "positions": 22,
+      "hires": 23
+    },
+    {
+      "id": "福建|pboc",
+      "province": "福建",
+      "source_system_tag": "pboc",
+      "positions": 52,
+      "hires": 97
+    },
+    {
+      "id": "福建|police",
+      "province": "福建",
+      "source_system_tag": "police",
+      "positions": 35,
+      "hires": 76
+    },
+    {
+      "id": "福建|tax",
+      "province": "福建",
+      "source_system_tag": "tax",
+      "positions": 352,
+      "hires": 780
+    },
+    {
+      "id": "福建|telecom",
+      "province": "福建",
+      "source_system_tag": "telecom",
+      "positions": 1,
+      "hires": 1
+    },
+    {
+      "id": "西藏|can_gong",
+      "province": "西藏",
+      "source_system_tag": "can_gong",
+      "positions": 2,
+      "hires": 2
+    },
+    {
+      "id": "西藏|csrc",
+      "province": "西藏",
+      "source_system_tag": "csrc",
+      "positions": 1,
+      "hires": 3
+    },
+    {
+      "id": "西藏|customs",
+      "province": "西藏",
+      "source_system_tag": "customs",
+      "positions": 11,
+      "hires": 15
+    },
+    {
+      "id": "西藏|default",
+      "province": "西藏",
+      "source_system_tag": "default",
+      "positions": 3,
+      "hires": 5
+    },
+    {
+      "id": "西藏|finance_reg",
+      "province": "西藏",
+      "source_system_tag": "finance_reg",
+      "positions": 5,
+      "hires": 7
+    },
+    {
+      "id": "西藏|immigration",
+      "province": "西藏",
+      "source_system_tag": "immigration",
+      "positions": 1,
+      "hires": 2
+    },
+    {
+      "id": "西藏|meteorology",
+      "province": "西藏",
+      "source_system_tag": "meteorology",
+      "positions": 14,
+      "hires": 14
+    },
+    {
+      "id": "西藏|pboc",
+      "province": "西藏",
+      "source_system_tag": "pboc",
+      "positions": 33,
+      "hires": 51
+    },
+    {
+      "id": "西藏|police",
+      "province": "西藏",
+      "source_system_tag": "police",
+      "positions": 4,
+      "hires": 8
+    },
+    {
+      "id": "西藏|post",
+      "province": "西藏",
+      "source_system_tag": "post",
+      "positions": 2,
+      "hires": 2
+    },
+    {
+      "id": "西藏|survey",
+      "province": "西藏",
+      "source_system_tag": "survey",
+      "positions": 10,
+      "hires": 10
+    },
+    {
+      "id": "西藏|tax",
+      "province": "西藏",
+      "source_system_tag": "tax",
+      "positions": 62,
+      "hires": 70
+    },
+    {
+      "id": "西藏|telecom",
+      "province": "西藏",
+      "source_system_tag": "telecom",
+      "positions": 1,
+      "hires": 1
+    },
+    {
+      "id": "贵州|civil_aviation",
+      "province": "贵州",
+      "source_system_tag": "civil_aviation",
+      "positions": 3,
+      "hires": 3
+    },
+    {
+      "id": "贵州|csrc",
+      "province": "贵州",
+      "source_system_tag": "csrc",
+      "positions": 1,
+      "hires": 3
+    },
+    {
+      "id": "贵州|customs",
+      "province": "贵州",
+      "source_system_tag": "customs",
+      "positions": 2,
+      "hires": 2
+    },
+    {
+      "id": "贵州|default",
+      "province": "贵州",
+      "source_system_tag": "default",
+      "positions": 4,
+      "hires": 8
+    },
+    {
+      "id": "贵州|finance_reg",
+      "province": "贵州",
+      "source_system_tag": "finance_reg",
+      "positions": 41,
+      "hires": 70
+    },
+    {
+      "id": "贵州|meteorology",
+      "province": "贵州",
+      "source_system_tag": "meteorology",
+      "positions": 9,
+      "hires": 9
+    },
+    {
+      "id": "贵州|pboc",
+      "province": "贵州",
+      "source_system_tag": "pboc",
+      "positions": 32,
+      "hires": 46
+    },
+    {
+      "id": "贵州|police",
+      "province": "贵州",
+      "source_system_tag": "police",
+      "positions": 8,
+      "hires": 14
+    },
+    {
+      "id": "贵州|survey",
+      "province": "贵州",
+      "source_system_tag": "survey",
+      "positions": 11,
+      "hires": 11
+    },
+    {
+      "id": "贵州|tax",
+      "province": "贵州",
+      "source_system_tag": "tax",
+      "positions": 103,
+      "hires": 200
+    },
+    {
+      "id": "贵州|telecom",
+      "province": "贵州",
+      "source_system_tag": "telecom",
+      "positions": 1,
+      "hires": 1
+    },
+    {
+      "id": "辽宁|audit",
+      "province": "辽宁",
+      "source_system_tag": "audit",
+      "positions": 1,
+      "hires": 3
+    },
+    {
+      "id": "辽宁|can_gong",
+      "province": "辽宁",
+      "source_system_tag": "can_gong",
+      "positions": 4,
+      "hires": 7
+    },
+    {
+      "id": "辽宁|civil_aviation",
+      "province": "辽宁",
+      "source_system_tag": "civil_aviation",
+      "positions": 5,
+      "hires": 5
+    },
+    {
+      "id": "辽宁|csrc",
+      "province": "辽宁",
+      "source_system_tag": "csrc",
+      "positions": 2,
+      "hires": 3
+    },
+    {
+      "id": "辽宁|customs",
+      "province": "辽宁",
+      "source_system_tag": "customs",
+      "positions": 69,
+      "hires": 76
+    },
+    {
+      "id": "辽宁|default",
+      "province": "辽宁",
+      "source_system_tag": "default",
+      "positions": 10,
+      "hires": 14
+    },
+    {
+      "id": "辽宁|finance_reg",
+      "province": "辽宁",
+      "source_system_tag": "finance_reg",
+      "positions": 70,
+      "hires": 85
+    },
+    {
+      "id": "辽宁|maritime",
+      "province": "辽宁",
+      "source_system_tag": "maritime",
+      "positions": 27,
+      "hires": 30
+    },
+    {
+      "id": "辽宁|meteorology",
+      "province": "辽宁",
+      "source_system_tag": "meteorology",
+      "positions": 6,
+      "hires": 6
+    },
+    {
+      "id": "辽宁|pboc",
+      "province": "辽宁",
+      "source_system_tag": "pboc",
+      "positions": 46,
+      "hires": 68
+    },
+    {
+      "id": "辽宁|police",
+      "province": "辽宁",
+      "source_system_tag": "police",
+      "positions": 15,
+      "hires": 31
+    },
+    {
+      "id": "辽宁|post",
+      "province": "辽宁",
+      "source_system_tag": "post",
+      "positions": 2,
+      "hires": 2
+    },
+    {
+      "id": "辽宁|survey",
+      "province": "辽宁",
+      "source_system_tag": "survey",
+      "positions": 17,
+      "hires": 17
+    },
+    {
+      "id": "辽宁|tax",
+      "province": "辽宁",
+      "source_system_tag": "tax",
+      "positions": 451,
+      "hires": 1200
+    },
+    {
+      "id": "辽宁|telecom",
+      "province": "辽宁",
+      "source_system_tag": "telecom",
+      "positions": 1,
+      "hires": 1
+    },
+    {
+      "id": "重庆|audit",
+      "province": "重庆",
+      "source_system_tag": "audit",
+      "positions": 2,
+      "hires": 3
+    },
+    {
+      "id": "重庆|csrc",
+      "province": "重庆",
+      "source_system_tag": "csrc",
+      "positions": 1,
+      "hires": 3
+    },
+    {
+      "id": "重庆|customs",
+      "province": "重庆",
+      "source_system_tag": "customs",
+      "positions": 10,
+      "hires": 10
+    },
+    {
+      "id": "重庆|default",
+      "province": "重庆",
+      "source_system_tag": "default",
+      "positions": 5,
+      "hires": 8
+    },
+    {
+      "id": "重庆|finance_reg",
+      "province": "重庆",
+      "source_system_tag": "finance_reg",
+      "positions": 9,
+      "hires": 9
+    },
+    {
+      "id": "重庆|maritime",
+      "province": "重庆",
+      "source_system_tag": "maritime",
+      "positions": 11,
+      "hires": 12
+    },
+    {
+      "id": "重庆|meteorology",
+      "province": "重庆",
+      "source_system_tag": "meteorology",
+      "positions": 4,
+      "hires": 4
+    },
+    {
+      "id": "重庆|pboc",
+      "province": "重庆",
+      "source_system_tag": "pboc",
+      "positions": 40,
+      "hires": 58
+    },
+    {
+      "id": "重庆|police",
+      "province": "重庆",
+      "source_system_tag": "police",
+      "positions": 6,
+      "hires": 14
+    },
+    {
+      "id": "重庆|post",
+      "province": "重庆",
+      "source_system_tag": "post",
+      "positions": 3,
+      "hires": 4
+    },
+    {
+      "id": "重庆|survey",
+      "province": "重庆",
+      "source_system_tag": "survey",
+      "positions": 5,
+      "hires": 5
+    },
+    {
+      "id": "重庆|tax",
+      "province": "重庆",
+      "source_system_tag": "tax",
+      "positions": 187,
+      "hires": 330
+    },
+    {
+      "id": "重庆|telecom",
+      "province": "重庆",
+      "source_system_tag": "telecom",
+      "positions": 1,
+      "hires": 1
+    },
+    {
+      "id": "陕西|audit",
+      "province": "陕西",
+      "source_system_tag": "audit",
+      "positions": 4,
+      "hires": 6
+    },
+    {
+      "id": "陕西|civil_aviation",
+      "province": "陕西",
+      "source_system_tag": "civil_aviation",
+      "positions": 7,
+      "hires": 7
+    },
+    {
+      "id": "陕西|csrc",
+      "province": "陕西",
+      "source_system_tag": "csrc",
+      "positions": 2,
+      "hires": 3
+    },
+    {
+      "id": "陕西|customs",
+      "province": "陕西",
+      "source_system_tag": "customs",
+      "positions": 14,
+      "hires": 15
+    },
+    {
+      "id": "陕西|default",
+      "province": "陕西",
+      "source_system_tag": "default",
+      "positions": 8,
+      "hires": 16
+    },
+    {
+      "id": "陕西|finance_reg",
+      "province": "陕西",
+      "source_system_tag": "finance_reg",
+      "positions": 57,
+      "hires": 60
+    },
+    {
+      "id": "陕西|meteorology",
+      "province": "陕西",
+      "source_system_tag": "meteorology",
+      "positions": 17,
+      "hires": 17
+    },
+    {
+      "id": "陕西|party_central",
+      "province": "陕西",
+      "source_system_tag": "party_central",
+      "positions": 3,
+      "hires": 4
+    },
+    {
+      "id": "陕西|pboc",
+      "province": "陕西",
+      "source_system_tag": "pboc",
+      "positions": 39,
+      "hires": 62
+    },
+    {
+      "id": "陕西|police",
+      "province": "陕西",
+      "source_system_tag": "police",
+      "positions": 2,
+      "hires": 2
+    },
+    {
+      "id": "陕西|post",
+      "province": "陕西",
+      "source_system_tag": "post",
+      "positions": 1,
+      "hires": 1
+    },
+    {
+      "id": "陕西|survey",
+      "province": "陕西",
+      "source_system_tag": "survey",
+      "positions": 13,
+      "hires": 13
+    },
+    {
+      "id": "陕西|tax",
+      "province": "陕西",
+      "source_system_tag": "tax",
+      "positions": 182,
+      "hires": 500
+    },
+    {
+      "id": "陕西|telecom",
+      "province": "陕西",
+      "source_system_tag": "telecom",
+      "positions": 1,
+      "hires": 1
+    },
+    {
+      "id": "陕西|water",
+      "province": "陕西",
+      "source_system_tag": "water",
+      "positions": 7,
+      "hires": 8
+    },
+    {
+      "id": "青海|can_gong",
+      "province": "青海",
+      "source_system_tag": "can_gong",
+      "positions": 1,
+      "hires": 1
+    },
+    {
+      "id": "青海|civil_aviation",
+      "province": "青海",
+      "source_system_tag": "civil_aviation",
+      "positions": 3,
+      "hires": 3
+    },
+    {
+      "id": "青海|csrc",
+      "province": "青海",
+      "source_system_tag": "csrc",
+      "positions": 3,
+      "hires": 4
+    },
+    {
+      "id": "青海|customs",
+      "province": "青海",
+      "source_system_tag": "customs",
+      "positions": 4,
+      "hires": 4
+    },
+    {
+      "id": "青海|default",
+      "province": "青海",
+      "source_system_tag": "default",
+      "positions": 4,
+      "hires": 4
+    },
+    {
+      "id": "青海|finance_reg",
+      "province": "青海",
+      "source_system_tag": "finance_reg",
+      "positions": 29,
+      "hires": 38
+    },
+    {
+      "id": "青海|pboc",
+      "province": "青海",
+      "source_system_tag": "pboc",
+      "positions": 27,
+      "hires": 40
+    },
+    {
+      "id": "青海|post",
+      "province": "青海",
+      "source_system_tag": "post",
+      "positions": 3,
+      "hires": 3
+    },
+    {
+      "id": "青海|survey",
+      "province": "青海",
+      "source_system_tag": "survey",
+      "positions": 12,
+      "hires": 12
+    },
+    {
+      "id": "青海|tax",
+      "province": "青海",
+      "source_system_tag": "tax",
+      "positions": 93,
+      "hires": 100
+    },
+    {
+      "id": "黑龙江|audit",
+      "province": "黑龙江",
+      "source_system_tag": "audit",
+      "positions": 1,
+      "hires": 2
+    },
+    {
+      "id": "黑龙江|civil_aviation",
+      "province": "黑龙江",
+      "source_system_tag": "civil_aviation",
+      "positions": 2,
+      "hires": 2
+    },
+    {
+      "id": "黑龙江|csrc",
+      "province": "黑龙江",
+      "source_system_tag": "csrc",
+      "positions": 1,
+      "hires": 2
+    },
+    {
+      "id": "黑龙江|customs",
+      "province": "黑龙江",
+      "source_system_tag": "customs",
+      "positions": 44,
+      "hires": 50
+    },
+    {
+      "id": "黑龙江|default",
+      "province": "黑龙江",
+      "source_system_tag": "default",
+      "positions": 18,
+      "hires": 26
+    },
+    {
+      "id": "黑龙江|finance_reg",
+      "province": "黑龙江",
+      "source_system_tag": "finance_reg",
+      "positions": 62,
+      "hires": 66
+    },
+    {
+      "id": "黑龙江|immigration",
+      "province": "黑龙江",
+      "source_system_tag": "immigration",
+      "positions": 4,
+      "hires": 4
+    },
+    {
+      "id": "黑龙江|maritime",
+      "province": "黑龙江",
+      "source_system_tag": "maritime",
+      "positions": 11,
+      "hires": 11
+    },
+    {
+      "id": "黑龙江|meteorology",
+      "province": "黑龙江",
+      "source_system_tag": "meteorology",
+      "positions": 14,
+      "hires": 14
+    },
+    {
+      "id": "黑龙江|pboc",
+      "province": "黑龙江",
+      "source_system_tag": "pboc",
+      "positions": 50,
+      "hires": 76
+    },
+    {
+      "id": "黑龙江|police",
+      "province": "黑龙江",
+      "source_system_tag": "police",
+      "positions": 24,
+      "hires": 24
+    },
+    {
+      "id": "黑龙江|survey",
+      "province": "黑龙江",
+      "source_system_tag": "survey",
+      "positions": 10,
+      "hires": 10
+    },
+    {
+      "id": "黑龙江|tax",
+      "province": "黑龙江",
+      "source_system_tag": "tax",
+      "positions": 345,
+      "hires": 800
+    },
+    {
+      "id": "黑龙江|telecom",
+      "province": "黑龙江",
+      "source_system_tag": "telecom",
+      "positions": 1,
+      "hires": 1
+    },
+    {
+      "id": "黑龙江|water",
+      "province": "黑龙江",
+      "source_system_tag": "water",
+      "positions": 1,
+      "hires": 1
+    }
+  ]
+}

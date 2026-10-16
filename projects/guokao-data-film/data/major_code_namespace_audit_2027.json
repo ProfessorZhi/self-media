@@ -1,0 +1,204 @@
+{
+  "schema_version": "1.0.0",
+  "title": "专业代码词元审计：目录碰撞与尾缀截断",
+  "audited_date": "2026-10-17",
+  "source": {
+    "file": "data/2027_position_derived_aggregates.json",
+    "repository_commit": "da1ab73d553d8259655daf5a636616a12abb1f94",
+    "blob_sha": "870f522f19c9db3738bb04fae02fd6a827cc5713"
+  },
+  "scope": "以下为已证实问题与代表性样本，不是649个词元的完整审计或修复。",
+  "status": "token_exploration_only_not_validated_major_network",
+  "catalog_sources": {
+    "undergraduate_2026": {
+      "id": "moe_undergraduate_2026",
+      "url": "http://www.moe.gov.cn/srcsite/A08/moe_1034/s3882/202604/W020260427440749576927.pdf"
+    },
+    "graduate_2022": {
+      "id": "moe_graduate_2022",
+      "url": "http://www.moe.gov.cn/srcsite/A22/moe_833/202209/W020220914572994461110.pdf"
+    }
+  },
+  "coverage": {
+    "extracted_distinct_tokens": 649,
+    "rows_with_extracted_tokens": 3252,
+    "total_position_rows": 19426,
+    "extraction_coverage_pct": 16.74,
+    "note": "该比例只是清洗器提取覆盖率，不是专业条件覆盖率或可报职位覆盖率。"
+  },
+  "confirmed_namespace_collisions": [
+    {
+      "raw_code_token": "0809",
+      "name_hints": [
+        "计算机类",
+        "开头",
+        "电子科学与技术"
+      ],
+      "positions": 736,
+      "hires": 1041,
+      "catalog_meanings": [
+        {
+          "catalog": "moe_undergraduate_2026",
+          "name": "计算机类"
+        },
+        {
+          "catalog": "moe_graduate_2022",
+          "name": "电子科学与技术"
+        }
+      ],
+      "action": "仅展示裸词元；不可把736条职位统一命名为本科计算机类岗位。"
+    },
+    {
+      "raw_code_token": "0812",
+      "name_hints": [
+        "计算机科学与技术",
+        "测绘类",
+        "下计算机科学与技术"
+      ],
+      "positions": 494,
+      "hires": 753,
+      "catalog_meanings": [
+        {
+          "catalog": "moe_undergraduate_2026",
+          "name": "测绘类"
+        },
+        {
+          "catalog": "moe_graduate_2022",
+          "name": "计算机科学与技术"
+        }
+      ],
+      "action": "仅展示裸词元；从major_raw的学历分句重建后才可按专业命名。"
+    },
+    {
+      "raw_code_token": "120401",
+      "name_hints": [
+        "行政管理",
+        "公共事业管理"
+      ],
+      "positions": 5,
+      "hires": 9,
+      "catalog_meanings": [
+        {
+          "catalog": "moe_undergraduate_2026",
+          "name": "公共事业管理"
+        }
+      ],
+      "additional_name_observed_in_source": "行政管理",
+      "additional_namespace_status": "研究生二级专业含义须用独立二级目录或研招库确认；不是2022目录的直接条目",
+      "action": "混合名称已在源JSON观察到；禁止自动选一个名称覆盖全部计数。"
+    }
+  ],
+  "suffix_truncation": {
+    "upstream_cleaner_url": "https://github.com/icy-bean/civil-exam/blob/main/scripts/clean_positions.py",
+    "upstream_cleaner_blob_sha": "a631b3506f7371cfed42bde12e0a6ac631b28a2a",
+    "function_name": "parse_major",
+    "observed_pattern": "\\d{4,6}[A-Za-z]?",
+    "diagnosis": "代码正则最多接收1个尾字母；TK可被截为T，K进入名称片段；括号内TK也可能漏提取。",
+    "tokens_ending_TK": 0,
+    "examples": [
+      {
+        "raw_code_token": "030108T",
+        "name_hints": [
+          "K纪检监察",
+          "K纪检监察。研究生：",
+          "K"
+        ],
+        "positions": 18,
+        "hires": 28,
+        "official_undergraduate_code": "030108TK",
+        "official_undergraduate_name": "纪检监察"
+      },
+      {
+        "raw_code_token": "020311T",
+        "name_hints": [
+          "K金融审计",
+          "K"
+        ],
+        "positions": 8,
+        "hires": 8,
+        "official_undergraduate_code": "020311TK",
+        "official_undergraduate_name": "金融审计"
+      },
+      {
+        "raw_code_token": "030111T",
+        "name_hints": [
+          "K国家安全学"
+        ],
+        "positions": 9,
+        "hires": 17,
+        "official_undergraduate_code": "030111TK",
+        "official_undergraduate_name": "国家安全学"
+      },
+      {
+        "raw_code_token": "030110T",
+        "name_hints": [
+          "K司法鉴定学"
+        ],
+        "positions": 7,
+        "hires": 15,
+        "official_undergraduate_code": "030110TK",
+        "official_undergraduate_name": "司法鉴定学"
+      }
+    ],
+    "repair_policy": "不直接把旧token补K或合并计数。必须读取major_raw，按原文字界及学历分句重提取，保留出处，再全量重算去重。"
+  },
+  "code_distinctions": [
+    {
+      "raw_code_token": "030101K",
+      "name_hints": [
+        "法学"
+      ],
+      "positions": 316,
+      "hires": 385,
+      "catalog": "moe_undergraduate_2026",
+      "catalog_name": "法学",
+      "meaning": "目录含义可核验；316/385仍仅为旧清洗字段词元提及，不是资格结果。"
+    },
+    {
+      "raw_code_token": "030101",
+      "name_hints": [
+        "法学理论",
+        "法律理论"
+      ],
+      "positions": 8,
+      "hires": 9,
+      "catalog": "yz_chsi_speciality_observed_20261017",
+      "catalog_name": "法学理论",
+      "url": "https://yz.chsi.com.cn/zyk/specialityDetail.do?ccdm=30&cckey=10&method=distribution&ssdm=53&zydm=030101&zymc=%E6%B3%95%E5%AD%A6%E7%90%86%E8%AE%BA",
+      "meaning": "与030101K分开；不得映射为行政管理，也不声称来自2022一级学科目录。"
+    },
+    {
+      "raw_code_token": "120402",
+      "name_hints": [
+        "行政管理"
+      ],
+      "positions": 9,
+      "hires": 17,
+      "catalog": "moe_undergraduate_2026",
+      "catalog_name": "行政管理",
+      "meaning": "本科目录对应关系；9/17仍是旧清洗字段提及。"
+    }
+  ],
+  "consumer_rules": {
+    "label": "第三方清洗字段中的代码词元提及",
+    "join_key_for_future_normalized_data": [
+      "catalog_id",
+      "catalog_version",
+      "education_level",
+      "code"
+    ],
+    "name_hints_are_verified": false,
+    "missing_token_means_zero_eligible_positions": false,
+    "allow_cross_code_sum": false,
+    "allow_inferred_eligibility": false,
+    "allow_automatic_suffix_repair": false,
+    "repaired_rows_in_this_revision": 0
+  },
+  "next_data_work": [
+    "直接取得并核验官方职位原件或分系统官方附件。",
+    "从major_raw分离本科/研究生等限定，按原始文本保留专业名和完整代码。",
+    "以目录版本与学历为键进行名称核验，不用全局前缀兜底。",
+    "分别保留准确匹配、类别展开、相近待确认、其他资格待核四类证据状态。",
+    "对重建前后提取率、重复词元、TK完整性及样本逐条差异出具报告。"
+  ]
+}

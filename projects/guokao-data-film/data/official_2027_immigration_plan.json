@@ -1,0 +1,292 @@
+{
+  "schema_version": "1.0.0",
+  "year": 2027,
+  "title": "2027 国家移民管理机构录用计划（官方公告分机构名额）",
+  "unit": "planned_hires",
+  "provenance": {
+    "classification": "official_web_announcement_transcribed",
+    "url": "https://www.nia.gov.cn/n741440/n741542/c1818347/content.html",
+    "publisher": "国家移民管理局",
+    "source_date": "2026-10-13",
+    "observed_date": "2026-10-17",
+    "observed_timezone": "Asia/Tokyo",
+    "section": "一、录用计划",
+    "method": "从公告公开文字逐项读取29个机构计划名额，算术加总核对；未下载29份职位附件。"
+  },
+  "totals": {
+    "hires": 1089,
+    "units": 29
+  },
+  "groups": [
+    {
+      "group": "headquarters",
+      "units": 1,
+      "hires": 1
+    },
+    {
+      "group": "border_inspection_station",
+      "units": 22,
+      "hires": 1020
+    },
+    {
+      "group": "repatriation_center",
+      "units": 3,
+      "hires": 24
+    },
+    {
+      "group": "standing_force",
+      "units": 3,
+      "hires": 44
+    }
+  ],
+  "units": [
+    {
+      "id": "nia-2027-01",
+      "name": "国家移民管理局机关",
+      "hires": 1,
+      "group": "headquarters",
+      "official_job_table_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818368.xls",
+      "job_table_verification": "link_located_not_downloaded_or_parsed"
+    },
+    {
+      "id": "nia-2027-02",
+      "name": "北京出入境边防检查总站",
+      "hires": 105,
+      "group": "border_inspection_station",
+      "official_job_table_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818369.xlsx",
+      "job_table_verification": "link_located_not_downloaded_or_parsed"
+    },
+    {
+      "id": "nia-2027-03",
+      "name": "天津出入境边防检查总站",
+      "hires": 10,
+      "group": "border_inspection_station",
+      "official_job_table_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818370.xlsx",
+      "job_table_verification": "link_located_not_downloaded_or_parsed"
+    },
+    {
+      "id": "nia-2027-04",
+      "name": "河北出入境边防检查总站",
+      "hires": 10,
+      "group": "border_inspection_station",
+      "official_job_table_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818371.xlsx",
+      "job_table_verification": "link_located_not_downloaded_or_parsed"
+    },
+    {
+      "id": "nia-2027-05",
+      "name": "山西出入境边防检查总站",
+      "hires": 2,
+      "group": "border_inspection_station",
+      "official_job_table_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818372.xlsx",
+      "job_table_verification": "link_located_not_downloaded_or_parsed"
+    },
+    {
+      "id": "nia-2027-06",
+      "name": "内蒙古出入境边防检查总站",
+      "hires": 70,
+      "group": "border_inspection_station",
+      "official_job_table_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818373.xlsx",
+      "job_table_verification": "link_located_not_downloaded_or_parsed"
+    },
+    {
+      "id": "nia-2027-07",
+      "name": "吉林出入境边防检查总站",
+      "hires": 112,
+      "group": "border_inspection_station",
+      "official_job_table_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818374.xlsx",
+      "job_table_verification": "link_located_not_downloaded_or_parsed"
+    },
+    {
+      "id": "nia-2027-08",
+      "name": "黑龙江出入境边防检查总站",
+      "hires": 27,
+      "group": "border_inspection_station",
+      "official_job_table_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818375.xlsx",
+      "job_table_verification": "link_located_not_downloaded_or_parsed"
+    },
+    {
+      "id": "nia-2027-09",
+      "name": "上海出入境边防检查总站",
+      "hires": 12,
+      "group": "border_inspection_station",
+      "official_job_table_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818376.xlsx",
+      "job_table_verification": "link_located_not_downloaded_or_parsed"
+    },
+    {
+      "id": "nia-2027-10",
+      "name": "浙江出入境边防检查总站",
+      "hires": 6,
+      "group": "border_inspection_station",
+      "official_job_table_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818377.xlsx",
+      "job_table_verification": "link_located_not_downloaded_or_parsed"
+    },
+    {
+      "id": "nia-2027-11",
+      "name": "安徽出入境边防检查总站",
+      "hires": 2,
+      "group": "border_inspection_station",
+      "official_job_table_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818378.xlsx",
+      "job_table_verification": "link_located_not_downloaded_or_parsed"
+    },
+    {
+      "id": "nia-2027-12",
+      "name": "厦门出入境边防检查总站",
+      "hires": 12,
+      "group": "border_inspection_station",
+      "official_job_table_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818379.xlsx",
+      "job_table_verification": "link_located_not_downloaded_or_parsed"
+    },
+    {
+      "id": "nia-2027-13",
+      "name": "山东出入境边防检查总站",
+      "hires": 10,
+      "group": "border_inspection_station",
+      "official_job_table_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818380.xlsx",
+      "job_table_verification": "link_located_not_downloaded_or_parsed"
+    },
+    {
+      "id": "nia-2027-14",
+      "name": "湖北出入境边防检查总站",
+      "hires": 6,
+      "group": "border_inspection_station",
+      "official_job_table_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818381.xlsx",
+      "job_table_verification": "link_located_not_downloaded_or_parsed"
+    },
+    {
+      "id": "nia-2027-15",
+      "name": "广州出入境边防检查总站",
+      "hires": 35,
+      "group": "border_inspection_station",
+      "official_job_table_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818382.xlsx",
+      "job_table_verification": "link_located_not_downloaded_or_parsed"
+    },
+    {
+      "id": "nia-2027-16",
+      "name": "深圳出入境边防检查总站",
+      "hires": 110,
+      "group": "border_inspection_station",
+      "official_job_table_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818383.xlsx",
+      "job_table_verification": "link_located_not_downloaded_or_parsed"
+    },
+    {
+      "id": "nia-2027-17",
+      "name": "珠海出入境边防检查总站",
+      "hires": 53,
+      "group": "border_inspection_station",
+      "official_job_table_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818384.xlsx",
+      "job_table_verification": "link_located_not_downloaded_or_parsed"
+    },
+    {
+      "id": "nia-2027-18",
+      "name": "广西出入境边防检查总站",
+      "hires": 45,
+      "group": "border_inspection_station",
+      "official_job_table_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818385.xlsx",
+      "job_table_verification": "link_located_not_downloaded_or_parsed"
+    },
+    {
+      "id": "nia-2027-19",
+      "name": "海口出入境边防检查总站",
+      "hires": 26,
+      "group": "border_inspection_station",
+      "official_job_table_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818386.xlsx",
+      "job_table_verification": "link_located_not_downloaded_or_parsed"
+    },
+    {
+      "id": "nia-2027-20",
+      "name": "四川出入境边防检查总站",
+      "hires": 2,
+      "group": "border_inspection_station",
+      "official_job_table_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818387.xlsx",
+      "job_table_verification": "link_located_not_downloaded_or_parsed"
+    },
+    {
+      "id": "nia-2027-21",
+      "name": "云南出入境边防检查总站",
+      "hires": 150,
+      "group": "border_inspection_station",
+      "official_job_table_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818388.xlsx",
+      "job_table_verification": "link_located_not_downloaded_or_parsed"
+    },
+    {
+      "id": "nia-2027-22",
+      "name": "西藏出入境边防检查总站",
+      "hires": 10,
+      "group": "border_inspection_station",
+      "official_job_table_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818389.xlsx",
+      "job_table_verification": "link_located_not_downloaded_or_parsed"
+    },
+    {
+      "id": "nia-2027-23",
+      "name": "新疆出入境边防检查总站",
+      "hires": 205,
+      "group": "border_inspection_station",
+      "official_job_table_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818390.xlsx",
+      "job_table_verification": "link_located_not_downloaded_or_parsed"
+    },
+    {
+      "id": "nia-2027-24",
+      "name": "国家移民管理局长春遣返中心",
+      "hires": 9,
+      "group": "repatriation_center",
+      "official_job_table_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818391.xlsx",
+      "job_table_verification": "link_located_not_downloaded_or_parsed"
+    },
+    {
+      "id": "nia-2027-25",
+      "name": "国家移民管理局东兴遣返中心",
+      "hires": 10,
+      "group": "repatriation_center",
+      "official_job_table_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818392.xlsx",
+      "job_table_verification": "link_located_not_downloaded_or_parsed"
+    },
+    {
+      "id": "nia-2027-26",
+      "name": "国家移民管理局瑞丽遣返中心",
+      "hires": 5,
+      "group": "repatriation_center",
+      "official_job_table_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818393.xlsx",
+      "job_table_verification": "link_located_not_downloaded_or_parsed"
+    },
+    {
+      "id": "nia-2027-27",
+      "name": "国家移民管理局常备力量第一总队",
+      "hires": 4,
+      "group": "standing_force",
+      "official_job_table_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818394.xlsx",
+      "job_table_verification": "link_located_not_downloaded_or_parsed"
+    },
+    {
+      "id": "nia-2027-28",
+      "name": "国家移民管理局常备力量第二总队",
+      "hires": 15,
+      "group": "standing_force",
+      "official_job_table_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818395.xlsx",
+      "job_table_verification": "link_located_not_downloaded_or_parsed"
+    },
+    {
+      "id": "nia-2027-29",
+      "name": "国家移民管理局常备力量第三总队",
+      "hires": 25,
+      "group": "standing_force",
+      "official_job_table_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818396.xlsx",
+      "job_table_verification": "link_located_not_downloaded_or_parsed"
+    }
+  ],
+  "legacy_reconciliation": {
+    "file": "data/observatory_2027_legacy_snapshot.json",
+    "border_id": "border",
+    "border_hires": 1020,
+    "other_id": "migration",
+    "other_hires": 69,
+    "combined_hires": 1089,
+    "status": "official_announcement_counts_reconcile_for_these_two_groups_only",
+    "note": "仅核对上述人数；未验证职位数，未证明其他26类分组正确。"
+  },
+  "usage": [
+    "可制作国家移民管理机构1089名额、29机构、各总站1020与其他机构69的结构镜头。",
+    "总站名称是机构名，不是所有职位的工作地点；不能按机构驻地把全部名额直接放到省级地图。",
+    "此1089不能加到全国35691之上，它是全国招录计划中的机构子集。",
+    "与第三方 source_system_tag=immigration（134人）不同口径，不可直接替换或一一连线。"
+  ]
+}
