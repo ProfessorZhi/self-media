@@ -1,0 +1,204 @@
+{
+  "schema_version": "2.0.0",
+  "status": "PASS",
+  "started_at_utc": "2026-10-17T03:08:27.891Z",
+  "generated_at_utc": "2026-10-17T03:08:28.856Z",
+  "verification_script": "scripts/verify_position_data.mjs",
+  "network_used": false,
+  "original_excel_or_pdf_files_required": false,
+  "execution_scope": "Read current repository JSON, invoke its three loaders, recompute relations and statistics, and verify the stored official audit report hash and scope. No source workbook/PDF comparison or live web verification is rerun.",
+  "checks": {
+    "explicit_assertions": 192487,
+    "assertions_by_section": {
+      "loaders": 1,
+      "positions_2027": 16,
+      "major_catalogs": 7927,
+      "major_requirements": 180150,
+      "real_expression_regressions": 13,
+      "position_conditions": 703,
+      "position_histories": 1310,
+      "recorded_official_row_audit": 2128,
+      "official_historical_evidence": 126,
+      "interview_cutoffs_2026": 113
+    },
+    "loader_count": 3,
+    "loader_internal_assertions_in_explicit_count": false,
+    "loader_sha256_and_byte_verified_files": 58,
+    "additional_official_report_sha256_verified_files": 1,
+    "position_shards": 23,
+    "original_fields_per_position": 27,
+    "position_rows": 19426,
+    "major_requirement_shards": 13,
+    "requirement_groups": 4090,
+    "professional_and_education_row_links": 19426,
+    "independent_complete_tokens": 734,
+    "unicode_code_point_code_spans": 5983,
+    "unicode_code_point_clause_spans": 5014,
+    "catalog_nodes": 1239,
+    "catalog_references_checked": 41903,
+    "tax_membership_edges": 849,
+    "real_expression_regressions": [
+      "degree_scoped_0712_and_0809_are_bachelor_only",
+      "graduate_application_clause_0812_is_not_bachelor",
+      "full_field_unrestricted_is_global",
+      "explicit_discipline_gates_do_not_expand_to_homonymous_disciplines",
+      "coded_law_preserves_specificity_and_parenthetical_scope_is_reviewed",
+      "sign_language_exclusion",
+      "marine_surveying_exclusion",
+      "local_bachelor_unrestricted_is_not_global"
+    ],
+    "raw_condition_dimensions_recomputed": 11,
+    "raw_condition_cells_recomputed": 77,
+    "joint_distributions_recomputed": 5,
+    "joint_cells_recomputed": 102,
+    "remarks_text_signal_patterns_recomputed": 15,
+    "remarks_examples_verified": 70,
+    "historical_years": 4,
+    "historical_dimension_totals_checked": 20,
+    "historical_group_rows": 2639,
+    "historical_2027_dimensions_recomputed": 5,
+    "official_historical_source_entries": 22,
+    "official_historical_source_references_resolved": 93,
+    "interview_cutoff_shards": 18,
+    "interview_cutoff_positions": 20227,
+    "source_list_rows": 113377,
+    "official_cutoff_comparisons": 35
+  },
+  "position_totals": {
+    "positions": 19426,
+    "hires": 35691
+  },
+  "major_summary": {
+    "positions": 19426,
+    "hires": 35691,
+    "distinct_major_raw_strings": 3841,
+    "requirement_groups": 4090,
+    "distinct_case_folded_literal_code_tokens": 734,
+    "positions_with_explicit_code_tokens": 3357,
+    "hires_with_explicit_code_tokens": 4599,
+    "positions_without_explicit_code_tokens": 16069,
+    "positions_with_at_least_one_catalog_reference_candidate": 18176,
+    "positions_without_catalog_reference_candidate": 1250,
+    "positions_with_review_reasons": 5835,
+    "positions_globally_unrestricted_in_major_column": 8,
+    "hires_globally_unrestricted_in_major_column": 8
+  },
+  "law_literal_030101K": {
+    "positions": 329,
+    "hires": 399
+  },
+  "historical_totals": [
+    {
+      "year": 2024,
+      "positions": 18948,
+      "hires": 39561
+    },
+    {
+      "year": 2025,
+      "positions": 20810,
+      "hires": 39721
+    },
+    {
+      "year": 2026,
+      "positions": 20714,
+      "hires": 38119
+    },
+    {
+      "year": 2027,
+      "positions": 19426,
+      "hires": 35691
+    }
+  ],
+  "recorded_official_row_verification": {
+    "positions": 805,
+    "hires": 1501,
+    "compared_cells": 21713,
+    "content_difference_cells": 0,
+    "report": "research/OFFICIAL_ROW_CROSSCHECK_20261017.json",
+    "report_sha256": "0742e51bf63dec946a29ad858d92bc1dd34ec705965e42ba2d6853735155620b",
+    "report_generated_at_utc": "2026-10-16T19:23:16.232762+00:00",
+    "current_report_positions": 581,
+    "imported_prior_shanghai_positions": 224,
+    "pdf_scope_only_excluded": {
+      "positions": 23,
+      "hires": 102
+    },
+    "original_official_files_reopened_by_this_run": false
+  },
+  "interview_cutoff_summary": {
+    "year": 2026,
+    "batch_id": "initial_2026_01_15",
+    "positions": 20227,
+    "source_list_rows": 113377,
+    "unique_published_cutoffs": 20227,
+    "missing_cutoffs": 0,
+    "conflicting_cutoffs": 0,
+    "matched_to_2026_position_csv": 20227,
+    "position_csv_jobs_absent_from_this_initial_batch": 487,
+    "official_audit_comparisons_with_equal_published_cutoff": 35,
+    "original_source_workbooks_reopened_by_this_run": false
+  },
+  "source_authentication_boundaries": [
+    "2027 national positions come from a public workbook mirror, with recorded all-field consistency against an upstream conversion. Direct official attachment cell verification covers 805 jobs, not all 19,426.",
+    "This run verifies the stored official cross-check report hash, row IDs, locators, hires and scope totals. The 21,713 original-cell comparisons were performed in the recorded source audit, not rerun here.",
+    "Official catalogs are parsed official-source text. Catalog JSON references and identities are checked here; original catalog PDF binary checksums were not verified in the catalog extraction.",
+    "2024–2026 position history uses third-party CSV source fields. This run verifies all marginal sums; only 2027 history is recomputed from the full bundled position table.",
+    "Official historical exam statistics retain 22 source entries and their precision, missing-value and metric definitions. Resolving references is not fresh verification of remote articles.",
+    "2026 interview cutoffs come from a national initial-list mirror. A later Audit Office attachment agrees on the 35 compared jobs; this does not certify the entire nationwide mirror or equate release batches."
+  ],
+  "interpretation_limits": [
+    "A catalog candidate is a source-text reference, not a fully interpreted professional requirement or applicant eligibility result. There are 1,250 jobs with no catalog candidate and 5,835 with requirement-level review reasons.",
+    "Use requirement.review_reasons for the whole expression. A false local condition_requires_review does not remove other degree-clause or expression-level review reasons.",
+    "Literal code counts include negative or qualified contexts. Jobs may reference multiple codes; these counts are not additive to national totals.",
+    "Graduate secondary/self-defined codes, agency-specific categories, degree equivalence and complex restrictions remain unresolved where flagged.",
+    "Remarks regex matches are textual signals, not complete qualifications. Province and system annotations retain their third-party status.",
+    "Per-job published interview-admission cutoffs are separate from national policy passlines and from actual interview test scores; score formulas may differ across jobs.",
+    "A job absent from the 2026 initial interview list is not assigned zero, inferred to have no applicants, or assumed to be absent from subsequent batches. No 2027 per-job interview cutoff is fabricated."
+  ],
+  "input_json_fingerprints": {
+    "data/position_conditions_2027.json": {
+      "bytes": 36840,
+      "sha256": "e8c44e9b0b2a8c35147f2cff85aad31729f3bf83a5c29819ade2cf9d8993e665"
+    },
+    "data/official_historical_exam_data.json": {
+      "bytes": 67287,
+      "sha256": "7f068a9313c9d02259b68ed22176323eb8c51a9334c2dbdde626c71bb0d2170b"
+    },
+    "data/histories_2024_2027.json": {
+      "bytes": 274799,
+      "sha256": "83f3703bbede75e59e4deafd443f37b27598ccc974393366af7353eae12bc1a5"
+    },
+    "research/OFFICIAL_ROW_CROSSCHECK_20261017.json": {
+      "bytes": 360925,
+      "sha256": "0742e51bf63dec946a29ad858d92bc1dd34ec705965e42ba2d6853735155620b"
+    },
+    "data/positions_2027/manifest.json": {
+      "bytes": 21491,
+      "sha256": "4984f5d13830faceb2910d770aa9dca5caab628b034040eaa9b972a02afdc9ea"
+    },
+    "data/majors_2027/manifest.json": {
+      "bytes": 4327,
+      "sha256": "9f12d5ddbc1aaea35a627087f3c41bc13e7d1e103807ce9b534256a93d27772d"
+    },
+    "data/interview_cutoffs_2026/manifest.json": {
+      "bytes": 12603,
+      "sha256": "00dad34a9d0a5f7b743174c7e8976815ad967f478495f811c22ef58adce6d486"
+    },
+    "data/catalogs/major_bachelor_2026_official_parsed.json": {
+      "bytes": 437598,
+      "sha256": "b1aea29b1331c6697a6fd330bb1514af14a68215fb0b08503b8e3b5214543d66"
+    },
+    "data/majors_2027/tax-catalog-name-crosswalk.json": {
+      "bytes": 269848,
+      "sha256": "b1f774e20be7c81dacf083fb33b6535d9df1b35e8382eca1698c49f9252f1505"
+    },
+    "data/catalogs/major_graduate_2022_official_parsed.json": {
+      "bytes": 76076,
+      "sha256": "d0482ef4b96ea0b52143e9d6a50fc6dcef1bb308d355c9c0a79b18580469219e"
+    },
+    "data/catalogs/major_tax_2027_official_parsed.json": {
+      "bytes": 503226,
+      "sha256": "928864b91585f8044d72a7223fb71cdd1ad9e96a62f7f2a5eccf3c113776c8c3"
+    }
+  }
+}

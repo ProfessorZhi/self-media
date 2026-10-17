@@ -1,0 +1,278 @@
+{
+  "schema_version": "1.0.0",
+  "dataset_id": "national-civil-service-initial-interview-cutoffs-2026",
+  "researched_at": "2026-10-16T19:28:18Z",
+  "source_list_rows": 113377,
+  "initial_list_positions": 20227,
+  "positions_with_unique_published_cutoff": 20227,
+  "positions_with_conflicting_published_cutoffs": 0,
+  "positions_without_published_cutoff": 0,
+  "position_csv_records": 20714,
+  "matched_to_position_csv": 20227,
+  "unmatched_to_position_csv": 0,
+  "position_csv_jobs_absent_from_initial_list": 487,
+  "matched_positions_planned_seats": 37258,
+  "official_audit_positions": 35,
+  "official_audit_sheets": 15,
+  "official_comparisons": {
+    "same_published_cutoff": 35
+  },
+  "by_source_csv_province": [
+    {
+      "value": "上海",
+      "positions": 472
+    },
+    {
+      "value": "云南",
+      "positions": 1077
+    },
+    {
+      "value": "内蒙古",
+      "positions": 683
+    },
+    {
+      "value": "北京",
+      "positions": 719
+    },
+    {
+      "value": "吉林",
+      "positions": 524
+    },
+    {
+      "value": "四川",
+      "positions": 980
+    },
+    {
+      "value": "天津",
+      "positions": 220
+    },
+    {
+      "value": "宁夏",
+      "positions": 130
+    },
+    {
+      "value": "安徽",
+      "positions": 546
+    },
+    {
+      "value": "山东",
+      "positions": 1207
+    },
+    {
+      "value": "山西",
+      "positions": 537
+    },
+    {
+      "value": "广东",
+      "positions": 1863
+    },
+    {
+      "value": "广西",
+      "positions": 731
+    },
+    {
+      "value": "新疆",
+      "positions": 497
+    },
+    {
+      "value": "江苏",
+      "positions": 930
+    },
+    {
+      "value": "江西",
+      "positions": 546
+    },
+    {
+      "value": "河北",
+      "positions": 1020
+    },
+    {
+      "value": "河南",
+      "positions": 1108
+    },
+    {
+      "value": "浙江",
+      "positions": 747
+    },
+    {
+      "value": "海南",
+      "positions": 228
+    },
+    {
+      "value": "湖北",
+      "positions": 778
+    },
+    {
+      "value": "湖南",
+      "positions": 708
+    },
+    {
+      "value": "甘肃",
+      "positions": 349
+    },
+    {
+      "value": "福建",
+      "positions": 674
+    },
+    {
+      "value": "西藏",
+      "positions": 186
+    },
+    {
+      "value": "贵州",
+      "positions": 316
+    },
+    {
+      "value": "辽宁",
+      "positions": 797
+    },
+    {
+      "value": "重庆",
+      "positions": 398
+    },
+    {
+      "value": "陕西",
+      "positions": 443
+    },
+    {
+      "value": "青海",
+      "positions": 211
+    },
+    {
+      "value": "黑龙江",
+      "positions": 602
+    }
+  ],
+  "by_source_system_tag": [
+    {
+      "value": "audit",
+      "positions": 36
+    },
+    {
+      "value": "can_gong",
+      "positions": 123
+    },
+    {
+      "value": "civil_aviation",
+      "positions": 21
+    },
+    {
+      "value": "csrc",
+      "positions": 51
+    },
+    {
+      "value": "customs",
+      "positions": 1820
+    },
+    {
+      "value": "default",
+      "positions": 305
+    },
+    {
+      "value": "finance_reg",
+      "positions": 1740
+    },
+    {
+      "value": "immigration",
+      "positions": 18
+    },
+    {
+      "value": "maritime",
+      "positions": 514
+    },
+    {
+      "value": "meteorology",
+      "positions": 233
+    },
+    {
+      "value": "party_central",
+      "positions": 124
+    },
+    {
+      "value": "pboc",
+      "positions": 1650
+    },
+    {
+      "value": "police",
+      "positions": 927
+    },
+    {
+      "value": "post",
+      "positions": 91
+    },
+    {
+      "value": "state_central",
+      "positions": 226
+    },
+    {
+      "value": "survey",
+      "positions": 464
+    },
+    {
+      "value": "tax",
+      "positions": 11731
+    },
+    {
+      "value": "telecom",
+      "positions": 5
+    },
+    {
+      "value": "water",
+      "positions": 148
+    }
+  ],
+  "by_source_csv_education": [
+    {
+      "value": "仅限博士研究生",
+      "positions": 25
+    },
+    {
+      "value": "仅限大专",
+      "positions": 1
+    },
+    {
+      "value": "仅限本科",
+      "positions": 2853
+    },
+    {
+      "value": "仅限硕士研究生",
+      "positions": 410
+    },
+    {
+      "value": "大专及以上",
+      "positions": 2
+    },
+    {
+      "value": "大专或本科",
+      "positions": 6
+    },
+    {
+      "value": "本科及以上",
+      "positions": 13928
+    },
+    {
+      "value": "本科或硕士研究生",
+      "positions": 1093
+    },
+    {
+      "value": "硕士研究生及以上",
+      "positions": 1909
+    }
+  ],
+  "by_source_csv_exam_category": [
+    {
+      "value": "中央机关及其省级直属机构综合管理类",
+      "positions": 1513
+    },
+    {
+      "value": "市（地）级及以下直属机构综合管理类",
+      "positions": 3989
+    },
+    {
+      "value": "行政执法类",
+      "positions": 14725
+    }
+  ],
+  "counts_are_positions_not_planned_seats_or_people": true,
+  "score_aggregation_note": "未计算跨职位统一分数均值或全国分数排名；不同职位可能采用不同笔试科目与加权口径。"
+}

@@ -1,0 +1,651 @@
+{
+  "schema_version": "1.0.0",
+  "dataset_id": "national-civil-service-positions-2027",
+  "year": 2027,
+  "format": "Each shard repeats columns; each rows entry has one value per column in the same order.",
+  "columns": [
+    "id",
+    "year",
+    "source_sheet",
+    "source_row",
+    "source_csv_province",
+    "source_system_tag",
+    "部门代码",
+    "部门名称",
+    "用人司局",
+    "机构性质",
+    "招考职位",
+    "职位属性",
+    "职位分布",
+    "职位简介",
+    "职位代码",
+    "机构层级",
+    "考试类别",
+    "招考人数",
+    "专业",
+    "学历",
+    "学位",
+    "政治面貌",
+    "基层工作最低年限",
+    "服务基层项目工作经历",
+    "是否在面试阶段组织专业能力测试",
+    "面试人员比例",
+    "工作地点",
+    "落户地点",
+    "备注",
+    "部门网站",
+    "咨询电话1",
+    "咨询电话2",
+    "咨询电话3"
+  ],
+  "metadata_columns": [
+    "id",
+    "year",
+    "source_sheet",
+    "source_row",
+    "source_csv_province",
+    "source_system_tag"
+  ],
+  "raw_columns": [
+    "部门代码",
+    "部门名称",
+    "用人司局",
+    "机构性质",
+    "招考职位",
+    "职位属性",
+    "职位分布",
+    "职位简介",
+    "职位代码",
+    "机构层级",
+    "考试类别",
+    "招考人数",
+    "专业",
+    "学历",
+    "学位",
+    "政治面貌",
+    "基层工作最低年限",
+    "服务基层项目工作经历",
+    "是否在面试阶段组织专业能力测试",
+    "面试人员比例",
+    "工作地点",
+    "落户地点",
+    "备注",
+    "部门网站",
+    "咨询电话1",
+    "咨询电话2",
+    "咨询电话3"
+  ],
+  "field_dictionary": [
+    {
+      "name": "id",
+      "type": "string",
+      "provenance": "derived_from_original_codes",
+      "description": "2027:原始六位部门代码:原始十二位职位代码；职位代码单独不唯一。"
+    },
+    {
+      "name": "year",
+      "type": "integer",
+      "provenance": "dataset_year",
+      "description": "招录年度。"
+    },
+    {
+      "name": "source_sheet",
+      "type": "string",
+      "provenance": "original_workbook_location",
+      "description": "全国镜像原件的工作表名称。"
+    },
+    {
+      "name": "source_row",
+      "type": "integer",
+      "provenance": "original_workbook_location",
+      "description": "原工作表 Excel 行号，从 1 开始；列名位于第 2 行。"
+    },
+    {
+      "name": "source_csv_province",
+      "type": "string",
+      "provenance": "third_party_analysis_annotation",
+      "description": "第三方 CSV work_province；便于地区聚合，原文工作地点另存，不是原表独立省份字段。"
+    },
+    {
+      "name": "source_system_tag",
+      "type": "string",
+      "provenance": "third_party_analysis_annotation",
+      "description": "第三方 CSV treatment_system_class；分析标签，不等同于官方机构性质或原 HTML 的 28 类系统。"
+    },
+    {
+      "name": "部门代码",
+      "type": "string",
+      "provenance": "original_workbook_field",
+      "source_column": "部门代码",
+      "description": "原表字段原文；空单元格为 \"\"。"
+    },
+    {
+      "name": "部门名称",
+      "type": "string",
+      "provenance": "original_workbook_field",
+      "source_column": "部门名称",
+      "description": "原表字段原文；空单元格为 \"\"。"
+    },
+    {
+      "name": "用人司局",
+      "type": "string",
+      "provenance": "original_workbook_field",
+      "source_column": "用人司局",
+      "description": "原表字段原文；空单元格为 \"\"。"
+    },
+    {
+      "name": "机构性质",
+      "type": "string",
+      "provenance": "original_workbook_field",
+      "source_column": "机构性质",
+      "description": "原表字段原文；空单元格为 \"\"。"
+    },
+    {
+      "name": "招考职位",
+      "type": "string",
+      "provenance": "original_workbook_field",
+      "source_column": "招考职位",
+      "description": "原表字段原文；空单元格为 \"\"。"
+    },
+    {
+      "name": "职位属性",
+      "type": "string",
+      "provenance": "original_workbook_field",
+      "source_column": "职位属性",
+      "description": "原表字段原文；空单元格为 \"\"。"
+    },
+    {
+      "name": "职位分布",
+      "type": "string",
+      "provenance": "original_workbook_field",
+      "source_column": "职位分布",
+      "description": "原表字段原文；空单元格为 \"\"。"
+    },
+    {
+      "name": "职位简介",
+      "type": "string",
+      "provenance": "original_workbook_field",
+      "source_column": "职位简介",
+      "description": "原表字段原文；空单元格为 \"\"。"
+    },
+    {
+      "name": "职位代码",
+      "type": "string",
+      "provenance": "original_workbook_field",
+      "source_column": "职位代码",
+      "description": "原表字段原文；空单元格为 \"\"。"
+    },
+    {
+      "name": "机构层级",
+      "type": "string",
+      "provenance": "original_workbook_field",
+      "source_column": "机构层级",
+      "description": "原表字段原文；空单元格为 \"\"。"
+    },
+    {
+      "name": "考试类别",
+      "type": "string",
+      "provenance": "original_workbook_field",
+      "source_column": "考试类别",
+      "description": "原表字段原文；空单元格为 \"\"。"
+    },
+    {
+      "name": "招考人数",
+      "type": "string",
+      "provenance": "original_workbook_field",
+      "source_column": "招考人数",
+      "description": "原表字段原文；空单元格为 \"\"。用于统计时显式转换为正整数，存储仍保留源值字符串。"
+    },
+    {
+      "name": "专业",
+      "type": "string",
+      "provenance": "original_workbook_field",
+      "source_column": "专业",
+      "description": "原表字段原文；空单元格为 \"\"。"
+    },
+    {
+      "name": "学历",
+      "type": "string",
+      "provenance": "original_workbook_field",
+      "source_column": "学历",
+      "description": "原表字段原文；空单元格为 \"\"。"
+    },
+    {
+      "name": "学位",
+      "type": "string",
+      "provenance": "original_workbook_field",
+      "source_column": "学位",
+      "description": "原表字段原文；空单元格为 \"\"。"
+    },
+    {
+      "name": "政治面貌",
+      "type": "string",
+      "provenance": "original_workbook_field",
+      "source_column": "政治面貌",
+      "description": "原表字段原文；空单元格为 \"\"。"
+    },
+    {
+      "name": "基层工作最低年限",
+      "type": "string",
+      "provenance": "original_workbook_field",
+      "source_column": "基层工作最低年限",
+      "description": "原表字段原文；空单元格为 \"\"。"
+    },
+    {
+      "name": "服务基层项目工作经历",
+      "type": "string",
+      "provenance": "original_workbook_field",
+      "source_column": "服务基层项目工作经历",
+      "description": "原表字段原文；空单元格为 \"\"。"
+    },
+    {
+      "name": "是否在面试阶段组织专业能力测试",
+      "type": "string",
+      "provenance": "original_workbook_field",
+      "source_column": "是否在面试阶段组织专业能力测试",
+      "description": "原表字段原文；空单元格为 \"\"。"
+    },
+    {
+      "name": "面试人员比例",
+      "type": "string",
+      "provenance": "original_workbook_field",
+      "source_column": "面试人员比例",
+      "description": "原表字段原文；空单元格为 \"\"。"
+    },
+    {
+      "name": "工作地点",
+      "type": "string",
+      "provenance": "original_workbook_field",
+      "source_column": "工作地点",
+      "description": "原表字段原文；空单元格为 \"\"。"
+    },
+    {
+      "name": "落户地点",
+      "type": "string",
+      "provenance": "original_workbook_field",
+      "source_column": "落户地点",
+      "description": "原表字段原文；空单元格为 \"\"。"
+    },
+    {
+      "name": "备注",
+      "type": "string",
+      "provenance": "original_workbook_field",
+      "source_column": "备注",
+      "description": "原表字段原文；空单元格为 \"\"。"
+    },
+    {
+      "name": "部门网站",
+      "type": "string",
+      "provenance": "original_workbook_field",
+      "source_column": "部门网站",
+      "description": "原表字段原文；空单元格为 \"\"。"
+    },
+    {
+      "name": "咨询电话1",
+      "type": "string",
+      "provenance": "original_workbook_field",
+      "source_column": "咨询电话1",
+      "description": "原表字段原文；空单元格为 \"\"。"
+    },
+    {
+      "name": "咨询电话2",
+      "type": "string",
+      "provenance": "original_workbook_field",
+      "source_column": "咨询电话2",
+      "description": "原表字段原文；空单元格为 \"\"。"
+    },
+    {
+      "name": "咨询电话3",
+      "type": "string",
+      "provenance": "original_workbook_field",
+      "source_column": "咨询电话3",
+      "description": "原表字段原文；空单元格为 \"\"。"
+    }
+  ],
+  "primary_key": {
+    "format": "year:department_code:position_code",
+    "example": "2027:002000:100110001001",
+    "original_code_widths": {
+      "部门代码": 6,
+      "职位代码": 12
+    },
+    "position_code_alone_is_unique": false
+  },
+  "totals": {
+    "positions": 19426,
+    "hires": 35691,
+    "raw_fields_per_position": 27,
+    "distinct_department_codes": 589,
+    "source_csv_provinces": 31,
+    "source_system_tags": 19
+  },
+  "by_source_sheet": [
+    {
+      "source_sheet": "中央党群机关",
+      "positions": 99,
+      "hires": 138
+    },
+    {
+      "source_sheet": "中央国家行政机关（本级）",
+      "positions": 312,
+      "hires": 538
+    },
+    {
+      "source_sheet": "中央国家行政机关省级以下直属机构",
+      "positions": 18193,
+      "hires": 34091
+    },
+    {
+      "source_sheet": "中央国家行政机关参照公务员法管理事业单位",
+      "positions": 822,
+      "hires": 924
+    }
+  ],
+  "sources": [
+    {
+      "id": "national_2027_workbook_mirror",
+      "filename": "2027_positions_mirror.xls",
+      "url": "https://sdrcjy.com.cn/d/file/content/2026/10/6acdca6f71e60.xls",
+      "bytes": 9657856,
+      "sha256": "a06e907c4544ac9f20e72a6532e7aa45d9a474e33a737a70953073230b026d83",
+      "source_level": "public_mirror_of_national_recruitment_workbook",
+      "role": "all_27_source_fields_and_workbook_row_locations"
+    },
+    {
+      "id": "upstream_csv_2027",
+      "filename": "2027_position_source.csv",
+      "url": "https://raw.githubusercontent.com/icy-bean/civil-exam/main/clean/national/2027_position.csv",
+      "github_url": "https://github.com/icy-bean/civil-exam/blob/main/clean/national/2027_position.csv",
+      "bytes": 16540630,
+      "sha256": "2777e58a84265f8354e1c34aa40f201b8ebb450017b9842ffb3cbc152557d492",
+      "source_level": "third_party_cleaned_position_table",
+      "positions": 19426,
+      "hires": 35691,
+      "role": "source_csv_province_and_source_system_tag_only"
+    },
+    {
+      "id": "national_2027_upstream_conversion",
+      "filename": "2027_positions_upstream.xlsx",
+      "url": "https://raw.githubusercontent.com/icy-bean/civil-exam/main/raw/national/2027/position_all.xlsx",
+      "bytes": 3292053,
+      "sha256": "8629eef3374946a56d896eedc74581337b640b1326d7433e1e65a0ff6e337808",
+      "source_level": "third_party_workbook_conversion",
+      "role": "recorded_full_table_cross_check"
+    },
+    {
+      "id": "shanghai_tax_2027_official",
+      "filename": "2027_shanghai_tax_official.xlsx",
+      "url": "https://shanghai.chinatax.gov.cn/xxgk/rsxx/202610/P020261015403121292563.xlsx",
+      "bytes": 36231,
+      "sha256": "19988b2e73718538eaa9294062e43383ea447d81b375c70652f443bad2c56814",
+      "source_level": "recruiting_department_official_attachment",
+      "role": "recorded_shanghai_tax_subset_cross_check"
+    }
+  ],
+  "recorded_source_verification": {
+    "method": "join_by_original_department_code_and_position_code_then_compare_available_original_fields",
+    "mirror_vs_upstream_xlsx": {
+      "positions": 19426,
+      "hires": 35691,
+      "compared_fields_per_position": 27,
+      "different_cells": 0
+    },
+    "mirror_vs_shanghai_official": {
+      "positions": 224,
+      "hires": 400,
+      "compared_fields_per_position": 27,
+      "compared_cells": 6048,
+      "different_cells": 0,
+      "prior_audit_report_sha256": "b700b9d69eb31f5c6ee15500e7050487cae57a0538c2ca85392f15334335cad2"
+    },
+    "mirror_vs_official_subsets_combined": {
+      "positions": 805,
+      "hires": 1501,
+      "compared_cells": 21713,
+      "content_difference_cells": 0,
+      "current_round": {
+        "positions": 581,
+        "hires": 1101,
+        "compared_cells": 15665
+      },
+      "included_prior_shanghai_tax": {
+        "positions": 224,
+        "hires": 400,
+        "compared_cells": 6048
+      },
+      "comparable_fields_note": "按各官方附件实际提供的原字段比较；教育部 11 岗各 25 字段，其余已核验岗位各 27 字段。",
+      "pdf_scope_only_positions_included": false
+    },
+    "audit_report_path": "../../research/OFFICIAL_ROW_CROSSCHECK_20261017.json",
+    "audit_report_path_base": "positions_2027_manifest_directory",
+    "audit_report_sha256": "0742e51bf63dec946a29ad858d92bc1dd34ec705965e42ba2d6853735155620b",
+    "audit_generated_at_utc": "2026-10-16T19:23:16.232762+00:00",
+    "audit_filename_date_timezone": "Asia/Shanghai",
+    "scope_note": "全国主表取自公开镜像，与上游转换表 27 字段一致。官方机构附件逐格核验累计覆盖 805 岗、1,501 个名额、21,713 个可比较单元格，内容差异为 0；核验范围仅为相应机构子集，未将全国主表标为官方直链逐格认证。",
+    "rebuild_note": "这里保存已完成的来源交叉核对结果；本构建脚本负责输入哈希、岗位键、原文字段保全、分片回读和统计加总。"
+  },
+  "source_text_preservation": {
+    "original_columns_retained": 27,
+    "text_cells": "原字符串按源表保留，未 trim、改写、补全或从旧清洗字段反推。",
+    "numeric_cells": "源表整数型数值转为等值十进制字符串；原字符串代码保留前导零。",
+    "blank_cells": "empty string",
+    "row_order": "original workbook sheet and row order",
+    "trace": "sources[0] URL + SHA-256 + source_sheet + source_row + 原字段列名"
+  },
+  "build_validation": {
+    "unique_composite_ids": 19426,
+    "source_csv_join": "one_to_one",
+    "source_to_shards_round_trip": "all_27_original_fields_and_all_metadata_exactly_equal",
+    "shards_have_valid_sha256": true,
+    "each_shard_utf8_bytes_lt": 900000
+  },
+  "shards": [
+    {
+      "path": "positions-001.json",
+      "positions": 787,
+      "hires": 1416,
+      "bytes": 879017,
+      "sha256": "650dd2a0b777923b7d454a3be65700434230c02916180d5fc326bb5b78ddabd0",
+      "first_id": "2027:002000:100110001001",
+      "last_id": "2027:109425:300130001001"
+    },
+    {
+      "path": "positions-002.json",
+      "positions": 864,
+      "hires": 1156,
+      "bytes": 878497,
+      "sha256": "f176be29f4e0032cdca162124b387192c8deea0322a431f819fd2e20bb781dfd",
+      "first_id": "2027:109425:300130001002",
+      "last_id": "2027:126107:300110010002"
+    },
+    {
+      "path": "positions-003.json",
+      "positions": 843,
+      "hires": 1319,
+      "bytes": 879909,
+      "sha256": "3aa0f50a9631db4c7bb9dbd3e8e815e45c80bbc6da86a2eb9aea657db9cede86",
+      "first_id": "2027:126107:300110010003",
+      "last_id": "2027:126123:300110016003"
+    },
+    {
+      "path": "positions-004.json",
+      "positions": 804,
+      "hires": 1177,
+      "bytes": 879586,
+      "sha256": "dd0fde1a32b54e6e42f8dd893531d2b22152039373671433f1523ec6a124b4f4",
+      "first_id": "2027:126123:300110016004",
+      "last_id": "2027:129114:300110120001"
+    },
+    {
+      "path": "positions-005.json",
+      "positions": 778,
+      "hires": 1183,
+      "bytes": 879051,
+      "sha256": "79df2cc865be8e9c9b00eb3a6b01dadb88d5067a0e5211d00e9ab0c8867fbb65",
+      "first_id": "2027:129114:300110121001",
+      "last_id": "2027:129132:300110002011"
+    },
+    {
+      "path": "positions-006.json",
+      "positions": 912,
+      "hires": 1599,
+      "bytes": 879749,
+      "sha256": "66686e819bb0f5a3a28cfb9934dddbf9c77fb483b6258fd94e7e5afcecb988db",
+      "first_id": "2027:129132:300110003001",
+      "last_id": "2027:130103:300110134003"
+    },
+    {
+      "path": "positions-007.json",
+      "positions": 1023,
+      "hires": 2156,
+      "bytes": 879244,
+      "sha256": "fc9db35098d7e6ed01d2c3cb5c4d101d17f6c0d9ca780bed12e3c9e8da6f2848",
+      "first_id": "2027:130103:300110134004",
+      "last_id": "2027:130106:300110005003"
+    },
+    {
+      "path": "positions-008.json",
+      "positions": 1031,
+      "hires": 2710,
+      "bytes": 879244,
+      "sha256": "72d4471b6a30270710e0ea95ade1d70998f2c2fa5a21893e0905ebbee03729fa",
+      "first_id": "2027:130106:300110005004",
+      "last_id": "2027:130109:300110136002"
+    },
+    {
+      "path": "positions-009.json",
+      "positions": 1079,
+      "hires": 2041,
+      "bytes": 879548,
+      "sha256": "c130b41a5f1fba9f03c96cf925c0cb2b1bbee77821aa4c6af55e3ad617ad7594",
+      "first_id": "2027:130109:300110136003",
+      "last_id": "2027:130112:300110611001"
+    },
+    {
+      "path": "positions-010.json",
+      "positions": 1022,
+      "hires": 2383,
+      "bytes": 879656,
+      "sha256": "61eacaf7a5b11b525f0eb12e4a608f0b48295c54232bfdf500807c41f2f1dff9",
+      "first_id": "2027:130112:300110611002",
+      "last_id": "2027:130117:300110015001"
+    },
+    {
+      "path": "positions-011.json",
+      "positions": 1070,
+      "hires": 2510,
+      "bytes": 879646,
+      "sha256": "a50a19fb0bb258852d7c42d99a5a4679617dc7760f841895c6204ef9e7c08341",
+      "first_id": "2027:130117:300110015002",
+      "last_id": "2027:130119:300110002006"
+    },
+    {
+      "path": "positions-012.json",
+      "positions": 1123,
+      "hires": 2073,
+      "bytes": 879844,
+      "sha256": "2984492ceb56112a2b007d08139cd2882b116e87685b9918d16f4f62f27365ed",
+      "first_id": "2027:130119:300110002007",
+      "last_id": "2027:130121:300110133001"
+    },
+    {
+      "path": "positions-013.json",
+      "positions": 1085,
+      "hires": 2506,
+      "bytes": 879418,
+      "sha256": "b0bf2663ec4e92e7ad23b6def88575855602f04a06dfdfa51a3b9d715443c619",
+      "first_id": "2027:130121:300110133002",
+      "last_id": "2027:130123:300110561005"
+    },
+    {
+      "path": "positions-014.json",
+      "positions": 998,
+      "hires": 1993,
+      "bytes": 879484,
+      "sha256": "e0fcf2b61a091fd346c54c6c4f6143ece84eef3cea8aaa17bb027474a9b09793",
+      "first_id": "2027:130123:300110561006",
+      "last_id": "2027:130128:300110027003"
+    },
+    {
+      "path": "positions-015.json",
+      "positions": 1057,
+      "hires": 2154,
+      "bytes": 879596,
+      "sha256": "e802acabe9bcc3c3d5c08160f484115ddb6bfd9ef463b6addc2aadc550281e87",
+      "first_id": "2027:130128:300110028001",
+      "last_id": "2027:130130:300110290004"
+    },
+    {
+      "path": "positions-016.json",
+      "positions": 1021,
+      "hires": 1945,
+      "bytes": 879212,
+      "sha256": "b88eeee727205ff147ff5c174919b3f58463582c873940b721504cd2a3a6a5fd",
+      "first_id": "2027:130130:300110290005",
+      "last_id": "2027:130136:300110046001"
+    },
+    {
+      "path": "positions-017.json",
+      "positions": 734,
+      "hires": 1010,
+      "bytes": 879790,
+      "sha256": "d4d12e85b5330265c00a80ae6746113320da91d881ceb05ed1f9198b687359ae",
+      "first_id": "2027:130136:300110046002",
+      "last_id": "2027:132110:300146270001"
+    },
+    {
+      "path": "positions-018.json",
+      "positions": 631,
+      "hires": 684,
+      "bytes": 879076,
+      "sha256": "07d391ce0336a6309675fbe8ecc5401ba2999b6950165dfb04da173b8d2adcd6",
+      "first_id": "2027:132110:300144271001",
+      "last_id": "2027:132115:300145138001"
+    },
+    {
+      "path": "positions-019.json",
+      "positions": 652,
+      "hires": 833,
+      "bytes": 879044,
+      "sha256": "7915ef5e354192dfae9726b5aed2ebb07de348a88884d709a2e8789940bc30b5",
+      "first_id": "2027:132115:300144150001",
+      "last_id": "2027:132128:300145010001"
+    },
+    {
+      "path": "positions-020.json",
+      "positions": 519,
+      "hires": 1014,
+      "bytes": 879933,
+      "sha256": "e1b835e1e136a05445e7caf402e65955756779d957cc79466e766587de47e5b6",
+      "first_id": "2027:132128:300146010001",
+      "last_id": "2027:158114:300130001002"
+    },
+    {
+      "path": "positions-021.json",
+      "positions": 403,
+      "hires": 664,
+      "bytes": 879168,
+      "sha256": "37fa0ae4ea836ba84f4b9e99defda85dd948d1f791dc5f36409f6c780858833b",
+      "first_id": "2027:158114:300130001003",
+      "last_id": "2027:161103:300110001007"
+    },
+    {
+      "path": "positions-022.json",
+      "positions": 846,
+      "hires": 980,
+      "bytes": 879547,
+      "sha256": "a19b766928c4e6098bc9aab2780799512a3e26805312bb390bde90b074b756f6",
+      "first_id": "2027:161103:300110001008",
+      "last_id": "2027:150116:400149005001"
+    },
+    {
+      "path": "positions-023.json",
+      "positions": 144,
+      "hires": 185,
+      "bytes": 131621,
+      "sha256": "8e19f3773b326ac9e0410f32d2a4d90ac0a88ee436d4f6aa51e43447e1ac867a",
+      "first_id": "2027:150117:400149001001",
+      "last_id": "2027:116112:400149112001"
+    }
+  ]
+}

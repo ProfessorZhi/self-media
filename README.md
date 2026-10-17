@@ -8,7 +8,7 @@
 
 | 编号 | 项目 | 方向 | 状态 | 入口 |
 | --- | --- | --- | --- | --- |
-| VIDEO-001 | 国考宇宙 · 2027 招录数据电影 | 国考知识可视化 × Remotion × AI Coding 展示 | 已立项，研究数据已归档，待制作 | [项目目录](projects/guokao-data-film/README.md) |
+| VIDEO-001 | 国考宇宙 · 2027 招录数据电影 | 国考知识可视化 × Remotion × AI Coding 展示 | 数据基础已建，待制作 | [项目目录](projects/guokao-data-film/README.md) |
 
 ## 约定
 
@@ -23,8 +23,13 @@
 
 ## 当前进度
 
-VIDEO-001 已归档参考 HTML、创意方案、2027 年官方公告调研、经程序聚合的 31 省招录统计、代码词元提及统计与解析问题审计和可复核的数据校验脚本。参见 [数据目录](projects/guokao-data-film/data/README.md)、[内容研究与游戏化选题](projects/guokao-data-film/research/CONTENT_AND_VIDEO_PITCHES.md) 和 [来源核查](projects/guokao-data-film/research/DATA_SOURCES_AND_CHECKS.md)。
+VIDEO-001 已建立可供程序读取的数据基础：**2027 年 19,426 个岗位、35,691 个计划名额的完整 27 字段明细**，以及专业目录和引用关系、岗位条件统计、2024–2027 年历史统计、2026 年首批逐岗位最低面试分数。参考 HTML 继续原样保存。
 
-新增官方移民管理机构29单位/1,089名额数据、10题知识挑战，以及M1同源场景包。专业数据发现跨学历代码碰撞与TK截断，已明确降为词元探索；见 [本轮复核](projects/guokao-data-film/research/RESEARCH_REVIEW_20261017.md)。
+专业层从原文字段提取 **734 个显式代码词元**，覆盖 **3,357 个岗位、4,599 个名额**；已纳入三套官方目录：**883 个本科专业、117 个研究生一级学科和 67 个专业学位类别、53 个税务专业类别**。词元出现和目录引用保留原文及条件，不直接等同于个人报考资格。数据入口见 [项目数据说明](projects/guokao-data-film/README.md#当前数据)。
 
-**尚未启动 Remotion 编码、设备Agent、视频渲染或成片交付。**
+全国 2027 主表保留公开镜像来源标记。官方机构附件逐格核验累计覆盖 **805 个岗位、1,501 个名额、21,713 个可比较单元格**，内容差异为 0；该核验范围属于全国表的机构子集。2026 年面试线覆盖 **20,227 个岗位**，其中 **35 个岗位**已与官方附件对照。来源和范围分别记录在 [2027 官方逐格审计](projects/guokao-data-film/research/OFFICIAL_ROW_CROSSCHECK_20261017.json) 与 [2026 面试线数据](projects/guokao-data-film/data/interview_cutoffs_2026/manifest.json)。
+
+接手数据和代码请从 [DATA_HANDOFF.md](projects/guokao-data-film/DATA_HANDOFF.md) 开始；制作任务入口为 [OPUS_HANDOFF.md](projects/guokao-data-film/OPUS_HANDOFF.md)。
+
+**数据基础已建；Remotion 工程、视频渲染和成片交付尚未完成。**
+

@@ -1,0 +1,1637 @@
+{
+  "schema_version": "1.0.0",
+  "dataset_id": "guokao_official_historical_exam_data",
+  "title": "2024—2026国考官方公共考试统计与全国合格线；2026逐岗位面试线和2027官方附件核验索引",
+  "retrieved_at": "2026-10-16T19:19:27Z",
+  "timezone_for_chinese_publication_times": "Asia/Shanghai",
+  "status": "research_evidence_pack",
+  "scope": "全国中央机关及其直属机构公务员考试。历史官方统计和政策合格线为2024—2026年度；逐岗位面试线链接至2026首批数据；部门官方附件核验为2027年度。",
+  "definitions": {
+    "exam_year": "考试名称中的招录年度；公共科目笔试通常发生在上一自然年，必须保留实际考试日期。",
+    "planned_seats": "计划招录人数，不等于职位条目数，不等于最终录用人数。",
+    "approved_applicants": "通过资格审查人数，不等于提交申请总人数，也不等于报名确认人数。",
+    "confirmed_applicants": "考前完成报名确认的人数；与通过资格审查和实际参考分别记录。",
+    "actual_attendees": "实际参加全国公共科目笔试人数。",
+    "attendance_rate": "实际参考人数占报名确认人数的比例；保存来源公布的近似值。",
+    "competition_ratio": "本数据分别保存资格审查通过人数÷计划数，以及实际参考人数÷计划数；两者不互换。比值不表示每个岗位或每个考生的录用概率。",
+    "national_policy_passline": "全国公告规定的笔试政策最低合格门槛。公共科目总分和行测单科门槛须同时满足；特定职位另有专业科目最低分。",
+    "post_specific_interview_cutoff": "具体年份、具体职位和具体发布批次的已公布最低面试分数，可能采用不同笔试科目权重。2026首批逐岗位记录另存 data/interview_cutoffs_2026/；不是实际面试测试成绩，也不是全国政策合格线。",
+    "precision": "value是published_text按单位换算的绘图值；exact_unrounded_count=false时不可当成逐人精确计数。published_resolution为原报道数值的显示精度，并不保证真实舍入误差界。",
+    "nulls": "null表示本次证据未给出或未读取，不表示零。超过、近、约等原文修饰词另行保留。",
+    "department_verification_status": "附件链接存在、PDF范围校验、全国主表与官方附件逐格比对是不同状态；逐格核验已覆盖805个岗位、1501个名额和21713个单元格。外交部23岗102人仅完成范围及招录总数核验，不计入逐格覆盖。",
+    "linked_file_paths": "本文件 manifest_path、verification_report 等链接以 projects/guokao-data-film/ 为相对路径起点。"
+  },
+  "sources": [
+    {
+      "id": "scs_2024_plan_xinhua",
+      "title": "中央机关及其直属机构2024年度考试录用公务员报名即将开始",
+      "url": "https://www.news.cn/politics/2023-10/14/c_1129915919.htm",
+      "publisher": "新华社",
+      "source_kind": "state_media_reporting_official_data",
+      "published_at": "2023-10-14T10:04:29+08:00",
+      "retrieved_at": "2026-10-16T19:19:27Z",
+      "evidence_location": "记者从国家公务员局获悉；开头总量、第二项计划分配、第三项测试部门数量。"
+    },
+    {
+      "id": "scs_2025_plan_xinhua",
+      "title": "中央机关及其直属机构2025年度考试录用公务员报名即将开始",
+      "url": "https://www.news.cn/politics/20241014/3400502660ae46f3ae444d96494423cd/c.html",
+      "publisher": "新华社",
+      "source_kind": "state_media_reporting_official_data",
+      "published_at": "2024-10-14T10:02:32+08:00",
+      "retrieved_at": "2026-10-16T19:19:27Z",
+      "evidence_location": "记者从国家公务员局获悉；开头总量、第二项计划分配、第三项测试部门数量。"
+    },
+    {
+      "id": "scs_2026_plan_xinhua",
+      "title": "中央机关及其直属机构2026年度考试录用公务员报名即将开始",
+      "url": "https://www.news.cn/20251014/4e38fcfde2174831b721abdddab2cb51/c.html",
+      "publisher": "新华社",
+      "source_kind": "state_media_reporting_official_data",
+      "published_at": "2025-10-14T10:09:05+08:00",
+      "retrieved_at": "2026-10-16T19:19:27Z",
+      "evidence_location": "记者从国家公务员局获悉；开头总量、第二项计划分配、第三项测试部门数量。"
+    },
+    {
+      "id": "scs_2024_qualification_cctv",
+      "title": "2024国考报名人数首破300万 笔试结束后还需注意这些！",
+      "url": "https://news.cctv.com/2023/11/26/ARTIDTO25S1DfQ8LwahjX92U231126.shtml",
+      "publisher": "中央广播电视总台央视新闻",
+      "source_kind": "state_media_reporting_official_data",
+      "published_at": "2023-11-26T09:20:41+08:00",
+      "retrieved_at": "2026-10-16T19:19:27Z",
+      "evidence_location": "报名阶段热度攀升：据国家公务员局介绍，303.3万人通过审查；资格审查10月26日18时结束。"
+    },
+    {
+      "id": "scs_2025_qualification_cctv",
+      "title": "341.6万人通过2025年国家公务员考试资格审查",
+      "url": "https://news.cctv.cn/2024/10/26/ARTIJkv3lEFMcnB7JU5DXCQJ241026.shtml",
+      "publisher": "央视网",
+      "source_kind": "state_media_reporting_official_data",
+      "published_at": "2024-10-26T21:05:44+08:00",
+      "retrieved_at": "2026-10-16T19:19:27Z",
+      "evidence_location": "开头公布通过资格审查人数与计划之比，并区分后续报名确认。"
+    },
+    {
+      "id": "scs_2026_qualification_xinhua_repost",
+      "title": "283.1万人参加2026年度“国考”",
+      "url": "https://www.sdxc.gov.cn/jryw/gnwzdxw/202512/t20251201_17120098.htm",
+      "publisher": "山东宣传网；原文新华社",
+      "source_kind": "government_republication_of_state_media",
+      "published_at": "2025-12-01T10:22:00+08:00",
+      "retrieved_at": "2026-10-16T19:19:27Z",
+      "evidence_location": "国家公务员局网站此前发布的数据显示：371.8万人通过资格审查，约98:1。"
+    },
+    {
+      "id": "scs_2024_attendance_cctv",
+      "title": "全国225.2万人参加国考公共科目笔试",
+      "url": "https://news.cctv.com/2023/11/26/ARTI52jFAnTlmuM1wxixWRKj231126.shtml",
+      "publisher": "央视网",
+      "source_kind": "state_media_republication_of_official_data",
+      "published_at": "2023-11-26T20:17:06+08:00",
+      "retrieved_at": "2026-10-16T19:19:27Z",
+      "evidence_location": "据国家公务员局网站消息；正文第一段提供确认人数、实际参考、参考率、城市、考场及服务人员。"
+    },
+    {
+      "id": "scs_2025_attendance_xinhua",
+      "title": "2025年度“国考”举行 258.6万人实际参加考试",
+      "url": "https://app.xinhuanet.com/news/article.html?articleId=74ee5bba4cef1883b10a40e2c769dcf1",
+      "publisher": "新华社",
+      "source_kind": "state_media_reporting_official_data",
+      "published_at": "2024-12-01T19:13:54+08:00",
+      "retrieved_at": "2026-10-16T19:19:27Z",
+      "evidence_location": "记者从国家公务员局获悉；第一段完整提供确认人数、实际参考、参考率和考务规模。"
+    },
+    {
+      "id": "scs_2026_attendance_xinhua",
+      "title": "283.1万人参加2026年度“国考”公共科目笔试",
+      "url": "https://www.news.cn/20251130/96e20eb571234a38a505b1deebdd1445/c.html",
+      "publisher": "新华社",
+      "source_kind": "state_media_reporting_official_data",
+      "published_at": "2025-11-30T18:25:19+08:00",
+      "retrieved_at": "2026-10-16T19:19:27Z",
+      "evidence_location": "记者从国家公务员局获悉；正文第一段，未给出报名确认总人数。"
+    },
+    {
+      "id": "scs_2024_passline_beijing",
+      "title": "中央机关及其直属机构2024年度考试录用公务员笔试成绩和合格分数线公布",
+      "url": "https://www.beijing.gov.cn/gongkai/rsxx/gwyzk/202401/t20240115_3535220.html",
+      "publisher": "北京市政府门户网站；来源国家公务员局",
+      "source_kind": "official_republication",
+      "published_at": "2024-01-15T09:46:00+08:00",
+      "retrieved_at": "2026-10-16T19:19:27Z",
+      "evidence_location": "正文第二段完整合格线，第三段说明依照面试比例和笔试成绩排名确定各岗位面试人选。"
+    },
+    {
+      "id": "scs_2025_passline_huichang",
+      "title": "国考分数线公布！",
+      "url": "https://www.huichang.gov.cn/hcxxxgk/hc1783/202501/6d9ad4dbe7ab48f1abc480e0961afcac.shtml",
+      "publisher": "会昌县人民政府县人力资源和社会保障局信息公开栏目",
+      "source_kind": "government_publication",
+      "published_at": "2025-01-15",
+      "retrieved_at": "2026-10-16T19:19:27Z",
+      "evidence_location": "正文完整合格线和面试人选规则；网页索引号B00400-2025-6734472。"
+    },
+    {
+      "id": "scs_2026_passline_xinhua",
+      "title": "2026年度“国考”笔试成绩和合格分数线公布",
+      "url": "https://www.news.cn/edu/20260115/e0f285256d7147e19539cf155a27e614/c.html",
+      "publisher": "新华社",
+      "source_kind": "state_media_reporting_official_data",
+      "published_at": "2026-01-15T11:54:14+08:00",
+      "retrieved_at": "2026-10-16T19:19:27Z",
+      "evidence_location": "记者从国家公务员局了解到；正文完整合格线和岗位面试人选规则。"
+    },
+    {
+      "id": "nia_2027_announcement",
+      "title": "国家移民管理机构2027年度考试录用公务员公告",
+      "url": "https://www.nia.gov.cn/n741440/n741542/c1818347/content.html",
+      "publisher": "国家移民管理局",
+      "source_kind": "official_issuer",
+      "published_at": "2026-10-13T20:43:00+08:00",
+      "retrieved_at": "2026-10-16T19:19:27Z",
+      "evidence_location": "第一节列出29家机构计划和合计1089名；底部按同一顺序列出29个官方XLS/XLSX附件。"
+    },
+    {
+      "id": "mfa_2027_plan_pdf",
+      "title": "外交部2027年度公务员录用计划表",
+      "url": "https://www.mfa.gov.cn/web/wjb_673085/gbclc_603848/tzgg_660725/202610/P020261013631971073038.pdf",
+      "publisher": "外交部",
+      "source_kind": "official_issuer",
+      "published_at": null,
+      "retrieved_at": "2026-10-16T19:19:27Z",
+      "evidence_location": "PDF共13页；第一页表头计划录用102人；前两页可读前三岗15、15、8人。"
+    },
+    {
+      "id": "mofcom_2027_announcement",
+      "title": "商务部2027年度考试录用公务员公告",
+      "url": "https://www.mofcom.gov.cn/rsxx/gwyzk/art/2026/art_c39ee337c67c4e08a9faffa117cf5ca0.html",
+      "publisher": "商务部人事司",
+      "source_kind": "official_issuer",
+      "published_at": "2026-10-14T15:52:00+08:00",
+      "retrieved_at": "2026-10-16T19:19:27Z",
+      "evidence_location": "公告正文计划招录43名；页面元数据pubdate为15:52；落款2026年10月14日。"
+    },
+    {
+      "id": "mofcom_2027_plan_pdf",
+      "title": "商务部2027年度考试录用公务员职位表",
+      "url": "https://www.mofcom.gov.cn/api-gateway/jpaas-web-server/front/document/download?fileUrl=YW5UzzlvCwcM%2FNHHX%2FtT6BcWYLharpwdJgwBRDMZZpywRoKrE9W17vnoP9faVfbtgBBnAxfTXRgemJEnyz2aGFX4TEzgYNZWJOVt6msLG2QNHOoY%2BRiZRuEpRfJG00vf%2Fv6LatbU7qrWZdDpO24IOiq9YeG0VUNvIHmYkREw%2FCU%3D&fileName=%E5%95%86%E5%8A%A1%E9%83%A82027%E5%B9%B4%E5%BA%A6%E8%80%83%E8%AF%95%E5%BD%95%E7%94%A8%E5%85%AC%E5%8A%A1%E5%91%98%E8%81%8C%E4%BD%8D%E8%A1%A8.pdf",
+      "publisher": "商务部",
+      "source_kind": "official_issuer",
+      "published_at": null,
+      "retrieved_at": "2026-10-16T19:19:27Z",
+      "evidence_location": "公告所附PDF共11页；前三页英语一、二、三分别12、10、9人。"
+    },
+    {
+      "id": "idcpc_2027_announcement",
+      "title": "中共中央对外联络部2027年度考试录用公务员公告",
+      "url": "https://www.idcpc.org.cn/yyfw/gbkl/gwykl/202610/t20261014_170422.html",
+      "publisher": "中共中央对外联络部干部局",
+      "source_kind": "official_issuer",
+      "published_at": "2026-10-14",
+      "retrieved_at": "2026-10-16T19:19:27Z",
+      "evidence_location": "公告首段8名；底部链接官方职位表XLS。"
+    },
+    {
+      "id": "moe_2027_requirements",
+      "title": "关于教育部2027年度公务员考录职位要求的说明",
+      "url": "http://www.moe.gov.cn/s78/A04/tongzhi/202610/t20261014_1454189.html",
+      "publisher": "教育部人事司",
+      "source_kind": "official_issuer",
+      "published_at": "2026-10-14T18:06:00+08:00",
+      "retrieved_at": "2026-10-16T19:19:27Z",
+      "evidence_location": "提供教育部2027职位表XLS，说明专业目录版本、专业层级和两个职位的特别条件。"
+    },
+    {
+      "id": "national_2026_initial_interview_mirror",
+      "title": "2026年度国考首批面试名单（2026-01-15镜像发布）",
+      "url": "https://u3.huatu.com/uploads/soft/260115/f1_2.xlsx",
+      "publication_url": "https://m.huatu.com/2026/0115/2846698.html",
+      "publisher": "华图教育；页面标注来源国家公务员局",
+      "source_kind": "third_party_mirror_of_official_published_list",
+      "published_at": "2026-01-15T11:31:00+08:00",
+      "retrieved_at": "2026-10-16T19:28:18Z",
+      "sha256": "6fa1684a40a97c0094b42a0ab43d53742a2e2293a9ff12f37bf3b09af194becd",
+      "bytes": 4825937,
+      "evidence_location": "national_published_job_cutoffs"
+    },
+    {
+      "id": "audit_office_2026_interview_official",
+      "title": "审计署部门面试公告附件（2026-01-26）",
+      "url": "https://www.audit.gov.cn/n8/n28/c10764531/part/10764506.xls",
+      "publication_url": "https://www.audit.gov.cn/n8/n28/c10764531/content.html",
+      "publisher": "审计署人事教育司",
+      "source_kind": "recruiting_department_official_attachment",
+      "published_at": "2026-01-26T18:20:00+08:00",
+      "retrieved_at": "2026-10-16T19:28:18Z",
+      "sha256": "6cead9a2abb2449a7400dddc3de5e34eb0868d70ce0572b2540b49a211fe5882",
+      "bytes": 80384,
+      "evidence_location": "independent_official_subset_comparison"
+    },
+    {
+      "id": "upstream_csv_2026",
+      "title": "2026年度全国岗位表（第三方清洗数据）",
+      "url": "https://raw.githubusercontent.com/icy-bean/civil-exam/main/clean/national/2026_position.csv",
+      "publication_url": null,
+      "publisher": "icy-bean/civil-exam",
+      "source_kind": "third_party_cleaned_position_table",
+      "published_at": null,
+      "retrieved_at": "2026-10-16T19:28:18Z",
+      "sha256": "2186edb16faeca9aa7ab237c270c60e0c8092e25b20726f88ece7735481301b6",
+      "bytes": 17494070,
+      "evidence_location": "composite_key_join_for_position_attributes"
+    },
+    {
+      "id": "shanghai_tax_2027_official_positions",
+      "title": "国家税务总局上海市税务局2027年度公务员招录职位表",
+      "url": "https://shanghai.chinatax.gov.cn/xxgk/rsxx/202610/P020261015403121292563.xlsx",
+      "publisher": "国家税务总局上海市税务局",
+      "source_kind": "official_issuer_attachment",
+      "published_at": null,
+      "retrieved_at": "2026-10-16T19:23:16.232762+00:00",
+      "sha256": "19988b2e73718538eaa9294062e43383ea447d81b375c70652f443bad2c56814",
+      "evidence_location": "224个岗位、400个名额，与全国主表27字段逐格核验。"
+    }
+  ],
+  "exam_years": [
+    {
+      "exam_year": 2024,
+      "public_written_exam_date": "2023-11-26",
+      "recruitment_plan": {
+        "planned_seats": {
+          "published_text": "3.96万人",
+          "value": 39600,
+          "unit": "person",
+          "published_resolution": 100,
+          "exact_unrounded_count": false,
+          "explicitly_approximate": false,
+          "source_ids": [
+            "scs_2024_plan_xinhua"
+          ]
+        },
+        "fresh_graduate_plans": {
+          "published_text": "2.6万个计划",
+          "value": 26000,
+          "unit": "person",
+          "published_resolution": 1000,
+          "exact_unrounded_count": false,
+          "explicitly_approximate": false,
+          "source_ids": [
+            "scs_2024_plan_xinhua"
+          ]
+        },
+        "county_and_below_plans": {
+          "published_text": "近2.7万个计划",
+          "value": 27000,
+          "unit": "person",
+          "published_resolution": 1000,
+          "exact_unrounded_count": false,
+          "explicitly_approximate": true,
+          "source_ids": [
+            "scs_2024_plan_xinhua"
+          ]
+        },
+        "targeted_service_and_veteran_plans": {
+          "published_text": "3000余个计划",
+          "value": null,
+          "comparison": "greater_than",
+          "reference_value": 3000,
+          "unit": "person",
+          "exact_unrounded_count": false,
+          "source_ids": [
+            "scs_2024_plan_xinhua"
+          ]
+        },
+        "departments_with_professional_written_test": {
+          "value": 9,
+          "unit": "department",
+          "exact_unrounded_count": true,
+          "source_ids": [
+            "scs_2024_plan_xinhua"
+          ]
+        },
+        "departments_with_professional_test_at_interview": {
+          "value": 40,
+          "unit": "department",
+          "exact_unrounded_count": true,
+          "source_ids": [
+            "scs_2024_plan_xinhua"
+          ]
+        },
+        "counting_note": "不同定向计划可能重叠，不能把应届、县级及以下、基层服务和退役士兵计划直接相加。"
+      },
+      "qualification": {
+        "approved_applicants": {
+          "published_text": "303.3万人",
+          "value": 3033000,
+          "unit": "person",
+          "published_resolution": 1000,
+          "exact_unrounded_count": false,
+          "explicitly_approximate": false,
+          "source_ids": [
+            "scs_2024_qualification_cctv"
+          ]
+        },
+        "approved_applicants_per_planned_seat": {
+          "published_text": "约77:1",
+          "value": 77,
+          "unit": "applicant_per_planned_seat",
+          "published_resolution": 1,
+          "exact_unrounded_count": false,
+          "explicitly_approximate": true,
+          "source_ids": [
+            "scs_2024_qualification_cctv"
+          ]
+        },
+        "statistics_stage": "after_qualification_review",
+        "qualification_review_ended_at": "2023-10-26T18:00:00+08:00"
+      },
+      "attendance": {
+        "event_date": "2023-11-26",
+        "exam_scope": "全国中央机关及其直属机构公务员考试公共科目笔试",
+        "confirmed_applicants": {
+          "published_text": "261.3万",
+          "value": 2613000,
+          "unit": "person",
+          "published_resolution": 1000,
+          "exact_unrounded_count": false,
+          "explicitly_approximate": false,
+          "source_ids": [
+            "scs_2024_attendance_cctv"
+          ]
+        },
+        "actual_attendees": {
+          "published_text": "225.2万人",
+          "value": 2252000,
+          "unit": "person",
+          "published_resolution": 1000,
+          "exact_unrounded_count": false,
+          "explicitly_approximate": false,
+          "source_ids": [
+            "scs_2024_attendance_cctv"
+          ]
+        },
+        "attendance_rate": {
+          "published_text": "约86.2%",
+          "value": 86.2,
+          "unit": "percent",
+          "published_resolution": 0.1,
+          "exact_unrounded_count": false,
+          "explicitly_approximate": true,
+          "source_ids": [
+            "scs_2024_attendance_cctv"
+          ]
+        },
+        "actual_attendees_per_planned_seat": {
+          "published_text": "约57:1",
+          "value": 57,
+          "unit": "attendee_per_planned_seat",
+          "published_resolution": 1,
+          "exact_unrounded_count": false,
+          "explicitly_approximate": true,
+          "source_ids": [
+            "scs_2024_attendance_cctv"
+          ]
+        },
+        "province_level_regions": {
+          "value": 31,
+          "unit": "region",
+          "exact_unrounded_count": true,
+          "source_ids": [
+            "scs_2024_attendance_cctv"
+          ]
+        },
+        "cities": {
+          "value": 237,
+          "unit": "city",
+          "exact_unrounded_count": true,
+          "source_ids": [
+            "scs_2024_attendance_cctv"
+          ]
+        },
+        "exam_rooms": {
+          "value": 87682,
+          "unit": "room",
+          "exact_unrounded_count": true,
+          "source_ids": [
+            "scs_2024_attendance_cctv"
+          ]
+        },
+        "exam_service_staff": {
+          "published_text": "23.4万名",
+          "value": 234000,
+          "unit": "person",
+          "published_resolution": 1000,
+          "exact_unrounded_count": false,
+          "explicitly_approximate": false,
+          "source_ids": [
+            "scs_2024_attendance_cctv"
+          ]
+        },
+        "source_ids": [
+          "scs_2024_attendance_cctv"
+        ]
+      },
+      "national_policy_passline": {
+        "metric_id": "national_policy_passline",
+        "score_unit": "points",
+        "public_total_definition": "行政职业能力测验科目成绩与申论科目成绩合计",
+        "categories": [
+          {
+            "category_id": "central_provincial_general",
+            "label": "中央机关和省级（含副省级）直属机构综合管理类",
+            "public_written_total_min": 105,
+            "administrative_aptitude_min": 60,
+            "score_condition": "both_minima_must_be_met"
+          },
+          {
+            "category_id": "city_county_general_and_law_enforcement",
+            "label": "市（地）级、县（区）级直属机构综合管理类；行政执法类",
+            "public_written_total_min": 95,
+            "administrative_aptitude_min": 50,
+            "score_condition": "both_minima_must_be_met"
+          },
+          {
+            "category_id": "policy_preference",
+            "label": "公告列明的政策倾斜职位",
+            "public_written_total_min": 90,
+            "administrative_aptitude_min": 45,
+            "score_condition": "both_minima_must_be_met",
+            "scope_any_of": [
+              {
+                "condition": "指定西部地区和艰苦边远地区的市（地）级、县（区）级直属机构综合管理类和行政执法类职位",
+                "province_names": [
+                  "山西",
+                  "内蒙古",
+                  "吉林",
+                  "黑龙江",
+                  "广西",
+                  "重庆",
+                  "四川",
+                  "贵州",
+                  "云南",
+                  "西藏",
+                  "陕西",
+                  "甘肃",
+                  "青海",
+                  "宁夏",
+                  "新疆"
+                ]
+              },
+              {
+                "condition": "定向招录服务基层项目人员职位"
+              },
+              {
+                "condition": "定向招录在军队服役5年以上的高校毕业生退役士兵职位"
+              },
+              {
+                "condition": "非通用语职位"
+              },
+              {
+                "condition": "特殊专业职位"
+              }
+            ]
+          }
+        ],
+        "professional_written_min": 45,
+        "professional_written_scope": [
+          "金融监管总局及其派出机构职位",
+          "中国证监会及其派出机构职位",
+          "公安机关人民警察职位"
+        ],
+        "professional_requirement_is_additional": true,
+        "source_ids": [
+          "scs_2024_passline_beijing"
+        ],
+        "source_date_is_publication_not_claim_of_first_release": true,
+        "does_not_guarantee_interview": true
+      }
+    },
+    {
+      "exam_year": 2025,
+      "public_written_exam_date": "2024-12-01",
+      "recruitment_plan": {
+        "planned_seats": {
+          "published_text": "3.97万人",
+          "value": 39700,
+          "unit": "person",
+          "published_resolution": 100,
+          "exact_unrounded_count": false,
+          "explicitly_approximate": false,
+          "source_ids": [
+            "scs_2025_plan_xinhua"
+          ]
+        },
+        "fresh_graduate_plans": {
+          "published_text": "2.67万个计划",
+          "value": 26700,
+          "unit": "person",
+          "published_resolution": 100,
+          "exact_unrounded_count": false,
+          "explicitly_approximate": false,
+          "source_ids": [
+            "scs_2025_plan_xinhua"
+          ]
+        },
+        "county_and_below_plans": {
+          "published_text": "2.75万个计划",
+          "value": 27500,
+          "unit": "person",
+          "published_resolution": 100,
+          "exact_unrounded_count": false,
+          "explicitly_approximate": false,
+          "source_ids": [
+            "scs_2025_plan_xinhua"
+          ]
+        },
+        "targeted_service_and_veteran_plans": {
+          "published_text": "3000余个计划",
+          "value": null,
+          "comparison": "greater_than",
+          "reference_value": 3000,
+          "unit": "person",
+          "exact_unrounded_count": false,
+          "source_ids": [
+            "scs_2025_plan_xinhua"
+          ]
+        },
+        "departments_with_professional_written_test": {
+          "value": 13,
+          "unit": "department",
+          "exact_unrounded_count": true,
+          "source_ids": [
+            "scs_2025_plan_xinhua"
+          ]
+        },
+        "departments_with_professional_test_at_interview": {
+          "value": 48,
+          "unit": "department",
+          "exact_unrounded_count": true,
+          "source_ids": [
+            "scs_2025_plan_xinhua"
+          ]
+        },
+        "counting_note": "不同定向计划可能重叠，不能把应届、县级及以下、基层服务和退役士兵计划直接相加。"
+      },
+      "qualification": {
+        "approved_applicants": {
+          "published_text": "341.6万人",
+          "value": 3416000,
+          "unit": "person",
+          "published_resolution": 1000,
+          "exact_unrounded_count": false,
+          "explicitly_approximate": false,
+          "source_ids": [
+            "scs_2025_qualification_cctv"
+          ]
+        },
+        "approved_applicants_per_planned_seat": {
+          "published_text": "约86:1",
+          "value": 86,
+          "unit": "applicant_per_planned_seat",
+          "published_resolution": 1,
+          "exact_unrounded_count": false,
+          "explicitly_approximate": true,
+          "source_ids": [
+            "scs_2025_qualification_cctv"
+          ]
+        },
+        "statistics_stage": "after_qualification_review",
+        "qualification_review_ended_at": "2024-10-26T18:00:00+08:00"
+      },
+      "attendance": {
+        "event_date": "2024-12-01",
+        "exam_scope": "全国中央机关及其直属机构公务员考试公共科目笔试",
+        "confirmed_applicants": {
+          "published_text": "298.2万",
+          "value": 2982000,
+          "unit": "person",
+          "published_resolution": 1000,
+          "exact_unrounded_count": false,
+          "explicitly_approximate": false,
+          "source_ids": [
+            "scs_2025_attendance_xinhua"
+          ]
+        },
+        "actual_attendees": {
+          "published_text": "258.6万人",
+          "value": 2586000,
+          "unit": "person",
+          "published_resolution": 1000,
+          "exact_unrounded_count": false,
+          "explicitly_approximate": false,
+          "source_ids": [
+            "scs_2025_attendance_xinhua"
+          ]
+        },
+        "attendance_rate": {
+          "published_text": "约86.7%",
+          "value": 86.7,
+          "unit": "percent",
+          "published_resolution": 0.1,
+          "exact_unrounded_count": false,
+          "explicitly_approximate": true,
+          "source_ids": [
+            "scs_2025_attendance_xinhua"
+          ]
+        },
+        "actual_attendees_per_planned_seat": {
+          "published_text": "约65:1",
+          "value": 65,
+          "unit": "attendee_per_planned_seat",
+          "published_resolution": 1,
+          "exact_unrounded_count": false,
+          "explicitly_approximate": true,
+          "source_ids": [
+            "scs_2025_attendance_xinhua"
+          ]
+        },
+        "province_level_regions": {
+          "value": 31,
+          "unit": "region",
+          "exact_unrounded_count": true,
+          "source_ids": [
+            "scs_2025_attendance_xinhua"
+          ]
+        },
+        "cities": {
+          "value": 248,
+          "unit": "city",
+          "exact_unrounded_count": true,
+          "source_ids": [
+            "scs_2025_attendance_xinhua"
+          ]
+        },
+        "exam_rooms": {
+          "value": 101345,
+          "unit": "room",
+          "exact_unrounded_count": true,
+          "source_ids": [
+            "scs_2025_attendance_xinhua"
+          ]
+        },
+        "exam_service_staff": {
+          "published_text": "26.3万名",
+          "value": 263000,
+          "unit": "person",
+          "published_resolution": 1000,
+          "exact_unrounded_count": false,
+          "explicitly_approximate": false,
+          "source_ids": [
+            "scs_2025_attendance_xinhua"
+          ]
+        },
+        "source_ids": [
+          "scs_2025_attendance_xinhua"
+        ]
+      },
+      "national_policy_passline": {
+        "metric_id": "national_policy_passline",
+        "score_unit": "points",
+        "public_total_definition": "行政职业能力测验科目成绩与申论科目成绩合计",
+        "categories": [
+          {
+            "category_id": "central_provincial_general",
+            "label": "中央机关和省级（含副省级）直属机构综合管理类",
+            "public_written_total_min": 105,
+            "administrative_aptitude_min": 60,
+            "score_condition": "both_minima_must_be_met"
+          },
+          {
+            "category_id": "city_county_general_and_law_enforcement",
+            "label": "市（地）级、县（区）级直属机构综合管理类；行政执法类",
+            "public_written_total_min": 95,
+            "administrative_aptitude_min": 50,
+            "score_condition": "both_minima_must_be_met"
+          },
+          {
+            "category_id": "policy_preference",
+            "label": "公告列明的政策倾斜职位",
+            "public_written_total_min": 90,
+            "administrative_aptitude_min": 45,
+            "score_condition": "both_minima_must_be_met",
+            "scope_any_of": [
+              {
+                "condition": "指定西部地区和艰苦边远地区的市（地）级、县（区）级直属机构综合管理类和行政执法类职位",
+                "province_names": [
+                  "山西",
+                  "内蒙古",
+                  "吉林",
+                  "黑龙江",
+                  "广西",
+                  "重庆",
+                  "四川",
+                  "贵州",
+                  "云南",
+                  "西藏",
+                  "陕西",
+                  "甘肃",
+                  "青海",
+                  "宁夏",
+                  "新疆"
+                ]
+              },
+              {
+                "condition": "定向招录服务基层项目人员职位"
+              },
+              {
+                "condition": "定向招录在军队服役5年以上的高校毕业生退役士兵职位"
+              },
+              {
+                "condition": "非通用语职位"
+              },
+              {
+                "condition": "特殊专业职位"
+              }
+            ]
+          }
+        ],
+        "professional_written_min": 45,
+        "professional_written_scope": [
+          "金融监管总局及其派出机构职位",
+          "中国证监会及其派出机构职位",
+          "公安机关人民警察职位"
+        ],
+        "professional_requirement_is_additional": true,
+        "source_ids": [
+          "scs_2025_passline_huichang"
+        ],
+        "source_date_is_publication_not_claim_of_first_release": true,
+        "does_not_guarantee_interview": true
+      }
+    },
+    {
+      "exam_year": 2026,
+      "public_written_exam_date": "2025-11-30",
+      "recruitment_plan": {
+        "planned_seats": {
+          "published_text": "3.81万人",
+          "value": 38100,
+          "unit": "person",
+          "published_resolution": 100,
+          "exact_unrounded_count": false,
+          "explicitly_approximate": false,
+          "source_ids": [
+            "scs_2026_plan_xinhua"
+          ]
+        },
+        "fresh_graduate_plans": {
+          "published_text": "约2.6万个计划",
+          "value": 26000,
+          "unit": "person",
+          "published_resolution": 1000,
+          "exact_unrounded_count": false,
+          "explicitly_approximate": true,
+          "source_ids": [
+            "scs_2026_plan_xinhua"
+          ]
+        },
+        "county_and_below_plans": {
+          "published_text": "2.8万余个计划",
+          "value": null,
+          "unit": "person",
+          "published_resolution": 1000,
+          "exact_unrounded_count": false,
+          "explicitly_approximate": true,
+          "source_ids": [
+            "scs_2026_plan_xinhua"
+          ],
+          "reference_value": 28000,
+          "comparison": "greater_than"
+        },
+        "targeted_service_and_veteran_plans": {
+          "published_text": "3000余个计划",
+          "value": null,
+          "comparison": "greater_than",
+          "reference_value": 3000,
+          "unit": "person",
+          "exact_unrounded_count": false,
+          "source_ids": [
+            "scs_2026_plan_xinhua"
+          ]
+        },
+        "departments_with_professional_written_test": {
+          "value": 14,
+          "unit": "department",
+          "exact_unrounded_count": true,
+          "source_ids": [
+            "scs_2026_plan_xinhua"
+          ]
+        },
+        "departments_with_professional_test_at_interview": {
+          "value": 56,
+          "unit": "department",
+          "exact_unrounded_count": true,
+          "source_ids": [
+            "scs_2026_plan_xinhua"
+          ]
+        },
+        "counting_note": "不同定向计划可能重叠，不能把应届、县级及以下、基层服务和退役士兵计划直接相加。"
+      },
+      "qualification": {
+        "approved_applicants": {
+          "published_text": "371.8万人",
+          "value": 3718000,
+          "unit": "person",
+          "published_resolution": 1000,
+          "exact_unrounded_count": false,
+          "explicitly_approximate": false,
+          "source_ids": [
+            "scs_2026_qualification_xinhua_repost"
+          ]
+        },
+        "approved_applicants_per_planned_seat": {
+          "published_text": "约98:1",
+          "value": 98,
+          "unit": "applicant_per_planned_seat",
+          "published_resolution": 1,
+          "exact_unrounded_count": false,
+          "explicitly_approximate": true,
+          "source_ids": [
+            "scs_2026_qualification_xinhua_repost"
+          ]
+        },
+        "statistics_stage": "after_qualification_review",
+        "qualification_review_ended_at": null
+      },
+      "attendance": {
+        "event_date": "2025-11-30",
+        "exam_scope": "全国中央机关及其直属机构公务员考试公共科目笔试",
+        "confirmed_applicants": {
+          "value": null,
+          "unit": "person",
+          "missing_reason": "本次读取的官方信息报道未公布确认人数；不以已舍入的参考人数和参考率反推。",
+          "source_ids": [
+            "scs_2026_attendance_xinhua"
+          ]
+        },
+        "actual_attendees": {
+          "published_text": "283.1万人",
+          "value": 2831000,
+          "unit": "person",
+          "published_resolution": 1000,
+          "exact_unrounded_count": false,
+          "explicitly_approximate": false,
+          "source_ids": [
+            "scs_2026_attendance_xinhua"
+          ]
+        },
+        "attendance_rate": {
+          "published_text": "约87.4%",
+          "value": 87.4,
+          "unit": "percent",
+          "published_resolution": 0.1,
+          "exact_unrounded_count": false,
+          "explicitly_approximate": true,
+          "source_ids": [
+            "scs_2026_attendance_xinhua"
+          ]
+        },
+        "actual_attendees_per_planned_seat": {
+          "published_text": "约74:1",
+          "value": 74,
+          "unit": "attendee_per_planned_seat",
+          "published_resolution": 1,
+          "exact_unrounded_count": false,
+          "explicitly_approximate": true,
+          "source_ids": [
+            "scs_2026_attendance_xinhua"
+          ]
+        },
+        "province_level_regions": {
+          "value": 31,
+          "unit": "region",
+          "exact_unrounded_count": true,
+          "source_ids": [
+            "scs_2026_attendance_xinhua"
+          ]
+        },
+        "cities": {
+          "value": 250,
+          "unit": "city",
+          "exact_unrounded_count": true,
+          "source_ids": [
+            "scs_2026_attendance_xinhua"
+          ]
+        },
+        "exam_rooms": {
+          "value": 109948,
+          "unit": "room",
+          "exact_unrounded_count": true,
+          "source_ids": [
+            "scs_2026_attendance_xinhua"
+          ]
+        },
+        "exam_service_staff": {
+          "published_text": "28万名",
+          "value": 280000,
+          "unit": "person",
+          "published_resolution": 10000,
+          "exact_unrounded_count": false,
+          "explicitly_approximate": false,
+          "source_ids": [
+            "scs_2026_attendance_xinhua"
+          ]
+        },
+        "source_ids": [
+          "scs_2026_attendance_xinhua"
+        ]
+      },
+      "national_policy_passline": {
+        "metric_id": "national_policy_passline",
+        "score_unit": "points",
+        "public_total_definition": "行政职业能力测验科目成绩与申论科目成绩合计",
+        "categories": [
+          {
+            "category_id": "central_provincial_general",
+            "label": "中央机关和省级（含副省级）直属机构综合管理类",
+            "public_written_total_min": 105,
+            "administrative_aptitude_min": 60,
+            "score_condition": "both_minima_must_be_met"
+          },
+          {
+            "category_id": "city_county_general_and_law_enforcement",
+            "label": "市（地）级、县（区）级直属机构综合管理类；行政执法类",
+            "public_written_total_min": 95,
+            "administrative_aptitude_min": 50,
+            "score_condition": "both_minima_must_be_met"
+          },
+          {
+            "category_id": "policy_preference",
+            "label": "公告列明的政策倾斜职位",
+            "public_written_total_min": 90,
+            "administrative_aptitude_min": 45,
+            "score_condition": "both_minima_must_be_met",
+            "scope_any_of": [
+              {
+                "condition": "指定西部地区和艰苦边远地区的市（地）级、县（区）级直属机构综合管理类和行政执法类职位",
+                "province_names": [
+                  "山西",
+                  "内蒙古",
+                  "吉林",
+                  "黑龙江",
+                  "广西",
+                  "重庆",
+                  "四川",
+                  "贵州",
+                  "云南",
+                  "西藏",
+                  "陕西",
+                  "甘肃",
+                  "青海",
+                  "宁夏",
+                  "新疆"
+                ]
+              },
+              {
+                "condition": "定向招录服务基层项目人员职位"
+              },
+              {
+                "condition": "定向招录在军队服役5年以上的高校毕业生退役士兵职位"
+              },
+              {
+                "condition": "非通用语职位"
+              },
+              {
+                "condition": "特殊专业职位"
+              }
+            ]
+          }
+        ],
+        "professional_written_min": 45,
+        "professional_written_scope": [
+          "金融监管总局及其派出机构职位",
+          "中国证监会及其派出机构职位",
+          "公安机关人民警察职位"
+        ],
+        "professional_requirement_is_additional": true,
+        "source_ids": [
+          "scs_2026_passline_xinhua"
+        ],
+        "source_date_is_publication_not_claim_of_first_release": true,
+        "does_not_guarantee_interview": true
+      }
+    }
+  ],
+  "post_specific_interview_cutoffs": {
+    "status": "collected_2026_initial_batch",
+    "exam_year": 2026,
+    "manifest_path": "data/interview_cutoffs_2026/manifest.json",
+    "loader_path": "scripts/load_interview_cutoffs.mjs",
+    "batch_id": "initial_2026_01_15",
+    "batch_label": "2026年度国考首批面试名单（2026-01-15镜像发布）",
+    "record_grain": "一个招录年度、部门代码、职位代码、发布批次下的已公布最低面试分数。",
+    "source_ids": [
+      "national_2026_initial_interview_mirror",
+      "audit_office_2026_interview_official",
+      "upstream_csv_2026"
+    ],
+    "positions": 20227,
+    "source_list_rows": 113377,
+    "matched_to_position_csv": 20227,
+    "position_csv_jobs_absent_from_initial_list": 487,
+    "official_audit_positions": 35,
+    "official_audit_same_published_cutoff_positions": 35,
+    "source_status": "全国首批公开镜像；审计署官方附件仅核验其覆盖的岗位，不代表全国已逐条由官方直链核验。",
+    "score_definition": {
+      "source_field": "最低面试分数",
+      "official_audit_source_field_variants": [
+        "面试分数线",
+        "面试\n分数线"
+      ],
+      "unit": "分",
+      "unit_note": "成绩单位；保留源数值和数字格式，不推定所有岗位满分相同。",
+      "is_national_policy_passline": false,
+      "is_actual_interview_test_score": false,
+      "source_reported_cutoff_only": true,
+      "cross_job_score_basis": "不同职位可能含专业科目或外语测试权重；本数据未统一换算或补造计分公式。",
+      "missing_or_conflicting_value_policy": "唯一已公布值写入最低面试分数；缺失或冲突写null，published_cutoff_values保留全部已公布不同值。"
+    },
+    "not_equivalent_to": [
+      "national_policy_passline",
+      "actual_interview_test_score"
+    ],
+    "absence_note": "487个2026职位表岗位未出现于这份首批名单；不能填0，也不能据此认定无人报名、无人过线或取消招录。",
+    "year_linkage_note": "只按同一年份、部门代码、职位代码和批次关联；不得把2026职位代码当作同名2027岗位的分数线。",
+    "score_comparison_note": "未统一不同职位的笔试计分公式，不计算跨计分口径的全国岗位分数排名。",
+    "data_minimization": "仅保留岗位、已公布最低线、批次、出处与必要的岗位条件；没有保存考生姓名、准考证号或个人成绩。",
+    "years_not_collected": [
+      2024,
+      2025,
+      2027
+    ]
+  },
+  "department_official_verification_sources_2027": [
+    {
+      "exam_year": 2027,
+      "department": "国家移民管理机构",
+      "official_announcement_planned_seats": 1089,
+      "unit": "person",
+      "source_ids": [
+        "nia_2027_announcement"
+      ],
+      "scope_note": "包含国家移民管理局机关、22个出入境边防检查总站、3个遣返中心、3个常备力量总队。边检总站合计1020人，不代表整个移民管理机构。",
+      "border_inspection_stations_seats": 1020,
+      "other_units_seats": 69,
+      "attachment_status": "29_official_workbooks_parsed_and_cell_compared",
+      "comparison_to_national_dataset": "cell_comparison_completed_no_content_differences",
+      "units": [
+        {
+          "attachment_order": 1,
+          "department": "国家移民管理局机关",
+          "announced_planned_seats": 1,
+          "attachment_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818368.xls",
+          "source_ids": [
+            "nia_2027_announcement"
+          ],
+          "verification_status": "cell_comparison_completed",
+          "verified_positions": 1,
+          "verified_planned_seats": 1,
+          "verification_report_record_id": "nia-2027-01"
+        },
+        {
+          "attachment_order": 2,
+          "department": "北京出入境边防检查总站",
+          "announced_planned_seats": 105,
+          "attachment_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818369.xlsx",
+          "source_ids": [
+            "nia_2027_announcement"
+          ],
+          "verification_status": "cell_comparison_completed",
+          "verified_positions": 25,
+          "verified_planned_seats": 105,
+          "verification_report_record_id": "nia-2027-02"
+        },
+        {
+          "attachment_order": 3,
+          "department": "天津出入境边防检查总站",
+          "announced_planned_seats": 10,
+          "attachment_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818370.xlsx",
+          "source_ids": [
+            "nia_2027_announcement"
+          ],
+          "verification_status": "cell_comparison_completed",
+          "verified_positions": 8,
+          "verified_planned_seats": 10,
+          "verification_report_record_id": "nia-2027-03"
+        },
+        {
+          "attachment_order": 4,
+          "department": "河北出入境边防检查总站",
+          "announced_planned_seats": 10,
+          "attachment_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818371.xlsx",
+          "source_ids": [
+            "nia_2027_announcement"
+          ],
+          "verification_status": "cell_comparison_completed",
+          "verified_positions": 10,
+          "verified_planned_seats": 10,
+          "verification_report_record_id": "nia-2027-04"
+        },
+        {
+          "attachment_order": 5,
+          "department": "山西出入境边防检查总站",
+          "announced_planned_seats": 2,
+          "attachment_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818372.xlsx",
+          "source_ids": [
+            "nia_2027_announcement"
+          ],
+          "verification_status": "cell_comparison_completed",
+          "verified_positions": 2,
+          "verified_planned_seats": 2,
+          "verification_report_record_id": "nia-2027-05"
+        },
+        {
+          "attachment_order": 6,
+          "department": "内蒙古出入境边防检查总站",
+          "announced_planned_seats": 70,
+          "attachment_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818373.xlsx",
+          "source_ids": [
+            "nia_2027_announcement"
+          ],
+          "verification_status": "cell_comparison_completed",
+          "verified_positions": 42,
+          "verified_planned_seats": 70,
+          "verification_report_record_id": "nia-2027-06"
+        },
+        {
+          "attachment_order": 7,
+          "department": "吉林出入境边防检查总站",
+          "announced_planned_seats": 112,
+          "attachment_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818374.xlsx",
+          "source_ids": [
+            "nia_2027_announcement"
+          ],
+          "verification_status": "cell_comparison_completed",
+          "verified_positions": 72,
+          "verified_planned_seats": 112,
+          "verification_report_record_id": "nia-2027-07"
+        },
+        {
+          "attachment_order": 8,
+          "department": "黑龙江出入境边防检查总站",
+          "announced_planned_seats": 27,
+          "attachment_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818375.xlsx",
+          "source_ids": [
+            "nia_2027_announcement"
+          ],
+          "verification_status": "cell_comparison_completed",
+          "verified_positions": 27,
+          "verified_planned_seats": 27,
+          "verification_report_record_id": "nia-2027-08"
+        },
+        {
+          "attachment_order": 9,
+          "department": "上海出入境边防检查总站",
+          "announced_planned_seats": 12,
+          "attachment_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818376.xlsx",
+          "source_ids": [
+            "nia_2027_announcement"
+          ],
+          "verification_status": "cell_comparison_completed",
+          "verified_positions": 6,
+          "verified_planned_seats": 12,
+          "verification_report_record_id": "nia-2027-09"
+        },
+        {
+          "attachment_order": 10,
+          "department": "浙江出入境边防检查总站",
+          "announced_planned_seats": 6,
+          "attachment_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818377.xlsx",
+          "source_ids": [
+            "nia_2027_announcement"
+          ],
+          "verification_status": "cell_comparison_completed",
+          "verified_positions": 6,
+          "verified_planned_seats": 6,
+          "verification_report_record_id": "nia-2027-10"
+        },
+        {
+          "attachment_order": 11,
+          "department": "安徽出入境边防检查总站",
+          "announced_planned_seats": 2,
+          "attachment_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818378.xlsx",
+          "source_ids": [
+            "nia_2027_announcement"
+          ],
+          "verification_status": "cell_comparison_completed",
+          "verified_positions": 2,
+          "verified_planned_seats": 2,
+          "verification_report_record_id": "nia-2027-11"
+        },
+        {
+          "attachment_order": 12,
+          "department": "厦门出入境边防检查总站",
+          "announced_planned_seats": 12,
+          "attachment_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818379.xlsx",
+          "source_ids": [
+            "nia_2027_announcement"
+          ],
+          "verification_status": "cell_comparison_completed",
+          "verified_positions": 10,
+          "verified_planned_seats": 12,
+          "verification_report_record_id": "nia-2027-12"
+        },
+        {
+          "attachment_order": 13,
+          "department": "山东出入境边防检查总站",
+          "announced_planned_seats": 10,
+          "attachment_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818380.xlsx",
+          "source_ids": [
+            "nia_2027_announcement"
+          ],
+          "verification_status": "cell_comparison_completed",
+          "verified_positions": 10,
+          "verified_planned_seats": 10,
+          "verification_report_record_id": "nia-2027-13"
+        },
+        {
+          "attachment_order": 14,
+          "department": "湖北出入境边防检查总站",
+          "announced_planned_seats": 6,
+          "attachment_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818381.xlsx",
+          "source_ids": [
+            "nia_2027_announcement"
+          ],
+          "verification_status": "cell_comparison_completed",
+          "verified_positions": 4,
+          "verified_planned_seats": 6,
+          "verification_report_record_id": "nia-2027-14"
+        },
+        {
+          "attachment_order": 15,
+          "department": "广州出入境边防检查总站",
+          "announced_planned_seats": 35,
+          "attachment_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818382.xlsx",
+          "source_ids": [
+            "nia_2027_announcement"
+          ],
+          "verification_status": "cell_comparison_completed",
+          "verified_positions": 29,
+          "verified_planned_seats": 35,
+          "verification_report_record_id": "nia-2027-15"
+        },
+        {
+          "attachment_order": 16,
+          "department": "深圳出入境边防检查总站",
+          "announced_planned_seats": 110,
+          "attachment_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818383.xlsx",
+          "source_ids": [
+            "nia_2027_announcement"
+          ],
+          "verification_status": "cell_comparison_completed",
+          "verified_positions": 23,
+          "verified_planned_seats": 110,
+          "verification_report_record_id": "nia-2027-16"
+        },
+        {
+          "attachment_order": 17,
+          "department": "珠海出入境边防检查总站",
+          "announced_planned_seats": 53,
+          "attachment_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818384.xlsx",
+          "source_ids": [
+            "nia_2027_announcement"
+          ],
+          "verification_status": "cell_comparison_completed",
+          "verified_positions": 20,
+          "verified_planned_seats": 53,
+          "verification_report_record_id": "nia-2027-17"
+        },
+        {
+          "attachment_order": 18,
+          "department": "广西出入境边防检查总站",
+          "announced_planned_seats": 45,
+          "attachment_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818385.xlsx",
+          "source_ids": [
+            "nia_2027_announcement"
+          ],
+          "verification_status": "cell_comparison_completed",
+          "verified_positions": 36,
+          "verified_planned_seats": 45,
+          "verification_report_record_id": "nia-2027-18"
+        },
+        {
+          "attachment_order": 19,
+          "department": "海口出入境边防检查总站",
+          "announced_planned_seats": 26,
+          "attachment_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818386.xlsx",
+          "source_ids": [
+            "nia_2027_announcement"
+          ],
+          "verification_status": "cell_comparison_completed",
+          "verified_positions": 24,
+          "verified_planned_seats": 26,
+          "verification_report_record_id": "nia-2027-19"
+        },
+        {
+          "attachment_order": 20,
+          "department": "四川出入境边防检查总站",
+          "announced_planned_seats": 2,
+          "attachment_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818387.xlsx",
+          "source_ids": [
+            "nia_2027_announcement"
+          ],
+          "verification_status": "cell_comparison_completed",
+          "verified_positions": 1,
+          "verified_planned_seats": 2,
+          "verification_report_record_id": "nia-2027-20"
+        },
+        {
+          "attachment_order": 21,
+          "department": "云南出入境边防检查总站",
+          "announced_planned_seats": 150,
+          "attachment_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818388.xlsx",
+          "source_ids": [
+            "nia_2027_announcement"
+          ],
+          "verification_status": "cell_comparison_completed",
+          "verified_positions": 80,
+          "verified_planned_seats": 150,
+          "verification_report_record_id": "nia-2027-21"
+        },
+        {
+          "attachment_order": 22,
+          "department": "西藏出入境边防检查总站",
+          "announced_planned_seats": 10,
+          "attachment_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818389.xlsx",
+          "source_ids": [
+            "nia_2027_announcement"
+          ],
+          "verification_status": "cell_comparison_completed",
+          "verified_positions": 5,
+          "verified_planned_seats": 10,
+          "verification_report_record_id": "nia-2027-22"
+        },
+        {
+          "attachment_order": 23,
+          "department": "新疆出入境边防检查总站",
+          "announced_planned_seats": 205,
+          "attachment_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818390.xlsx",
+          "source_ids": [
+            "nia_2027_announcement"
+          ],
+          "verification_status": "cell_comparison_completed",
+          "verified_positions": 86,
+          "verified_planned_seats": 205,
+          "verification_report_record_id": "nia-2027-23"
+        },
+        {
+          "attachment_order": 24,
+          "department": "国家移民管理局长春遣返中心",
+          "announced_planned_seats": 9,
+          "attachment_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818391.xlsx",
+          "source_ids": [
+            "nia_2027_announcement"
+          ],
+          "verification_status": "cell_comparison_completed",
+          "verified_positions": 8,
+          "verified_planned_seats": 9,
+          "verification_report_record_id": "nia-2027-24"
+        },
+        {
+          "attachment_order": 25,
+          "department": "国家移民管理局东兴遣返中心",
+          "announced_planned_seats": 10,
+          "attachment_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818392.xlsx",
+          "source_ids": [
+            "nia_2027_announcement"
+          ],
+          "verification_status": "cell_comparison_completed",
+          "verified_positions": 9,
+          "verified_planned_seats": 10,
+          "verification_report_record_id": "nia-2027-25"
+        },
+        {
+          "attachment_order": 26,
+          "department": "国家移民管理局瑞丽遣返中心",
+          "announced_planned_seats": 5,
+          "attachment_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818393.xlsx",
+          "source_ids": [
+            "nia_2027_announcement"
+          ],
+          "verification_status": "cell_comparison_completed",
+          "verified_positions": 5,
+          "verified_planned_seats": 5,
+          "verification_report_record_id": "nia-2027-26"
+        },
+        {
+          "attachment_order": 27,
+          "department": "国家移民管理局常备力量第一总队",
+          "announced_planned_seats": 4,
+          "attachment_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818394.xlsx",
+          "source_ids": [
+            "nia_2027_announcement"
+          ],
+          "verification_status": "cell_comparison_completed",
+          "verified_positions": 3,
+          "verified_planned_seats": 4,
+          "verification_report_record_id": "nia-2027-27"
+        },
+        {
+          "attachment_order": 28,
+          "department": "国家移民管理局常备力量第二总队",
+          "announced_planned_seats": 15,
+          "attachment_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818395.xlsx",
+          "source_ids": [
+            "nia_2027_announcement"
+          ],
+          "verification_status": "cell_comparison_completed",
+          "verified_positions": 10,
+          "verified_planned_seats": 15,
+          "verification_report_record_id": "nia-2027-28"
+        },
+        {
+          "attachment_order": 29,
+          "department": "国家移民管理局常备力量第三总队",
+          "announced_planned_seats": 25,
+          "attachment_url": "https://www.nia.gov.cn/n741440/n741542/c1818347/part/1818396.xlsx",
+          "source_ids": [
+            "nia_2027_announcement"
+          ],
+          "verification_status": "cell_comparison_completed",
+          "verified_positions": 6,
+          "verified_planned_seats": 25,
+          "verification_report_record_id": "nia-2027-29"
+        }
+      ],
+      "verification_report": "research/OFFICIAL_ROW_CROSSCHECK_20261017.json",
+      "cell_verification": {
+        "official_files": 29,
+        "positions": 570,
+        "planned_seats": 1089,
+        "compared_cells": 15390,
+        "content_difference_cells": 0
+      }
+    },
+    {
+      "exam_year": 2027,
+      "department": "外交部",
+      "official_planned_seats": 102,
+      "unit": "person",
+      "source_ids": [
+        "mfa_2027_plan_pdf"
+      ],
+      "attachment_url": "https://www.mfa.gov.cn/web/wjb_673085/gbclc_603848/tzgg_660725/202610/P020261013631971073038.pdf",
+      "attachment_status": "official_pdf_parsed_scope_only_not_cell_verified",
+      "pdf_page_count": 13,
+      "comparison_to_national_dataset": "department_position_count_and_planned_seat_total_match_only",
+      "field_notes": "可读招考人数、专业、学历、学位、政治面貌、基层经历、面试比例、工作/落户地点及备注；所读PDF表头没有职位代码列。",
+      "sample_rows": [
+        {
+          "position_name": "外交国政和英语",
+          "planned_seats": 15,
+          "education": "本科及以上",
+          "major_text": "外交学、国际关系、国际政治、英语专业",
+          "page_1_based": 1
+        },
+        {
+          "position_name": "法律",
+          "planned_seats": 15,
+          "education": "本科及以上",
+          "major_text": "法律相关专业",
+          "page_1_based": 2
+        },
+        {
+          "position_name": "经济金融",
+          "planned_seats": 8,
+          "education": "本科及以上",
+          "major_text": "经济学学科门类专业",
+          "page_1_based": 2
+        }
+      ],
+      "sample_rows_are_incomplete_requirements": true,
+      "verification_report": "research/OFFICIAL_ROW_CROSSCHECK_20261017.json",
+      "scope_verification": {
+        "positions": 23,
+        "planned_seats": 102,
+        "cell_comparison_completed": false,
+        "reason": "PDF未提供部门代码、职位代码列，未按复合键逐格合并。"
+      }
+    },
+    {
+      "exam_year": 2027,
+      "department": "商务部",
+      "official_announcement_planned_seats": 43,
+      "unit": "person",
+      "source_ids": [
+        "mofcom_2027_announcement",
+        "mofcom_2027_plan_pdf"
+      ],
+      "attachment_url": "https://www.mofcom.gov.cn/api-gateway/jpaas-web-server/front/document/download?fileUrl=YW5UzzlvCwcM%2FNHHX%2FtT6BcWYLharpwdJgwBRDMZZpywRoKrE9W17vnoP9faVfbtgBBnAxfTXRgemJEnyz2aGFX4TEzgYNZWJOVt6msLG2QNHOoY%2BRiZRuEpRfJG00vf%2Fv6LatbU7qrWZdDpO24IOiq9YeG0VUNvIHmYkREw%2FCU%3D&fileName=%E5%95%86%E5%8A%A1%E9%83%A82027%E5%B9%B4%E5%BA%A6%E8%80%83%E8%AF%95%E5%BD%95%E7%94%A8%E5%85%AC%E5%8A%A1%E5%91%98%E8%81%8C%E4%BD%8D%E8%A1%A8.pdf",
+      "attachment_status": "official_pdf_text_read_partially",
+      "pdf_page_count": 11,
+      "comparison_to_national_dataset": "not_performed_in_this_subtask",
+      "field_notes": "PDF可读岗位条件及详细备注；所读表头没有职位代码列。",
+      "sample_rows": [
+        {
+          "position_name": "一级主任科员及以下（英语一）",
+          "planned_seats": 12,
+          "education": "本科及以上",
+          "political_status": "中共党员",
+          "page_1_based": 1
+        },
+        {
+          "position_name": "一级主任科员及以下（英语二）",
+          "planned_seats": 10,
+          "education": "本科及以上",
+          "political_status": "中共党员",
+          "page_1_based": 2
+        },
+        {
+          "position_name": "一级主任科员及以下（英语三）",
+          "planned_seats": 9,
+          "education": "本科及以上",
+          "political_status": "中共党员或共青团员",
+          "page_1_based": 3
+        }
+      ],
+      "sample_rows_are_incomplete_requirements": true
+    },
+    {
+      "exam_year": 2027,
+      "department": "中共中央对外联络部",
+      "official_announcement_planned_seats": 8,
+      "unit": "person",
+      "source_ids": [
+        "idcpc_2027_announcement"
+      ],
+      "attachment_url": "https://www.idcpc.org.cn/yyfw/gbkl/gwykl/202610/W020261014614558699224.xls",
+      "attachment_status": "official_link_observed_binary_not_parsed_in_this_subtask",
+      "comparison_to_national_dataset": "not_performed_in_this_subtask"
+    },
+    {
+      "exam_year": 2027,
+      "department": "教育部",
+      "official_announcement_planned_seats": null,
+      "source_ids": [
+        "moe_2027_requirements"
+      ],
+      "attachment_url": "http://www.moe.gov.cn/s78/A04/tongzhi/202610/W020261014652681987960.xls",
+      "attachment_status": "official_workbook_parsed_and_cell_compared",
+      "comparison_to_national_dataset": "cell_comparison_completed_no_content_differences",
+      "major_rules_scope": "教育部本次招录职位；不得扩展为全国所有部门统一细则。",
+      "catalog_versions": {
+        "undergraduate": "2026版普通高等学校本科专业目录",
+        "postgraduate": "2022版研究生教育学科专业目录"
+      },
+      "special_condition_job_codes": [
+        "200110009001",
+        "200110015001"
+      ],
+      "verification_report": "research/OFFICIAL_ROW_CROSSCHECK_20261017.json",
+      "cell_verification": {
+        "official_files": 1,
+        "positions": 11,
+        "planned_seats": 12,
+        "compared_fields_per_position": [
+          25
+        ],
+        "compared_cells": 275,
+        "content_difference_cells": 0,
+        "header_note": "咨询电话映射为咨询电话1；只比较附件与全国表共同的25个字段。"
+      }
+    },
+    {
+      "exam_year": 2027,
+      "department": "国家税务总局上海市税务局",
+      "official_planned_seats": 400,
+      "unit": "person",
+      "source_ids": [
+        "shanghai_tax_2027_official_positions"
+      ],
+      "attachment_url": "https://shanghai.chinatax.gov.cn/xxgk/rsxx/202610/P020261015403121292563.xlsx",
+      "attachment_status": "official_workbook_parsed_and_cell_compared",
+      "comparison_to_national_dataset": "prior_cell_comparison_completed_no_content_differences",
+      "verification_report": "research/OFFICIAL_ROW_CROSSCHECK_20261017.json",
+      "cell_verification": {
+        "official_files": 1,
+        "positions": 224,
+        "planned_seats": 400,
+        "compared_fields_per_position": [
+          27
+        ],
+        "compared_cells": 6048,
+        "content_difference_cells": 0
+      }
+    }
+  ],
+  "limitations": [
+    "历年全国计划采用官方信息报道的万人口径；本文件没有声称已对2024—2026全国岗位表做精确求和。",
+    "2024—2026合格线逐年读取来源后相同；不得因此推定2027合格线。2027字段未填。",
+    "未填2027报名人数、确认人数、实际参考人数和最低面试分数。",
+    "2027部门部分示例行只用于核验，不构成完整报考条件；完整专业、备注等以原附件和全国逐岗表为准。",
+    "本文件未提供个人报考资格结论，也没有把专业目录代码出现视为完整资格匹配。",
+    "2026逐岗位最低面试分数来自全国首批名单公开镜像；35个审计署岗位以部门官方附件独立对照一致，不代表全国均已取得官方直链逐岗核验。",
+    "2027官方附件逐格核验仅覆盖国家移民管理机构、教育部和上海税务，共805个岗位；外交部23岗仅做范围核验。",
+    "逐岗位最低面试线与全国政策合格线分别存储；尚未收集2024、2025、2027逐岗位最低面试线。"
+  ],
+  "updated_at": "2026-10-17T03:02:18.189762+00:00",
+  "official_row_verification_summary_2027": {
+    "verification_report": "research/OFFICIAL_ROW_CROSSCHECK_20261017.json",
+    "positions": 805,
+    "planned_seats": 1501,
+    "compared_cells": 21713,
+    "content_difference_cells": 0,
+    "scope_note": "逐格比对覆盖以上机构子集，不代表全国19,426个岗位全部经官方附件逐格核验；外交部PDF范围校验与逐格核验分开统计。"
+  }
+}

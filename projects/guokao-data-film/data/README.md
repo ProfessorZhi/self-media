@@ -1,68 +1,51 @@
-# VIDEO-001 数据目录与使用边界
+# VIDEO-001 数据目录
 
-本目录提供可以直接由 Remotion/React/TypeScript 读取的 JSON 数据。区分**官方公告、第三方清洗统计、用户 HTML 原始分析快照、第三方历史趋势**；不得在视频文案中混称为「官方全部核验」。
+当前数据交接入口：[DATA_HANDOFF.md](../DATA_HANDOFF.md)。更新：2026-10-17。
 
-**2026-10-17复核：专业统计降为“代码词元提及”。已确认跨学历目录碰撞和TK截断，详见 [专业审计](major_code_namespace_audit_2027.json)。649不是已核验专业数。本轮没有重跑原始CSV或修复专业行记录。**
+## 当前主数据
 
-## 文件
-
-| 文件 | 数据量 | 来源层级 | 最适合的画面 |
-| --- | --- | --- | --- |
-| [2027_position_derived_aggregates.json](2027_position_derived_aggregates.json) | 19,426 职位、35,691 人、31 省份、649 种抽取代码词元、交叉统计 | 第三方清洗的官方职位表镜像，全表程序聚合，并与独立省份汇总交叉对照 | 地图、地区排名、系统类型、学历层级、专业代码点亮 |
-| [observatory_2027_legacy_snapshot.json](observatory_2027_legacy_snapshot.json) | 28 个系统及归集类别 | 用户上传 HTML 原始快照；内部加总校验通过，但 28 个类别尚未逐条复核 | 原观测台复刻、3 业务方向、排除税务的结构重组 |
-| [annual_recruitment_2024_2027_secondary.json](annual_recruitment_2024_2027_secondary.json) | 2024–2027 全国总量及精选 2026/2027 系统对比 | 公开第三方历史汇总；2027 总量与本地程序聚合一致 | 四年时间轴、同比变化、各系统涨跌 |
-| [official_2027_exam_timeline.json](official_2027_exam_timeline.json) | 2026 注册、报名、确认、笔试等时间节点及官方年龄规则 | 国家公务员局公告，新华网转载 | 报考时间线、科普短切片 |
-| [2027_registration_snapshot_20261016_secondary.json](2027_registration_snapshot_20261016_secondary.json) | 2026-10-16 19:15 第三方报名统计：报名 357,631、已通过 97,589 | 华图动态网页某一时刻快照，非官方、非实时 | 报名变化另一期，不能与全年招录计划混成一条曲线 |
-
-## 关键校验
-
-从第三方清洗文件全量读取 2027 年职位记录，独立执行 CSV 解析与聚合：
-
-- 19,426 行职位记录；各行列数与 35 列表头一致。
-- 招录人数求和 = 35,691。
-- 31 个省级地区的「职位数 / 招录人数」与华图教育 2026-10-16 19:15 的地区汇总逐项一致。
-- 机构类型四组汇总与全国总数一致：省级以下直属机构 18,193 / 34,091；参公事业单位 822 / 924；中央本级 312 / 538；中央党群 99 / 138（前者为职位数，后者为人数）。
-- 专业抽取词元：按第三方清洗字段 major_codes 中每个独立token聚合，共649种词元（含目录碰撞和截断）；仅 3,252 行职位至少含一个可提取的代码。
-- 每个专业代码下的各省份、系统标签与省份×系统标签交叉单元可以分别加总回父节点，但总和一致不能证明专业词元解析正确，不得把专业代码之间的人数直接相加（同一职位可能列举多个代码）。
-- GitHub 保存的是统计性衍生数据，**不是 19,426 条逐岗位完整信息**。
-
-## 关于「输入专业代码 → 各个图点亮」
-
-**目前可以做**：先读取语义审计，再选择major_codes中的一个词元（如030101K），联动展示「旧清洗字段提及这个词元的职位记录」在各省与分析标签中的数量，使用省份×系统标签交叉单元进行真实关系流向动画。
-
-**目前不能做**：把该统计标成「此专业全部可报职位」，也不能据此给某位考生报考资格或录取概率。清洗源中 16,174 行职位没有可抽取的显式代码，可能包含专业名称、类别限制、各学历分层专业表述、税务专用要求或不限制专业等情况。
-
-0809在本科2026为计算机类，在研究生2022为电子科学与技术；TK后缀还可能被截成T，因此不能把name_hints直接当标准专业名。
-
-后续完整的候选专业匹配必须读完整原始专业文本、按教育部 2026 本科目录 / 2022 研究生目录及税务 2027 专用参考目录进行分类，逐职位进一步处理学历、学位、政治面貌、经历、备注等条件。具体以报考机关审核为准。
-
-## 分类不能随意混用
-
-**原观测台 28 个系统** 与 **第三方清洗的 system tag** 并非同一分类体系。例如海关（含缉私）、公安、边检、金融等拆并口径不一定一致。两个文件的系统数或分类若不同，不能直接拼在一起生成声称「同一名额跨图保持身份」的动画。
-
-如果需要严格的跨维度动态迁移，优先选用 2027_position_derived_aggregates.json 中来自同一份 CSV 的 province × source_system_tag 交叉数据。28 类分析图适合另一个镜头或在建立核对映射后再统一。
-
-## 原始文件使用与版权
-
-数据经过第三方开源仓库 icy-bean/civil-exam 清洗，但其 LICENSE 明确写明 raw、clean、ref 数据**不属于其 MIT 软件许可范围**。本项目只保存研究用聚合统计、字段规则、来源说明，不直接镜像原始职位表和 16MB 清洗 CSV。
-
-- 官方入口：http://bm.scs.gov.cn/kl2027
-- 第三方清洗来源：https://github.com/icy-bean/civil-exam
-- 原始文件来源说明：https://github.com/icy-bean/civil-exam/blob/main/raw/national/2027/source.txt
-- 独立省份数值对照：https://ah.huatu.com/zw/bmrs/
-
-另外，视频内容侧的 [十道知识挑战数据卡](../content/knowledge_challenge_2027.json) 分别从本目录JSON及明确的官方目录/公告核对得到，便于 Opus 使用相同数值呈现猜测—揭晓镜头。这里的互动是**视频叙事**，不是已建成的可玩网页。
-
-更多使用边界见 [../research/DATA_SOURCES_AND_CHECKS.md](../research/DATA_SOURCES_AND_CHECKS.md) 与 [../research/MAJOR_CODE_MATCHING.md](../research/MAJOR_CODE_MATCHING.md)。
-
-## 本轮新增的直接制作与审计入口
-
-| 文件 | 内容 | 当前验证范围 |
+| 路径 | 内容 | 使用方式 |
 | --- | --- | --- |
-| [m1_hero_scene_2027.json](m1_hero_scene_2027.json) | 410个地区×标签单元，tax筛选三状态，点索引与显示口径 | 与源聚合逐单元比对，供12–15秒试镜；尚无渲染 |
-| [official_2027_immigration_plan.json](official_2027_immigration_plan.json) | 官方29机构、1,089名额、29份职位附件链接 | 公告数字逐项加总；附件未下载/解析 |
-| [major_code_namespace_audit_2027.json](major_code_namespace_audit_2027.json) | 目录碰撞、TK截断、030101K/030101/120402区别 | 已登记问题样本，不是649词元全量修复 |
+| `positions_2027/` | 19,426 岗、35,691 人、27 原字段；23 个分片 | `scripts/load_positions.mjs` |
+| `majors_2027/` | 全岗位专业原文、4,090 组要求、734 显式词元及候选目录引用 | `scripts/load_majors.mjs` |
+| `catalogs/major_bachelor_2026_official_parsed.json` | 883 本科专业、92 类、13 门类、明确迁码关系 | 原目录节点及父子关系 |
+| `catalogs/major_graduate_2022_official_parsed.json` | 117 一级学科、67 专业学位类别、14 门类 | 保留独立研究生命名空间 |
+| `catalogs/major_tax_2027_official_parsed.json` | 53 税务类别、849 成员关系 | 代码/学历未提供时为空值 |
+| `position_conditions_2027.json` | 原条件维度、联合分布、备注文字线索 | 同时提供职位数和计划人数 |
+| `histories_2024_2027.json` | 四年五个同字段维度的招录分布 | 逐年来源、口径及输入哈希 |
+| `official_historical_exam_data.json` | 官方 2024—2026 考试人数、政策合格线、计划及来源 | 保留约数、空值和指标定义 |
+| `interview_cutoffs_2026/` | 20,227 岗首批公布最低面试分；18 分片 | `scripts/load_interview_cutoffs.mjs` |
+| `official_2027_exam_timeline.json` | 2027 国考公告时间线 | 注意中国公告时区 |
+| `official_2027_immigration_plan.json` | 29 移民管理机构计划 | 已有全国原文与官方附件子集补强 |
 
-M1场景数据只投影已有聚合，不补造岗位ID。层级、学历和历史镜头缺少联合表时必须重建场景。脚本 `../scripts/verify_data.mjs` 检查全国总量、交叉边际、单词元子集、官方机构加总和10题答案；校验通过不等于已取得全国官方原件。
+专业数据只解释原文提及及目录候选，不判断个人报名资格。734 词元覆盖 3,357 岗、4,599 人；另 16,069 岗没有显式词元，其完整专业原文仍在。
 
-校验记录见 [RESEARCH_REVIEW_20261017.md](../research/RESEARCH_REVIEW_20261017.md)。本轮对大JSON仅增加语义审计元数据，原有统计值保持不变。
+当前 18,176 岗至少有一个目录候选引用、1,250 岗没有候选引用、5,835 岗有进一步核对原因。这些数字不能用作“完整解析成功率”；一个岗位可能只解析了部分表述。8 岗专业列全文明确不限，也仍须满足其他字段。
+
+## 数据来源等级
+
+全国岗位原字段由公开招录表镜像提取。与上游转换表全量 27 字段一致；招录机关官网附件逐格核验覆盖 805 岗、1,501 人、21,713 格，0 内容差异。不能把官方子集核验写成全国全岗位官网认证。
+
+2026 面试线取全国首批镜像的公布最低线字段，另核对审计署官网 35 岗。2024—2026 职位表分布为第三方清洗文件中保留的原字段统计。各来源与哈希见对应 manifest 和 [来源核验](../research/DATA_SOURCES_AND_CHECKS.md)。
+
+## 已保留的历史与次级文件
+
+| 文件 | 当前地位 |
+| --- | --- |
+| `2027_position_derived_aggregates.json` | 早期清洗字段快照。649 词元/3,252 岗及 name_hints 已被现行专业层替代；其他边际也优先从新原表计算 |
+| `major_code_namespace_audit_2027.json` | 记录旧解析器、TK 截断与学历目录混名问题的审计证据 |
+| `observatory_2027_legacy_snapshot.json` | 原 HTML 28 类汇总，不是新原表官方分类 |
+| `m1_hero_scene_2027.json` | 早期镜头数据试制；不是新的事实入口 |
+| `annual_recruitment_2024_2027_secondary.json` | 早期第三方年度对照，现用更详实的 histories 文件 |
+| `2027_registration_snapshot_20261016_secondary.json` | 固定时间的第三方报名快照，不能称实时、最终或全国逐岗全量 |
+| `../content/knowledge_challenge_2027.json` | 早期内容草稿，使用前按当前事实层重新取数 |
+| `../research/VALIDATION_20261017.json` | 旧数据包校验；不作为本轮逐岗位校验结果 |
+
+[DATASET_STATUS.json](DATASET_STATUS.json) 给出机器可读的选择规则；原文件保留便于追溯。原 HTML 不修改。
+
+## 校验
+
+从项目根目录运行 `node scripts/verify_position_data.mjs`；加 `--write-report` 保存当前结果。各读取器检查分片哈希和完整性；整包检查原文、主外键、代码集合、目录引用、分布加总及面试线覆盖。本轮实际运行结果在 [DATA_VALIDATION_20261017_V2.json](../research/DATA_VALIDATION_20261017_V2.json)。
+
+旧 `scripts/verify_data.mjs` 仅服务旧快照，保留其原来的验证范围。
+

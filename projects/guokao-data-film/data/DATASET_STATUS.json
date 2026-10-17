@@ -1,0 +1,95 @@
+{
+  "schema_version": "1.0.0",
+  "updated": "2026-10-17",
+  "primary_handoff": "../DATA_HANDOFF.md",
+  "current": [
+    {
+      "path": "positions_2027/manifest.json",
+      "role": "2027_raw_position_facts"
+    },
+    {
+      "path": "majors_2027/manifest.json",
+      "role": "all_position_major_texts_and_catalog_reference_candidates"
+    },
+    {
+      "path": "catalogs/",
+      "role": "official_catalogs_with_separate_namespaces"
+    },
+    {
+      "path": "position_conditions_2027.json",
+      "role": "source_condition_aggregates_and_labeled_text_signals"
+    },
+    {
+      "path": "histories_2024_2027.json",
+      "role": "source_table_historical_distributions"
+    },
+    {
+      "path": "official_historical_exam_data.json",
+      "role": "official_exam_metric_index"
+    },
+    {
+      "path": "interview_cutoffs_2026/manifest.json",
+      "role": "2026_initial_batch_published_job_cutoffs"
+    },
+    {
+      "path": "official_2027_exam_timeline.json",
+      "role": "official_announcement_timeline"
+    },
+    {
+      "path": "official_2027_immigration_plan.json",
+      "role": "official_agency_plan"
+    }
+  ],
+  "legacy": [
+    {
+      "path": "2027_position_derived_aggregates.json",
+      "status": "superseded_for_current_major_and_position_statistics",
+      "replacement": [
+        "positions_2027/manifest.json",
+        "majors_2027/manifest.json"
+      ],
+      "reason": "Incomplete upstream code field; legacy 649 tokens / 3252 positions and mixed name hints must not override full raw-text reconstruction."
+    },
+    {
+      "path": "major_code_namespace_audit_2027.json",
+      "status": "historical_issue_evidence"
+    },
+    {
+      "path": "observatory_2027_legacy_snapshot.json",
+      "status": "original_html_grouping_snapshot"
+    },
+    {
+      "path": "m1_hero_scene_2027.json",
+      "status": "earlier_creative_prototype"
+    },
+    {
+      "path": "annual_recruitment_2024_2027_secondary.json",
+      "status": "superseded_by_detailed_historical_distributions",
+      "replacement": [
+        "histories_2024_2027.json"
+      ]
+    },
+    {
+      "path": "2027_registration_snapshot_20261016_secondary.json",
+      "status": "fixed_time_secondary_snapshot_not_live"
+    },
+    {
+      "path": "../content/knowledge_challenge_2027.json",
+      "status": "earlier_content_draft_recalculate_before_use"
+    },
+    {
+      "path": "../research/VALIDATION_20261017.json",
+      "status": "prior_snapshot_validation",
+      "replacement": [
+        "../research/DATA_VALIDATION_20261017_V2.json"
+      ]
+    }
+  ],
+  "rules": [
+    "Do not combine original HTML 28 groups with the 19 third-party analysis tags without an explicit row-level mapping.",
+    "Source text and original conditions take priority over derived flags.",
+    "Major-code mentions and catalog references are not applicant eligibility.",
+    "A missing job cutoff is not zero; retain year, batch and score basis.",
+    "Sources and SHA-256 attest only the verification scopes actually recorded."
+  ]
+}

@@ -1,0 +1,343 @@
+{
+  "schema_version": "1.0.0",
+  "dataset_id": "national-civil-service-initial-interview-cutoffs-2026",
+  "title": "2026国考首批逐岗位最低面试分数",
+  "year": 2026,
+  "researched_at": "2026-10-16T19:28:18Z",
+  "sources": [
+    {
+      "id": "national_2026_initial_interview_mirror",
+      "filename": "2026_interview_initial_mirror.xlsx",
+      "url": "https://u3.huatu.com/uploads/soft/260115/f1_2.xlsx",
+      "publication_url": "https://m.huatu.com/2026/0115/2846698.html",
+      "published_at": "2026-01-15T11:31:00+08:00",
+      "publisher": "华图教育；页面标注来源国家公务员局",
+      "source_level": "third_party_mirror_of_official_published_list",
+      "batch_id": "initial_2026_01_15",
+      "batch_label": "2026年度国考首批面试名单（2026-01-15镜像发布）",
+      "bytes": 4825937,
+      "sha256": "6fa1684a40a97c0094b42a0ab43d53742a2e2293a9ff12f37bf3b09af194becd",
+      "role": "national_published_job_cutoffs"
+    },
+    {
+      "id": "audit_office_2026_interview_official",
+      "filename": "2026_interview_audit_official.xls",
+      "url": "https://www.audit.gov.cn/n8/n28/c10764531/part/10764506.xls",
+      "publication_url": "https://www.audit.gov.cn/n8/n28/c10764531/content.html",
+      "published_at": "2026-01-26T18:20:00+08:00",
+      "publisher": "审计署人事教育司",
+      "source_level": "recruiting_department_official_attachment",
+      "batch_id": "audit_department_interview_2026_01_26",
+      "batch_label": "审计署部门面试公告附件（2026-01-26）",
+      "batch_note": "独立保留部门公告日期；不预先假定与全国首批、调剂或递补名单同批。",
+      "bytes": 80384,
+      "sha256": "6cead9a2abb2449a7400dddc3de5e34eb0868d70ce0572b2540b49a211fe5882",
+      "role": "independent_official_subset_comparison"
+    },
+    {
+      "id": "upstream_csv_2026",
+      "filename": "2026_position_source.csv",
+      "url": "https://raw.githubusercontent.com/icy-bean/civil-exam/main/clean/national/2026_position.csv",
+      "publisher": "icy-bean/civil-exam",
+      "source_level": "third_party_cleaned_position_table",
+      "published_at": null,
+      "bytes": 17494070,
+      "sha256": "2186edb16faeca9aa7ab237c270c60e0c8092e25b20726f88ece7735481301b6",
+      "role": "composite_key_join_for_position_attributes",
+      "expected_positions": 20714,
+      "expected_planned_seats": 38119
+    }
+  ],
+  "batch": {
+    "id": "initial_2026_01_15",
+    "label": "2026年度国考首批面试名单（2026-01-15镜像发布）"
+  },
+  "record_grain": "一个招录年度、部门代码、职位代码、发布批次下的已公布最低面试分数。",
+  "position_key": [
+    "year",
+    "部门代码",
+    "职位代码"
+  ],
+  "observation_key": [
+    "year",
+    "部门代码",
+    "职位代码",
+    "batch_id"
+  ],
+  "source_status": "全国首批公开镜像；审计署官方附件仅核验其覆盖的岗位，不代表全国已逐条由官方直链核验。",
+  "score_definition": {
+    "source_field": "最低面试分数",
+    "official_audit_source_field_variants": [
+      "面试分数线",
+      "面试\n分数线"
+    ],
+    "unit": "分",
+    "unit_note": "成绩单位；保留源数值和数字格式，不推定所有岗位满分相同。",
+    "is_national_policy_passline": false,
+    "is_actual_interview_test_score": false,
+    "source_reported_cutoff_only": true,
+    "cross_job_score_basis": "不同职位可能含专业科目或外语测试权重；本数据未统一换算或补造计分公式。",
+    "missing_or_conflicting_value_policy": "唯一已公布值写入最低面试分数；缺失或冲突写null，published_cutoff_values保留全部已公布不同值。"
+  },
+  "columns": [
+    "id",
+    "year",
+    "batch_id",
+    "source_id",
+    "source_sheet",
+    "source_first_row",
+    "source_last_row",
+    "source_list_row_count",
+    "招录机关",
+    "部门代码",
+    "用人司局",
+    "招考职位",
+    "职位代码",
+    "最低面试分数",
+    "published_cutoff_values",
+    "source_cutoff_field",
+    "score_unit",
+    "source_number_formats",
+    "cutoff_unique_in_source",
+    "position_csv_match",
+    "position_csv_record",
+    "source_csv_province",
+    "source_csv_city",
+    "source_system_tag",
+    "source_csv_work_location",
+    "source_csv_education",
+    "source_csv_degree",
+    "source_csv_major_raw",
+    "source_csv_major_codes_raw",
+    "source_csv_exam_category",
+    "source_csv_org_nature",
+    "source_csv_org_level",
+    "source_csv_position_attribute",
+    "source_csv_interview_ratio",
+    "source_csv_planned_seats",
+    "official_audit_comparison"
+  ],
+  "column_notes": {
+    "id": "2026:六位部门代码:十二位职位代码；本分片均属同一首批批次。",
+    "source_first_row": "Excel行号从1开始，仅作岗位证据位置。",
+    "source_list_row_count": "该岗位在源名单中的行数；没有保存人员身份，也没有据此构造个人记录。",
+    "source_cutoff_field": "源成绩字段原名。",
+    "published_cutoff_values": "源表该岗位该批次出现的不同最低线值；未选择其中最小值。",
+    "source_number_formats": "源最低线单元格的Excel数字格式。",
+    "position_csv_record": "CSV记录行号从2开始计第一条数据，仅用于复现定位。",
+    "official_audit_comparison": "审计署官方附件覆盖之外为outside_official_audit_subset，不能理解为已核验。"
+  },
+  "position_attribute_source": {
+    "source_id": "upstream_csv_2026",
+    "join_key": [
+      "year",
+      "dept_code_normalized_to_6_digits",
+      "position_code_12_digits"
+    ],
+    "normalization": "部门代码2000仅补前导零为002000；职位代码单独不唯一。",
+    "retained_annotations": {
+      "source_csv_province": "work_province",
+      "source_csv_city": "work_city",
+      "source_system_tag": "treatment_system_class",
+      "source_csv_work_location": "work_location",
+      "source_csv_education": "education_raw",
+      "source_csv_degree": "degree_raw",
+      "source_csv_major_raw": "major_raw",
+      "source_csv_major_codes_raw": "major_codes",
+      "source_csv_exam_category": "exam_category",
+      "source_csv_org_nature": "org_nature",
+      "source_csv_org_level": "org_level",
+      "source_csv_position_attribute": "position_attr",
+      "source_csv_interview_ratio": "interview_ratio",
+      "source_csv_planned_seats": "headcount"
+    },
+    "excluded_annotations": [
+      "treatment_score",
+      "treatment_system_tier",
+      "treatment_region_tier",
+      "age_min",
+      "age_max",
+      "grassroots_years",
+      "min_service_years",
+      "extra_flags",
+      "remarks"
+    ],
+    "source_system_tag_note": "继承第三方CSV的treatment_system_class分析标签；不是官方招录系统分类。",
+    "source_province_note": "继承第三方CSV的work_province；原工作地点另存。"
+  },
+  "positions": 20227,
+  "source_list_rows": 113377,
+  "shard_limit_bytes": 840000,
+  "shards": [
+    {
+      "path": "cutoffs-001.json",
+      "bytes": 839682,
+      "sha256": "77c8c7dce2010bb07dcfa30d4a3a1e6a4bd841aac7eb2785035b778371852754",
+      "positions": 1186,
+      "first_id": "2026:002000:100110001001",
+      "last_id": "2026:118310:300110001002"
+    },
+    {
+      "path": "cutoffs-002.json",
+      "bytes": 839685,
+      "sha256": "4f5682d75d78c16d09c1052bd399f6ffe966706f19c04f89b11487a087c82a27",
+      "positions": 1133,
+      "first_id": "2026:118310:300110001003",
+      "last_id": "2026:126119:300110009006"
+    },
+    {
+      "path": "cutoffs-003.json",
+      "bytes": 839896,
+      "sha256": "b5b50a474e8d97a130c5cf912c435fd8a6715608da66a604b2995988c670dc7d",
+      "positions": 1152,
+      "first_id": "2026:126119:300110010001",
+      "last_id": "2026:129114:300110110002"
+    },
+    {
+      "path": "cutoffs-004.json",
+      "bytes": 839818,
+      "sha256": "b5a294c5403b41bace5838e1e6373a1cc3dcba427134717e13faf1f8909a425e",
+      "positions": 1233,
+      "first_id": "2026:129114:300110111001",
+      "last_id": "2026:129134:300110010005"
+    },
+    {
+      "path": "cutoffs-005.json",
+      "bytes": 839289,
+      "sha256": "fc2669053d96f21f91d409e53ab0fb8906f7ed96f1401b3dc8a86a1c806d2446",
+      "positions": 1188,
+      "first_id": "2026:129134:300110010006",
+      "last_id": "2026:130104:300110076001"
+    },
+    {
+      "path": "cutoffs-006.json",
+      "bytes": 839833,
+      "sha256": "62911603e8a9ea17c18e52482a047ed9555b76f5b33bcb73b85eb8f911335dec",
+      "positions": 1170,
+      "first_id": "2026:130104:300110077001",
+      "last_id": "2026:130108:300110120002"
+    },
+    {
+      "path": "cutoffs-007.json",
+      "bytes": 839641,
+      "sha256": "626f5e8c02a6d7c4ec1a154beba3f2f7506058b67f01a996b73f0846d62a36b5",
+      "positions": 1192,
+      "first_id": "2026:130108:300110120003",
+      "last_id": "2026:130111:300110350002"
+    },
+    {
+      "path": "cutoffs-008.json",
+      "bytes": 839455,
+      "sha256": "170bd79b01daa9e9c54f624dc96a75e436170c49b36a317cafb37b15b7877e8c",
+      "positions": 1256,
+      "first_id": "2026:130111:300110350003",
+      "last_id": "2026:130115:300110213001"
+    },
+    {
+      "path": "cutoffs-009.json",
+      "bytes": 839518,
+      "sha256": "a4a7278699e0488a3d7b59b618cc7c1bd043eba78e339159a8b958af6235fa80",
+      "positions": 1225,
+      "first_id": "2026:130115:300110213002",
+      "last_id": "2026:130118:300110262004"
+    },
+    {
+      "path": "cutoffs-010.json",
+      "bytes": 839798,
+      "sha256": "60d8232617daf5e68e3667c2e6e26e3cd1ebed0684c4c775aeab5f866add2f78",
+      "positions": 1211,
+      "first_id": "2026:130118:300110271001",
+      "last_id": "2026:130121:300110067002"
+    },
+    {
+      "path": "cutoffs-011.json",
+      "bytes": 839676,
+      "sha256": "bc2281fb1721f4bd60fc237b73c8f9f9ee73a865e6e19217d1e48468f9adcd8b",
+      "positions": 1210,
+      "first_id": "2026:130121:300110067003",
+      "last_id": "2026:130123:300110519007"
+    },
+    {
+      "path": "cutoffs-012.json",
+      "bytes": 839497,
+      "sha256": "c09dc26c0250816e2c8878447298e3a6378df128e56b4507b4c850fb41b6e8cc",
+      "positions": 1078,
+      "first_id": "2026:130123:300110526001",
+      "last_id": "2026:130128:300110008006"
+    },
+    {
+      "path": "cutoffs-013.json",
+      "bytes": 839908,
+      "sha256": "9d92ddd011587b0ca274580bbba04f7a39b7893a4e92b09f6ab97606bf9540e0",
+      "positions": 1214,
+      "first_id": "2026:130128:300110008007",
+      "last_id": "2026:130130:300110295001"
+    },
+    {
+      "path": "cutoffs-014.json",
+      "bytes": 839367,
+      "sha256": "284654b9d0b3bd54b9859ba9f3325a05f14b0722177772d031cc0e7e26c07de4",
+      "positions": 1156,
+      "first_id": "2026:130130:300110295002",
+      "last_id": "2026:130136:300110074001"
+    },
+    {
+      "path": "cutoffs-015.json",
+      "bytes": 839999,
+      "sha256": "5e8cc17c72d370e520ae5995b336be0e769647861697f60aa516f76a1532dd2d",
+      "positions": 1030,
+      "first_id": "2026:130136:300110077003",
+      "last_id": "2026:132115:300148470001"
+    },
+    {
+      "path": "cutoffs-016.json",
+      "bytes": 839614,
+      "sha256": "5ebe83ac515ca359e36cf19536b55885034544658fdca5e2bf0f28193f81f303",
+      "positions": 1083,
+      "first_id": "2026:132115:300148472001",
+      "last_id": "2026:137110:400110135005"
+    },
+    {
+      "path": "cutoffs-017.json",
+      "bytes": 839825,
+      "sha256": "4edffef85f1580cff3a34551120f7f722e6a6b4b9c7edcc05ea6b90b6f0c15e3",
+      "positions": 1078,
+      "first_id": "2026:137110:400110135006",
+      "last_id": "2026:158129:300130001012"
+    },
+    {
+      "path": "cutoffs-018.json",
+      "bytes": 324758,
+      "sha256": "292e2020ea56bd87c2598640610ef03ac443adb67f3166faad1917ed11da55d9",
+      "positions": 432,
+      "first_id": "2026:158129:300130001013",
+      "last_id": "2026:175130:400110130001"
+    }
+  ],
+  "supporting_files": [
+    {
+      "path": "official-audit-comparison.json",
+      "bytes": 30418,
+      "sha256": "5235d973641b3214c5095d27d19567dabc29065539f43fdce2c629baf86314d1"
+    },
+    {
+      "path": "statistics.json",
+      "bytes": 5072,
+      "sha256": "4a6acc2ac427c204e87de0f50a6e4febd5d9d7b3d16e40505bebef9c3edd0fad"
+    },
+    {
+      "path": "validation.json",
+      "bytes": 23758,
+      "sha256": "7ca8cf5ce7a6369956ae9b702637465ad0722d0a2322c08fd6172102aee852ee"
+    }
+  ],
+  "build": {
+    "script": "../../scripts/build_interview_cutoffs_2026.py",
+    "dependencies": [
+      "openpyxl",
+      "xlrd"
+    ],
+    "network_required_at_build_time": false,
+    "input_workbooks_are_temporary_and_not_repo_outputs": true
+  }
+}

@@ -1,64 +1,55 @@
 # VIDEO-001 · 国考宇宙 / Guokao Data Film
 
-**状态：已立项 / 2027 数据调研已入库 / 待进入制作**  
+**状态：数据基础已建 / 逐岗位详情、目录、条件、历年统计及 2026 逐岗位面试线已入库 / 待制作**  
 **类型：** 国考知识可视化 × Cinematic Data Film × AI Coding / Remotion  
 **所属仓库：** self-media（多个视频项目中的一个，不代表仓库整体主题）  
 **计划主片：** 80–90 秒，16:9，1920×1080 / 30fps；后续可扩展 4K、9:16 和系列化自动生成。
 
-## 一句话
+## 接手入口
 
-让一份国考招录数据从 35,691 个微小的名额点，演变为可探索、会响应、可连续变形的数据宇宙。既讲清招录结构，也展示顶级程序化动画与 AI Coding 的审美、技术水平。
+- [DATA_HANDOFF.md](DATA_HANDOFF.md)：数据层、加载器、岗位与专业关系、来源及适用范围。
+- [OPUS_HANDOFF.md](OPUS_HANDOFF.md)：交给 Claude Code / Opus 的制作任务书。
+- [data/README.md](data/README.md)：数据文件索引与复核说明。
 
-**不是**普通网页录屏、PPT 或所有图表同时闪烁的科技风模板；核心是「可追踪的数据元素 + 连续形态转场 + 统一状态驱动的跨图联动 + 电影语言」。
+## 当前数据
 
-## 本项目文件
+| 数据层 | 已有内容 | 入口 |
+| --- | --- | --- |
+| 2027 逐岗位明细 | **19,426 岗 / 35,691 个计划名额**；完整保留原表 27 字段、复合 ID、原始工作表与行号 | [岗位 manifest](data/positions_2027/manifest.json) |
+| 专业原文与引用 | **734 个显式代码词元**，覆盖 **3,357 岗 / 4,599 个名额**；保存专业原文、学历上下文及目录引用 | [专业 manifest](data/majors_2027/manifest.json) |
+| 本科专业目录 | 教育部 2026 年目录，**883 个本科专业** | [本科目录](data/catalogs/major_bachelor_2026_official_parsed.json) |
+| 研究生学科专业目录 | 2022 年目录，**117 个一级学科、67 个专业学位类别** | [研究生目录](data/catalogs/major_graduate_2022_official_parsed.json) |
+| 税务招录专业目录 | 2027 年税务招录使用的 **53 个专业类别**及其成员条目 | [税务目录](data/catalogs/major_tax_2027_official_parsed.json) |
+| 岗位条件 | 学历、学位、政治面貌、基层工作年限等原字段统计及已计算的联合分布 | [条件统计](data/position_conditions_2027.json) |
+| 历年招录 | 2024–2027 年全国、31 省、部门、学历、机构层级与考试类别统计 | [历史统计](data/histories_2024_2027.json) |
+| 2026 逐岗位面试线 | 首批 **20,227 岗**的最低面试分数；**35 岗**已与官方附件对照 | [面试线 manifest](data/interview_cutoffs_2026/manifest.json) |
+
+岗位详情以 `2027:六位部门代码:十二位职位代码` 标识，可通过 [load_positions.mjs](scripts/load_positions.mjs) 读取，并与 [load_majors.mjs](scripts/load_majors.mjs) 的专业原文关系联用。逐岗位来源定位和完整条件文本已经具备；代码词元出现、目录成员关系以及专业名称引用都保留各自语义，不直接输出个人报考资格结论。
+
+## 来源与核验范围
+
+全国 2027 主表来自**公开镜像 XLS**，其 19,426 岗、27 字段与上游转换表逐格一致。来源文件 URL、哈希、工作表和行号保存在岗位数据层中。
+
+与官方机构附件的逐格核验累计覆盖 **805 个岗位、1,501 个计划名额、21,713 个可比较单元格**，内容差异为 **0**。其中包括此前已核验的上海税务子集；教育部附件按实际提供的可比较字段计数。该核验覆盖特定机构子集，全国主表继续保留镜像来源标记。审计记录见 [OFFICIAL_ROW_CROSSCHECK_20261017.json](research/OFFICIAL_ROW_CROSSCHECK_20261017.json)。
+
+2024–2026 年历史招录统计使用固定哈希的第三方清洗表，并保留统计字段原文。2026 年首批面试线来自全国公开镜像，官方附件对照范围见其 [逐岗位比较记录](data/interview_cutoffs_2026/official-audit-comparison.json)；最低面试分数按发布口径保留，不当作实际面试成绩或全国统一合格线。
+
+## 项目定位与文档
+
+让一份国考招录数据从 35,691 个微小的名额点，演变为可探索、会响应、可连续变形的数据宇宙。既讲清招录结构，也展示程序化动画与 AI Coding 的审美、技术水平。
 
 | 文件 | 用途 |
 | --- | --- |
-| [CREATIVE_BRIEF.md](CREATIVE_BRIEF.md) | 叙事逻辑、镜头方向、审美策略、取材和数据边界 |
-| [PRODUCTION_PLAN.md](PRODUCTION_PLAN.md) | 里程碑、数据依赖、交付物与验收 |
-| [OPUS_HANDOFF.md](OPUS_HANDOFF.md) | 可直接交给 Claude Code / Opus 的高自由度制作任务书 |
-| [reference/2027国考_招录观测台_交互修复完整版.html](reference/2027国考_招录观测台_交互修复完整版.html) | 用户提供的完整离线参考 HTML，保留原样（勿直接改写） |
+| [CREATIVE_BRIEF.md](CREATIVE_BRIEF.md) | 创作意图、叙事与镜头方向 |
+| [PRODUCTION_PLAN.md](PRODUCTION_PLAN.md) | 里程碑、交付物与验收 |
+| [research/DATA_SOURCES_AND_CHECKS.md](research/DATA_SOURCES_AND_CHECKS.md) | 数据来源和核验记录 |
+| [research/MAJOR_CODE_MATCHING.md](research/MAJOR_CODE_MATCHING.md) | 专业目录与原文关系的处理规则 |
+| [content/knowledge_challenge_2027.json](content/knowledge_challenge_2027.json) | 已归档的程序化知识挑战内容 |
+| [reference/2027国考_招录观测台_交互修复完整版.html](reference/2027国考_招录观测台_交互修复完整版.html) | 用户提供的完整离线参考 HTML，原样保留 |
 
-## 参考 HTML 里有什么
+## 原始 HTML 的位置
 
-- 全国总量：**35,691 人 / 19,426 个职位 / 28 个系统及归集类别**。
-- 三级旭日图、矩形树图、逐名额点阵（1 点 = 1 名额）、环形方向占比。
-- 系统规模排名、帕累托集中度、职位规模 × 每岗招录散点图。
-- 全国/业务方向筛选、隐藏税务、人数/职位数切换、悬停预览与点击锁定、跨图高亮、最多四系统对比、SVG/PNG/CSV/JSON 导出。
-- 来源为此前会话汇总数据快照：**未独立核验官方原始 2027 职位表**，不可称作官方最终数据。
+参考 HTML 是此前会话形成的系统级汇总快照，包含 28 个系统及归集类别，以及旭日图、树图、点阵、排名、散点和筛选交互。HTML 本身没有逐岗位、专业、地区或学历明细；本次新增的完整岗位层独立存放于 `data/`。参考文件继续保持原样，其旧分类与第三方系统分析标签分别保留来源。
 
-原始 HTML 本身只含 28 类系统级汇总，不含专业代码、具体岗位、省份、学历条件数据。**截至2026-10-13，2027年公告与职位查询资料已公开（新华网当日刊载公告）**；本项目现已从第三方规范化岗位文件程序化聚合 31 省、机构类型、学历、考试类别及 649种第三方抽取的代码词元，并存入 data/。**本轮确认代码存在跨学历目录碰撞和TK截断；649词元不等于649个已核验专业，也不等于可报岗位全集**；完整资格计算需要另建原始岗位审核逻辑。
+**数据基础已建；尚未建立 Remotion 工程，也未渲染或交付成片。**
 
-## 创作路线
-
-1. **主片优先：** 只使用已有且可以追溯的聚合数据，完成具有电影完成度的 80–90 秒视频。
-2. **专业筛选扩展：** 有完整岗位明细后，再做「专业代码输入 → 关联系统/地区/具体岗位逐层点亮」的真实联动，不虚构数据。
-3. **系列化：** 把数据模型、图表动画、镜头组件和布局抽象为可复用 Compositions，为未来多个国考选题和其他 self-media 项目提供能力，但不强制共享。
-
-## 原则
-
-- **数据优先：** 动画的面积、数字、类别映射都来自可审计的源数据；注释口径与适用范围。
-- **审美优先：** 克制、信息层级、留白、准确排版、完整节奏，拒绝堆砌 neon/HUD 。
-- **创意自由：** 分镜只是出发点，Opus 可以提出并实现更好的电影表达。
-- **可验证：** 项目要能预览、逐帧渲染、导出；验证结果与成功状态分开记录。
-
-## 2026-10-17 数据研究补充
-
-- [data/README.md](data/README.md)：已入库 JSON、校验过程与渲染口径。
-- [data/2027_position_derived_aggregates.json](data/2027_position_derived_aggregates.json)：19,426 岗、35,691 人、31 地区、649种第三方抽取代码词元，含代码×地区×系统标签真实交叉统计。
-- [research/DATA_SOURCES_AND_CHECKS.md](research/DATA_SOURCES_AND_CHECKS.md)：官方公告、职位表镜像来源与核验完成/未完成事项。
-- [research/MAJOR_CODE_MATCHING.md](research/MAJOR_CODE_MATCHING.md)：专业代码联动可做的镜头和不能冒充的报考资格。
-- [research/CONTENT_AND_VIDEO_PITCHES.md](research/CONTENT_AND_VIDEO_PITCHES.md)：技术英雄镜头、全片故事、互动竞猜与系列短片选题。
-- [content/knowledge_challenge_2027.json](content/knowledge_challenge_2027.json)：10道有来源、选项、正确答案、画面揭晓机制的程序化「知识挑战」内容卡。
-
-**已真实提交研究成果与数据，但尚未建立 Remotion 工程、启动 Agent、渲染或交付任何成片。**
-
-## 本轮复核结果与下一镜头
-
-- [研究复核](research/RESEARCH_REVIEW_20261017.md)：来源分级、专业解析问题、19标签与28类差异、验收记录。
-- [官方移民管理机构数据](data/official_2027_immigration_plan.json)：29机构合计1,089人，含29个官方附件入口。
-- [M1同源镜头数据](data/m1_hero_scene_2027.json)：用410个真实地区×标签单元拍35,691→24,013→11,678。
-- [专业词元审计](data/major_code_namespace_audit_2027.json)：明确已知错误和暂不允许的业务解释。
-
-**建议制作顺序：** 先税务筛选试镜，再确定主片；专业语义修复与专业高潮镜头分开验收。当前数据和题库已准备，Remotion与设备执行仍未启动。
