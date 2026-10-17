@@ -37,7 +37,12 @@
       "diagnostic": 20,
       "in_review_universe": 50,
       "outside_review_universe": 4,
-      "gate_code_name_mismatch": 5
+      "gate_code_name_mismatch": 5,
+      "semantic_positions": 44,
+      "semantic_entries": 67,
+      "diagnostic_positions": 11,
+      "diagnostic_entries": 20,
+      "semantic_and_diagnostic_overlap": 1
     },
     "remarks": {
       "codes_total": 1832,
@@ -104,6 +109,7 @@
     "current_stat_lines_checked": 21,
     "current_stat_errors": 0,
     "guidance_errors": 0,
+    "audit_claim_errors": 0,
     "broken_links": 0,
     "status_path_errors": 0
   },

@@ -47,9 +47,14 @@ def derive(project):
     conflicts = summary['conflicts']
 
     scope = collections.Counter()
+    conflict_positions_by_class = collections.defaultdict(set)
+    conflict_entries_by_class = collections.Counter()
     for record in records:
         for code in record.get('remarks_codes') or []:
             scope[code.get('scope_source')] += 1
+        for conflict in record.get('conflicts') or []:
+            conflict_positions_by_class[conflict['conflict_class']].add(record['id'])
+            conflict_entries_by_class[conflict['conflict_class']] += 1
     code_entries = json.loads((root / 'code-evidence-01.json').read_text())
     strata_hires = collections.Counter()
     for shard in manifest['residual_strata']['shards']:
@@ -101,6 +106,18 @@ def derive(project):
             'in_review_universe': conflicts['positions_in_review_universe'],
             'outside_review_universe': conflicts['positions_outside_review_universe'],
             'gate_code_name_mismatch': conflicts['gate_code_name_mismatch_positions'],
+            # distinct positions touched by each family; these are NOT the
+            # library-wide structured count and must never be substituted for it
+            'semantic_positions': len(conflict_positions_by_class.get('content_conflict', set())),
+            'semantic_entries': conflict_entries_by_class.get('content_conflict', 0),
+            'diagnostic_positions': len(conflict_positions_by_class.get('cross_level_same_code', set())
+                                        | conflict_positions_by_class.get('category_suffix_omitted', set())),
+            'diagnostic_entries': (conflict_entries_by_class.get('cross_level_same_code', 0)
+                                   + conflict_entries_by_class.get('category_suffix_omitted', 0)),
+            'semantic_and_diagnostic_overlap': len(
+                conflict_positions_by_class.get('content_conflict', set())
+                & (conflict_positions_by_class.get('cross_level_same_code', set())
+                   | conflict_positions_by_class.get('category_suffix_omitted', set()))),
         },
         'remarks': {
             'codes_total': sum(scope.values()),

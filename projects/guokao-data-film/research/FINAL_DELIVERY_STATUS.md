@@ -25,7 +25,9 @@
 
 - 去重后代码 912 种，其中 240 种同时出现在“专业”和“备注”两列。
 - 备注代码 1,832 处：显式学历标签 712、回退岗位学历 1,105、混合标签回退并标记 15。
-- 结构化冲突 **54 岗 / 87 条**：语义冲突 67 条、多学历诊断 20 条（跨层 12、省略“类” 8）。
+- 结构化冲突 **54 岗 / 87 条**。
+  - 语义冲突（content_conflict）：**44 岗 / 67 条**——该类自己触达的岗位数，不等于全库结构化冲突 54 岗，也不等于复核桶的 55。
+  - 多学历诊断（跨层 12 条 + 省略“类” 8 条）：**11 岗 / 20 条**，与语义类有 1 岗重叠。
 - 另有 5 岗门类码与名称错配，只记 `gate_code_name_mismatch`，不进 `conflicts` 数组。
 
 ## 硬问题分组
@@ -36,11 +38,11 @@
 | agency_category_unverified | 13 | needs_recruiting_agency_explanation | 否 |
 | national_vocabulary_or_open_scope | 181 | human_interpretation_only | 否 |
 | provisional_gate_rule | 19 | needs_recruiting_agency_explanation | 否 |
-| semantic_conflict | 54 | needs_recruiting_agency_explanation | 否 |
-| multi_namespace_diagnostic | 20 | human_interpretation_only | 否 |
+| semantic_conflict | 44 | needs_recruiting_agency_explanation | 否 |
+| multi_namespace_diagnostic | 11 | human_interpretation_only | 否 |
 | mixed_degree_label | 15 | human_interpretation_only | 否 |
 
-**内部可自主修复项：0。**
+**在本次已审计范围内，未发现内部可自主修复项（0 项）；这不是“不存在进一步问题”的证明。**
 
 ## 外部依赖（已按可审计口径收口）
 

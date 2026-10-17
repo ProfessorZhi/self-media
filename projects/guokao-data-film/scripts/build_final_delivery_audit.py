@@ -90,17 +90,21 @@ def main():
         },
         {
             'group': 'semantic_conflict',
-            'positions': conflicts['positions'],
-            'entries': conflicts['semantic'],
+            # distinct positions touched by content_conflict, NOT the library-wide
+            # structured conflict count (54) and NOT the review bucket (55)
+            'positions': conflicts['semantic_positions'],
+            'entries': conflicts['semantic_entries'],
             'classification': 'needs_recruiting_agency_explanation',
             'why': ('A printed name belongs to a different code. The source text itself is inconsistent; '
-                    'the data records the span and both names rather than picking a winner.'),
+                    'the data records the span and both names rather than picking a winner. '
+                    'Position and entry counts are distinct: one position can carry several entries.'),
             'autonomously_fixable': False,
             'evidence': 'node scripts/query_major_evidence.mjs --review-status --bucket candidate_with_conflict',
         },
         {
             'group': 'multi_namespace_diagnostic',
-            'entries': conflicts['diagnostic'],
+            'positions': conflicts['diagnostic_positions'],
+            'entries': conflicts['diagnostic_entries'],
             'classification': 'human_interpretation_only',
             'why': ('Same code naming something else at another level, or a dropped 类 suffix. This is a '
                     'reading of the text, not a source error.'),
@@ -161,6 +165,8 @@ def main():
         ],
         'hard_problems': hard_problems,
         'autonomously_fixable_remaining': [item for item in hard_problems if item['autonomously_fixable']],
+        'autonomously_fixable_scope': ('在本次已审计范围内（19,426 岗的逐岗证据、残留分层、冲突语族、备注作用域），'
+                                       '未发现可自主修复项；这不是“全世界不存在进一步问题”的证明。'),
         'external_blockers': [
             'No applicable 2027 membership list found for the PBOC 经济金融类 or CMA 气象类 categories.',
             'Some 备注 sentences mix degree levels without a clean label and need a human reading.',
@@ -168,7 +174,7 @@ def main():
         ],
         'not_delivered': [
             'Any applicant-eligibility verdict.',
-            'A national professional-classification table (none is published).',
+            '一张 2027 全国统一专业成员表：截至 2026-10-18 的已查公开来源未找到，不能据此断言不存在。',
             '2027 interview cutoffs (they do not exist before the written exam).',
         ],
         'review_caveat': ('5,835 is the legacy review denominator, not an uncovered count. '
@@ -208,7 +214,9 @@ def main():
 
 - 去重后代码 {facts['codes']['distinct']} 种，其中 {facts['codes']['both_columns']} 种同时出现在“专业”和“备注”两列。
 - 备注代码 {facts['remarks']['codes_total']:,} 处：显式学历标签 {facts['remarks']['explicit_label']}、回退岗位学历 {facts['remarks']['fallback']:,}、混合标签回退并标记 {facts['remarks']['ambiguous']}。
-- 结构化冲突 **{conflicts['positions']} 岗 / {conflicts['entries']} 条**：语义冲突 {conflicts['semantic']} 条、多学历诊断 {conflicts['diagnostic']} 条（跨层 {conflicts['cross_level_same_code']}、省略“类” {conflicts['category_suffix_omitted']}）。
+- 结构化冲突 **{conflicts['positions']} 岗 / {conflicts['entries']} 条**。
+  - 语义冲突（content_conflict）：**{conflicts['semantic_positions']} 岗 / {conflicts['semantic_entries']} 条**——该类自己触达的岗位数，不等于全库结构化冲突 {conflicts['positions']} 岗，也不等于复核桶的 55。
+  - 多学历诊断（跨层 {conflicts['cross_level_same_code']} 条 + 省略“类” {conflicts['category_suffix_omitted']} 条）：**{conflicts['diagnostic_positions']} 岗 / {conflicts['diagnostic_entries']} 条**，与语义类有 {conflicts['semantic_and_diagnostic_overlap']} 岗重叠。
 - 另有 {conflicts['gate_code_name_mismatch']} 岗门类码与名称错配，只记 `gate_code_name_mismatch`，不进 `conflicts` 数组。
 
 ## 硬问题分组
@@ -219,7 +227,7 @@ def main():
         f"| {item['group']} | {item.get('positions', item.get('entries'))} | {item['classification']} | 否 |"
         for item in hard_problems) + f"""
 
-**内部可自主修复项：{len(report['autonomously_fixable_remaining'])}。**
+**在本次已审计范围内，未发现内部可自主修复项（{len(report['autonomously_fixable_remaining'])} 项）；这不是“不存在进一步问题”的证明。**
 
 ## 外部依赖（已按可审计口径收口）
 

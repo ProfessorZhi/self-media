@@ -105,6 +105,70 @@ def check_audit_guidance(project, facts):
     return errors
 
 
+def check_audit_claims(project, facts):
+    """The audits must state derived figures and must not overclaim."""
+    errors = []
+    conflicts = facts['conflicts']
+
+    delivery_path = project / 'research' / 'FINAL_DELIVERY_AUDIT_20261018.json'
+    if not delivery_path.exists():
+        errors.append({'file': delivery_path.name, 'kind': 'missing_file'})
+    else:
+        delivery = json.loads(delivery_path.read_text())
+        by_group = {item['group']: item for item in delivery.get('hard_problems', [])}
+        semantic = by_group.get('semantic_conflict', {})
+        if semantic.get('positions') != conflicts['semantic_positions']:
+            errors.append({'file': delivery_path.name, 'kind': 'semantic_positions_mismatch',
+                           'found': semantic.get('positions'),
+                           'expected': conflicts['semantic_positions']})
+        if semantic.get('entries') != conflicts['semantic_entries']:
+            errors.append({'file': delivery_path.name, 'kind': 'semantic_entries_mismatch',
+                           'found': semantic.get('entries'),
+                           'expected': conflicts['semantic_entries']})
+        diagnostic = by_group.get('multi_namespace_diagnostic', {})
+        if diagnostic.get('positions') != conflicts['diagnostic_positions']:
+            errors.append({'file': delivery_path.name, 'kind': 'diagnostic_positions_mismatch',
+                           'found': diagnostic.get('positions'),
+                           'expected': conflicts['diagnostic_positions']})
+        scope_text = delivery.get('autonomously_fixable_scope', '')
+        if '本次已审计范围' not in scope_text:
+            errors.append({'file': delivery_path.name, 'kind': 'overclaim_scope',
+                           'detail': 'autonomously_fixable_scope must limit the claim'})
+        joined = json.dumps(delivery.get('not_delivered', []), ensure_ascii=False)
+        if 'none is published' in joined or '不存在' in joined and '未找到' not in joined:
+            errors.append({'file': delivery_path.name, 'kind': 'absolute_claim',
+                           'detail': 'must say not-found, not does-not-exist'})
+        if '未找到' not in joined:
+            errors.append({'file': delivery_path.name, 'kind': 'missing_not_found_wording'})
+
+    scope_path = project / 'research' / 'FINAL_EVIDENCE_SCOPE_AUDIT_20261018.json'
+    if not scope_path.exists():
+        errors.append({'file': scope_path.name, 'kind': 'missing_file'})
+    else:
+        audit = json.loads(scope_path.read_text())
+        examined = audit['residual_audit']['scope_examined']
+        expected_examined = facts['residual_strata']['national_vocabulary'] + facts['residual_strata']['agency_unverified']
+        if examined != expected_examined:
+            errors.append({'file': scope_path.name, 'kind': 'scope_examined_mismatch',
+                           'found': examined, 'expected': expected_examined})
+        current_text = ' '.join(audit.get('updated_this_round', [])
+                                + audit.get('not_updated_this_round', []))
+        required = [
+            f"{facts['coverage']['provisional']['positions']} 岗",
+            f"{facts['coverage']['no_candidate']['positions']:,} 个无候选",
+            f"{facts['conflicts']['diagnostic']} 条",
+        ]
+        for token in required:
+            if token not in current_text:
+                errors.append({'file': scope_path.name, 'kind': 'round_section_missing_figure',
+                               'token': token})
+        for stale in ('25 岗', '34 条', '195 个残留', '182 national', '728 个无候选'):
+            if stale in current_text:
+                errors.append({'file': scope_path.name, 'kind': 'round_section_stale',
+                               'token': stale})
+    return errors
+
+
 def check_links(project):
     errors = []
     for rel in LINK_DOCS:
@@ -164,9 +228,11 @@ def main():
 
     doc_errors, checked = check_docs(project, facts)
     guidance_errors = check_audit_guidance(project, facts)
+    claims_errors = check_audit_claims(project, facts)
     link_errors = check_links(project)
     status_errors = check_status_paths(project)
-    errors = snapshot_errors + doc_errors + guidance_errors + link_errors + status_errors
+    errors = (snapshot_errors + doc_errors + guidance_errors + claims_errors
+              + link_errors + status_errors)
 
     report = {
         'schema_version': '1.0.0',
@@ -179,6 +245,7 @@ def main():
             'current_stat_lines_checked': checked,
             'current_stat_errors': len(doc_errors),
             'guidance_errors': len(guidance_errors),
+            'audit_claim_errors': len(claims_errors),
             'broken_links': len(link_errors),
             'status_path_errors': len(status_errors),
         },

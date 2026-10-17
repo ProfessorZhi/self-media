@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
   "report_id": "final-delivery-audit-20261018",
-  "generated_at_utc": "2026-10-17T20:39:58.412884+00:00",
+  "generated_at_utc": "2026-10-17T20:42:57.682873+00:00",
   "local_date": "2026-10-18",
-  "generated_from_commit": "37278ad7d516b5f4a370f83700637114bd4f682e",
+  "generated_from_commit": "06fab79c0b816ba7e0c3341dcad6f2c94177c315",
   "statement": "The fact and evidence layers are deliverable. Applicant eligibility is not determined and cannot be, from public sources alone.",
   "headline": {
     "positions": 19426,
@@ -89,15 +89,16 @@
     },
     {
       "group": "semantic_conflict",
-      "positions": 54,
+      "positions": 44,
       "entries": 67,
       "classification": "needs_recruiting_agency_explanation",
-      "why": "A printed name belongs to a different code. The source text itself is inconsistent; the data records the span and both names rather than picking a winner.",
+      "why": "A printed name belongs to a different code. The source text itself is inconsistent; the data records the span and both names rather than picking a winner. Position and entry counts are distinct: one position can carry several entries.",
       "autonomously_fixable": false,
       "evidence": "node scripts/query_major_evidence.mjs --review-status --bucket candidate_with_conflict"
     },
     {
       "group": "multi_namespace_diagnostic",
+      "positions": 11,
       "entries": 20,
       "classification": "human_interpretation_only",
       "why": "Same code naming something else at another level, or a dropped 类 suffix. This is a reading of the text, not a source error.",
@@ -114,6 +115,7 @@
     }
   ],
   "autonomously_fixable_remaining": [],
+  "autonomously_fixable_scope": "在本次已审计范围内（19,426 岗的逐岗证据、残留分层、冲突语族、备注作用域），未发现可自主修复项；这不是“全世界不存在进一步问题”的证明。",
   "external_blockers": [
     "No applicable 2027 membership list found for the PBOC 经济金融类 or CMA 气象类 categories.",
     "Some 备注 sentences mix degree levels without a clean label and need a human reading.",
@@ -121,7 +123,7 @@
   ],
   "not_delivered": [
     "Any applicant-eligibility verdict.",
-    "A national professional-classification table (none is published).",
+    "一张 2027 全国统一专业成员表：截至 2026-10-18 的已查公开来源未找到，不能据此断言不存在。",
     "2027 interview cutoffs (they do not exist before the written exam)."
   ],
   "review_caveat": "5,835 is the legacy review denominator, not an uncovered count. 981 of them no longer reproduce a warning under the current catalogs; that is a statement about the tool, not a cleared position. Buckets are mutually exclusive but a position can carry several risk markers."

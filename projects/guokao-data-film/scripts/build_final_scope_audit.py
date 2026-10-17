@@ -143,6 +143,9 @@ def main():
     manifest, records, strata, provisional, positions, index, requirements = load(project)
     names, gates = catalog_scope(project)
     summary = manifest['summary']
+    official_path = project / 'research' / 'OFFICIAL_NATIONAL_TABLE_VERIFICATION_20261018.json'
+    official_cells = (json.loads(official_path.read_text())['scope']['compared_cells']
+                      if official_path.exists() else 0)
 
     # residual groups, excluding the 533 verified-no-list agency bucket
     groups = collections.OrderedDict()
@@ -289,9 +292,13 @@ def main():
         },
 
         'residual_audit': {
-            'scope_examined': 195,
-            'scope_note': ('182 national vocabulary/open scope + 13 agency unverified. The 533 agency '
-                           'positions with no public list found are reported separately and not re-litigated here.'),
+            'scope_examined': len([e for e in strata if e['bucket'] != 'agency_category_no_public_list']),
+            'scope_note': (
+                f"{sum(1 for e in strata if e['bucket'] == 'national_vocabulary_or_open_scope')} national "
+                f"vocabulary/open scope + "
+                f"{sum(1 for e in strata if e['bucket'] == 'agency_category_unverified')} agency unverified. "
+                f"The {sum(1 for e in strata if e['bucket'] == 'agency_category_no_public_list')} agency "
+                'positions with no public list found are reported separately and not re-litigated here.'),
             'groups': len(group_rows),
             'verdict_totals': dict(verdict_totals),
             'exact_in_scope_gaps': len(gap_groups),
@@ -343,15 +350,22 @@ def main():
         ],
 
         'updated_this_round': [
-            '新增三层覆盖口径：conservative / provisional_gate_rule / no_candidate，并在校验器中断言三者之和为 19,426',
-            'gate_scope_rule 命中全部标为 agency_scope_unverified，且不计入保守分子',
-            '新增复核桶 candidate_provisional_agency_scope_rule（25 岗）',
-            '冲突拆分为 semantic_conflict（67 条）与 multi_namespace_diagnostic（34 条）',
-            '对 195 个残留岗位逐组判定，确认真实解析缺口为 0',
+            (f"三层覆盖口径：conservative {summary['coverage_conservative']['positions_with_catalog_candidate']:,}"
+             f"、provisional {summary['coverage_provisional_only']['positions']}、"
+             f"no_candidate {summary['residual_positions']:,}，校验器断言三者之和为 "
+             f"{summary['positions']:,}"),
+            ('gate_scope_rule 命中全部标为 agency_scope_unverified，且不计入保守分子；'
+             f"命中 {sum(1 for r in records.values() for h in (r.get('major_gate_scope_hits') or []) if h.get('resolution_method') == 'gate_scope_rule')} 处"),
+            (f"复核桶 candidate_provisional_agency_scope_rule（"
+             f"{summary['coverage_provisional_only']['positions']} 岗）"),
+            (f"冲突拆分语族：semantic_conflict {summary['conflicts']['by_family']['semantic_conflict']} 条 / "
+             f"multi_namespace_diagnostic {summary['conflicts']['by_family']['multi_namespace_diagnostic']} 条"),
+            (f"对 {len([e for e in strata if e['bucket'] != 'agency_category_no_public_list'])} 个残留岗位逐组判定，"
+             f"真实解析缺口 {len(gap_groups)}"),
         ],
         'not_updated_this_round': [
-            '19,426 岗的 27 个原字段与 524,502 单元格官方核验结果',
-            '728 个无候选岗位的文本与分类',
+            (f"{summary['positions']:,} 岗的 27 个原字段与 {official_cells:,} 单元格官方核验结果"),
+            (f"{summary['residual_positions']:,} 个无候选岗位的文本与分类"),
             '历史报告 RESIDUAL_20271018_V2.json、OFFICIAL_NATIONAL_TABLE_VERIFICATION_20261018.json 未被改写',
         ],
 
