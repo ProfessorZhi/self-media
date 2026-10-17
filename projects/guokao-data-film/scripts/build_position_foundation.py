@@ -120,7 +120,7 @@ RECORDED_VERIFICATION = {
         'workbook_location_differences': 0,
         'verification_script': '../../scripts/verify_official_national_table.py',
         'report_path': '../../research/OFFICIAL_NATIONAL_TABLE_VERIFICATION_20261018.json',
-        'report_sha256': 'e7785d0018a8bbeab4bd1647a8dd02bd1306b5b6c65a6c6c3e86bbfb75d8c18e',
+        'report_sha256': '0d3cfd490bfe495de349f2ea85930913f2b384918c2cfbad144503bf3f9e88e6',
         'verified_at': '2026-10-18',
         'scope_note': ('全表对官方招考简章工作簿逐格核验：19,426 岗、35,691 名额、27 原字段、'
                        '524,502 单元格，内容差异 0，工作表与行号差异 0。'),

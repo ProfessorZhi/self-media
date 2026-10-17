@@ -16,7 +16,7 @@
     {
       "path": "major_evidence_2027/manifest.json",
       "role": "per_position_major_evidence_across_major_and_remarks_columns",
-      "coverage_note": "专业 + 备注, five catalogs, exclusion lists, conflict classes, reason taxonomy"
+      "coverage_note": "专业 + 备注, five catalogs, exclusion lists, conflict classes, reason taxonomy, two documented gate normalizations; coverage 18,680 / residual 746"
     },
     {
       "path": "catalogs/",
@@ -104,6 +104,16 @@
       "path": "../research/DATA_VALIDATION_20261017_V2.json",
       "role": "repository-wide validation report",
       "result": "PASS: 192,487 explicit assertions"
+    },
+    {
+      "path": "../research/RESIDUAL_20271018_V2.json",
+      "role": "v2 residual report with auditable v1 delta",
+      "result": "PASS: v1 recomputed 18,655, v2 18,680, delta 25 positions"
+    },
+    {
+      "path": "../research/AGENCY_MAJOR_CATEGORY_EVIDENCE_20261018.json",
+      "role": "agency major-category evidence casebook (PBOC, CMA)",
+      "result": "no applicable 2027 membership list found; recorded as unresolved"
     }
   ],
   "legacy": [
@@ -161,6 +171,9 @@
     "Z, J and S codes are institution-local; the 2026 roster publishes names only, so no code-to-name link may be inferred.",
     "A missing job cutoff is not zero; retain year, batch and score basis.",
     "Sources and SHA-256 attest only the verification scopes actually recorded.",
-    "An official national workbook match does not cover later amendments or agency-specific major catalogs that were never published."
+    "An official national workbook match does not cover later amendments or agency-specific major catalogs that were never published.",
+    "A requirement written as X门类 may resolve to the X discipline-gate node, citing the MOE 2027 statement; no other suffix normalization is allowed.",
+    "A source-declared two-digit gate code in parentheses may resolve to that gate node.",
+    "Agency category phrases with no published membership list stay unresolved; a 2026 institution-recruitment catalog is not applicable to 2027 civil service positions."
   ]
 }

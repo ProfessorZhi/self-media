@@ -71,6 +71,18 @@
       "contents": [],
       "bytes": 281771,
       "sha256": "98c0f760f98d3983435deaf2a99afa92cce998f32832d83cc6f24115daf8817c"
+    },
+    {
+      "file": "cma_2026_henan_notice.pdf",
+      "id": "cma-2026-institution-catalog-reference",
+      "url": "http://ha.cma.gov.cn/zfxxgk/zwgk/rsxx/zpxx/202510/W020251029534266455165.pdf",
+      "title": "河南省气象部门2026年度公开招聘应届高校毕业生公告（第1号）",
+      "authority": "河南省气象局",
+      "role": "non-applicable reference: the notice says 气象类专业 are determined by 《气象部门人员招聘专业目录》（2026版）, which is a 2026 institution-recruitment catalog, not a 2027 civil-service category list",
+      "retrieved": "2026-10-18",
+      "contents": [],
+      "bytes": 135189,
+      "sha256": "46cfad33160c5959826122bc703de6d732730a37484a3867421ccd098cde224a"
     }
   ]
 }

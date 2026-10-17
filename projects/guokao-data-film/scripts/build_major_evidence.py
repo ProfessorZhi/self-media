@@ -38,6 +38,17 @@ QUALIFIER = re.compile(r'方向|仅限|限于|限.{0,6}专业|相关|相近|同�
 UNRESTRICTED = re.compile(r'^(专业)?(不限|无限制|不限专业|不限制专业|专业不限)[。；;\s]*$')
 CUE = re.compile(r'专业|学科|门类|代码|所学|毕业|本科|研究生|硕士|博士|学位')
 YEAR_LIKE = re.compile(r'^(19|20)\d{2}$')
+# Ministry of Education, 关于教育部2027年度公务员考录职位要求的说明, 2026-10-14:
+# "职位专业要求为学科门类的，即该门类所包含的专业和一级学科均符合要求；
+#  专业要求为一级学科的，即该一级学科所包含的二级学科均符合要求。"
+MOE_2027_RULE = {
+    'title': '关于教育部2027年度公务员考录职位要求的说明',
+    'authority': '教育部人事司',
+    'date': '2026-10-14',
+    'url': 'http://www.moe.gov.cn/s78/A04/tongzhi/202610/t20261014_1454189.html',
+    'applies_to': '教育部 2027 年度考录职位；其门类/一级学科包含语义为国内通行口径',
+    'text': '职位专业要求为学科门类的，即该门类所包含的专业和一级学科均符合要求；专业要求为一级学科的，即该一级学科所包含的二级学科均符合要求。',
+}
 AREA_CODES = {
     '010', '020', '021', '022', '023', '024', '025', '027', '028', '029',
     '0311', '0351', '0371', '0411', '0431', '0451', '0511', '0531', '0551',
@@ -163,6 +174,24 @@ def compact_resolution(resolution):
     return out
 
 
+AGENCY_PATTERNS = [
+    ('pboc', '中国人民银行'),
+    ('cma', '气象'),
+    ('customs', '海关'),
+    ('tax', '税务'),
+    ('nfra', '金融监督管理'),
+    ('csrc', '证券监督管理'),
+]
+
+
+def agency_of(department_name):
+    """Map a department to the agency system whose category vocabulary it uses."""
+    for code, marker in AGENCY_PATTERNS:
+        if marker in department_name:
+            return code
+    return None
+
+
 def code_form(code):
     code = code.upper()
     if len(code) == 6 and code.endswith('00') and code[:4].isdigit():
@@ -284,6 +313,68 @@ def remark_names(remarks, index, scopes):
             'resolution': {'status': resolution['status'], 'nodes': resolution['nodes']},
             'evidence_quality': 'exact_name_in_remarks_requires_review',
         })
+    return hits
+
+
+def gate_scope_hits(requirement, index, scopes, major_raw):
+    """Resolve "X门类" and source-declared gate codes to the discipline gate node.
+
+    Two narrow normalizations, both traceable to a published rule:
+
+    1. "法学门类" / "工学学科门类". The Ministry of Education's own 2027
+       recruitment statement says a requirement written as an 学科门类 covers
+       every major and first-level discipline inside that gate. Stripping the
+       printed suffix leaves an exact gate name, so this is a rule application,
+       not a similarity match.
+    2. "经济学类（02）" / "（专业代码前两位为02）". The position text itself
+       states the two-digit gate code, so the position defines its own scope.
+
+    Nothing else is normalized here: "理学类" (a gate name with a colloquial 类
+    suffix), "会计学类" and bachelor category names inside graduate positions
+    stay unresolved and are only classified.
+    """
+    hits = []
+    seen = set()
+    for term in requirement['name_references']:
+        label = (term.get('name_candidate') or '').strip()
+        stem = None
+        if label.endswith('学科门类'):
+            stem = label[:-4]
+        elif label.endswith('门类'):
+            stem = label[:-2]
+        if not stem or stem in seen:
+            continue
+        resolution = index.resolve_name(stem, scopes)
+        gate_nodes = [node for node in resolution['nodes'] if node['level'] == 'discipline_group']
+        if not gate_nodes:
+            continue
+        seen.add(stem)
+        hits.append({
+            'name': stem,
+            'printed_text': label,
+            'resolution': {'status': 'resolved', 'nodes': gate_nodes},
+            'resolution_method': 'gate_scope_rule',
+            'rule_basis': MOE_2027_RULE,
+            'node_level': 'discipline_group',
+        })
+    for match in re.finditer(r'([一-鿿]{2,8}?)(?:类)?[（(](?:专业代码前两位为?|代码前两位为?|为)?(\d{2})[）)]', major_raw):
+        label, gate_code = match.group(1), match.group(2)
+        if label in seen:
+            continue
+        for scope in scopes if scopes != ['unknown'] else ['bachelor', 'graduate']:
+            for node in index.by_code.get((scope, gate_code), []):
+                if node['level'] != 'discipline_group':
+                    continue
+                seen.add(label)
+                hits.append({
+                    'name': label,
+                    'printed_text': match.group(0),
+                    'resolution': {'status': 'resolved', 'nodes': [node]},
+                    'resolution_method': 'source_declared_gate_code',
+                    'rule_basis': 'the position text states the two-digit gate code itself',
+                    'node_level': 'discipline_group',
+                })
+                break
     return hits
 
 
@@ -476,6 +567,7 @@ def main():
     reason_counter = collections.Counter()
     conflict_class_counter = collections.Counter()
     review_reason_counter = collections.Counter()
+    agency_category_positions = collections.Counter()
     review_scope = {'positions': 0, 'hires': 0, 'covered_before': 0, 'covered_after': 0}
     remarks_rejection = collections.Counter()
     conflict_records = []
@@ -511,6 +603,7 @@ def main():
         gate_names = gate_prefixed_names(raw['专业'], index, scopes)
         paren_names = parenthetical_names(raw['专业'], index, scopes)
         term_names = term_name_hits(requirement, index, scopes)
+        gate_scope = gate_scope_hits(requirement, index, scopes, raw['专业'])
         remarks_codes, rejected = remark_tokens(raw['备注'], index, scopes)
         remarks_rejection.update(rejected)
         remarks_name_hits = remark_names(raw['备注'], index, scopes)
@@ -526,13 +619,14 @@ def main():
                             ('resolved', 'ambiguous_level', 'ambiguous_multiple', 'enrollment_00_alias')]
 
         resolved_term_names = [t for t in term_names if t['resolution']['status'] in ('resolved', 'ambiguous_level')]
+        resolved_gate_scope = [g for g in gate_scope if g['resolution']['status'] == 'resolved']
 
         coverage_before = bool(requirement['catalog_candidate_ids'])
         # An explicitly unrestricted 专业 column needs no catalog reference; it is
         # fully specified by the word 不限 and is counted as covered, separately.
         coverage_after = bool(unrestricted or coverage_before or resolved_major or resolved_gate_names
-                              or resolved_term_names or resolved_paren_names or resolved_remarks
-                              or remarks_name_hits)
+                              or resolved_term_names or resolved_paren_names or resolved_gate_scope
+                              or resolved_remarks or remarks_name_hits)
         if unrestricted:
             unrestricted_covered += 1
         if coverage_before:
@@ -556,6 +650,8 @@ def main():
                 new_coverage_from['gate_prefixed_catalog_name'] += 1
             elif resolved_term_names:
                 new_coverage_from['exact_term_name_new_catalog'] += 1
+            elif resolved_gate_scope:
+                new_coverage_from['documented_gate_scope_normalization'] += 1
             elif resolved_paren_names:
                 new_coverage_from['parenthetical_exact_name'] += 1
             elif resolved_remarks:
@@ -603,6 +699,39 @@ def main():
                                 if scope not in scopes and index.by_name.get((scope, bare))]
                 if other_levels:
                     reasons.append('name_exists_only_in_other_education_level')
+            # A bachelor category name used in a graduate-only position is a
+            # vocabulary mismatch, not a match: the graduate catalog has no node
+            # with that name. Record it separately and keep the graduate
+            # equivalent only as evidence.
+            for term in requirement['name_references']:
+                label = (term.get('name_candidate') or '').strip()
+                if not label:
+                    continue
+                if label.endswith('类') and 'graduate' in scopes and 'bachelor' not in scopes \
+                        and index.by_name.get(('bachelor', label)):
+                    if 'bachelor_category_name_in_graduate_position' not in reasons:
+                        reasons.append('bachelor_category_name_in_graduate_position')
+                if label.endswith('类') and label not in index.names:
+                    # Only a discipline gate (not a professional degree category
+                    # such as 气象 0751) can absorb a colloquial 类 suffix.
+                    stem_scope = scopes[0] if len(scopes) == 1 else 'bachelor'
+                    if any(node['level'] == 'discipline_group'
+                           for node in index.by_name.get((stem_scope, label[:-1]), [])):
+                        if 'colloquial_gate_name_with_类_suffix' not in reasons:
+                            reasons.append('colloquial_gate_name_with_类_suffix')
+            # Agency-internal category vocabulary with no published membership
+            # table. The agency is recorded so the case can be chased, not
+            # guessed.
+            # Only vocabulary that exists in no catalog at all is agency-internal.
+            # 中国语言文学类 is an official bachelor category and is classified
+            # as a level mismatch instead.
+            unknown_labels = [label for label in
+                              ((t.get('name_candidate') or '').strip() for t in requirement['name_references'])
+                              if label.endswith('类') and label not in index.names]
+            agency = agency_of(raw['部门名称'])
+            if agency and unknown_labels:
+                reasons.append('agency_category_without_published_membership')
+                agency_category_positions[agency] += 1
         for reason in reasons:
             reason_counter[reason] += 1
 
@@ -660,6 +789,13 @@ def main():
                 {'name': hit['name'], 'reference_kind_before': hit['reference_kind_before'],
                  'resolution': compact_resolution(hit['resolution'])}
                 for hit in term_names
+            ],
+            'major_gate_scope_hits': [
+                {'name': hit['name'], 'printed_text': hit['printed_text'],
+                 'resolution_method': hit['resolution_method'],
+                 'rule_basis': hit['rule_basis'],
+                 'resolution': compact_resolution(hit['resolution'])}
+                for hit in gate_scope
             ],
             'major_excluded_names': sorted({hit['name'] for hit in excluded_paren_names}),
             'remarks_codes': [
@@ -829,6 +965,7 @@ def main():
         'conflicts': {'positions': len(conflict_records),
                       'by_class': dict(conflict_class_counter),
                       'details_sharded_in': 'position-evidence records with a non-empty conflicts list'},
+        'agency_category_positions': dict(agency_category_positions),
         'review_scope': {
             **review_scope,
             'still_without_candidate': review_scope['positions'] - review_scope['covered_after'],
@@ -857,6 +994,19 @@ def main():
             '../catalogs/major_selfset_2026_official_parsed.json',
         ],
         'summary': summary,
+        'normalization_rules': [
+            {
+                'id': 'gate_scope_rule',
+                'rule': ('专业要求写作“X门类”或“X学科门类”时，按 X 学科门类节点解析；'
+                         '不据此判定个人可报。'),
+                'basis': MOE_2027_RULE,
+            },
+            {
+                'id': 'source_declared_gate_code',
+                'rule': '原文自带两位门类代码（如“经济学类（02）”）时，按该门类节点解析。',
+                'basis': 'position text itself',
+            },
+        ],
         'reason_taxonomy': {
             'major_text_unrestricted': '专业 column is exactly 不限/无限制/专业不限/不限专业',
             'no_explicit_code_in_major_column': 'no four-to-seven digit token in 专业',
@@ -873,6 +1023,12 @@ def main():
             'no_machine_readable_code_in_remarks_column': 'no code or exact name recovered from 备注',
             'name_exists_only_in_other_education_level': ('a bare name has an exact catalog node only at a '
                                                           'different education level, which is not treated as a match'),
+            'bachelor_category_name_in_graduate_position': ('the text uses a bachelor category name in a '
+                                                            'graduate-only position; the graduate catalog has no node with that name'),
+            'colloquial_gate_name_with_类_suffix': ('a discipline-gate name written with a 类 suffix, e.g. 理学类; '
+                                                    'not an official category and not normalized'),
+            'agency_category_without_published_membership': ('the agency uses an in-house category phrase such as '
+                                                             '经济金融类 or 气象类 and publishes no membership list'),
             'code_name_conflict': 'a printed name next to a code disagrees with the catalog name',
         },
         'field_semantics': {

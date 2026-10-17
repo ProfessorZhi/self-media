@@ -39,6 +39,7 @@ function multi(name) {
 }
 const requestedField = flag('--field');
 const education = flag('--education');
+const agency = flag('--agency');
 const limit = Number(flag('--limit') || 25);
 const asJson = args.includes('--json');
 
@@ -160,17 +161,26 @@ if (args.includes('--stats')) {
   report(summary, rows.slice(0, limit));
 } else if (args.includes('--residual')) {
   const reasons = multi('--reason');
+  const agencyMarkers = {
+    pboc: '中国人民银行', cma: '气象', customs: '海关', tax: '税务',
+    nfra: '金融监督管理', csrc: '证券监督管理',
+  };
+  if (agency && !agencyMarkers[agency]) {
+    console.error(`unknown --agency ${agency}; expected one of ${Object.keys(agencyMarkers).join(', ')}`);
+    process.exit(2);
+  }
   const rows = [];
   for (const record of records) {
     if (record.coverage_after) continue;
     if (!matchesEducation(record.education_scopes)) continue;
     if (reasons.length && !reasons.every(reason => (record.reason_classes ?? []).includes(reason))) continue;
     const facts = positionFacts(positions.get(record.id));
+    if (agency && !facts.department_name.includes(agencyMarkers[agency])) continue;
     if (flag('--text') && !facts.major_raw.includes(flag('--text'))) continue;
     rows.push({...facts, reason_classes: record.reason_classes, matched: []});
   }
   const summary = {
-    query: {residual: true, reasons, education, text: flag('--text')},
+    query: {residual: true, reasons, education, agency, text: flag('--text')},
     positions: rows.length,
     hires: rows.reduce((total, row) => total + row.hires, 0),
     note: 'No exact catalog reference was found in either column for these positions.',
@@ -179,6 +189,6 @@ if (args.includes('--stats')) {
 } else {
   console.log(
     'Usage: node scripts/query_major_evidence.mjs --code <code> | --name <name> | --catalog <catalog-id> | --position <id> | --residual [--reason <r>] | --stats\n' +
-    '  optional: --field 专业|备注  --education bachelor|graduate  --limit N  --json'
+    '  optional: --field 专业|备注  --education bachelor|graduate  --agency pboc|cma|tax|customs|nfra|csrc  --limit N  --json'
   );
 }

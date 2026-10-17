@@ -1,0 +1,388 @@
+#!/usr/bin/env python3
+"""Build the v2 residual report and the agency major-category evidence casebook.
+
+Usage:
+  python3 build_residual_and_agency_reports.py
+
+Reads the current evidence layer and the 2027 requirement layer. Writes:
+  research/RESIDUAL_20271018_V2.json
+  research/AGENCY_MAJOR_CATEGORY_EVIDENCE_20261018.json
+
+The v1 figures are recomputed from the stored per-position fields under the v1
+rules, so the delta is auditable rather than asserted.
+"""
+import argparse
+import collections
+import hashlib
+import json
+from datetime import datetime, timezone
+from pathlib import Path
+
+RESOLVED_STATUSES = {'resolved', 'ambiguous_level', 'ambiguous_multiple', 'enrollment_00_alias'}
+
+AGENCY_CHECKS = [
+    {
+        'id': 'scs_portal_resource_list',
+        'authority': '中央公务员主管部门',
+        'url': 'http://dl.scs.gov.cn/api/res/8a81f6eca0221f1401a0242759fc0000/1110',
+        'page_url': 'http://bm.scs.gov.cn/kl2027',
+        'checked_at': '2026-10-18',
+        'http_status': 200,
+        'contains': '相关下载列表：招考简章.zip、电子社保卡扫码认证指南、报名推荐表、报名登记表',
+        'contains_category_membership_list': False,
+        'conclusion': '专题网站只提供招考简章等工作簿，没有专业分类目录附件。',
+    },
+    {
+        'id': 'scs_application_guide',
+        'authority': '中央公务员主管部门',
+        'url': 'http://dl.scs.gov.cn/api/article/8a81f6d8a129c66701a132bae3a70082',
+        'title': '中央机关及其直属机构2027年度考试录用公务员报考指南',
+        'checked_at': '2026-10-18',
+        'http_status': 200,
+        'contains': '报考政策问答全文（约 2 万字）',
+        'contains_category_membership_list': False,
+        'evidence': '正文“经济金融”0 次、“气象”0 次、“专业分类”0 次；15 处“专业”均为考试科目、专业能力测试或学历填报说明。',
+        'conclusion': '国家级报考指南不定义任何专业类别成员，也不提供专业分类表。',
+    },
+    {
+        'id': 'pboc_recruitment_column',
+        'authority': '中国人民银行人事司',
+        'url': 'http://www.pbc.gov.cn/renshisi/144501/144513/144695/index.html',
+        'checked_at': '2026-10-18',
+        'http_status': 200,
+        'contains': '唯一 2027 条目：欢迎报考中国人民银行公务员（2026-10-14）',
+        'contains_category_membership_list': False,
+        'evidence': '公告正文只给总行机关 27 名、分支机构 2,335 名、反洗钱中心 4 名，并写明“具体职位和资格条件请查看专题网站招考简章”。',
+        'conclusion': '人民银行未发布 2027 公务员专业分类目录或“经济金融类”成员名单。',
+    },
+    {
+        'id': 'pboc_branch_notice_sample',
+        'authority': '中国人民银行新疆维吾尔自治区分行',
+        'url': 'https://wulumuqi.pbc.gov.cn/wulumuqi/121749/5867645/index.html',
+        'checked_at': '2026-10-18',
+        'http_status': 200,
+        'contains': '分行职位介绍（2026 年度样本，展示该类公告的固定写法）',
+        'contains_category_membership_list': False,
+        'evidence': '公告列出经济金融、会计、法律、计算机、统计、管理、英语、中文、理工、安全保卫十类专业，随后直接给出“经济金融类（不含统计、国际商务、资产评估、经济与贸易类、国际贸易等）”等职位表述，无成员表、无附件。',
+        'conclusion': '分行层级的写法与全国表一致：类别只靠举例和排除句表达，不定义成员。',
+    },
+    {
+        'id': 'cma_civil_service_column',
+        'authority': '中国气象局',
+        'url': 'http://www.cma.gov.cn/zfxxgk/gknr/rsxx/gwyzl/',
+        'checked_at': '2026-10-18',
+        'http_status': 200,
+        'contains': '公务员招录栏目，最新为 2026 年度公告',
+        'contains_category_membership_list': False,
+        'evidence': '页面中“2027”出现 0 次；未发布 2027 年度公务员招录公告或专用专业目录。',
+        'conclusion': '气象局未发布适用于 2027 公务员岗位的“气象类”成员名单。',
+    },
+    {
+        'id': 'cma_institution_catalog_2026',
+        'authority': '中国气象局人事司（经河南省气象局公告引用）',
+        'url': 'http://ha.cma.gov.cn/zfxxgk/zwgk/rsxx/zpxx/202510/W020251029534266455165.pdf',
+        'title': '河南省气象部门2026年度公开招聘应届高校毕业生公告（第1号）',
+        'checked_at': '2026-10-18',
+        'http_status': 200,
+        'sha256': '46cfad33160c5959826122bc703de6d732730a37484a3867421ccd098cde224a',
+        'is_applicable_to_2027_civil_service': False,
+        'evidence': '公告为事业单位公开招聘，正文称“气象类专业按照中国气象局人事司《气象部门人员招聘专业目录》（2026版）（附件2）认定”。',
+        'conclusion': ('气象部门确实有一份机关专业目录，但它是 2026 版、面向事业单位公开招聘的；'
+                       '本轮未取得附件原表，且其适用范围不是 2027 公务员录用，因此只作非适用参考。'),
+    },
+]
+
+CHANGE_PATH = [
+    '中国气象局或省级气象局在 2027 年度公务员招录公告中直接附带《气象部门人员招录专业目录（2027版）》并声明适用于公务员职位',
+    '中国人民银行在专题网站或分行公告中发布 2027 年度“经济金融类”成员名单（含学科、专业代码与学历层次）',
+    '中央公务员主管部门发布统一的专业分类表，或招考简章中逐岗改用可枚举的专业代码',
+]
+
+
+def sha256_bytes(data):
+    return hashlib.sha256(data).hexdigest()
+
+
+def load(project):
+    evidence_dir = project / 'data' / 'major_evidence_2027'
+    manifest = json.loads((evidence_dir / 'manifest.json').read_text())
+    records = []
+    for shard in manifest['position_evidence']:
+        records.extend(json.loads((evidence_dir / shard['path']).read_text()))
+    residual = []
+    for shard in manifest['residual']:
+        residual.extend(json.loads((evidence_dir / shard['path']).read_text()))
+    positions_dir = project / 'data' / 'positions_2027'
+    positions_manifest = json.loads((positions_dir / 'manifest.json').read_text())
+    index = {name: i for i, name in enumerate(positions_manifest['columns'])}
+    positions = {}
+    for shard in positions_manifest['shards']:
+        for row in json.loads((positions_dir / shard['path']).read_text())['rows']:
+            positions[row[0]] = row
+    requirements = {}
+    majors_manifest = json.loads((project / 'data' / 'majors_2027' / 'manifest.json').read_text())
+    for shard in majors_manifest['requirements']:
+        for req in json.loads((project / 'data' / 'majors_2027' / shard['path']).read_text()):
+            requirements[req['id']] = req
+    return manifest, records, residual, positions, index, requirements
+
+
+def resolved_any(entries, key='resolution'):
+    for entry in entries or []:
+        if (entry.get(key) or {}).get('status') in RESOLVED_STATUSES:
+            return True
+    return False
+
+
+def v1_coverage(record):
+    """Recompute coverage under the v1 rules: no gate-scope normalization."""
+    if 'major_text_unrestricted' in (record.get('reason_classes') or []):
+        return True
+    if record.get('coverage_before'):
+        return True
+    if resolved_any(record.get('major_codes')):
+        return True
+    if any((g.get('resolution') or {}).get('status') in {'resolved', 'ambiguous_level'}
+           for g in record.get('major_gate_prefixed_names') or []):
+        return True
+    if any((t.get('resolution') or {}).get('status') in {'resolved', 'ambiguous_level'}
+           for t in record.get('major_term_name_hits') or []):
+        return True
+    if any((p.get('resolution') or {}).get('status') in {'resolved', 'ambiguous_level'}
+           and not p.get('is_exclusion') for p in record.get('major_parenthetical_names') or []):
+        return True
+    if resolved_any(record.get('remarks_codes')):
+        return True
+    if record.get('remarks_exact_names'):
+        return True
+    return False
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--project', type=Path, default=Path(__file__).resolve().parents[1])
+    args = parser.parse_args()
+    project = args.project
+    manifest, records, residual, positions, index, requirements = load(project)
+    summary = manifest['summary']
+
+    # --- auditable delta -------------------------------------------------
+    v1_covered = {record['id'] for record in records if v1_coverage(record)}
+    v2_covered = {record['id'] for record in records if record.get('coverage_after')}
+    delta_ids = sorted(v2_covered - v1_covered)
+    delta = []
+    for position_id in delta_ids:
+        record = next(r for r in records if r['id'] == position_id)
+        row = positions[position_id]
+        delta.append({
+            'id': position_id,
+            'hires': record['hires'],
+            'department_name': row[index['部门名称']],
+            'education_raw': row[index['学历']],
+            'major_raw': row[index['专业']],
+            'rule': [hit['resolution_method'] for hit in record.get('major_gate_scope_hits') or []],
+            'gates': [hit['name'] for hit in record.get('major_gate_scope_hits') or []],
+        })
+
+    v1_positions = len(v1_covered)
+    v2_positions = len(v2_covered)
+    assert v1_positions == 18_655, f'v1 recomputation drifted: {v1_positions}'
+    assert v2_positions == summary['coverage_after']['positions_with_catalog_candidate']
+    assert len(delta_ids) == 25, f'unexpected delta size {len(delta_ids)}'
+
+    # --- residual breakdown ---------------------------------------------
+    reason_combo = collections.Counter(tuple(sorted(record['reason_classes'])) for record in residual)
+    text_counter = collections.Counter(record['major_raw'] for record in residual)
+    dept_counter = collections.Counter(record['department_name'] for record in residual)
+    edu_counter = collections.Counter(positions[record['id']][index['学历']] for record in residual)
+
+    # --- review stratification ------------------------------------------
+    strata = collections.Counter()
+    review_detail = collections.Counter()
+    review_total = 0
+    review_hires = 0
+    review_covered = 0
+    for record in records:
+        requirement = requirements.get(record.get('requirement_id'))
+        if not requirement or not requirement['review_reasons']:
+            continue
+        review_total += 1
+        review_hires += record['hires']
+        reasons = tuple(sorted(requirement['review_reasons']))
+        covered = bool(record.get('coverage_after'))
+        review_covered += covered
+        # Two axes: is a catalog reference present, and what kind of review
+        # reason the requirement carries.
+        if covered:
+            bucket = 'has_catalog_reference_still_requires_interpretation'
+        else:
+            bucket = 'no_catalog_reference'
+        strata[bucket] += 1
+        review_detail[(bucket, reasons)] += 1
+
+    review_strata = [
+        {'bucket': bucket, 'positions': count}
+        for bucket, count in strata.most_common()
+    ]
+    review_top_combinations = [
+        {'bucket': bucket, 'requirement_review_reasons': list(reasons), 'positions': count}
+        for (bucket, reasons), count in review_detail.most_common(15)
+    ]
+
+    residual_report = {
+        'schema_version': '2.0.0',
+        'report_id': 'residual-20271018-v2',
+        'generated_at_utc': datetime.now(timezone.utc).isoformat(),
+        'purpose': ('第二版残留报告：记录本轮新增的可追溯解析规则、真实 delta，以及 771→746 之后仍然无法用公开权威来源解释的岗位。'),
+        'baseline_v1': {
+            'described_in': 'data/major_evidence_2027/manifest.json at commit b3da212',
+            'coverage_positions': 18_655,
+            'coverage_hires': 35_691 - 1_209,
+            'residual_positions': 771,
+            'residual_hires': 1_209,
+            'note': 'v1 的逐岗位分片已由本轮覆盖；v1 数字按 v1 规则从本轮字段重算得到，可复核。',
+        },
+        'current_v2': {
+            'coverage_positions': v2_positions,
+            'coverage_hires': summary['hires'] - summary['residual_hires'],
+            'residual_positions': summary['residual_positions'],
+            'residual_hires': summary['residual_hires'],
+        },
+        'delta': {
+            'positions': len(delta_ids),
+            'hires': sum(item['hires'] for item in delta),
+            'rule_applied': 'documented_gate_scope_normalization',
+            'positions_detail': delta,
+        },
+        'normalization_rules_used': [
+            {
+                'id': 'gate_scope_rule',
+                'rule': '专业要求写作“X门类/学科门类”时，按 X 学科门类节点解析',
+                'basis': manifest['normalization_rules'][0] if manifest.get('normalization_rules') else None,
+                'positions_matched': sum(
+                    1 for record in records
+                    if any(hit['resolution_method'] == 'gate_scope_rule'
+                           for hit in record.get('major_gate_scope_hits') or [])),
+            },
+            {
+                'id': 'source_declared_gate_code',
+                'rule': '原文自带两位门类代码（如“经济学类（02）”）时，按该门类节点解析',
+                'basis': 'position text itself',
+                'positions_matched': sum(
+                    1 for record in records
+                    if any(hit['resolution_method'] == 'source_declared_gate_code'
+                           for hit in record.get('major_gate_scope_hits') or [])),
+            },
+        ],
+        'residual_breakdown': {
+            'by_reason_combination': [
+                {'reasons': list(reasons), 'positions': count}
+                for reasons, count in reason_combo.most_common(20)
+            ],
+            'by_department': [
+                {'department_name': name, 'positions': count}
+                for name, count in dept_counter.most_common(20)
+            ],
+            'by_education_raw': [
+                {'education_raw': name, 'positions': count}
+                for name, count in edu_counter.most_common(15)
+            ],
+            'top_texts': [
+                {'major_raw': text, 'positions': count}
+                for text, count in text_counter.most_common(30)
+            ],
+        },
+        'review_scope_stratification': {
+            'positions': review_total,
+            'hires': review_hires,
+            'with_catalog_reference': review_covered,
+            'without_catalog_reference': review_total - review_covered,
+            'strata': review_strata,
+            'top_reason_combinations': review_top_combinations,
+            'caution': ('“有目录候选”只表示至少一处精确代码或名称命中，'
+                        '不表示整条要求已解释完毕，更不构成可报资格。'),
+        },
+        'reproduce': [
+            'python3 scripts/build_major_evidence.py',
+            'python3 scripts/verify_major_evidence.py --write-report',
+            'python3 scripts/build_residual_and_agency_reports.py',
+        ],
+    }
+
+    agency_report = {
+        'schema_version': '1.0.0',
+        'report_id': 'agency-major-category-evidence-20261018',
+        'generated_at_utc': datetime.now(timezone.utc).isoformat(),
+        'question': ('是否存在明确适用于 2027 年度公务员岗位的权威“经济金融类”/“气象类”成员名单？'),
+        'answer': ('截至 2026-10-18，公开官方来源中没有找到此类成员名单。'
+                   '两类职位只能按原文的举例与排除句理解，不能据此判定个人可报。'),
+        'checked_sources': AGENCY_CHECKS,
+        'category_findings': [
+            {
+                'phrase': '经济金融类（不含统计、国际商务、资产评估、经济与贸易类、国际贸易等专业）',
+                'agency': 'pboc',
+                'agency_label': '中国人民银行系统',
+                'positions': 420,
+                'hires': 722,
+                'published_membership': False,
+                'explicitly_excluded': ['统计', '国际商务', '资产评估', '经济与贸易类', '国际贸易'],
+                'examples_used_in_some_positions': [
+                    '国际金融', '世界经济', '西方经济学', '货币银行学', '计量经济学',
+                    '数量经济学', '金融工程', '金融数学', '金融科技', '金融审计', '计算金融',
+                ],
+                'note': ('这十一个名称出自部分职位的专业栏，是对“经济金融类”的举例，不是定义；'
+                         '其中若干名称可在教育部目录中找到精确节点，但类别本身没有成员表。'),
+            },
+            {
+                'phrase': '气象类',
+                'agency': 'cma',
+                'agency_label': '中国气象局系统',
+                'positions': 88,
+                'hires': 88,
+                'published_membership': False,
+                'non_applicable_reference': {
+                    'title': '气象部门人员招聘专业目录（2026版）',
+                    'publisher': '中国气象局人事司',
+                    'scope': '事业单位公开招聘，非公务员录用',
+                    'applies_to_2027_civil_service': False,
+                    'retrieved': False,
+                    'referenced_by': 'http://ha.cma.gov.cn/zfxxgk/zwgk/rsxx/zpxx/202510/W020251029534266455165.pdf',
+                    'why_not_used': ('版本年份为 2026、适用对象为事业单位公开招聘；'
+                                     '本轮未取得附件原表，且按用户口径不得据此清除 2027 公务员缺口。'),
+                },
+            },
+        ],
+        'applicable_rules_found': [
+            {
+                'title': '关于教育部2027年度公务员考录职位要求的说明',
+                'authority': '教育部人事司',
+                'date': '2026-10-14',
+                'url': 'http://www.moe.gov.cn/s78/A04/tongzhi/202610/t20261014_1454189.html',
+                'applies_to': '教育部 2027 年度考录职位',
+                'rule_used': '学科门类要求覆盖该门类下的专业与一级学科；一级学科要求覆盖其二级学科。',
+                'usage_scope': '仅作为“门类=学科门类节点”的解析依据，未用于判定个人资格。',
+            }
+        ],
+        'what_would_change_the_answer': CHANGE_PATH,
+        'status': 'unresolved_by_public_sources',
+        'operational_note': ('这不是工具缺陷：数据层已经能解析代码与精确名称，剩下的是招录机关从未公开的类别成员定义。'
+                             '若后续发布，按同一流程新增 agency-scoped catalog 并重跑即可。'),
+    }
+
+    out_dir = project / 'research'
+    for name, payload in (('RESIDUAL_20271018_V2.json', residual_report),
+                          ('AGENCY_MAJOR_CATEGORY_EVIDENCE_20261018.json', agency_report)):
+        path = out_dir / name
+        path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+        print(json.dumps({'report': str(path), 'bytes': path.stat().st_size,
+                          'sha256': sha256_bytes(path.read_bytes())}, ensure_ascii=False))
+    print(json.dumps({
+        'v1_positions': v1_positions, 'v2_positions': v2_positions,
+        'delta_positions': len(delta_ids), 'delta_hires': sum(i['hires'] for i in delta),
+        'residual_positions': summary['residual_positions'],
+        'review_strata': review_strata,
+    }, ensure_ascii=False, indent=2))
+
+
+if __name__ == '__main__':
+    main()
