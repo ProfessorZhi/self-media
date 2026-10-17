@@ -4,12 +4,12 @@
   "hires": 35691,
   "coverage": {
     "conservative": {
-      "positions": 18697,
-      "hires": 34529
+      "positions": 18694,
+      "hires": 34526
     },
     "provisional": {
-      "positions": 2,
-      "hires": 2
+      "positions": 5,
+      "hires": 5
     },
     "inclusive": {
       "positions": 18699,
@@ -56,29 +56,29 @@
   "review": {
     "universe": 5835,
     "covered": 5108,
-    "legacy_superseded": 998,
-    "needs_interpretation": 4110,
+    "legacy_superseded": 995,
+    "needs_interpretation": 4113,
     "needs_interpretation_includes_provisional": true,
     "candidate_requires_review_excluding_provisional": 4108,
-    "candidate_requires_review_including_provisional": 4110,
+    "candidate_requires_review_including_provisional": 4113,
     "four_way": {
       "candidate_requires_review_excluding_provisional": 4108,
-      "legacy_reason_superseded": 998,
-      "provisional_only": 2,
+      "legacy_reason_superseded": 995,
+      "provisional_only": 5,
       "no_candidate": 727,
       "sum": 5835
     },
     "buckets": {
       "candidate_with_degree_scope": 1994,
       "candidate_with_open_scope": 1236,
-      "candidate_legacy_reason_superseded": 998,
+      "candidate_legacy_reason_superseded": 995,
       "no_candidate_other": 181,
       "candidate_with_namespace_ambiguity": 501,
       "candidate_with_conflict": 55,
       "candidate_with_exclusion": 276,
       "no_candidate_agency_no_public_list": 533,
       "no_candidate_agency_unverified": 13,
-      "candidate_provisional_agency_scope_rule": 2,
+      "candidate_provisional_agency_scope_rule": 5,
       "candidate_with_unresolved_vocabulary": 46
     },
     "bucket_sum": 5835
@@ -110,7 +110,7 @@
     "conflict_classes_sum_to_entries": true,
     "remark_scope_sum_to_codes": true
   },
-  "generated_at_utc": "2026-10-17T22:16:10.357694+00:00",
+  "generated_at_utc": "2026-10-17T22:22:22.913251+00:00",
   "derived_from": [
     "data/major_evidence_2027/manifest.json",
     "data/major_evidence_2027/position-evidence-*.json",

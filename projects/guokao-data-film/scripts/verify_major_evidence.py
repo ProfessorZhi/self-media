@@ -244,6 +244,13 @@ def main():
                                                     'agency_2027_notice_corroborated',
                                                     'agency_scope_unverified'), \
                     f'{record["id"]}: gate_scope_rule hit without applicability'
+                if hit.get('applicability') == 'agency_2027_notice_corroborated':
+                    assert hit.get('notice_url') and hit.get('notice_quote') \
+                        and hit.get('notice_scope_quote'), \
+                        f'{record["id"]}: corroborated hit without URL and both quotes'
+                    department = positions[record['id']][index['部门名称']]
+                    assert '长江' not in department, \
+                        f'{record["id"]}: 长江海事局 is outside the notice Article 12 whitelist'
 
     # conflict metrics must agree with the manifest, and the three counts are distinct
     declared_conflicts = summary['conflicts']
@@ -253,6 +260,8 @@ def main():
         'conflict class counts must sum to the entry count'
     assert sum(declared_conflicts['by_family'].values()) == declared_conflicts['entries'], \
         'conflict family counts must sum to the entry count'
+    assert sum(declared_conflicts['by_origin'].values()) == declared_conflicts['entries'], \
+        'conflict origin counts must sum to the entry count'
     review_checks = {}
     if review:
         review_ids = [item['id'] for item in review]

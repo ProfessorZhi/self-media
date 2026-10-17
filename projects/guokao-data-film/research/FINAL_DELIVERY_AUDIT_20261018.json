@@ -1,26 +1,26 @@
 {
   "schema_version": "1.0.0",
   "report_id": "final-delivery-audit-20261018",
-  "generated_at_utc": "2026-10-17T22:16:10.500295+00:00",
+  "generated_at_utc": "2026-10-17T22:22:23.043696+00:00",
   "local_date": "2026-10-18",
-  "generated_from_commit": "00381091ecb675c02773548460d09701a9ce64d1",
+  "generated_from_commit": "7f4dacf25002c487ddf8ba30c377528c2a46d2bb",
   "statement": "The fact and evidence layers are deliverable. Applicant eligibility is not determined and cannot be, from public sources alone.",
   "headline": {
     "positions": 19426,
     "hires": 35691,
     "coverage_conservative": {
-      "positions": 18697,
-      "hires": 34529
+      "positions": 18694,
+      "hires": 34526
     },
     "coverage_provisional": {
-      "positions": 2,
-      "hires": 2
+      "positions": 5,
+      "hires": 5
     },
     "no_candidate": {
       "positions": 727,
       "hires": 1160
     },
-    "closure": "18,697 + 2 + 727 = 19,426",
+    "closure": "18,694 + 5 + 727 = 19,426",
     "official_workbook_verification": {
       "positions": 19426,
       "hires": 35691,
@@ -80,8 +80,8 @@
     },
     {
       "group": "provisional_gate_rule",
-      "positions": 2,
-      "hires": 2,
+      "positions": 5,
+      "hires": 5,
       "classification": "needs_recruiting_agency_explanation",
       "why": "Covered only by the 门类 reading, whose cited statement applies to MOE positions. Exact characters and gate nodes are recorded; agency applicability is not.",
       "autonomously_fixable": false,
@@ -126,5 +126,5 @@
     "一张 2027 全国统一专业成员表：截至 2026-10-18 的已查公开来源未找到，不能据此断言不存在。",
     "2027 interview cutoffs (they do not exist before the written exam)."
   ],
-  "review_caveat": "5,835 is the legacy review denominator, not an uncovered count. 998 of them no longer reproduce a warning under the current catalogs; that is a statement about the tool, not a cleared position. Buckets are mutually exclusive but a position can carry several risk markers."
+  "review_caveat": "5,835 is the legacy review denominator, not an uncovered count. 995 of them no longer reproduce a warning under the current catalogs; that is a statement about the tool, not a cleared position. Buckets are mutually exclusive but a position can carry several risk markers."
 }

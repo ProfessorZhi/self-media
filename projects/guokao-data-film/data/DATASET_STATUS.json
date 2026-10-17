@@ -16,7 +16,7 @@
     {
       "path": "major_evidence_2027/manifest.json",
       "role": "per_position_major_evidence_across_major_and_remarks_columns",
-      "coverage_note": "专业 + 备注 with explicit degree-scope labels; conservative 18,697, provisional gate-rule 2, no candidate 727; review status 11 buckets; conflicts 54 positions / 87 entries"
+      "coverage_note": "专业 + 备注 with explicit degree-scope labels; conservative 18,694, provisional gate-rule 5, no candidate 727; review status 11 buckets; conflicts 54 positions / 87 entries"
     },
     {
       "path": "catalogs/",

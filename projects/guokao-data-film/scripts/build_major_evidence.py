@@ -189,14 +189,31 @@ AGENCY_2027_NOTICES = {
     'msa': {
         'authority': '中华人民共和国海事局',
         'title': '关于交通运输部直属海事系统2027年度考录公务员资格审查事项的说明',
-        'date': '2026-10-13',
-        'url': ('https://www.msa.gov.cn/html/cnmsa/xxgk/article/2026/'
-                'aef40dfa0db14427b456ba009d370411.html'),
+        'date': '2026-10-14',
+        'url': 'https://hlj.msa.gov.cn/content/2026/klrm/24013.html',
+        'mirror_note': ('黑龙江海事局官网公开全文，本轮实际抓取 200；www.msa.gov.cn 的同一'
+                        '文件对外返回 403，故以可访问的官网镜像为准。'),
         'quote': ('部分职位按照专业门类或者专业大类、专业小类招录的，属于相应类别下的专业均可报考。'),
-        'applies_to': '交通运输部直属海事系统 2027 年度考录公务员职位',
+        'scope_quote': ('本说明适用于报考上海、天津、辽宁、河北、山东、浙江、福建、广东、广西、'
+                        '海南、黑龙江、深圳、连云港海事局的资格审查工作。'),
+        # Article 12 enumerates the bureaus. A department name must match one of
+        # these units; "contains 海事局" is not enough (长江海事局 is excluded).
+        'applies_to_units': ['上海', '天津', '辽宁', '河北', '山东', '浙江', '福建', '广东',
+                             '广西', '海南', '黑龙江', '深圳', '连云港'],
+        'applies_to': '上述 13 个直属海事局 2027 年度考录公务员职位（不含长江海事局等其他局）',
         'source_file': 'data/sources/msa_2027_qualification_notice.html',
     },
 }
+
+
+def notice_applies_to(notice, department_name):
+    """True only when the department is one of the bureaus named in the notice."""
+    if not notice:
+        return False
+    for unit in notice['applies_to_units']:
+        if department_name.startswith(unit) and '海事局' in department_name[:len(unit) + 3]:
+            return True
+    return False
 
 AGENCY_PATTERNS = [
     ('pboc', '中国人民银行'),
@@ -638,20 +655,44 @@ def name_conflicts(text, code_spans, index, scopes):
                     conflict_class = 'cross_level_same_code' if other_level else 'content_conflict'
                 belongs_to = []
                 if conflict_class == 'content_conflict':
-                    for (scope_name, name_value), nodes in index.by_name.items():
+                    # Note: this loop must not reuse `nodes`; shadowing it would
+                    # corrupt the level test used for the origin classification.
+                    for (scope_name, name_value), name_nodes in index.by_name.items():
                         if name_value == candidate:
-                            for node in nodes:
+                            for node in name_nodes:
                                 belongs_to.append({'code': node['code'], 'namespace': node['namespace'],
                                                    'education_scope': node['education_scope']})
-                # A printed name can differ from the catalog name for three quite
-                # different reasons. Record which one, so an audit does not have to
-                # re-derive it and so a format artefact is not read as a source error.
+                # A printed name can differ from the catalog name for several
+                # quite different reasons. Only the last one is a candidate source
+                # inconsistency; the others are reading artefacts and must never be
+                # reported as "the source is wrong".
+                after_raw = text[span['end']:span['end'] + 40]
+                node_levels = {node['level'] for node in span['resolution'].get('nodes') or []}
+                compound_name = next(
+                    (name for name in index.names
+                     if len(name) > len(candidate) and name.startswith(candidate)
+                     and re.search(r'[、,，/]', name[len(candidate):len(candidate) + 1] or 'x')
+                     and after_raw.startswith(name)), None)
+                member_nodes = [node for scope_name in ('bachelor', 'graduate')
+                                for node in index.by_name.get((scope_name, candidate), [])
+                                if node['code'].upper().startswith(span['code'].upper())]
                 if span['start'] > 0 and text[span['start'] - 1] == '/':
                     origin = 'shared_name_slash_group'
+                elif compound_name:
+                    # e.g. 030205T政治学、经济学与哲学: the real catalog name contains
+                    # a 、 and the token was cut at it.
+                    origin = 'compound_catalog_name_truncation'
+                    conflict_class = 'content_conflict'
+                elif node_levels & {'major_category', 'discipline_group', 'first_level_discipline', 'professional_degree_category'} and member_nodes:
+                    # e.g. 0809计算机科学与技术…: the code is a category followed by
+                    # an enumeration of its members.
+                    origin = 'category_member_enumeration'
                 elif candidate.endswith('类') and candidate[:-1] in catalog_names:
                     origin = 'category_suffix_variant'
+                elif any(candidate in name or name in candidate for name in catalog_names):
+                    origin = 'old_name_or_short_name'
                 else:
-                    origin = 'genuine_name_code_mismatch'
+                    origin = 'direct_code_name_inconsistency'
 
                 conflicts.append({
                     'code': span['code'],
@@ -783,6 +824,8 @@ def main():
         is_moe = raw['部门代码'] == '105000' or raw['部门名称'] == '教育部'
         position_agency = agency_of(raw['部门名称'])
         corroborating_notice = AGENCY_2027_NOTICES.get(position_agency)
+        if corroborating_notice and not notice_applies_to(corroborating_notice, raw['部门名称']):
+            corroborating_notice = None
         for hit in gate_scope:
             if hit.get('resolution_method') == 'gate_scope_rule':
                 if is_moe:
@@ -791,6 +834,8 @@ def main():
                     hit['applicability'] = 'agency_2027_notice_corroborated'
                     hit['notice_url'] = corroborating_notice['url']
                     hit['notice_quote'] = corroborating_notice['quote']
+                    hit['notice_scope_quote'] = corroborating_notice['scope_quote']
+                    hit['notice_applies_to'] = corroborating_notice['applies_to']
                 else:
                     hit['applicability'] = 'agency_scope_unverified'
 
@@ -1009,6 +1054,10 @@ def main():
                  'resolution_method': hit['resolution_method'],
                  'rule_basis': hit['rule_basis'],
                  'applicability': hit.get('applicability'),
+                 'notice_url': hit.get('notice_url'),
+                 'notice_quote': hit.get('notice_quote'),
+                 'notice_scope_quote': hit.get('notice_scope_quote'),
+                 'notice_applies_to': hit.get('notice_applies_to'),
                  'resolution': compact_resolution(hit['resolution'])}
                 for hit in gate_scope
             ],
@@ -1235,10 +1284,14 @@ def main():
             'by_class': dict(conflict_class_counter),
             'gate_code_name_mismatch_positions': reason_counter['gate_code_name_mismatch'],
             'by_origin': dict(conflict_origin_counter),
-            'origin_note': ('shared_name_slash_group = the printed name belongs to a slash-separated '
-                            'code run such as 020204/0251金融学; category_suffix_variant = the name is '
-                            'another code name plus 类; genuine_name_code_mismatch = the source pairs a '
-                            'name with a code that is not its catalog code.'),
+            'origin_note': ('shared_name_slash_group = name shared by a slash-separated code run; '
+                            'compound_catalog_name_truncation = the catalog name itself contains a '
+                            'separator and the token was cut at it; category_member_enumeration = a '
+                            'category code followed by an enumeration of its members; '
+                            'category_suffix_variant = another code name plus 类; old_name_or_short_name = '
+                            'a prefix/short form of the catalog name; direct_code_name_inconsistency = '
+                            'the remaining cases, which need a human or the recruiting agency to confirm '
+                            'and are NOT asserted to be source errors.'),
             'by_family': {
                 'semantic_conflict': conflict_class_counter['content_conflict'],
                 'multi_namespace_diagnostic': (conflict_class_counter['cross_level_same_code']

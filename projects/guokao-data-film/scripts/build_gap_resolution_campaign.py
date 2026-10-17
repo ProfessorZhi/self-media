@@ -21,18 +21,23 @@ AGENCY_CHECKS = [
     {
         'id': 'msa-2027-qualification-notice',
         'authority': '中华人民共和国海事局',
-        'url': ('https://www.msa.gov.cn/html/cnmsa/xxgk/article/2026/'
-                'aef40dfa0db14427b456ba009d370411.html'),
-        'published': '2026-10-13',
+        'url': 'https://hlj.msa.gov.cn/content/2026/klrm/24013.html',
+        'mirror_note': '黑龙江海事局官网公开全文（本轮抓取 200）；www.msa.gov.cn 同一文件对外 403。',
+        'published': '2026-10-14',
         'retrieved': '2026-10-18',
         'http_status': 200,
         'title': '关于交通运输部直属海事系统2027年度考录公务员资格审查事项的说明',
         'applies_to': '交通运输部直属海事系统 2027 年度考录公务员职位',
         'quote': '部分职位按照专业门类或者专业大类、专业小类招录的，属于相应类别下的专业均可报考。',
+        'scope_quote': ('本说明适用于报考上海、天津、辽宁、河北、山东、浙江、福建、广东、广西、'
+                        '海南、黑龙江、深圳、连云港海事局的资格审查工作。'),
+        'applies_to_units': ['上海', '天津', '辽宁', '河北', '山东', '浙江', '福建', '广东',
+                             '广西', '海南', '黑龙江', '深圳', '连云港'],
+        'excluded_units': ['长江海事局'],
         'supports': 'category_based_recruitment_admits_members',
         'defines_membership_list': False,
-        'use': ('用于佐证海事系统岗位“X门类”写法的含义；门类成员仍取自教育部目录，'
-                '该说明本身不列举成员。'),
+        'use': ('仅适用于第十二条列名的 13 个直属海事局；门类成员仍取自教育部目录，'
+                '该说明本身不列举成员。长江海事局不在适用范围内，其 3 个岗位保持 provisional。'),
     },
     {
         'id': 'scs-portal-announcements',
@@ -168,6 +173,8 @@ def main():
                               if h.get('resolution_method') == 'gate_scope_rule'],
                     'notice_url': hit.get('notice_url'),
                     'notice_quote': hit.get('notice_quote'),
+                    'notice_scope_quote': hit.get('notice_scope_quote'),
+                    'notice_applies_to': hit.get('notice_applies_to'),
                 })
 
     provisional_left = []
@@ -286,38 +293,54 @@ def main():
     path = project / 'research' / 'GAP_RESOLUTION_CAMPAIGN_20261018.json'
     path.write_text(text, encoding='utf-8')
 
+    origin_order = ['shared_name_slash_group', 'compound_catalog_name_truncation',
+                    'category_member_enumeration', 'category_suffix_variant',
+                    'old_name_or_short_name', 'direct_code_name_inconsistency']
+    origin_meaning = {
+        'shared_name_slash_group': '斜杠共享名称，如 020204/0251金融学',
+        'compound_catalog_name_truncation': '目录全名本身含顿号，如 030205T政治学、经济学与哲学',
+        'category_member_enumeration': '类别/一级学科代码后跟成员枚举',
+        'category_suffix_variant': '名称是另一代码名 + “类”',
+        'old_name_or_short_name': '目录名的新旧简称/前缀差异',
+        'direct_code_name_inconsistency': '无法自动解释，需人工或机关确认（不宣称是源表错误）',
+    }
+    agency_rows = '\n'.join(
+        f"| {c['authority']} | {c.get('published') or c.get('retrieved')} | {c.get('http_status') or c.get('status')} | {c.get('title') or c.get('found') or c.get('note','')} |"
+        for c in AGENCY_CHECKS)
+    origin_rows = '\n'.join(
+        f"| `{key}` | {origin_counts.get(key, 0)} | {origin_meaning.get(key, '')} |"
+        for key in origin_order)
     md = f"""# 2027 国考专业证据：缺口取证与收口（2026-10-18）
 
 由 `data/major_evidence_2027` 与 git 历史（`{args.before_ref}`）生成，计数不手填。
 
 ## 1. 官方证据检索（Lane A）
 
-| 来源 | 状态 | 结论 |
-| --- | --- | --- |
-| 海事局 2027 资格审查说明（2026-10-13） | 200，已归档 | 第七条佐证“按门类/大类/小类招录即该类下专业均可报考” |
-| 专题网站公告列表 | 200 | 仍为 8 条，无补充公告或勘误 |
-| 海关总署 | 412 / https 000 | **BLOCKED**，WAF 拦截，未能检索 |
-| 上海铁路监督管理局 | 未检索 | 该局 1 岗仍 provisional |
-| 人行 / 气象 | 沿用前轮结论 | 无 2027 公务员适用成员表 |
+| 来源 | 日期 | 状态 | 结论 |
+| --- | --- | --- | --- |
+{agency_rows}
+
+**适用边界（重要）**：海事局说明第十二条明确限定
+“{AGENCY_CHECKS[0]['scope_quote']}”
+——**长江海事局不在其中**，其 3 个岗位保持 provisional，不得据该说明升级。
 
 **真实覆盖变化**：保守 {report['lanes']['A_agency_evidence']['coverage_before']['conservative']:,} → **{report['closure']['conservative']:,}**（+{len(gained)} 岗），
-provisional {report['lanes']['A_agency_evidence']['coverage_before']['provisional']} → **{report['closure']['provisional']}**，无候选不变（{report['closure']['no_candidate']:,}）。
+provisional {report['lanes']['A_agency_evidence']['coverage_before']['provisional']} → **{report['closure']['provisional']}**，
+无候选不变（{report['closure']['no_candidate']:,}）。
 闭合：{report['closure']['conservative']:,} + {report['closure']['provisional']} + {report['closure']['no_candidate']:,} = {report['closure']['sum']:,}。
 
-移动的 {len(gained)} 岗全部来自海事系统，逐岗带 `notice_url` 与原文引句。
+移动的 {len(gained)} 岗全部属于第十二条列名的直属海事局，逐岗带 `notice_url`、第七条引句与第十二条范围引句。
 
 ## 2. 语义冲突逐条审计（Lane B）
 
-{report['lanes']['B_conflict_audit']['entries']} 条 / {report['lanes']['B_conflict_audit']['positions']} 岗，按成因三分：
+{report['lanes']['B_conflict_audit']['entries']} 条 / {report['lanes']['B_conflict_audit']['positions']} 岗，按成因分类（计数由分片统计）：
 
-| 成因 | 条数 | 判决 |
+| 成因 | 条数 | 含义 |
 | --- | ---: | --- |
-| `shared_name_slash_group` | {origin_counts.get('shared_name_slash_group', 0)} | 格式产物：`020204/0251金融学` 这类斜杠共享名称 |
-| `category_suffix_variant` | {origin_counts.get('category_suffix_variant', 0)} | 格式变体：名称是另一代码名 + “类” |
-| `genuine_name_code_mismatch` | {origin_counts.get('genuine_name_code_mismatch', 0)} | 需机关/人工确认 |
+{origin_rows}
 
-**真实书面不符仅 {verdict_counts.get('needs_agency_or_human_confirmation', 0)} 条 / {report['lanes']['B_conflict_audit']['genuine_positions']} 岗**；
-其余 {verdict_counts.get('format_artifact_shared_name', 0) + verdict_counts.get('format_artifact_suffix', 0)} 条是解析格式产物，不能当作源表错误。
+其中 `direct_code_name_inconsistency` 共 {origin_counts.get('direct_code_name_inconsistency', 0)} 条，
+是**唯一**可能需要机关澄清的一类；其余均为格式或目录命名差异，不得报为“源表错误”。
 逐条明细（岗位 ID、原文、跨度、上下文）见 JSON 的 `items`。
 
 ## 3. 残留复核（Lane B）

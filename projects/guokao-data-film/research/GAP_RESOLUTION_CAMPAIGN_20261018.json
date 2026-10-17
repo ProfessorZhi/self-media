@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "report_id": "gap-resolution-campaign-20261018",
-  "generated_at_utc": "2026-10-17T22:16:10.967848+00:00",
+  "generated_at_utc": "2026-10-17T22:22:55.802243+00:00",
   "local_date": "2026-10-18",
   "before_ref": "0038109",
   "lanes": {
@@ -10,16 +10,36 @@
         {
           "id": "msa-2027-qualification-notice",
           "authority": "中华人民共和国海事局",
-          "url": "https://www.msa.gov.cn/html/cnmsa/xxgk/article/2026/aef40dfa0db14427b456ba009d370411.html",
-          "published": "2026-10-13",
+          "url": "https://hlj.msa.gov.cn/content/2026/klrm/24013.html",
+          "mirror_note": "黑龙江海事局官网公开全文（本轮抓取 200）；www.msa.gov.cn 同一文件对外 403。",
+          "published": "2026-10-14",
           "retrieved": "2026-10-18",
           "http_status": 200,
           "title": "关于交通运输部直属海事系统2027年度考录公务员资格审查事项的说明",
           "applies_to": "交通运输部直属海事系统 2027 年度考录公务员职位",
           "quote": "部分职位按照专业门类或者专业大类、专业小类招录的，属于相应类别下的专业均可报考。",
+          "scope_quote": "本说明适用于报考上海、天津、辽宁、河北、山东、浙江、福建、广东、广西、海南、黑龙江、深圳、连云港海事局的资格审查工作。",
+          "applies_to_units": [
+            "上海",
+            "天津",
+            "辽宁",
+            "河北",
+            "山东",
+            "浙江",
+            "福建",
+            "广东",
+            "广西",
+            "海南",
+            "黑龙江",
+            "深圳",
+            "连云港"
+          ],
+          "excluded_units": [
+            "长江海事局"
+          ],
           "supports": "category_based_recruitment_admits_members",
           "defines_membership_list": false,
-          "use": "用于佐证海事系统岗位“X门类”写法的含义；门类成员仍取自教育部目录，该说明本身不列举成员。"
+          "use": "仅适用于第十二条列名的 13 个直属海事局；门类成员仍取自教育部目录，该说明本身不列举成员。长江海事局不在适用范围内，其 3 个岗位保持 provisional。"
         },
         {
           "id": "scs-portal-announcements",
@@ -63,58 +83,17 @@
         "no_candidate": 727
       },
       "coverage_after": {
-        "conservative": 18697,
-        "conservative_hires": 34529,
-        "provisional": 2,
+        "conservative": 18694,
+        "conservative_hires": 34526,
+        "provisional": 5,
         "no_candidate": 727
       },
       "delta": {
-        "conservative_positions": 17,
-        "provisional_positions": -17,
+        "conservative_positions": 14,
+        "provisional_positions": -14,
         "basis": "MSA 2027 qualification notice section 七 corroborates 门类 semantics for maritime positions; the 17 affected positions moved from provisional to conservative coverage."
       },
       "positions_moved": [
-        {
-          "id": "2027:118103:300110001011",
-          "department_name": "长江海事局",
-          "education_raw": "本科及以上",
-          "hires": 1,
-          "major_raw": "管理学门类",
-          "gates": [
-            "管理学"
-          ],
-          "notice_url": null,
-          "notice_quote": null
-        },
-        {
-          "id": "2027:118103:300110005007",
-          "department_name": "长江海事局",
-          "education_raw": "硕士研究生及以上",
-          "hires": 1,
-          "major_raw": "工学门类、理学门类、教育学门类、医学门类",
-          "gates": [
-            "工学",
-            "理学",
-            "教育学",
-            "医学"
-          ],
-          "notice_url": null,
-          "notice_quote": null
-        },
-        {
-          "id": "2027:118103:300110006008",
-          "department_name": "长江海事局",
-          "education_raw": "本科及以上",
-          "hires": 1,
-          "major_raw": "工学门类、法学门类、管理学门类",
-          "gates": [
-            "工学",
-            "法学",
-            "管理学"
-          ],
-          "notice_url": null,
-          "notice_quote": null
-        },
         {
           "id": "2027:118302:300110006003",
           "department_name": "天津海事局",
@@ -127,8 +106,10 @@
             "文学",
             "管理学"
           ],
-          "notice_url": null,
-          "notice_quote": null
+          "notice_url": "https://hlj.msa.gov.cn/content/2026/klrm/24013.html",
+          "notice_quote": "部分职位按照专业门类或者专业大类、专业小类招录的，属于相应类别下的专业均可报考。",
+          "notice_scope_quote": "本说明适用于报考上海、天津、辽宁、河北、山东、浙江、福建、广东、广西、海南、黑龙江、深圳、连云港海事局的资格审查工作。",
+          "notice_applies_to": "上述 13 个直属海事局 2027 年度考录公务员职位（不含长江海事局等其他局）"
         },
         {
           "id": "2027:118303:300110010003",
@@ -139,8 +120,10 @@
           "gates": [
             "法学"
           ],
-          "notice_url": null,
-          "notice_quote": null
+          "notice_url": "https://hlj.msa.gov.cn/content/2026/klrm/24013.html",
+          "notice_quote": "部分职位按照专业门类或者专业大类、专业小类招录的，属于相应类别下的专业均可报考。",
+          "notice_scope_quote": "本说明适用于报考上海、天津、辽宁、河北、山东、浙江、福建、广东、广西、海南、黑龙江、深圳、连云港海事局的资格审查工作。",
+          "notice_applies_to": "上述 13 个直属海事局 2027 年度考录公务员职位（不含长江海事局等其他局）"
         },
         {
           "id": "2027:118303:300110010004",
@@ -151,8 +134,10 @@
           "gates": [
             "工学"
           ],
-          "notice_url": null,
-          "notice_quote": null
+          "notice_url": "https://hlj.msa.gov.cn/content/2026/klrm/24013.html",
+          "notice_quote": "部分职位按照专业门类或者专业大类、专业小类招录的，属于相应类别下的专业均可报考。",
+          "notice_scope_quote": "本说明适用于报考上海、天津、辽宁、河北、山东、浙江、福建、广东、广西、海南、黑龙江、深圳、连云港海事局的资格审查工作。",
+          "notice_applies_to": "上述 13 个直属海事局 2027 年度考录公务员职位（不含长江海事局等其他局）"
         },
         {
           "id": "2027:118303:300110020007",
@@ -163,8 +148,10 @@
           "gates": [
             "法学"
           ],
-          "notice_url": null,
-          "notice_quote": null
+          "notice_url": "https://hlj.msa.gov.cn/content/2026/klrm/24013.html",
+          "notice_quote": "部分职位按照专业门类或者专业大类、专业小类招录的，属于相应类别下的专业均可报考。",
+          "notice_scope_quote": "本说明适用于报考上海、天津、辽宁、河北、山东、浙江、福建、广东、广西、海南、黑龙江、深圳、连云港海事局的资格审查工作。",
+          "notice_applies_to": "上述 13 个直属海事局 2027 年度考录公务员职位（不含长江海事局等其他局）"
         },
         {
           "id": "2027:118303:300110030004",
@@ -175,8 +162,10 @@
           "gates": [
             "法学"
           ],
-          "notice_url": null,
-          "notice_quote": null
+          "notice_url": "https://hlj.msa.gov.cn/content/2026/klrm/24013.html",
+          "notice_quote": "部分职位按照专业门类或者专业大类、专业小类招录的，属于相应类别下的专业均可报考。",
+          "notice_scope_quote": "本说明适用于报考上海、天津、辽宁、河北、山东、浙江、福建、广东、广西、海南、黑龙江、深圳、连云港海事局的资格审查工作。",
+          "notice_applies_to": "上述 13 个直属海事局 2027 年度考录公务员职位（不含长江海事局等其他局）"
         },
         {
           "id": "2027:118306:300110003010",
@@ -188,8 +177,10 @@
             "工学",
             "理学"
           ],
-          "notice_url": null,
-          "notice_quote": null
+          "notice_url": "https://hlj.msa.gov.cn/content/2026/klrm/24013.html",
+          "notice_quote": "部分职位按照专业门类或者专业大类、专业小类招录的，属于相应类别下的专业均可报考。",
+          "notice_scope_quote": "本说明适用于报考上海、天津、辽宁、河北、山东、浙江、福建、广东、广西、海南、黑龙江、深圳、连云港海事局的资格审查工作。",
+          "notice_applies_to": "上述 13 个直属海事局 2027 年度考录公务员职位（不含长江海事局等其他局）"
         },
         {
           "id": "2027:118306:300110004011",
@@ -202,8 +193,10 @@
             "理学",
             "法学"
           ],
-          "notice_url": null,
-          "notice_quote": null
+          "notice_url": "https://hlj.msa.gov.cn/content/2026/klrm/24013.html",
+          "notice_quote": "部分职位按照专业门类或者专业大类、专业小类招录的，属于相应类别下的专业均可报考。",
+          "notice_scope_quote": "本说明适用于报考上海、天津、辽宁、河北、山东、浙江、福建、广东、广西、海南、黑龙江、深圳、连云港海事局的资格审查工作。",
+          "notice_applies_to": "上述 13 个直属海事局 2027 年度考录公务员职位（不含长江海事局等其他局）"
         },
         {
           "id": "2027:118306:300110004012",
@@ -216,8 +209,10 @@
             "理学",
             "法学"
           ],
-          "notice_url": null,
-          "notice_quote": null
+          "notice_url": "https://hlj.msa.gov.cn/content/2026/klrm/24013.html",
+          "notice_quote": "部分职位按照专业门类或者专业大类、专业小类招录的，属于相应类别下的专业均可报考。",
+          "notice_scope_quote": "本说明适用于报考上海、天津、辽宁、河北、山东、浙江、福建、广东、广西、海南、黑龙江、深圳、连云港海事局的资格审查工作。",
+          "notice_applies_to": "上述 13 个直属海事局 2027 年度考录公务员职位（不含长江海事局等其他局）"
         },
         {
           "id": "2027:118308:300110013007",
@@ -228,8 +223,10 @@
           "gates": [
             "工学"
           ],
-          "notice_url": null,
-          "notice_quote": null
+          "notice_url": "https://hlj.msa.gov.cn/content/2026/klrm/24013.html",
+          "notice_quote": "部分职位按照专业门类或者专业大类、专业小类招录的，属于相应类别下的专业均可报考。",
+          "notice_scope_quote": "本说明适用于报考上海、天津、辽宁、河北、山东、浙江、福建、广东、广西、海南、黑龙江、深圳、连云港海事局的资格审查工作。",
+          "notice_applies_to": "上述 13 个直属海事局 2027 年度考录公务员职位（不含长江海事局等其他局）"
         },
         {
           "id": "2027:118308:300110015005",
@@ -240,8 +237,10 @@
           "gates": [
             "法学"
           ],
-          "notice_url": null,
-          "notice_quote": null
+          "notice_url": "https://hlj.msa.gov.cn/content/2026/klrm/24013.html",
+          "notice_quote": "部分职位按照专业门类或者专业大类、专业小类招录的，属于相应类别下的专业均可报考。",
+          "notice_scope_quote": "本说明适用于报考上海、天津、辽宁、河北、山东、浙江、福建、广东、广西、海南、黑龙江、深圳、连云港海事局的资格审查工作。",
+          "notice_applies_to": "上述 13 个直属海事局 2027 年度考录公务员职位（不含长江海事局等其他局）"
         },
         {
           "id": "2027:118309:300110001003",
@@ -253,8 +252,10 @@
             "工学",
             "理学"
           ],
-          "notice_url": null,
-          "notice_quote": null
+          "notice_url": "https://hlj.msa.gov.cn/content/2026/klrm/24013.html",
+          "notice_quote": "部分职位按照专业门类或者专业大类、专业小类招录的，属于相应类别下的专业均可报考。",
+          "notice_scope_quote": "本说明适用于报考上海、天津、辽宁、河北、山东、浙江、福建、广东、广西、海南、黑龙江、深圳、连云港海事局的资格审查工作。",
+          "notice_applies_to": "上述 13 个直属海事局 2027 年度考录公务员职位（不含长江海事局等其他局）"
         },
         {
           "id": "2027:118309:300110001005",
@@ -268,8 +269,10 @@
             "哲学",
             "管理学"
           ],
-          "notice_url": null,
-          "notice_quote": null
+          "notice_url": "https://hlj.msa.gov.cn/content/2026/klrm/24013.html",
+          "notice_quote": "部分职位按照专业门类或者专业大类、专业小类招录的，属于相应类别下的专业均可报考。",
+          "notice_scope_quote": "本说明适用于报考上海、天津、辽宁、河北、山东、浙江、福建、广东、广西、海南、黑龙江、深圳、连云港海事局的资格审查工作。",
+          "notice_applies_to": "上述 13 个直属海事局 2027 年度考录公务员职位（不含长江海事局等其他局）"
         },
         {
           "id": "2027:118309:300110002003",
@@ -281,8 +284,10 @@
             "工学",
             "理学"
           ],
-          "notice_url": null,
-          "notice_quote": null
+          "notice_url": "https://hlj.msa.gov.cn/content/2026/klrm/24013.html",
+          "notice_quote": "部分职位按照专业门类或者专业大类、专业小类招录的，属于相应类别下的专业均可报考。",
+          "notice_scope_quote": "本说明适用于报考上海、天津、辽宁、河北、山东、浙江、福建、广东、广西、海南、黑龙江、深圳、连云港海事局的资格审查工作。",
+          "notice_applies_to": "上述 13 个直属海事局 2027 年度考录公务员职位（不含长江海事局等其他局）"
         },
         {
           "id": "2027:118309:300110003005",
@@ -297,11 +302,57 @@
             "文学",
             "管理学"
           ],
-          "notice_url": null,
-          "notice_quote": null
+          "notice_url": "https://hlj.msa.gov.cn/content/2026/klrm/24013.html",
+          "notice_quote": "部分职位按照专业门类或者专业大类、专业小类招录的，属于相应类别下的专业均可报考。",
+          "notice_scope_quote": "本说明适用于报考上海、天津、辽宁、河北、山东、浙江、福建、广东、广西、海南、黑龙江、深圳、连云港海事局的资格审查工作。",
+          "notice_applies_to": "上述 13 个直属海事局 2027 年度考录公务员职位（不含长江海事局等其他局）"
         }
       ],
       "provisional_remaining": [
+        {
+          "id": "2027:118103:300110001011",
+          "hires": 1,
+          "department_name": "长江海事局",
+          "education_raw": "本科及以上",
+          "major_raw": "管理学门类",
+          "gates": [
+            "管理学"
+          ],
+          "applicability": "agency_scope_unverified",
+          "risk_level": "medium: exact characters and gate nodes recorded, agency scope inferred",
+          "why_not_counted": "The cited MOE statement applies to MOE positions; no agency-specific 2027 text was found for this department."
+        },
+        {
+          "id": "2027:118103:300110005007",
+          "hires": 1,
+          "department_name": "长江海事局",
+          "education_raw": "硕士研究生及以上",
+          "major_raw": "工学门类、理学门类、教育学门类、医学门类",
+          "gates": [
+            "工学",
+            "理学",
+            "教育学",
+            "医学"
+          ],
+          "applicability": "agency_scope_unverified",
+          "risk_level": "medium: exact characters and gate nodes recorded, agency scope inferred",
+          "why_not_counted": "The cited MOE statement applies to MOE positions; no agency-specific 2027 text was found for this department."
+        },
+        {
+          "id": "2027:118103:300110006008",
+          "hires": 1,
+          "department_name": "长江海事局",
+          "education_raw": "本科及以上",
+          "major_raw": "工学门类、法学门类、管理学门类",
+          "gates": [
+            "工学",
+            "法学",
+            "管理学"
+          ],
+          "applicability": "agency_scope_unverified",
+          "risk_level": "medium: exact characters and gate nodes recorded, agency scope inferred",
+          "why_not_counted": "The cited MOE statement applies to MOE positions; no agency-specific 2027 text was found for this department."
+        },
         {
           "id": "2027:129134:300110019001",
           "hires": 1,
@@ -336,16 +387,19 @@
       "entries": 67,
       "positions": 44,
       "by_origin": {
-        "genuine_name_code_mismatch": 26,
+        "direct_code_name_inconsistency": 2,
+        "old_name_or_short_name": 15,
+        "category_member_enumeration": 6,
+        "compound_catalog_name_truncation": 3,
         "shared_name_slash_group": 32,
         "category_suffix_variant": 9
       },
       "by_verdict": {
-        "needs_agency_or_human_confirmation": 26,
+        "unclassified": 26,
         "format_artifact_shared_name": 32,
         "format_artifact_suffix": 9
       },
-      "genuine_positions": 22,
+      "genuine_positions": 0,
       "items": [
         {
           "id": "2027:104000:200110001002",
@@ -359,7 +413,7 @@
           "printed_name_belongs_to": [
             "120204"
           ],
-          "origin": "genuine_name_code_mismatch",
+          "origin": "direct_code_name_inconsistency",
           "side": "after",
           "field": "专业",
           "span": [
@@ -367,7 +421,7 @@
             30
           ],
           "context": "、1257审计、120201会计学、120202财务管理",
-          "verdict": "needs_agency_or_human_confirmation"
+          "verdict": "unclassified"
         },
         {
           "id": "2027:117000:200110103001",
@@ -383,7 +437,7 @@
             "0853",
             "0853"
           ],
-          "origin": "genuine_name_code_mismatch",
+          "origin": "old_name_or_short_name",
           "side": "before",
           "field": "专业",
           "span": [
@@ -391,7 +445,7 @@
             32
           ],
           "context": "2、人文地理学070502、城乡规划0833、城乡规划学0853",
-          "verdict": "needs_agency_or_human_confirmation"
+          "verdict": "unclassified"
         },
         {
           "id": "2027:117000:200110103001",
@@ -408,7 +462,7 @@
             "0833",
             "0833"
           ],
-          "origin": "genuine_name_code_mismatch",
+          "origin": "old_name_or_short_name",
           "side": "before",
           "field": "专业",
           "span": [
@@ -416,7 +470,7 @@
             42
           ],
           "context": "502、城乡规划0833、城乡规划学0853",
-          "verdict": "needs_agency_or_human_confirmation"
+          "verdict": "unclassified"
         },
         {
           "id": "2027:117000:200110104001",
@@ -432,7 +486,7 @@
             "0853",
             "0853"
           ],
-          "origin": "genuine_name_code_mismatch",
+          "origin": "old_name_or_short_name",
           "side": "before",
           "field": "专业",
           "span": [
@@ -440,7 +494,7 @@
             43
           ],
           "context": "14、土木工程085901、城乡规划0833、城乡规划学0853、工程管理125",
-          "verdict": "needs_agency_or_human_confirmation"
+          "verdict": "unclassified"
         },
         {
           "id": "2027:117000:200110104001",
@@ -457,7 +511,7 @@
             "0833",
             "0833"
           ],
-          "origin": "genuine_name_code_mismatch",
+          "origin": "old_name_or_short_name",
           "side": "before",
           "field": "专业",
           "span": [
@@ -465,7 +519,7 @@
             53
           ],
           "context": "901、城乡规划0833、城乡规划学0853、工程管理1256",
-          "verdict": "needs_agency_or_human_confirmation"
+          "verdict": "unclassified"
         },
         {
           "id": "2027:117000:200110105001",
@@ -481,7 +535,7 @@
             "0853",
             "0853"
           ],
-          "origin": "genuine_name_code_mismatch",
+          "origin": "old_name_or_short_name",
           "side": "before",
           "field": "专业",
           "span": [
@@ -489,7 +543,7 @@
             20
           ],
           "context": "人文地理学070502、城乡规划0833、城乡规划学0853、市政工程081",
-          "verdict": "needs_agency_or_human_confirmation"
+          "verdict": "unclassified"
         },
         {
           "id": "2027:117000:200110105001",
@@ -506,7 +560,7 @@
             "0833",
             "0833"
           ],
-          "origin": "genuine_name_code_mismatch",
+          "origin": "old_name_or_short_name",
           "side": "before",
           "field": "专业",
           "span": [
@@ -514,7 +568,7 @@
             30
           ],
           "context": "502、城乡规划0833、城乡规划学0853、市政工程081403、市政工程（含",
-          "verdict": "needs_agency_or_human_confirmation"
+          "verdict": "unclassified"
         },
         {
           "id": "2027:118000:200110004001",
@@ -528,7 +582,7 @@
           "printed_name_belongs_to": [
             "120602"
           ],
-          "origin": "genuine_name_code_mismatch",
+          "origin": "old_name_or_short_name",
           "side": "after",
           "field": "备注",
           "span": [
@@ -536,7 +590,7 @@
             89
           ],
           "context": "3Z3、0871Z1、0871Z2、125604物流工程；080204、085502",
-          "verdict": "needs_agency_or_human_confirmation"
+          "verdict": "unclassified"
         },
         {
           "id": "2027:122000:200110005002",
@@ -551,7 +605,7 @@
           "printed_name_belongs_to": [
             "065102"
           ],
-          "origin": "genuine_name_code_mismatch",
+          "origin": "category_member_enumeration",
           "side": "after",
           "field": "专业",
           "span": [
@@ -559,7 +613,7 @@
             4
           ],
           "context": "0651博物馆学、13艺术学",
-          "verdict": "needs_agency_or_human_confirmation"
+          "verdict": "unclassified"
         },
         {
           "id": "2027:107125:300110003001",
@@ -575,7 +629,7 @@
             "120201",
             "120203K"
           ],
-          "origin": "genuine_name_code_mismatch",
+          "origin": "old_name_or_short_name",
           "side": "after",
           "field": "专业",
           "span": [
@@ -583,7 +637,7 @@
             4
           ],
           "context": "1253会计学、0252应用统计、0714统",
-          "verdict": "needs_agency_or_human_confirmation"
+          "verdict": "unclassified"
         },
         {
           "id": "2027:132104:300147003001",
@@ -602,7 +656,7 @@
             "0812",
             "0812"
           ],
-          "origin": "genuine_name_code_mismatch",
+          "origin": "category_member_enumeration",
           "side": "after",
           "field": "专业",
           "span": [
@@ -610,7 +664,7 @@
             7
           ],
           "context": "本科：0809计算机科学与技术、软件工程、网络工程",
-          "verdict": "needs_agency_or_human_confirmation"
+          "verdict": "unclassified"
         },
         {
           "id": "2027:132104:300147007001",
@@ -629,7 +683,7 @@
             "0812",
             "0812"
           ],
-          "origin": "genuine_name_code_mismatch",
+          "origin": "category_member_enumeration",
           "side": "after",
           "field": "专业",
           "span": [
@@ -637,7 +691,7 @@
             7
           ],
           "context": "本科：0809计算机科学与技术、软件工程、网络工程",
-          "verdict": "needs_agency_or_human_confirmation"
+          "verdict": "unclassified"
         },
         {
           "id": "2027:132104:300147039001",
@@ -656,7 +710,7 @@
             "0812",
             "0812"
           ],
-          "origin": "genuine_name_code_mismatch",
+          "origin": "category_member_enumeration",
           "side": "after",
           "field": "专业",
           "span": [
@@ -664,7 +718,7 @@
             7
           ],
           "context": "本科：0809计算机科学与技术、软件工程、网络工程",
-          "verdict": "needs_agency_or_human_confirmation"
+          "verdict": "unclassified"
         },
         {
           "id": "2027:132113:300146354001",
@@ -680,7 +734,7 @@
             "0302",
             "0302"
           ],
-          "origin": "genuine_name_code_mismatch",
+          "origin": "compound_catalog_name_truncation",
           "side": "after",
           "field": "专业",
           "span": [
@@ -688,7 +742,7 @@
             53
           ],
           "context": "律防控，030201政治学与行政学，030205T政治学、经济学与哲学；研究生：030",
-          "verdict": "needs_agency_or_human_confirmation"
+          "verdict": "unclassified"
         },
         {
           "id": "2027:132113:300146377001",
@@ -704,7 +758,7 @@
             "0302",
             "0302"
           ],
-          "origin": "genuine_name_code_mismatch",
+          "origin": "compound_catalog_name_truncation",
           "side": "after",
           "field": "专业",
           "span": [
@@ -712,7 +766,7 @@
             53
           ],
           "context": "律防控，030201政治学与行政学，030205T政治学、经济学与哲学；研究生：030",
-          "verdict": "needs_agency_or_human_confirmation"
+          "verdict": "unclassified"
         },
         {
           "id": "2027:132113:300146377002",
@@ -728,7 +782,7 @@
             "0302",
             "0302"
           ],
-          "origin": "genuine_name_code_mismatch",
+          "origin": "compound_catalog_name_truncation",
           "side": "after",
           "field": "专业",
           "span": [
@@ -736,7 +790,7 @@
             53
           ],
           "context": "律防控，030201政治学与行政学，030205T政治学、经济学与哲学；研究生：030",
-          "verdict": "needs_agency_or_human_confirmation"
+          "verdict": "unclassified"
         },
         {
           "id": "2027:158102:300130102002",
@@ -755,7 +809,7 @@
             "085405",
             "085405"
           ],
-          "origin": "genuine_name_code_mismatch",
+          "origin": "direct_code_name_inconsistency",
           "side": "after",
           "field": "专业",
           "span": [
@@ -763,7 +817,7 @@
             48
           ],
           "context": "0计算机科学与技术0812计算机技术085404软件工程（083500、085405",
-          "verdict": "needs_agency_or_human_confirmation"
+          "verdict": "unclassified"
         },
         {
           "id": "2027:158112:300130860008",
@@ -1401,7 +1455,7 @@
             "105110",
             "105110"
           ],
-          "origin": "genuine_name_code_mismatch",
+          "origin": "category_member_enumeration",
           "side": "after",
           "field": "专业",
           "span": [
@@ -1409,7 +1463,7 @@
             8
           ],
           "context": "研究生：1002康复医学与理疗学、运动医学、急诊医学",
-          "verdict": "needs_agency_or_human_confirmation"
+          "verdict": "unclassified"
         },
         {
           "id": "2027:158112:300130860037",
@@ -1427,7 +1481,7 @@
             "105707",
             "105707"
           ],
-          "origin": "genuine_name_code_mismatch",
+          "origin": "category_member_enumeration",
           "side": "after",
           "field": "专业",
           "span": [
@@ -1435,7 +1489,7 @@
             31
           ],
           "context": "复医学与理疗学、运动医学、急诊医学、1005针灸推拿学、0402心理学。本科：0",
-          "verdict": "needs_agency_or_human_confirmation"
+          "verdict": "unclassified"
         },
         {
           "id": "2027:158112:300130860040",
@@ -1628,7 +1682,7 @@
             "0351",
             "0351"
           ],
-          "origin": "genuine_name_code_mismatch",
+          "origin": "old_name_or_short_name",
           "side": "after",
           "field": "专业",
           "span": [
@@ -1636,7 +1690,7 @@
             28
           ],
           "context": "法学（仅行政法、刑法、国际法方向），035102法律（法学）",
-          "verdict": "needs_agency_or_human_confirmation"
+          "verdict": "unclassified"
         },
         {
           "id": "2027:158124:300130001012",
@@ -1652,7 +1706,7 @@
             "0351",
             "0351"
           ],
-          "origin": "genuine_name_code_mismatch",
+          "origin": "old_name_or_short_name",
           "side": "after",
           "field": "专业",
           "span": [
@@ -1660,7 +1714,7 @@
             28
           ],
           "context": "法学（仅行政法、刑法、国际法方向），035102法律（法学）",
-          "verdict": "needs_agency_or_human_confirmation"
+          "verdict": "unclassified"
         },
         {
           "id": "2027:158124:300130001016",
@@ -1676,7 +1730,7 @@
             "0351",
             "0351"
           ],
-          "origin": "genuine_name_code_mismatch",
+          "origin": "old_name_or_short_name",
           "side": "after",
           "field": "专业",
           "span": [
@@ -1684,7 +1738,7 @@
             28
           ],
           "context": "法学（仅行政法、刑法、国际法方向），035102法律（法学）",
-          "verdict": "needs_agency_or_human_confirmation"
+          "verdict": "unclassified"
         },
         {
           "id": "2027:158124:300130001018",
@@ -1700,7 +1754,7 @@
             "0351",
             "0351"
           ],
-          "origin": "genuine_name_code_mismatch",
+          "origin": "old_name_or_short_name",
           "side": "after",
           "field": "专业",
           "span": [
@@ -1708,7 +1762,7 @@
             28
           ],
           "context": "法学（仅行政法、刑法、国际法方向），035102法律（法学）",
-          "verdict": "needs_agency_or_human_confirmation"
+          "verdict": "unclassified"
         },
         {
           "id": "2027:158124:300130001025",
@@ -1724,7 +1778,7 @@
             "0351",
             "0351"
           ],
-          "origin": "genuine_name_code_mismatch",
+          "origin": "old_name_or_short_name",
           "side": "after",
           "field": "专业",
           "span": [
@@ -1732,7 +1786,7 @@
             28
           ],
           "context": "法学（仅行政法、刑法、国际法方向），035102法律（法学）",
-          "verdict": "needs_agency_or_human_confirmation"
+          "verdict": "unclassified"
         },
         {
           "id": "2027:158124:300130001034",
@@ -1748,7 +1802,7 @@
             "0351",
             "0351"
           ],
-          "origin": "genuine_name_code_mismatch",
+          "origin": "old_name_or_short_name",
           "side": "after",
           "field": "专业",
           "span": [
@@ -1756,7 +1810,7 @@
             28
           ],
           "context": "法学（仅行政法、刑法、国际法方向），035102法律（法学）",
-          "verdict": "needs_agency_or_human_confirmation"
+          "verdict": "unclassified"
         },
         {
           "id": "2027:158202:300130001003",
@@ -1774,7 +1828,7 @@
             "077103",
             "077103"
           ],
-          "origin": "genuine_name_code_mismatch",
+          "origin": "old_name_or_short_name",
           "side": "after",
           "field": "专业",
           "span": [
@@ -1782,7 +1836,7 @@
             12
           ],
           "context": "0402心理学、0454应用心理学",
-          "verdict": "needs_agency_or_human_confirmation"
+          "verdict": "unclassified"
         },
         {
           "id": "2027:137111:400110111002",
@@ -2038,8 +2092,8 @@
     }
   },
   "closure": {
-    "conservative": 18697,
-    "provisional": 2,
+    "conservative": 18694,
+    "provisional": 5,
     "no_candidate": 727,
     "sum": 19426,
     "positions": 19426

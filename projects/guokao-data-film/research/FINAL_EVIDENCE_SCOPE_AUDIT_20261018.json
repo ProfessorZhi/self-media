@@ -1,21 +1,21 @@
 {
   "schema_version": "1.0.0",
   "report_id": "final-evidence-scope-audit-20261018",
-  "generated_at_utc": "2026-10-17T22:16:09.941239+00:00",
+  "generated_at_utc": "2026-10-17T22:22:22.486566+00:00",
   "generated_date_timezone": "Asia/Shanghai",
   "local_date": "2026-10-18",
   "question": "How far does the professional evidence reach, which parts rest on an inference about another agency, and what is still undecidable from public sources?",
-  "answer_in_one_paragraph": "19,426 positions are complete on the 27 source fields. 18,697 positions have professional evidence independent of any cross-agency inference; 2 more are covered only by the 门类 rule on non-MOE positions and are therefore provisional; 727 have no catalog candidate at all. No residual phrase hides an exact in-scope catalog name that the matcher missed, so the remaining gap is semantic, cross-level or agency-internal, not a parser defect.",
+  "answer_in_one_paragraph": "19,426 positions are complete on the 27 source fields. 18,694 positions have professional evidence independent of any cross-agency inference; 5 more are covered only by the 门类 rule on non-MOE positions and are therefore provisional; 727 have no catalog candidate at all. No residual phrase hides an exact in-scope catalog name that the matcher missed, so the remaining gap is semantic, cross-level or agency-internal, not a parser defect.",
   "coverage_tiers": {
     "conservative": {
-      "positions_with_catalog_candidate": 18697,
-      "hires": 34529,
+      "positions_with_catalog_candidate": 18694,
+      "hires": 34526,
       "basis": "exact codes or names in the 专业 and 备注 columns, gate-prefixed exact names, source-declared gate codes, and explicitly unrestricted texts",
       "excludes": "gate_scope_rule on non-MOE positions"
     },
     "provisional_gate_rule": {
-      "positions": 2,
-      "hires": 2,
+      "positions": 5,
+      "hires": 5,
       "basis": "gate_scope_rule only, agency scope unverified",
       "status": "provisional; not part of the conservative numerator"
     },
@@ -28,7 +28,7 @@
       "positions": 727,
       "hires": 1160
     },
-    "closure": "18,697 conservative + 2 provisional + 727 no-candidate = 19,426"
+    "closure": "18,694 conservative + 5 provisional + 727 no-candidate = 19,426"
   },
   "gate_scope_rule_audit": {
     "rule": "专业要求写作“X门类/学科门类”时解析到 X 学科门类节点",
@@ -44,7 +44,7 @@
     "hits_on_moe_positions": 0,
     "hits_on_other_agencies": 95,
     "positions_with_hits": 69,
-    "positions_covered_only_by_this_rule": 2,
+    "positions_covered_only_by_this_rule": 5,
     "decision": "The rule is kept as a traceable reading aid but is excluded from the conservative coverage numerator, because the only cited statement is scoped to MOE positions and no agency-specific corroboration was found for the others.",
     "contrast_source_declared_gate_code": {
       "positions": 145,
@@ -52,6 +52,44 @@
       "why": "The position text itself prints the two-digit gate code (e.g. 经济学类（02）); no external rule is needed."
     },
     "provisional_positions": [
+      {
+        "id": "2027:118103:300110001011",
+        "department_name": "长江海事局",
+        "education_raw": "本科及以上",
+        "hires": 1,
+        "major_raw": "管理学门类",
+        "gates": [
+          "管理学"
+        ],
+        "risk_level": "medium: exact characters and gate nodes recorded, agency scope inferred"
+      },
+      {
+        "id": "2027:118103:300110005007",
+        "department_name": "长江海事局",
+        "education_raw": "硕士研究生及以上",
+        "hires": 1,
+        "major_raw": "工学门类、理学门类、教育学门类、医学门类",
+        "gates": [
+          "工学",
+          "理学",
+          "教育学",
+          "医学"
+        ],
+        "risk_level": "medium: exact characters and gate nodes recorded, agency scope inferred"
+      },
+      {
+        "id": "2027:118103:300110006008",
+        "department_name": "长江海事局",
+        "education_raw": "本科及以上",
+        "hires": 1,
+        "major_raw": "工学门类、法学门类、管理学门类",
+        "gates": [
+          "工学",
+          "法学",
+          "管理学"
+        ],
+        "risk_level": "medium: exact characters and gate nodes recorded, agency scope inferred"
+      },
       {
         "id": "2027:129134:300110019001",
         "department_name": "南宁海关",
@@ -78,6 +116,7 @@
       }
     ],
     "provisional_by_department": {
+      "长江海事局": 3,
       "南宁海关": 1,
       "上海铁路监督管理局": 1
     }
@@ -624,9 +663,9 @@
     }
   ],
   "updated_this_round": [
-    "三层覆盖口径：conservative 18,697、provisional 2、no_candidate 727，校验器断言三者之和为 19,426",
+    "三层覆盖口径：conservative 18,694、provisional 5、no_candidate 727，校验器断言三者之和为 19,426",
     "gate_scope_rule 命中全部标为 agency_scope_unverified，且不计入保守分子；命中 95 处",
-    "复核桶 candidate_provisional_agency_scope_rule（2 岗）",
+    "复核桶 candidate_provisional_agency_scope_rule（5 岗）",
     "冲突拆分语族：semantic_conflict 67 条 / multi_namespace_diagnostic 20 条",
     "对 194 个残留岗位逐组判定，真实解析缺口 0"
   ],
@@ -636,8 +675,8 @@
     "历史报告 RESIDUAL_20271018_V2.json、OFFICIAL_NATIONAL_TABLE_VERIFICATION_20261018.json 未被改写"
   ],
   "opus_safe_read_guidance": [
-    "引用“专业候选覆盖”时用 18,697（保守），不要用 18,699，除非同时说明其中 2 岗依赖跨机关推定。",
-    "2 个 provisional 岗位可描述为“原文门类写法 + 目录节点”，但不得表述为“该机关已确认接受这些门类”。",
+    "引用“专业候选覆盖”时用 18,694（保守），不要用 18,699，除非同时说明其中 5 岗依赖跨机关推定。",
+    "5 个 provisional 岗位可描述为“原文门类写法 + 目录节点”，但不得表述为“该机关已确认接受这些门类”。",
     "727 个无候选岗位不等于“不限专业”，也不等于“不可报”；多数是机关内部类别或开放表述。",
     "冲突数按口径引用：54 岗位 / 87 条目 / 67 语义冲突条目；三者不可互换。",
     "任何“可报/不可报”结论都不在本数据内；本节只描述原文证据与解析状态。",
