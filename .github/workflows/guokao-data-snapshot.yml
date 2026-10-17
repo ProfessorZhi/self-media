@@ -1,4 +1,4 @@
-name: Guokao research input snapshot
+name: Guokao public catalog inputs
 on:
   push:
     branches: ['data/guokao-gap-closure-20261017']
@@ -8,25 +8,37 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: ed7aff9bce85e136b4534776992cdb1f789ec6d0
-          persist-credentials: false
-      - name: Package existing research inputs only
+      - name: Download identified public sources without credentials
         run: |
           python3 - <<'PY'
-          import hashlib, json, pathlib
-          root = pathlib.Path('projects/guokao-data-film')
-          files = sorted(p for p in root.rglob('*') if p.is_file())
-          index = [{'path': str(p), 'bytes': p.stat().st_size, 'sha256': hashlib.sha256(p.read_bytes()).hexdigest()} for p in files]
-          pathlib.Path('snapshot-index.json').write_text(json.dumps({'base_commit':'ed7aff9bce85e136b4534776992cdb1f789ec6d0','files':index}, ensure_ascii=False), encoding='utf-8')
-          print(json.dumps({'files':len(files),'bytes':sum(x['bytes'] for x in index)}))
+          import concurrent.futures, hashlib, json, pathlib, urllib.request
+          out=pathlib.Path('catalog-inputs');out.mkdir()
+          sources={
+            'graduate_admission_2024.pdf':'https://ass.xjass.cn/static/ewebeditor/uploadfile/2026081917214659773.pdf',
+            'graduate_admission_2018.pdf':'https://ass.xjass.cn/static/ewebeditor/uploadfile/2026081917220891321.pdf',
+            'cma_recruitment_2026.pdf':'https://iap.cas.cn/gb/yjsjy/jyxx/202510/P020251030544036906126.pdf',
+            'bachelor_2026.pdf':'https://www.moe.gov.cn/srcsite/A08/moe_1034/s3882/202604/W020260427440749576927.pdf',
+            'graduate_2022.pdf':'https://www.moe.gov.cn/srcsite/A22/moe_833/202209/W020220914572994461110.pdf',
+            'pbc_2027_notice.html':'https://www.pbc.gov.cn/renshisi/144501/144513/144695/2026101418191081288/index.html'
+          }
+          def get(item):
+            name,url=item
+            try:
+              req=urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0 (research data provenance check)'})
+              with urllib.request.urlopen(req,timeout=35) as r:
+                data=r.read();final=r.url;ctype=r.headers.get('Content-Type')
+              valid=not name.endswith('.pdf') or data.startswith(b'%PDF-')
+              if not valid: raise ValueError('Response is not a PDF')
+              (out/name).write_bytes(data)
+              return {'file':name,'url':url,'final_url':final,'content_type':ctype,'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest(),'ok':True}
+            except Exception as e: return {'file':name,'url':url,'ok':False,'error':str(e)}
+          with concurrent.futures.ThreadPoolExecutor(max_workers=6) as pool: results=list(pool.map(get,sources.items()))
+          (out/'manifest.json').write_text(json.dumps(results,ensure_ascii=False,indent=2),encoding='utf-8')
+          print(json.dumps(results,ensure_ascii=False,indent=2))
           PY
       - uses: actions/upload-artifact@v4
         with:
-          name: guokao-pinned-inputs-ed7aff9
-          path: |
-            projects/guokao-data-film/
-            snapshot-index.json
+          name: guokao-public-catalog-inputs-20261017
+          path: catalog-inputs/
           retention-days: 7
           if-no-files-found: error
