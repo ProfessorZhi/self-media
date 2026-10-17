@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
   "report_id": "final-delivery-audit-20261018",
-  "generated_at_utc": "2026-10-17T20:42:57.682873+00:00",
+  "generated_at_utc": "2026-10-17T20:46:20.987629+00:00",
   "local_date": "2026-10-18",
-  "generated_from_commit": "06fab79c0b816ba7e0c3341dcad6f2c94177c315",
+  "generated_from_commit": "2cf672b811a97a97e45fd546ab697b71cdaf4565",
   "statement": "The fact and evidence layers are deliverable. Applicant eligibility is not determined and cannot be, from public sources alone.",
   "headline": {
     "positions": 19426,

@@ -67,7 +67,39 @@ def derive(project):
     }
 
     covered = summary['review_scope']['covered_after']
-    superseded = review['buckets']['candidate_legacy_reason_superseded']
+    buckets = review['buckets']
+    superseded = buckets['candidate_legacy_reason_superseded']
+    provisional_count = buckets['candidate_provisional_agency_scope_rule']
+    no_candidate_count = (buckets['no_candidate_agency_no_public_list']
+                          + buckets['no_candidate_agency_unverified']
+                          + buckets['no_candidate_other'])
+    # The four buckets must be mutually exclusive: provisional positions are
+    # counted once, in their own bucket, and must NOT also sit inside
+    # "has a candidate but still needs review".
+    requires_review_excluding_provisional = (
+        buckets['candidate_with_degree_scope'] + buckets['candidate_with_open_scope']
+        + buckets['candidate_with_namespace_ambiguity'] + buckets['candidate_with_conflict']
+        + buckets['candidate_with_exclusion'] + buckets['candidate_with_unresolved_vocabulary'])
+    four_way_sum = (requires_review_excluding_provisional + superseded
+                    + provisional_count + no_candidate_count)
+    review_block = {
+        'universe': review['review_universe'],
+        'covered': covered,
+        'legacy_superseded': superseded,
+        'needs_interpretation': covered - superseded,
+        'needs_interpretation_includes_provisional': True,
+        'candidate_requires_review_excluding_provisional': requires_review_excluding_provisional,
+        'candidate_requires_review_including_provisional': covered - superseded,
+        'four_way': {
+            'candidate_requires_review_excluding_provisional': requires_review_excluding_provisional,
+            'legacy_reason_superseded': superseded,
+            'provisional_only': provisional_count,
+            'no_candidate': no_candidate_count,
+            'sum': four_way_sum,
+        },
+        'buckets': review['buckets'],
+        'bucket_sum': sum(review['buckets'].values()),
+    }
     facts = {
         'as_of': '2026-10-18',
         'positions': summary['positions'],
@@ -133,14 +165,7 @@ def derive(project):
             'distinct': len(code_entries),
             'both_columns': sum(1 for entry in code_entries if len(entry['fields']) == 2),
         },
-        'review': {
-            'universe': review['review_universe'],
-            'covered': covered,
-            'legacy_superseded': superseded,
-            'needs_interpretation': covered - superseded,
-            'buckets': review['buckets'],
-            'bucket_sum': sum(review['buckets'].values()),
-        },
+        'review': review_block,
         'residual_strata': {
             'agency_no_public_list': strata.get('agency_category_no_public_list', 0),
             'agency_unverified': strata.get('agency_category_unverified', 0),
@@ -160,6 +185,11 @@ def derive(project):
         'coverage_tiers_sum_to_positions': facts['coverage_sum_check'] == facts['positions'],
         'residual_strata_sum_to_residual': facts['residual_strata']['sum'] == facts['coverage']['no_candidate']['positions'],
         'review_buckets_sum_to_universe': facts['review']['bucket_sum'] == facts['review']['universe'],
+        'review_four_way_sums_to_universe': facts['review']['four_way']['sum'] == facts['review']['universe'],
+        'review_provisional_not_double_counted': (
+            facts['review']['candidate_requires_review_excluding_provisional']
+            + facts['review']['four_way']['provisional_only']
+            == facts['review']['candidate_requires_review_including_provisional']),
         'conflict_classes_sum_to_entries': (facts['conflicts']['content_conflict']
                                             + facts['conflicts']['cross_level_same_code']
                                             + facts['conflicts']['category_suffix_omitted']
@@ -185,11 +215,12 @@ REWRITES = [
                 f"{number(f['coverage']['no_candidate']['positions'])} 岗（"
                 f"{number(f['coverage']['no_candidate']['hires'])} 人）")),
     ('OPUS_HANDOFF.md',
-     re.compile(r'有候选但要解释 (?P<need>[\d,]+)、旧告警不再复现 (?P<sup>[\d,]+)、仅门类推定 (?P<prov>\d+)、无候选 (?P<res>[\d,]+)'),
-     lambda f: (f"有候选但要解释 {number(f['review']['needs_interpretation'])}、旧告警不再复现 "
-                f"{number(f['review']['legacy_superseded'])}、仅门类推定 "
-                f"{f['coverage']['provisional']['positions']}、无候选 "
-                f"{number(f['coverage']['no_candidate']['positions'])}")),
+     re.compile(r'(?:非推定、有候选、仍需解释|有候选但要解释) (?P<need>[\d,]+)、旧告警不再复现 (?P<sup>[\d,]+)、仅门类推定 (?P<prov>\d+)、无候选 (?P<res>[\d,]+)(?:（四桶合计 [\d,]+）)?'),
+     lambda f: (f"非推定、有候选、仍需解释 {number(f['review']['four_way']['candidate_requires_review_excluding_provisional'])}、"
+                f"旧告警不再复现 {number(f['review']['four_way']['legacy_reason_superseded'])}、"
+                f"仅门类推定 {f['review']['four_way']['provisional_only']}、"
+                f"无候选 {number(f['review']['four_way']['no_candidate'])}"
+                f"（四桶合计 {number(f['review']['universe'])}）")),
     ('OPUS_HANDOFF.md',
      re.compile(r'引用覆盖率用 (?P<cons>[\d,]+)'),
      lambda f: f"引用覆盖率用 {number(f['coverage']['conservative']['positions'])}"),
@@ -239,6 +270,10 @@ REWRITES = [
      re.compile(r'\*\*仍未解决\*\*：(?P<n>[\d,]+) 岗专业表述无法精确落到目录'),
      lambda f: f"**仍未解决**：{number(f['coverage']['no_candidate']['positions'])} 岗专业表述无法精确落到目录"),
     ('research/MAJOR_CODE_MATCHING.md',
+     re.compile(r'有候选的从 4,593 升到 (?P<cov>[\d,]+)（其中 19 个仅为推定）'),
+     lambda f: (f"有候选的从 4,593 升到 {number(f['review']['covered'])}"
+                f"（含 {f['review']['four_way']['provisional_only']} 个仅为推定）")),
+    ('research/MAJOR_CODE_MATCHING.md',
      re.compile(r'无候选从 \*\*1,250\*\* 降到 \*\*(?P<n>[\d,]+)\*\*（(?P<h>[\d,]+) 人）'),
      lambda f: (f"无候选从 **1,250** 降到 **{number(f['coverage']['no_candidate']['positions'])}**"
                 f"（{number(f['coverage']['no_candidate']['hires'])} 人）")),
@@ -268,6 +303,45 @@ REWRITES = [
      re.compile(r'国家目录词汇 (?P<n>\d+)。'),
      lambda f: f"国家目录词汇 {f['residual_strata']['national_vocabulary']}。"),
 ]
+
+
+BLOCK_REWRITES = [
+    ('research/MAJOR_CODE_MATCHING.md',
+     '### 6.3 复核原因分层',
+     '## 7. 读取与查回',
+     lambda f: (
+        f"### 6.3 复核原因分层（{number(f['review']['universe'])} 岗，四类互斥）\n\n"
+        "| 分层 | 岗位 |\n| --- | ---: |\n"
+        f"| 非推定、有目录候选、仍需解释 | {number(f['review']['four_way']['candidate_requires_review_excluding_provisional'])} |\n"
+        f"| 有候选，但旧层告警已不再复现 | {number(f['review']['four_way']['legacy_reason_superseded'])} |\n"
+        f"| 仅靠门类推定（provisional） | {f['review']['four_way']['provisional_only']} |\n"
+        f"| 没有任何目录候选 | {number(f['review']['four_way']['no_candidate'])} |\n"
+        f"| **合计** | **{number(f['review']['four_way']['sum'])}** |\n\n"
+        "四类互斥：provisional 只在自己的桶里计一次，**不**同时算进“仍需解释”。"
+        f"含 provisional 的宽口径为 {number(f['review']['candidate_requires_review_including_provisional'])} 岗，"
+        "引用时必须注明包含推定。\n\n"
+        "“有候选”不等于整条要求解释完毕：5,835 岗里仍有 2,021 岗含多学历分句、2,154 岗含括注范围、"
+        "1,387 岗含开放表述。当前复核分桶见 "
+        "[REVIEW_STATUS_20261018.json](REVIEW_STATUS_20261018.json)。\n\n")),
+]
+
+
+def apply_block_rewrites(project, facts):
+    changed = []
+    for rel, start_marker, end_marker, render in BLOCK_REWRITES:
+        path = project / rel
+        if not path.exists():
+            continue
+        text = path.read_text(encoding='utf-8')
+        start = text.find(start_marker)
+        end = text.find(end_marker, start + 1) if start >= 0 else -1
+        if start < 0 or end < 0:
+            continue
+        updated = text[:start] + render(facts) + text[end:]
+        if updated != text:
+            path.write_text(updated, encoding='utf-8')
+            changed.append({'file': rel, 'block': start_marker})
+    return changed
 
 
 def apply_rewrites(project, facts):
@@ -316,6 +390,7 @@ def main():
               'consistency': facts['consistency']}
     if args.apply:
         result['rewritten'] = apply_rewrites(project, facts)
+        result['rewritten_blocks'] = apply_block_rewrites(project, facts)
     print(json.dumps(result, ensure_ascii=False, indent=1))
 
 

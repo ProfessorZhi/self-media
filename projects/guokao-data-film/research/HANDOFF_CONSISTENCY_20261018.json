@@ -63,6 +63,16 @@
       "covered": 5108,
       "legacy_superseded": 981,
       "needs_interpretation": 4127,
+      "needs_interpretation_includes_provisional": true,
+      "candidate_requires_review_excluding_provisional": 4108,
+      "candidate_requires_review_including_provisional": 4127,
+      "four_way": {
+        "candidate_requires_review_excluding_provisional": 4108,
+        "legacy_reason_superseded": 981,
+        "provisional_only": 19,
+        "no_candidate": 727,
+        "sum": 5835
+      },
       "buckets": {
         "candidate_with_degree_scope": 1994,
         "candidate_with_open_scope": 1236,
@@ -100,16 +110,20 @@
       "coverage_tiers_sum_to_positions": true,
       "residual_strata_sum_to_residual": true,
       "review_buckets_sum_to_universe": true,
+      "review_four_way_sums_to_universe": true,
+      "review_provisional_not_double_counted": true,
       "conflict_classes_sum_to_entries": true,
       "remark_scope_sum_to_codes": true
     }
   },
   "checks": {
     "snapshot_matches_manifests": true,
-    "current_stat_lines_checked": 21,
+    "current_stat_lines_checked": 20,
     "current_stat_errors": 0,
     "guidance_errors": 0,
     "audit_claim_errors": 0,
+    "block_errors": 0,
+    "review_arithmetic_errors": 0,
     "broken_links": 0,
     "status_path_errors": 0
   },

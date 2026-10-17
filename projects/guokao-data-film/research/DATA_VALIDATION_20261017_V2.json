@@ -1,8 +1,8 @@
 {
   "schema_version": "2.0.0",
   "status": "PASS",
-  "started_at_utc": "2026-10-17T20:43:03.619Z",
-  "generated_at_utc": "2026-10-17T20:43:05.153Z",
+  "started_at_utc": "2026-10-17T20:46:25.782Z",
+  "generated_at_utc": "2026-10-17T20:46:27.269Z",
   "verification_script": "scripts/verify_position_data.mjs",
   "network_used": false,
   "original_excel_or_pdf_files_required": false,
@@ -192,13 +192,13 @@
       "bytes": 269848,
       "sha256": "b1f774e20be7c81dacf083fb33b6535d9df1b35e8382eca1698c49f9252f1505"
     },
-    "data/catalogs/major_bachelor_2026_official_parsed.json": {
-      "bytes": 437598,
-      "sha256": "b1aea29b1331c6697a6fd330bb1514af14a68215fb0b08503b8e3b5214543d66"
-    },
     "data/catalogs/major_tax_2027_official_parsed.json": {
       "bytes": 503226,
       "sha256": "928864b91585f8044d72a7223fb71cdd1ad9e96a62f7f2a5eccf3c113776c8c3"
+    },
+    "data/catalogs/major_bachelor_2026_official_parsed.json": {
+      "bytes": 437598,
+      "sha256": "b1aea29b1331c6697a6fd330bb1514af14a68215fb0b08503b8e3b5214543d66"
     }
   }
 }

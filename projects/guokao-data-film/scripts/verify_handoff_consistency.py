@@ -105,6 +105,48 @@ def check_audit_guidance(project, facts):
     return errors
 
 
+def check_blocks(project, facts):
+    """Multi-line sections (tables) must equal their rendered form."""
+    errors = []
+    for rel, start_marker, end_marker, render in snapshot.BLOCK_REWRITES:
+        path = project / rel
+        if not path.exists():
+            errors.append({'file': rel, 'kind': 'missing_file'})
+            continue
+        text = path.read_text(encoding='utf-8')
+        start = text.find(start_marker)
+        end = text.find(end_marker, start + 1) if start >= 0 else -1
+        if start < 0 or end < 0:
+            errors.append({'file': rel, 'kind': 'block_missing', 'block': start_marker})
+            continue
+        if text[start:end] != render(facts):
+            errors.append({'file': rel, 'kind': 'stale_block', 'block': start_marker})
+    return errors
+
+
+def check_review_arithmetic(facts):
+    """The four review buckets must be exclusive and close on the universe."""
+    review = facts['review']
+    four = review['four_way']
+    errors = []
+    if four['sum'] != review['universe']:
+        errors.append({'kind': 'review_four_way_sum', 'sum': four['sum'],
+                       'universe': review['universe']})
+    expected = (four['candidate_requires_review_excluding_provisional']
+                + four['legacy_reason_superseded']
+                + four['provisional_only']
+                + four['no_candidate'])
+    if expected != review['universe']:
+        errors.append({'kind': 'review_four_way_components', 'computed': expected,
+                       'universe': review['universe']})
+    if (four['candidate_requires_review_excluding_provisional'] + four['provisional_only']
+            != review['candidate_requires_review_including_provisional']):
+        errors.append({'kind': 'review_provisional_double_count'})
+    if review['candidate_requires_review_including_provisional'] != review['covered'] - review['legacy_superseded']:
+        errors.append({'kind': 'review_including_provisional_mismatch'})
+    return errors
+
+
 def check_audit_claims(project, facts):
     """The audits must state derived figures and must not overclaim."""
     errors = []
@@ -229,10 +271,12 @@ def main():
     doc_errors, checked = check_docs(project, facts)
     guidance_errors = check_audit_guidance(project, facts)
     claims_errors = check_audit_claims(project, facts)
+    block_errors = check_blocks(project, facts)
+    arithmetic_errors = check_review_arithmetic(facts)
     link_errors = check_links(project)
     status_errors = check_status_paths(project)
     errors = (snapshot_errors + doc_errors + guidance_errors + claims_errors
-              + link_errors + status_errors)
+              + block_errors + arithmetic_errors + link_errors + status_errors)
 
     report = {
         'schema_version': '1.0.0',
@@ -246,6 +290,8 @@ def main():
             'current_stat_errors': len(doc_errors),
             'guidance_errors': len(guidance_errors),
             'audit_claim_errors': len(claims_errors),
+            'block_errors': len(block_errors),
+            'review_arithmetic_errors': len(arithmetic_errors),
             'broken_links': len(link_errors),
             'status_path_errors': len(status_errors),
         },
