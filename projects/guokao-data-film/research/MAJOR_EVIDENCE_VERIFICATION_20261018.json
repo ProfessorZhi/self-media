@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "status": "PASS",
   "evidence_manifest": "data/major_evidence_2027/manifest.json",
-  "evidence_manifest_sha256": "01d0647335b583573b5d5bddb65d613e2c1cd6dbdd5e2bd65d4993d065157b03",
+  "evidence_manifest_sha256": "df02964aa00815c11bc7abc3d5d5ef5b13e17c6a35047092b59aab7aaf8c72d8",
   "positions": 19426,
   "hires": 35691,
   "coverage_before": 18176,
@@ -26,17 +26,18 @@
     "buckets": {
       "candidate_with_degree_scope": 1994,
       "candidate_with_open_scope": 1234,
-      "candidate_legacy_reason_superseded": 997,
+      "candidate_legacy_reason_superseded": 978,
       "no_candidate_other": 182,
       "candidate_with_conflict": 59,
       "candidate_with_namespace_ambiguity": 501,
       "candidate_with_exclusion": 276,
+      "candidate_provisional_agency_scope_rule": 19,
       "candidate_with_unresolved_vocabulary": 46,
       "no_candidate_agency_no_public_list": 533,
       "no_candidate_agency_unverified": 13
     },
     "no_candidate_matches_residual": true,
-    "legacy_reason_superseded": 997
+    "legacy_reason_superseded": 978
   },
   "invariants": [
     "every position appears exactly once and matches its position-shard row",
@@ -47,6 +48,9 @@
     "every code-name conflict carries a class, a span and surrounding context",
     "the code index position sets equal the per-position records",
     "review buckets are mutually exclusive and sum to the legacy denominator 5,835",
-    "the union of no-candidate buckets equals the residual list exactly"
+    "the union of no-candidate buckets equals the residual list exactly",
+    "conservative + provisional + residual equals the full position count",
+    "a gate_scope_rule hit always carries an applicability label",
+    "conflict families partition every conflict entry"
   ]
 }

@@ -1,8 +1,8 @@
 {
   "schema_version": "2.0.0",
   "status": "PASS",
-  "started_at_utc": "2026-10-17T19:25:49.277Z",
-  "generated_at_utc": "2026-10-17T19:25:50.834Z",
+  "started_at_utc": "2026-10-17T19:32:05.221Z",
+  "generated_at_utc": "2026-10-17T19:32:06.828Z",
   "verification_script": "scripts/verify_position_data.mjs",
   "network_used": false,
   "original_excel_or_pdf_files_required": false,
@@ -156,13 +156,13 @@
     "A job absent from the 2026 initial interview list is not assigned zero, inferred to have no applicants, or assumed to be absent from subsequent batches. No 2027 per-job interview cutoff is fabricated."
   ],
   "input_json_fingerprints": {
-    "data/position_conditions_2027.json": {
-      "bytes": 36840,
-      "sha256": "e8c44e9b0b2a8c35147f2cff85aad31729f3bf83a5c29819ade2cf9d8993e665"
-    },
     "data/official_historical_exam_data.json": {
       "bytes": 67655,
       "sha256": "7ae4d830bec6e076a957814e8ee8d92abb6ed0e322e1b0bbbaaa24e312a6d060"
+    },
+    "data/position_conditions_2027.json": {
+      "bytes": 36840,
+      "sha256": "e8c44e9b0b2a8c35147f2cff85aad31729f3bf83a5c29819ade2cf9d8993e665"
     },
     "data/histories_2024_2027.json": {
       "bytes": 274799,
@@ -176,13 +176,13 @@
       "bytes": 23153,
       "sha256": "1a715baf6d106ab82ccc61706190fb72eec8796c06736629c084149df234f26e"
     },
-    "data/majors_2027/manifest.json": {
-      "bytes": 4327,
-      "sha256": "9f12d5ddbc1aaea35a627087f3c41bc13e7d1e103807ce9b534256a93d27772d"
-    },
     "data/interview_cutoffs_2026/manifest.json": {
       "bytes": 12603,
       "sha256": "00dad34a9d0a5f7b743174c7e8976815ad967f478495f811c22ef58adce6d486"
+    },
+    "data/majors_2027/manifest.json": {
+      "bytes": 4327,
+      "sha256": "9f12d5ddbc1aaea35a627087f3c41bc13e7d1e103807ce9b534256a93d27772d"
     },
     "data/catalogs/major_graduate_2022_official_parsed.json": {
       "bytes": 76076,

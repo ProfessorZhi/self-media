@@ -1,20 +1,21 @@
 {
   "schema_version": "1.0.0",
   "report_id": "review-status-20261018",
-  "generated_at_utc": "2026-10-17T19:25:48.530787+00:00",
+  "generated_at_utc": "2026-10-17T19:31:34.419414+00:00",
   "universe": {
     "review_universe": 5835,
     "review_universe_note": "Legacy denominator: requirements carrying at least one review reason in the original three-catalog layer.",
     "buckets": {
       "candidate_with_degree_scope": 1994,
       "candidate_with_open_scope": 1234,
-      "candidate_legacy_reason_superseded": 997,
+      "candidate_legacy_reason_superseded": 978,
       "no_candidate_other": 182,
       "candidate_with_conflict": 59,
       "candidate_with_namespace_ambiguity": 501,
       "candidate_with_exclusion": 276,
       "no_candidate_agency_no_public_list": 533,
       "no_candidate_agency_unverified": 13,
+      "candidate_provisional_agency_scope_rule": 19,
       "candidate_with_unresolved_vocabulary": 46
     },
     "markers": {
@@ -25,7 +26,7 @@
       "code_name_conflict": 59,
       "exclusion_or_negative": 722
     },
-    "legacy_reason_superseded": 997,
+    "legacy_reason_superseded": 978,
     "with_risk_flag": 3396,
     "conflict_bucket_composition": {
       "total": 59,
@@ -49,26 +50,27 @@
     "candidate_with_unresolved_vocabulary": "has candidate; another term remains unresolved",
     "candidate_with_open_scope": "has candidate; 相关/等/方向 style open scope",
     "candidate_with_namespace_ambiguity": "has candidate; multiple catalog nodes for one name",
+    "candidate_provisional_agency_scope_rule": "covered only by the 门类 rule on a non-MOE position; exact characters recorded, agency scope unverified",
     "candidate_legacy_reason_superseded": "has candidate; the legacy review reason no longer reproduces"
   },
   "shards": [
     {
       "path": "review-status-01.json",
       "records": 2004,
-      "bytes": 817887,
-      "sha256": "62e1fad53ce75879e3a0681f1488d4277a7f2a1e540c849d77f83536334ba2ba"
+      "bytes": 817972,
+      "sha256": "f48206539c2fb9b6c7444cef1d530a82c795a53515baf5382918f40d996b70ab"
     },
     {
       "path": "review-status-02.json",
       "records": 2038,
-      "bytes": 817361,
-      "sha256": "da515db8158244c0348b902132f9750f76da50dc55b431ca6325ca23c1207aa9"
+      "bytes": 817366,
+      "sha256": "900da2c79fe2a019f421e06374f2d0b5507cd91262c873ca47b39d389aed57ca"
     },
     {
       "path": "review-status-03.json",
       "records": 1793,
-      "bytes": 721951,
-      "sha256": "195ed98605313f14e15dfe284d18b9013caa24651a0f5269fac936725e69e899"
+      "bytes": 721956,
+      "sha256": "7baa0b020ccd946697641e5ca3fae2cd90de683eba252cbf30d2c384fff90d77"
     }
   ]
 }

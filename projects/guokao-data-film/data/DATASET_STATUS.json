@@ -16,7 +16,7 @@
     {
       "path": "major_evidence_2027/manifest.json",
       "role": "per_position_major_evidence_across_major_and_remarks_columns",
-      "coverage_note": "专业 + 备注, five catalogs, exclusion lists, conflict classes, reason taxonomy, documented gate normalizations, parser fixes for 或 and 等专业; coverage 18,698 / residual 728 / review-status 10 mutually exclusive buckets"
+      "coverage_note": "专业 + 备注, five catalogs; conservative coverage 18,679, provisional gate-rule 19, no candidate 728; review status 11 mutually exclusive buckets; semantic vs multi-namespace conflict families"
     },
     {
       "path": "catalogs/",
@@ -124,6 +124,11 @@
       "path": "../research/RESIDUAL_STRATA_20261018.json",
       "role": "residual stratification by raw text (agency vs national vocabulary)",
       "result": "728 positions: 533 agency no public list, 13 agency unverified, 182 national vocabulary/open scope"
+    },
+    {
+      "path": "../research/FINAL_EVIDENCE_SCOPE_AUDIT_20261018.json",
+      "role": "final evidence-scope audit and safe-read guidance",
+      "result": "18,679 conservative / 19 provisional / 728 no-candidate; 0 exact in-scope parser gaps across 195 audited residual positions"
     }
   ],
   "legacy": [
@@ -187,6 +192,9 @@
     "Agency category phrases with no published membership list stay unresolved; a 2026 institution-recruitment catalog is not applicable to 2027 civil service positions.",
     "Review status is a work state: a catalog candidate is not a cleared position, and the 5,835 review denominator is not an uncovered count.",
     "The MOE 门类 rule is cited from a statement scoped to MOE positions; applying it to other agencies is an inference and is flagged as such.",
-    "Conflict metrics are distinct: positions (59), structured conflict entries (101) and content_conflict entries (67) must not be interchanged."
+    "Conflict metrics are distinct: positions (59), structured conflict entries (101) and content_conflict entries (67) must not be interchanged.",
+    "A gate_scope_rule hit on a non-MOE position is provisional and must not enter the conservative coverage numerator.",
+    "A source-declared two-digit gate code printed in the position text is direct evidence and counts as exact.",
+    "Conflict families are separate: semantic_conflict indicates a possible source inconsistency; multi_namespace_diagnostic does not."
   ]
 }

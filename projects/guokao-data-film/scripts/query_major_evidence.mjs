@@ -103,6 +103,8 @@ const reviewStatus = evidenceManifest.review_status
   ? await loadShards(evidenceDir, evidenceManifest.review_status.shards) : [];
 const residualStrata = evidenceManifest.residual_strata
   ? await loadShards(evidenceDir, evidenceManifest.residual_strata.shards) : [];
+const provisionalRows = evidenceManifest.provisional_gate_rule
+  ? await loadShards(evidenceDir, evidenceManifest.provisional_gate_rule) : [];
 
 function report(summary, rows) {
   if (asJson) {
@@ -169,6 +171,22 @@ if (args.includes('--stats')) {
     positions: rows.length,
     hires: rows.reduce((total, row) => total + row.hires, 0),
     note: 'Catalog-reference candidates only. Not an applicant-eligibility result.',
+  };
+  report(summary, rows.slice(0, limit));
+} else if (args.includes('--provisional')) {
+  const rows = provisionalRows.map(item => ({
+    ...positionFacts(positions.get(item.id)),
+    gates: item.gates,
+    risk_level: item.risk_level,
+    applicability: item.applicability,
+    why_not_counted: item.why_not_counted,
+    matched: [],
+  }));
+  const summary = {
+    query: {provisional: true},
+    positions: rows.length,
+    hires: rows.reduce((total, row) => total + row.hires, 0),
+    note: 'Covered only by the 门类 rule on a non-MOE position. Not part of the conservative coverage numerator.',
   };
   report(summary, rows.slice(0, limit));
 } else if (args.includes('--review-status')) {

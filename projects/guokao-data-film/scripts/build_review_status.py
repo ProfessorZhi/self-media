@@ -220,6 +220,8 @@ def main():
                 bucket = 'no_candidate_agency_unverified'
             else:
                 bucket = 'no_candidate_other'
+        elif record.get('coverage_basis') == 'provisional_gate_rule_only':
+            bucket = 'candidate_provisional_agency_scope_rule'
         elif 'code_name_conflict' in markers:
             bucket = 'candidate_with_conflict'
         elif 'exclusion_or_negative' in markers:
@@ -324,6 +326,7 @@ def main():
             'no_candidate_agency_no_public_list',
             'no_candidate_agency_unverified',
             'no_candidate_other',
+            'candidate_provisional_agency_scope_rule',
             'candidate_with_conflict',
             'candidate_with_exclusion',
             'candidate_with_degree_scope',
@@ -342,6 +345,8 @@ def main():
             'candidate_with_unresolved_vocabulary': 'has candidate; another term remains unresolved',
             'candidate_with_open_scope': 'has candidate; 相关/等/方向 style open scope',
             'candidate_with_namespace_ambiguity': 'has candidate; multiple catalog nodes for one name',
+            'candidate_provisional_agency_scope_rule': ('covered only by the 门类 rule on a non-MOE position; '
+                                                        'exact characters recorded, agency scope unverified'),
             'candidate_legacy_reason_superseded': 'has candidate; the legacy review reason no longer reproduces',
         },
         'semantics': ('A bucket is a work state, not an eligibility verdict. "legacy_reason_superseded" means the '

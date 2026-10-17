@@ -174,12 +174,40 @@ def main():
     checks['codes_present_in_both_columns'] = len(dual_field)
 
     # ---- review-status stratification ---------------------------------
+    # three-tier coverage closure
+    conservative = sum(1 for record in records if record.get('coverage_conservative'))
+    provisional = sum(1 for record in records
+                      if record.get('coverage_basis') == 'provisional_gate_rule_only')
+    uncovered = len(records) - conservative - provisional
+    assert conservative == summary['coverage_conservative']['positions_with_catalog_candidate'], \
+        'conservative coverage drift'
+    assert provisional == summary['coverage_provisional_only']['positions'], 'provisional count drift'
+    assert conservative + provisional + len(residual) == len(records), \
+        'conservative + provisional + residual must equal the position count'
+    for record in records:
+        basis = record.get('coverage_basis')
+        if basis == 'provisional_gate_rule_only':
+            assert record.get('coverage_after') and not record.get('coverage_conservative'), \
+                f'{record["id"]}: provisional record must be covered but not conservative'
+            assert any(hit.get('resolution_method') == 'gate_scope_rule'
+                       for hit in record.get('major_gate_scope_hits') or []), \
+                f'{record["id"]}: provisional without a gate_scope_rule hit'
+        if record.get('coverage_conservative'):
+            assert basis == 'exact', f'{record["id"]}: conservative record must have exact basis'
+    for record in records:
+        for hit in record.get('major_gate_scope_hits') or []:
+            if hit.get('resolution_method') == 'gate_scope_rule':
+                assert hit.get('applicability') in ('own_agency_statement', 'agency_scope_unverified'), \
+                    f'{record["id"]}: gate_scope_rule hit without applicability'
+
     # conflict metrics must agree with the manifest, and the three counts are distinct
     declared_conflicts = summary['conflicts']
     assert checks['conflict_positions'] == declared_conflicts['positions'], 'conflict position count drift'
     assert checks['conflict_entries'] == declared_conflicts['entries'], 'conflict entry count drift'
     assert sum(declared_conflicts['by_class'].values()) == declared_conflicts['entries'], \
         'conflict class counts must sum to the entry count'
+    assert sum(declared_conflicts['by_family'].values()) == declared_conflicts['entries'], \
+        'conflict family counts must sum to the entry count'
     review_checks = {}
     if review:
         review_ids = [item['id'] for item in review]
@@ -230,6 +258,9 @@ def main():
             'the code index position sets equal the per-position records',
             'review buckets are mutually exclusive and sum to the legacy denominator 5,835',
             'the union of no-candidate buckets equals the residual list exactly',
+            'conservative + provisional + residual equals the full position count',
+            'a gate_scope_rule hit always carries an applicability label',
+            'conflict families partition every conflict entry',
         ],
     }
     text = json.dumps(result, ensure_ascii=False, indent=2) + '\n'

@@ -552,6 +552,8 @@ def name_conflicts(text, code_spans, index, scopes):
                                                    'education_scope': node['education_scope']})
                 conflicts.append({
                     'code': span['code'],
+                    'family': ('semantic_conflict' if conflict_class == 'content_conflict'
+                               else 'multi_namespace_diagnostic'),
                     'catalog_names': sorted(catalog_names),
                     'printed_name': candidate,
                     'side': side,
@@ -611,6 +613,8 @@ def main():
     conflict_records = []
     before_covered = after_covered = 0
     unrestricted_covered = 0
+    exact_covered = 0
+    provisional_only = 0
     new_coverage_positions = 0
     new_coverage_from = collections.Counter()
 
@@ -658,19 +662,45 @@ def main():
 
         resolved_term_names = [t for t in term_names if t['resolution']['status'] in ('resolved', 'ambiguous_level')]
         resolved_gate_scope = [g for g in gate_scope if g['resolution']['status'] == 'resolved']
+        # Two different gate hits: one rests on the position's own printed code
+        # (direct evidence), the other on the MOE 门类 reading (inference).
+        resolved_declared = [g for g in resolved_gate_scope
+                             if g['resolution_method'] == 'source_declared_gate_code']
+        resolved_gate_rule = [g for g in resolved_gate_scope
+                              if g['resolution_method'] == 'gate_scope_rule']
 
         coverage_before = bool(requirement['catalog_candidate_ids'])
-        # An explicitly unrestricted 专业 column needs no catalog reference; it is
-        # fully specified by the word 不限 and is counted as covered, separately.
-        coverage_after = bool(unrestricted or coverage_before or resolved_major or resolved_gate_names
-                              or resolved_term_names or resolved_paren_names or resolved_gate_scope
+
+        # The MOE statement that justifies gate_scope_rule is scoped to Ministry of
+        # Education positions. For every other agency the rule is an inference about
+        # the shared meaning of 学科门类, so it must not enter the conservative
+        # coverage numerator. It stays as provisional evidence with full trace.
+        is_moe = raw['部门代码'] == '105000' or raw['部门名称'] == '教育部'
+        for hit in gate_scope:
+            if hit.get('resolution_method') == 'gate_scope_rule':
+                hit['applicability'] = ('own_agency_statement' if is_moe
+                                        else 'agency_scope_unverified')
+
+        # Evidence that does not depend on the gate-scope inference.
+        exact_evidence = bool(unrestricted or coverage_before or resolved_major or resolved_gate_names
+                              or resolved_term_names or resolved_paren_names or resolved_declared
                               or resolved_remarks or remarks_name_hits)
+        # source_declared_gate_code rests on the position's own printed two-digit
+        # code, so it is direct evidence and counts as exact.
+        provisional = bool(resolved_gate_rule) and not exact_evidence
+        coverage_after = bool(exact_evidence or resolved_gate_rule)
+        coverage_basis = ('exact' if exact_evidence else
+                          'provisional_gate_rule_only' if provisional else None)
         if unrestricted:
             unrestricted_covered += 1
         if coverage_before:
             before_covered += 1
         if coverage_after:
             after_covered += 1
+        if coverage_basis == 'exact':
+            exact_covered += 1
+        elif coverage_basis == 'provisional_gate_rule_only':
+            provisional_only += 1
         if requirement['review_reasons']:
             review_scope['positions'] += 1
             review_scope['hires'] += hires
@@ -688,7 +718,9 @@ def main():
                 new_coverage_from['gate_prefixed_catalog_name'] += 1
             elif resolved_term_names:
                 new_coverage_from['exact_term_name_new_catalog'] += 1
-            elif resolved_gate_scope:
+            elif resolved_declared:
+                new_coverage_from['source_declared_gate_code'] += 1
+            elif resolved_gate_rule:
                 new_coverage_from['documented_gate_scope_normalization'] += 1
             elif resolved_paren_names:
                 new_coverage_from['parenthetical_exact_name'] += 1
@@ -830,6 +862,8 @@ def main():
             'requirement_id': requirement['id'],
             'coverage_before': coverage_before,
             'coverage_after': coverage_after,
+            'coverage_conservative': bool(exact_evidence),
+            'coverage_basis': coverage_basis,
             'major_codes': [
                 {'code': code['code'], 'clause_id': code['clause_id'],
                  'education_scopes_used': code['education_scopes_used'],
@@ -858,6 +892,7 @@ def main():
                 {'name': hit['name'], 'printed_text': hit['printed_text'],
                  'resolution_method': hit['resolution_method'],
                  'rule_basis': hit['rule_basis'],
+                 'applicability': hit.get('applicability'),
                  'resolution': compact_resolution(hit['resolution'])}
                 for hit in gate_scope
             ],
@@ -963,6 +998,21 @@ def main():
     code_parts = shard('code-evidence', code_index_records)
 
     residual = [record for record in records if not record['coverage_after']]
+    provisional_records = [
+        {'id': record['id'], 'hires': record['hires'],
+         'department_name': positions[record['id']][column_index['部门名称']],
+         'education_raw': record.get('education_raw'),
+         'major_raw': positions[record['id']][column_index['专业']],
+         'gates': [hit['name'] for hit in record.get('major_gate_scope_hits') or []
+                   if hit.get('resolution_method') == 'gate_scope_rule'],
+         'applicability': 'agency_scope_unverified',
+         'risk_level': 'medium: exact characters and gate nodes recorded, agency scope inferred',
+         'why_not_counted': ('The cited MOE statement applies to MOE positions; no agency-specific '
+                             '2027 text was found for this department.')}
+        for record in records if record.get('coverage_basis') == 'provisional_gate_rule_only'
+    ]
+    provisional_parts = shard('provisional-gate-rule', provisional_records)
+
     residual_parts = shard('residual', [
         {'id': record['id'], 'hires': record['hires'],
          'department_name': positions[record['id']][column_index['部门名称']],
@@ -1011,11 +1061,34 @@ def main():
             'positions_without_catalog_candidate': len(records) - before_covered,
             'source': 'data/majors_2027 manifest summary (专业 column only)',
         },
+        # Headline coverage is the conservative numerator. A position counts only if
+        # it has evidence independent of the gate-scope inference. The gate rule is
+        # reported separately as provisional.
+        'coverage_conservative': {
+            'positions_with_catalog_candidate': exact_covered,
+            'hires': sum(record['hires'] for record in records
+                         if record.get('coverage_conservative')),
+            'basis': ('exact codes or names in the 专业 and 备注 columns, gate-prefixed exact names, '
+                      'source-declared gate codes, and explicitly unrestricted texts'),
+            'excludes': 'gate_scope_rule on non-MOE positions',
+        },
+        'coverage_provisional_only': {
+            'positions': provisional_only,
+            'hires': sum(record['hires'] for record in records
+                         if record.get('coverage_basis') == 'provisional_gate_rule_only'),
+            'basis': 'gate_scope_rule only, agency scope unverified',
+            'status': 'provisional; not part of the conservative numerator',
+        },
+        'coverage_inclusive': {
+            'positions_with_catalog_candidate': after_covered,
+            'positions_without_catalog_candidate': len(records) - after_covered,
+            'basis': 'conservative coverage plus provisional gate-scope positions',
+        },
         'coverage_after': {
             'positions_with_catalog_candidate': after_covered,
             'positions_without_catalog_candidate': len(records) - after_covered,
-            'basis': ('专业 column codes resolved against five catalogs, gate-prefixed exact names, '
-                      '备注 codes and 备注 exact names'),
+            'basis': ('inclusive: exact evidence or a gate-scope hit; see coverage_conservative '
+                      'for the numerator that excludes the agency-scope inference'),
         },
         'unrestricted_positions_counted_as_covered': unrestricted_covered,
         'newly_covered_positions': new_coverage_positions,
@@ -1040,6 +1113,15 @@ def main():
             'entries': sum(conflict_entry_count.values()),
             'by_class': dict(conflict_class_counter),
             'gate_code_name_mismatch_positions': reason_counter['gate_code_name_mismatch'],
+            'by_family': {
+                'semantic_conflict': conflict_class_counter['content_conflict'],
+                'multi_namespace_diagnostic': (conflict_class_counter['cross_level_same_code']
+                                                + conflict_class_counter['category_suffix_omitted']),
+            },
+            'family_note': ('semantic_conflict = the printed name belongs to a different code. '
+                            'multi_namespace_diagnostic = the same code names something else at another '
+                            'education level, or the source omitted a 类 suffix; these are diagnostics, '
+                            'not proof of a source error.'),
             'note': ('positions 与 entries 不是同一口径。另有一组门类码与名称错配（gate_code_name_mismatch）'
                      '只写入 reason_classes，不进入 conflicts 数组，因此不包含在 positions/entries 内。'),
             'details_sharded_in': 'position-evidence records with a non-empty conflicts list',
@@ -1121,6 +1203,7 @@ def main():
         'position_evidence': position_parts,
         'code_evidence': code_parts,
         'residual': residual_parts,
+        'provisional_gate_rule': provisional_parts,
         'semantics': {
             'catalog_candidate': ('An exact code or exact catalog name was found in a compatible education '
                                   'namespace. This is not a full interpretation of the requirement and not '
