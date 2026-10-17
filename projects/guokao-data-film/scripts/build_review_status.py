@@ -20,8 +20,8 @@ reported as `candidate_legacy_reason_superseded` and must not be read as
 
 Outputs:
   data/major_evidence_2027/review-status-XX.json  (+ manifest entry)
-  research/REVIEW_STATUS_20261019.json
-  research/RESIDUAL_STRATA_20261019.json
+  research/REVIEW_STATUS_20261018.json
+  research/RESIDUAL_STRATA_20261018.json
 """
 import argparse
 import collections
@@ -291,6 +291,9 @@ def main():
     strata_shard = {'path': strata_path.name, 'records': len(strata),
                     'bytes': strata_path.stat().st_size, 'sha256': sha256(strata_path.read_bytes())}
 
+    conflict_bucket = [r for r in status_records if r['bucket'] == 'candidate_with_conflict']
+    structured_in_bucket = sum(1 for r in conflict_bucket if r['conflict_count'])
+    gate_only_in_bucket = len(conflict_bucket) - structured_in_bucket
     summary = {
         'review_universe': 5_835,
         'review_universe_note': ('Legacy denominator: requirements carrying at least one review reason '
@@ -299,6 +302,14 @@ def main():
         'markers': dict(marker_counts),
         'legacy_reason_superseded': superseded,
         'with_risk_flag': sum(1 for r in status_records if r['risk_flags']),
+        'conflict_bucket_composition': {
+            'total': len(conflict_bucket),
+            'structured_conflict_positions_in_universe': structured_in_bucket,
+            'gate_code_name_mismatch_only': gate_only_in_bucket,
+            'note': ('This bucket counts positions inside the review universe only. The library-wide '
+                     'structured conflict set is a different set: it has its own position count '
+                     '(manifest summary conflicts.positions), which must not be substituted here.'),
+        },
     }
     manifest['residual_strata'] = {
         'shards': [strata_shard],
@@ -306,7 +317,7 @@ def main():
         'method': 'assigned from the raw 专业 text, not from extracted term labels',
     }
     manifest['review_status'] = {
-        'as_of': '2026-10-19',
+        'as_of': '2026-10-18',
         'shards': shards,
         'summary': summary,
         'bucket_order': [
@@ -322,7 +333,7 @@ def main():
             'candidate_legacy_reason_superseded',
         ],
         'bucket_rules': {
-            'no_candidate_agency_no_public_list': 'no catalog candidate; agency verified to publish no membership list',
+            'no_candidate_agency_no_public_list': 'no catalog candidate; no applicable 2027 membership list was found in the public sources checked',
             'no_candidate_agency_unverified': 'no catalog candidate; agency uses in-house categories but publication not verified',
             'no_candidate_other': 'no catalog candidate; national catalog vocabulary or open scope',
             'candidate_with_conflict': 'has candidate; a printed name contradicts the code',
@@ -341,7 +352,7 @@ def main():
 
     residual_report = {
         'schema_version': '1.0.0',
-        'report_id': 'residual-strata-20261019',
+        'report_id': 'residual-strata-20261018',
         'generated_at_utc': datetime.now(timezone.utc).isoformat(),
         'method': ('Residual buckets are assigned from the raw 专业 text, not from extracted term labels, '
                    'so a category phrase inside a longer sentence is still counted.'),
@@ -378,7 +389,7 @@ def main():
 
     review_report = {
         'schema_version': '1.0.0',
-        'report_id': 'review-status-20261019',
+        'report_id': 'review-status-20261018',
         'generated_at_utc': datetime.now(timezone.utc).isoformat(),
         'universe': summary,
         'caution': [
@@ -390,8 +401,8 @@ def main():
         'shards': shards,
     }
 
-    for name, payload in (('RESIDUAL_STRATA_20261019.json', residual_report),
-                          ('REVIEW_STATUS_20261019.json', review_report)):
+    for name, payload in (('RESIDUAL_STRATA_20261018.json', residual_report),
+                          ('REVIEW_STATUS_20261018.json', review_report)):
         path = project / 'research' / name
         path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
         print(json.dumps({'report': str(path), 'bytes': path.stat().st_size,

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1.0",
-  "updated": "2026-10-19",
+  "updated": "2026-10-18",
   "primary_handoff": "../DATA_HANDOFF.md",
   "current": [
     {
@@ -116,12 +116,12 @@
       "result": "no applicable 2027 membership list found; recorded as unresolved"
     },
     {
-      "path": "../research/REVIEW_STATUS_20261019.json",
+      "path": "../research/REVIEW_STATUS_20261018.json",
       "role": "mutually exclusive review-status stratification of 5,835 positions",
       "result": "PASS: 10 buckets sum to 5,835; no-candidate buckets equal the residual list"
     },
     {
-      "path": "../research/RESIDUAL_STRATA_20261019.json",
+      "path": "../research/RESIDUAL_STRATA_20261018.json",
       "role": "residual stratification by raw text (agency vs national vocabulary)",
       "result": "728 positions: 533 agency no public list, 13 agency unverified, 182 national vocabulary/open scope"
     }
@@ -187,6 +187,6 @@
     "Agency category phrases with no published membership list stay unresolved; a 2026 institution-recruitment catalog is not applicable to 2027 civil service positions.",
     "Review status is a work state: a catalog candidate is not a cleared position, and the 5,835 review denominator is not an uncovered count.",
     "The MOE 门类 rule is cited from a statement scoped to MOE positions; applying it to other agencies is an inference and is flagged as such.",
-    "Conflict metrics are distinct: positions (59), structured conflict entries (100) and content_conflict entries (67) must not be interchanged."
+    "Conflict metrics are distinct: positions (59), structured conflict entries (101) and content_conflict entries (67) must not be interchanged."
   ]
 }

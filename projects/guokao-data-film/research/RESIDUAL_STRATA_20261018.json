@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
-  "report_id": "residual-strata-20261019",
-  "generated_at_utc": "2026-10-17T19:18:32.618368+00:00",
+  "report_id": "residual-strata-20261018",
+  "generated_at_utc": "2026-10-17T19:25:48.530589+00:00",
   "method": "Residual buckets are assigned from the raw 专业 text, not from extracted term labels, so a category phrase inside a longer sentence is still counted.",
   "totals": {
     "residual_positions": 728,

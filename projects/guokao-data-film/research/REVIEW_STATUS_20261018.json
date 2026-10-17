@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
-  "report_id": "review-status-20261019",
-  "generated_at_utc": "2026-10-17T19:18:32.618576+00:00",
+  "report_id": "review-status-20261018",
+  "generated_at_utc": "2026-10-17T19:25:48.530787+00:00",
   "universe": {
     "review_universe": 5835,
     "review_universe_note": "Legacy denominator: requirements carrying at least one review reason in the original three-catalog layer.",
@@ -26,7 +26,13 @@
       "exclusion_or_negative": 722
     },
     "legacy_reason_superseded": 997,
-    "with_risk_flag": 3396
+    "with_risk_flag": 3396,
+    "conflict_bucket_composition": {
+      "total": 59,
+      "structured_conflict_positions_in_universe": 54,
+      "gate_code_name_mismatch_only": 5,
+      "note": "This bucket counts positions inside the review universe only. The library-wide structured conflict set is a different set: it has its own position count (manifest summary conflicts.positions), which must not be substituted here."
+    }
   },
   "caution": [
     "5,835 是旧三层目录时代的“带复核原因”分母，不是未覆盖数。",
@@ -34,7 +40,7 @@
     "有目录候选不等于约束解析完整，更不等于个人可报。"
   ],
   "bucket_definitions": {
-    "no_candidate_agency_no_public_list": "no catalog candidate; agency verified to publish no membership list",
+    "no_candidate_agency_no_public_list": "no catalog candidate; no applicable 2027 membership list was found in the public sources checked",
     "no_candidate_agency_unverified": "no catalog candidate; agency uses in-house categories but publication not verified",
     "no_candidate_other": "no catalog candidate; national catalog vocabulary or open scope",
     "candidate_with_conflict": "has candidate; a printed name contradicts the code",
@@ -50,7 +56,7 @@
       "path": "review-status-01.json",
       "records": 2004,
       "bytes": 817887,
-      "sha256": "6856f4802c55948d7f493df120e8b6ed524b140589d606eab5f47ebb6951a26c"
+      "sha256": "62e1fad53ce75879e3a0681f1488d4277a7f2a1e540c849d77f83536334ba2ba"
     },
     {
       "path": "review-status-02.json",

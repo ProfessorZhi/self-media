@@ -82,7 +82,7 @@ AGENCY_CHECKS = [
         'authority': '国家金融监督管理总局',
         'url': 'http://dl.scs.gov.cn/api/article/8a81f6d8a129c66701a1335b58c700c4',
         'title': '2027年度国家金融监督管理总局招考职位专业科目笔试考试大纲',
-        'checked_at': '2026-10-19',
+        'checked_at': '2026-10-18',
         'http_status': 200,
         'contains_category_membership_list': False,
         'evidence': '正文 4,197 字；“专业目录/专业分类/学科门类/专业要求/学位/所学专业”各 0 次；文中“财经类”指笔试试卷类别。',
@@ -93,7 +93,7 @@ AGENCY_CHECKS = [
         'authority': '中国证券监督管理委员会',
         'url': 'http://dl.scs.gov.cn/api/article/8a81f6d0a135938a01a135d657580004',
         'title': '2027年度中国证监会招考职位专业科目笔试考试大纲',
-        'checked_at': '2026-10-19',
+        'checked_at': '2026-10-18',
         'http_status': 200,
         'contains_category_membership_list': False,
         'evidence': '页面正文仅“见附件”，资源列表为财金类/法律类/会计类/计算机类等 .doc 笔试大纲；这些类别是试卷类别，不是专业类别。',
@@ -187,8 +187,9 @@ def build_agency_report():
         'report_id': 'agency-major-category-evidence-20261018',
         'generated_at_utc': datetime.now(timezone.utc).isoformat(),
         'question': ('是否存在明确适用于 2027 年度公务员岗位的权威“经济金融类”/“气象类”成员名单？'),
-        'answer': ('截至 2026-10-18，公开官方来源中没有找到此类成员名单。'
-                   '两类职位只能按原文的举例与排除句理解，不能据此判定个人可报。'),
+        'answer': ('截至 2026-10-18 的已查公开来源，未找到适用于 2027 年度公务员岗位的此类成员名单。'
+                   '这是“未找到”，不是“不存在”；两类职位只能按原文的举例与排除句理解，'
+                   '不能据此判定个人可报。'),
         'checked_sources': AGENCY_CHECKS,
         'category_findings': [
             {
@@ -238,8 +239,8 @@ def build_agency_report():
         ],
         'what_would_change_the_answer': CHANGE_PATH,
         'status': 'unresolved_by_public_sources',
-        'operational_note': ('这不是工具缺陷：数据层已经能解析代码与精确名称，剩下的是招录机关从未公开的类别成员定义。'
-                             '若后续发布，按同一流程新增 agency-scoped catalog 并重跑即可。'),
+        'operational_note': ('这不是工具缺陷：数据层已经能解析代码与精确名称，剩下的是本次核查范围内'
+                             '未找到的类别成员定义。若后续发布，按同一流程新增 agency-scoped catalog 并重跑即可。'),
     }
 
 

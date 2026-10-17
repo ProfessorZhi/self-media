@@ -174,9 +174,10 @@ def compact_resolution(resolution):
     return out
 
 
-# Agencies whose 2027 civil-service pages were actually checked and found to
-# publish no major-category membership list. Other agencies are recorded as
-# unverified rather than asserted to have no list.
+# Agencies whose 2027 civil-service pages were checked: no applicable
+# major-category membership list was *found* in the public sources inspected as
+# of the check date. This is "not found", not "does not exist"; other agencies
+# are recorded as unverified.
 AGENCIES_VERIFIED_NO_PUBLIC_LIST = {'pboc', 'cma'}
 AGENCIES_WITH_INHOUSE_CATEGORIES = {'pboc', 'cma', 'csrc', 'customs', 'nfra'}
 
@@ -601,6 +602,8 @@ def main():
     records = []
     reason_counter = collections.Counter()
     conflict_class_counter = collections.Counter()
+    conflict_entry_count = collections.Counter()
+    conflict_in_review = 0
     review_reason_counter = collections.Counter()
     agency_category_positions = collections.Counter()
     review_scope = {'positions': 0, 'hires': 0, 'covered_before': 0, 'covered_after': 0}
@@ -783,12 +786,15 @@ def main():
             conflict['field'] = '备注'
             conflicts.append(conflict)
         if conflicts:
-            conflicts = conflicts[:6]
+            conflicts = conflicts[:20]
             conflict_records.append({'id': position_id, 'conflicts': conflicts})
             # The per-record reason list must carry the marker too, otherwise a
             # downstream report that reads only reason_classes misses the conflict.
             reasons.append('code_name_conflict')
             reason_counter['code_name_conflict'] += 1
+            conflict_entry_count[position_id] = len(conflicts)
+            if requirement['review_reasons']:
+                conflict_in_review += 1
             for conflict in conflicts:
                 conflict_class_counter[conflict['conflict_class']] += 1
 
@@ -1023,9 +1029,21 @@ def main():
             for name, count in residual_by_department.most_common(15)
         ],
         'position_reason_counts': dict(reason_counter),
-        'conflicts': {'positions': len(conflict_records),
-                      'by_class': dict(conflict_class_counter),
-                      'details_sharded_in': 'position-evidence records with a non-empty conflicts list'},
+        'conflicts': {
+            # Three different counts that must never be interchanged:
+            #   positions      -> positions whose record carries a structured conflicts array
+            #   entries        -> individual code/name disagreements inside those arrays
+            #   by_class       -> the entry counts split by conflict class
+            'positions': len(conflict_records),
+            'positions_in_review_universe': conflict_in_review,
+            'positions_outside_review_universe': len(conflict_records) - conflict_in_review,
+            'entries': sum(conflict_entry_count.values()),
+            'by_class': dict(conflict_class_counter),
+            'gate_code_name_mismatch_positions': reason_counter['gate_code_name_mismatch'],
+            'note': ('positions 与 entries 不是同一口径。另有一组门类码与名称错配（gate_code_name_mismatch）'
+                     '只写入 reason_classes，不进入 conflicts 数组，因此不包含在 positions/entries 内。'),
+            'details_sharded_in': 'position-evidence records with a non-empty conflicts list',
+        },
         'agency_category_positions': dict(agency_category_positions),
         'review_scope': {
             **review_scope,
@@ -1089,7 +1107,8 @@ def main():
             'colloquial_gate_name_with_类_suffix': ('a discipline-gate name written with a 类 suffix, e.g. 理学类; '
                                                     'not an official category and not normalized'),
             'agency_category_without_published_membership': ('the agency uses an in-house category phrase such as '
-                                                             '经济金融类 or 气象类 and its 2027 pages publish no membership list'),
+                                                             '经济金融类 or 气象类; no applicable 2027 membership list '
+                                                             'was found in the public sources checked'),
             'agency_category_membership_unverified': ('the agency uses an in-house category phrase, but whether it '
                                                       'publishes a membership list was not verified in this round'),
             'code_name_conflict': 'a printed name next to a code disagrees with the catalog name',

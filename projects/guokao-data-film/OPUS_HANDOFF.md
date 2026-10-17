@@ -8,7 +8,7 @@
 2. [data/README.md](data/README.md)：现行数据文件与历史资料。
 3. [research/MAJOR_CODE_MATCHING.md](research/MAJOR_CODE_MATCHING.md)：逐岗位专业原文、代码目录与候选关系。
 4. [research/DATA_SOURCES_AND_CHECKS.md](research/DATA_SOURCES_AND_CHECKS.md)：来源版本、官方核验范围。
-5. [research/REVIEW_STATUS_20261019.json](research/REVIEW_STATUS_20261019.json) 与 [RESIDUAL_STRATA_20261019.json](research/RESIDUAL_STRATA_20261019.json)：复核分层与残留分层。
+5. [research/REVIEW_STATUS_20261018.json](research/REVIEW_STATUS_20261018.json) 与 [RESIDUAL_STRATA_20261018.json](research/RESIDUAL_STRATA_20261018.json)：复核分层与残留分层。
 
 ## 可直接使用
 

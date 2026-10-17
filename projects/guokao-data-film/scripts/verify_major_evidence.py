@@ -130,7 +130,9 @@ def main():
                 'cross_level_same_code', 'category_suffix_omitted', 'content_conflict'), \
                 f'{record["id"]}: conflict without a class'
             assert conflict['context'], f'{record["id"]}: conflict without context'
-            checks['conflicts'] += 1
+            checks['conflict_entries'] += 1
+        if record.get('conflicts'):
+            checks['conflict_positions'] += 1
         codes_by_id[record['id']] = {
             code['code'] for code in record.get('major_codes', [])
         } | {code['code'] for code in record.get('remarks_codes', [])}
@@ -172,6 +174,12 @@ def main():
     checks['codes_present_in_both_columns'] = len(dual_field)
 
     # ---- review-status stratification ---------------------------------
+    # conflict metrics must agree with the manifest, and the three counts are distinct
+    declared_conflicts = summary['conflicts']
+    assert checks['conflict_positions'] == declared_conflicts['positions'], 'conflict position count drift'
+    assert checks['conflict_entries'] == declared_conflicts['entries'], 'conflict entry count drift'
+    assert sum(declared_conflicts['by_class'].values()) == declared_conflicts['entries'], \
+        'conflict class counts must sum to the entry count'
     review_checks = {}
     if review:
         review_ids = [item['id'] for item in review]
