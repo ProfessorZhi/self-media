@@ -1,15 +1,15 @@
 {
   "schema_version": "1.0.0",
   "report_id": "final-evidence-scope-audit-20261018",
-  "generated_at_utc": "2026-10-17T19:32:01.092158+00:00",
+  "generated_at_utc": "2026-10-17T19:51:32.546714+00:00",
   "generated_date_timezone": "Asia/Shanghai",
   "local_date": "2026-10-18",
   "question": "How far does the professional evidence reach, which parts rest on an inference about another agency, and what is still undecidable from public sources?",
-  "answer_in_one_paragraph": "19,426 positions are complete on the 27 source fields. 18,679 positions have professional evidence independent of any cross-agency inference; 19 more are covered only by the 门类 rule on non-MOE positions and are therefore provisional; 728 have no catalog candidate at all. No residual phrase hides an exact in-scope catalog name that the matcher missed, so the remaining gap is semantic, cross-level or agency-internal, not a parser defect.",
+  "answer_in_one_paragraph": "19,426 positions are complete on the 27 source fields. 18,680 positions have professional evidence independent of any cross-agency inference; 19 more are covered only by the 门类 rule on non-MOE positions and are therefore provisional; 727 have no catalog candidate at all. No residual phrase hides an exact in-scope catalog name that the matcher missed, so the remaining gap is semantic, cross-level or agency-internal, not a parser defect.",
   "coverage_tiers": {
     "conservative": {
-      "positions_with_catalog_candidate": 18679,
-      "hires": 34508,
+      "positions_with_catalog_candidate": 18680,
+      "hires": 34512,
       "basis": "exact codes or names in the 专业 and 备注 columns, gate-prefixed exact names, source-declared gate codes, and explicitly unrestricted texts",
       "excludes": "gate_scope_rule on non-MOE positions"
     },
@@ -20,15 +20,15 @@
       "status": "provisional; not part of the conservative numerator"
     },
     "inclusive": {
-      "positions_with_catalog_candidate": 18698,
-      "positions_without_catalog_candidate": 728,
+      "positions_with_catalog_candidate": 18699,
+      "positions_without_catalog_candidate": 727,
       "basis": "conservative coverage plus provisional gate-scope positions"
     },
     "no_candidate": {
-      "positions": 728,
-      "hires": 1164
+      "positions": 727,
+      "hires": 1160
     },
-    "closure": "18,679 conservative + 19 provisional + 728 no-candidate = 19,426"
+    "closure": "18,680 conservative + 19 provisional + 727 no-candidate = 19,426"
   },
   "gate_scope_rule_audit": {
     "rule": "专业要求写作“X门类/学科门类”时解析到 X 学科门类节点",
@@ -298,18 +298,18 @@
     }
   },
   "conflict_audit": {
-    "positions": 59,
-    "positions_in_review_universe": 54,
-    "positions_outside_review_universe": 5,
-    "entries": 101,
+    "positions": 54,
+    "positions_in_review_universe": 50,
+    "positions_outside_review_universe": 4,
+    "entries": 87,
     "by_class": {
-      "cross_level_same_code": 26,
       "category_suffix_omitted": 8,
-      "content_conflict": 67
+      "content_conflict": 67,
+      "cross_level_same_code": 12
     },
     "by_family": {
       "semantic_conflict": 67,
-      "multi_namespace_diagnostic": 34
+      "multi_namespace_diagnostic": 20
     },
     "interpretation": {
       "semantic_conflict": "The printed name belongs to a different code. This is the only family that indicates a genuine source inconsistency.",
@@ -321,9 +321,9 @@
   "residual_audit": {
     "scope_examined": 195,
     "scope_note": "182 national vocabulary/open scope + 13 agency unverified. The 533 agency positions with no public list found are reported separately and not re-litigated here.",
-    "groups": 115,
+    "groups": 114,
     "verdict_totals": {
-      "name_exists_only_in_other_education_level": 46,
+      "name_exists_only_in_other_education_level": 45,
       "no_exact_catalog_node": 63,
       "catalog_name_plus_类_suffix": 86
     },
@@ -843,7 +843,7 @@
     "历史报告 RESIDUAL_20271018_V2.json、OFFICIAL_NATIONAL_TABLE_VERIFICATION_20261018.json 未被改写"
   ],
   "opus_safe_read_guidance": [
-    "引用“专业候选覆盖”时用 18,679（保守），不要用 18,698，除非同时说明其中 19 岗依赖跨机关推定。",
+    "引用“专业候选覆盖”时用 18,680（保守），不要用 18,699，除非同时说明其中 19 岗依赖跨机关推定。",
     "25 个 provisional 岗位可描述为“原文门类写法 + 目录节点”，但不得表述为“该机关已确认接受这些门类”。",
     "728 个无候选岗位不等于“不限专业”，也不等于“不可报”；多数是机关内部类别或开放表述。",
     "冲突数按口径引用：59 岗位 / 101 条目 / 67 语义冲突条目；三者不可互换。",

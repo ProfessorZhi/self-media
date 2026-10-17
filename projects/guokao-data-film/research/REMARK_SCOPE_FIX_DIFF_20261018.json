@@ -1,0 +1,197 @@
+{
+  "schema_version": "1.0.0",
+  "report_id": "remark-scope-fix-diff-20261018",
+  "generated_at_utc": "2026-10-17T19:51:26.368848+00:00",
+  "generated_date_timezone": "Asia/Shanghai",
+  "local_date": "2026-10-18",
+  "before_ref": "4d708e1",
+  "change": "备注 codes are now resolved in the education level named by an explicit, bounded label (本科专业代码 / 本科阶段 / 研究生专业 / 研究生： ...). Outside such a label the position 学历 is used and the fallback is marked. Mixed labels such as “本科或研究生阶段” fall back and are flagged, never widened.",
+  "why": "A 研究生 position whose 备注 says “本科专业应为：0702物理学类…” was previously decoded in the graduate namespace, so the bachelor code produced a cross_level_same_code diagnostic that looked like a source conflict.",
+  "coverage": {
+    "before": {
+      "conservative": 18679,
+      "provisional": 19,
+      "no_candidate": 728
+    },
+    "after": {
+      "conservative": 18680,
+      "provisional": 19,
+      "no_candidate": 727
+    },
+    "positions_changed": [
+      {
+        "id": "2027:133112:300140813002",
+        "before": [
+          false,
+          false
+        ],
+        "after": [
+          true,
+          true
+        ]
+      }
+    ]
+  },
+  "conflicts": {
+    "before": {
+      "positions": 59,
+      "entries": 101,
+      "by_class": {
+        "cross_level_same_code": 26,
+        "category_suffix_omitted": 8,
+        "content_conflict": 67
+      }
+    },
+    "after": {
+      "positions": 54,
+      "entries": 87,
+      "by_class": {
+        "category_suffix_omitted": 8,
+        "content_conflict": 67,
+        "cross_level_same_code": 12
+      }
+    },
+    "cleared_positions": [
+      {
+        "id": "2027:035000:100210001001",
+        "removed_entries": [
+          [
+            "0501",
+            "cross_level_same_code",
+            "中国语言文学类",
+            "备注"
+          ]
+        ],
+        "had_explicit_bachelor_label": true
+      },
+      {
+        "id": "2027:035000:100210002001",
+        "removed_entries": [
+          [
+            "0501",
+            "cross_level_same_code",
+            "中国语言文学类",
+            "备注"
+          ],
+          [
+            "050201",
+            "cross_level_same_code",
+            "英语",
+            "备注"
+          ]
+        ],
+        "had_explicit_bachelor_label": true
+      },
+      {
+        "id": "2027:104000:200110017003",
+        "removed_entries": [
+          [
+            "0702",
+            "cross_level_same_code",
+            "物理学类",
+            "备注"
+          ],
+          [
+            "080204",
+            "cross_level_same_code",
+            "机械电子工程",
+            "备注"
+          ],
+          [
+            "0803",
+            "cross_level_same_code",
+            "仪器类",
+            "备注"
+          ],
+          [
+            "0806",
+            "cross_level_same_code",
+            "电气类",
+            "备注"
+          ],
+          [
+            "0807",
+            "cross_level_same_code",
+            "电子信息类",
+            "备注"
+          ],
+          [
+            "0808",
+            "cross_level_same_code",
+            "自动化类",
+            "备注"
+          ],
+          [
+            "0809",
+            "cross_level_same_code",
+            "计算机类",
+            "备注"
+          ]
+        ],
+        "had_explicit_bachelor_label": true
+      },
+      {
+        "id": "2027:115112:300110112001",
+        "removed_entries": [
+          [
+            "0812",
+            "cross_level_same_code",
+            "测绘类",
+            "备注"
+          ]
+        ],
+        "had_explicit_bachelor_label": true
+      },
+      {
+        "id": "2027:115112:300110112002",
+        "removed_entries": [
+          [
+            "080901",
+            "cross_level_same_code",
+            "计算机科学与技术",
+            "备注"
+          ],
+          [
+            "080903",
+            "cross_level_same_code",
+            "网络工程",
+            "备注"
+          ],
+          [
+            "0812",
+            "cross_level_same_code",
+            "测绘类",
+            "备注"
+          ]
+        ],
+        "had_explicit_bachelor_label": true
+      }
+    ],
+    "added_positions": [],
+    "changed_positions": [],
+    "interpretation": "Every removed entry came from a position whose 备注 named a bachelor requirement. content_conflict entries are unchanged, so no semantic conflict was discarded."
+  },
+  "remark_code_scope": {
+    "explicit_label": 712,
+    "fallback_position_education": 1105,
+    "ambiguous_mixed_degree_label": 15
+  },
+  "scope_rules": {
+    "explicit_label": [
+      "本科专业",
+      "本科专业代码为",
+      "本科阶段",
+      "本科：",
+      "研究生专业",
+      "研究生阶段",
+      "研究生：",
+      "博士研究生专业"
+    ],
+    "ambiguous_fallback": [
+      "本科或研究生阶段",
+      "本科、研究生专业"
+    ],
+    "fallback": "no explicit label in the governing span"
+  },
+  "residual_ambiguities": "Some 备注 mix levels without a clean label; those codes are left at the position scope with scope_source=ambiguous_mixed_degree_label and a visible span, and should be read as unresolved rather than matched."
+}

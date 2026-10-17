@@ -1,17 +1,17 @@
 {
   "schema_version": "1.0.0",
   "report_id": "review-status-20261018",
-  "generated_at_utc": "2026-10-17T19:31:34.419414+00:00",
+  "generated_at_utc": "2026-10-17T19:51:31.923401+00:00",
   "universe": {
     "review_universe": 5835,
     "review_universe_note": "Legacy denominator: requirements carrying at least one review reason in the original three-catalog layer.",
     "buckets": {
       "candidate_with_degree_scope": 1994,
-      "candidate_with_open_scope": 1234,
-      "candidate_legacy_reason_superseded": 978,
-      "no_candidate_other": 182,
-      "candidate_with_conflict": 59,
+      "candidate_with_open_scope": 1236,
+      "candidate_legacy_reason_superseded": 981,
+      "no_candidate_other": 181,
       "candidate_with_namespace_ambiguity": 501,
+      "candidate_with_conflict": 55,
       "candidate_with_exclusion": 276,
       "no_candidate_agency_no_public_list": 533,
       "no_candidate_agency_unverified": 13,
@@ -23,14 +23,14 @@
       "open_scope": 2744,
       "namespace_ambiguity": 757,
       "unresolved_or_imprecise_vocabulary": 336,
-      "code_name_conflict": 59,
+      "code_name_conflict": 55,
       "exclusion_or_negative": 722
     },
-    "legacy_reason_superseded": 978,
-    "with_risk_flag": 3396,
+    "legacy_reason_superseded": 981,
+    "with_risk_flag": 3392,
     "conflict_bucket_composition": {
-      "total": 59,
-      "structured_conflict_positions_in_universe": 54,
+      "total": 55,
+      "structured_conflict_positions_in_universe": 50,
       "gate_code_name_mismatch_only": 5,
       "note": "This bucket counts positions inside the review universe only. The library-wide structured conflict set is a different set: it has its own position count (manifest summary conflicts.positions), which must not be substituted here."
     }
@@ -57,8 +57,8 @@
     {
       "path": "review-status-01.json",
       "records": 2004,
-      "bytes": 817972,
-      "sha256": "f48206539c2fb9b6c7444cef1d530a82c795a53515baf5382918f40d996b70ab"
+      "bytes": 817836,
+      "sha256": "a47b363c07f21df38e3abebd5133cc8cd5b23282187f2fa7b038753347bedd15"
     },
     {
       "path": "review-status-02.json",
@@ -69,8 +69,8 @@
     {
       "path": "review-status-03.json",
       "records": 1793,
-      "bytes": 721956,
-      "sha256": "7baa0b020ccd946697641e5ca3fae2cd90de683eba252cbf30d2c384fff90d77"
+      "bytes": 721972,
+      "sha256": "f3f37c5aaced721dff9696d6b8611d1bf2cc1665c48601421b55f289668014c1"
     }
   ]
 }

@@ -259,6 +259,59 @@ def resolve(code, scopes, index):
     return {'status': result['status'], 'form': form, 'nodes': result['nodes']}
 
 
+DEGREE_LABEL = re.compile(
+    r'(?P<deg>大学本科|本科|硕士研究生|博士研究生|研究生)'
+    r'(?P<mid>阶段|所学)?'
+    r'(?P<kind>专业代码|专业|学历|代码)?'
+    r'(?P<sep>\s*(?:为|是|：|:))?')
+# "本科、研究生专业" or "本科或研究生阶段" joins two levels in one label. The
+# scope is then genuinely ambiguous and must not be guessed.
+MIXED_DEGREE = re.compile(
+    r'(?:大学本科|本科)\s*[、和或及与]\s*(?:硕士研究生|博士研究生|研究生)'
+    r'|(?:硕士研究生|博士研究生|研究生)\s*[、和或及与]\s*(?:大学本科|本科)')
+
+
+def degree_scope_regions(text):
+    """Explicit 备注 degree labels and the span each one governs.
+
+    A label only opens a scope when it is an explicit, bounded phrase such as
+    本科专业 / 本科阶段 / 研究生专业代码为. A bare 本科 in 本科及以上 is not a
+    label. A region stops at the next label, a sentence terminator, or 120
+    characters, so a later list cannot inherit an earlier label.
+    """
+    labels = []
+    for match in DEGREE_LABEL.finditer(text):
+        if not (match.group('mid') or match.group('kind') or match.group('sep')):
+            continue
+        scope = 'bachelor' if match.group('deg') in ('大学本科', '本科') else 'graduate'
+        labels.append({'start': match.start(), 'end': match.end(),
+                       'scope': scope, 'label_text': match.group(0).strip()})
+    ambiguous_spans = [(m.start(), m.end()) for m in MIXED_DEGREE.finditer(text)]
+    regions = []
+    for index, label in enumerate(labels):
+        stop = labels[index + 1]['start'] if index + 1 < len(labels) else len(text)
+        terminator = re.search(r'[。；;\n]', text[label['end']:stop])
+        if terminator:
+            stop = label['end'] + terminator.start()
+        stop = min(stop, label['end'] + 120)
+        ambiguous = any(start <= label['start'] < end or label['start'] <= start < label['end']
+                        for start, end in ambiguous_spans)
+        regions.append({
+            'start': label['end'], 'end': stop, 'scope': label['scope'],
+            'label_text': label['label_text'], 'label_span': [label['start'], label['end']],
+            'ambiguous': ambiguous,
+        })
+    return regions
+
+
+def scope_at(regions, position):
+    """Return the governing region for a code offset, or None outside every label."""
+    for region in regions:
+        if region['start'] <= position < region['end']:
+            return region
+    return None
+
+
 def remark_tokens(remarks, index, scopes):
     """Extract candidate major codes from 备注 with context filtering.
 
@@ -268,12 +321,29 @@ def remark_tokens(remarks, index, scopes):
     """
     kept = []
     rejected = collections.Counter()
+    regions = degree_scope_regions(remarks)
     for match in TOKEN.finditer(remarks):
         token = match.group(1)
         upper = token.upper()
         start, end = match.start(), match.end()
         window = remarks[max(0, start - 20):min(len(remarks), end + 20)]
-        resolution = resolve(upper, scopes, index)
+        # A 备注 that names a level governs its own span. Outside any explicit
+        # label the position's 学历 cell is used, and that fallback is recorded
+        # so a later reader can tell the two apart.
+        region = scope_at(regions, start)
+        if region is not None and region['ambiguous']:
+            # A mixed label ("本科或研究生阶段") does not pin one level. Fall back
+            # to the original position-scope behaviour and mark the risk; do not
+            # widen the search to both levels.
+            local_scopes = scopes
+            scope_source = 'ambiguous_mixed_degree_label'
+        elif region is not None:
+            local_scopes = [region['scope']]
+            scope_source = 'explicit_label'
+        else:
+            local_scopes = scopes
+            scope_source = 'fallback_position_education'
+        resolution = resolve(upper, local_scopes, index)
         resolved = resolution['status'] in ('resolved', 'ambiguous_level', 'ambiguous_multiple',
                                             'institution_local_code')
         if YEAR_LIKE.fullmatch(token):
@@ -295,6 +365,11 @@ def remark_tokens(remarks, index, scopes):
             'start': start,
             'end': end,
             'context': remarks[max(0, start - 18):min(len(remarks), end + 18)],
+            'scope_source': scope_source,
+            'scope_text': region['label_text'] if region else None,
+            'scope_span': region['label_span'] if region else None,
+            'scope_ambiguous': bool(region and region['ambiguous']),
+            'scopes_used': local_scopes,
             'resolution': {key: resolution[key] for key in ('status', 'form', 'nodes')
                            if key in resolution},
         })
@@ -900,6 +975,11 @@ def main():
             'remarks_codes': [
                 {'code': code['code'], 'start': code['start'], 'end': code['end'],
                  'context': code['context'],
+                 'scope_source': code['scope_source'],
+                 'scope_text': code['scope_text'],
+                 'scope_span': code['scope_span'],
+                 'scope_ambiguous': code['scope_ambiguous'],
+                 'scopes_used': code['scopes_used'],
                  'resolution': compact_resolution(code['resolution'])}
                 for code in remarks_codes
             ],

@@ -174,6 +174,49 @@ def main():
     checks['codes_present_in_both_columns'] = len(dual_field)
 
     # ---- review-status stratification ---------------------------------
+    # ---- 备注 degree-scope regressions ---------------------------------
+    scope_stats = collections.Counter()
+    for record in records:
+        for code in record.get('remarks_codes', []):
+            source = code.get('scope_source')
+            assert source in ('explicit_label', 'fallback_position_education',
+                              'ambiguous_mixed_degree_label'), \
+                f'{record["id"]}: unknown scope_source {source}'
+            scope_stats[source] += 1
+            if source == 'explicit_label':
+                used = code.get('scopes_used') or []
+                assert len(used) == 1 and used[0] in ('bachelor', 'graduate'), \
+                    f'{record["id"]}: explicit label must pin exactly one level, got {used}'
+                assert code.get('scope_text') and code.get('scope_span'), \
+                    f'{record["id"]}: explicit label must carry text and span'
+                nodes = code['resolution'].get('ids') or []
+                if nodes and code['resolution']['status'] == 'resolved':
+                    prefix = 'moe-bachelor' if used[0] == 'bachelor' else 'moe-graduate'
+                    assert all(node.startswith(prefix) for node in nodes), \
+                        f'{record["id"]}: {code["code"]} resolved outside its labelled level'
+            if source == 'fallback_position_education':
+                assert code.get('scope_text') is None, \
+                    f'{record["id"]}: fallback must not claim a label text'
+
+    # Pinned regressions: real 备注 sentences that used to produce false conflicts.
+    by_id = {record['id']: record for record in records}
+    bachelor_case = by_id['2027:104000:200110017003']
+    for code in bachelor_case.get('remarks_codes', []):
+        assert code['scope_source'] == 'explicit_label', '本科专业应为 备注 must be label-scoped'
+        assert code['scopes_used'] == ['bachelor'], '本科专业应为 备注 must resolve as bachelor'
+    assert not bachelor_case.get('conflicts'), 'the 本科专业应为 sample must not carry conflicts'
+    finance_case = by_id['2027:133112:300140813002']
+    resolved_finance = [code for code in finance_case.get('remarks_codes', [])
+                        if code['code'] == '020310T']
+    assert resolved_finance and resolved_finance[0]['resolution']['status'] == 'resolved', \
+        '020310T under an explicit 本科专业代码 label must resolve'
+    assert resolved_finance[0]['scopes_used'] == ['bachelor'], '020310T must be scoped bachelor'
+    mixed = [code for record in records for code in record.get('remarks_codes', [])
+             if code.get('scope_source') == 'ambiguous_mixed_degree_label']
+    assert mixed, 'the mixed-label path must still be exercised'
+    for code in mixed:
+        assert code.get('scopes_used') != ['unknown'], 'ambiguous labels must fall back, not widen'
+
     # three-tier coverage closure
     conservative = sum(1 for record in records if record.get('coverage_conservative'))
     provisional = sum(1 for record in records
@@ -248,6 +291,7 @@ def main():
         'residual_positions': len(residual),
         'checks': dict(checks),
         'review_status': review_checks,
+        'remark_scope': dict(scope_stats),
         'invariants': [
             'every position appears exactly once and matches its position-shard row',
             'every 专业 code span round-trips to the original characters',
@@ -259,6 +303,8 @@ def main():
             'review buckets are mutually exclusive and sum to the legacy denominator 5,835',
             'the union of no-candidate buckets equals the residual list exactly',
             'conservative + provisional + residual equals the full position count',
+            'explicit 备注 degree labels pin exactly one education level',
+            'ambiguous mixed-degree labels fall back to the position scope and are marked',
             'a gate_scope_rule hit always carries an applicability label',
             'conflict families partition every conflict entry',
         ],

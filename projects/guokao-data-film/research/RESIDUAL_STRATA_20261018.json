@@ -1,18 +1,18 @@
 {
   "schema_version": "1.0.0",
   "report_id": "residual-strata-20261018",
-  "generated_at_utc": "2026-10-17T19:31:34.419196+00:00",
+  "generated_at_utc": "2026-10-17T19:51:31.923194+00:00",
   "method": "Residual buckets are assigned from the raw 专业 text, not from extracted term labels, so a category phrase inside a longer sentence is still counted.",
   "totals": {
-    "residual_positions": 728,
-    "residual_hires": 1164,
+    "residual_positions": 727,
+    "residual_hires": 1160,
     "by_bucket": {
-      "national_vocabulary_or_open_scope": 182,
+      "national_vocabulary_or_open_scope": 181,
       "agency_category_no_public_list": 533,
       "agency_category_unverified": 13
     },
     "by_bucket_hires": {
-      "national_vocabulary_or_open_scope": 286,
+      "national_vocabulary_or_open_scope": 282,
       "agency_category_no_public_list": 853,
       "agency_category_unverified": 25
     }
@@ -56,7 +56,7 @@
     {
       "bucket": "national_vocabulary_or_open_scope",
       "agency": "csrc",
-      "positions": 5
+      "positions": 4
     },
     {
       "bucket": "agency_category_unverified",
@@ -88,7 +88,7 @@
     {
       "bucket": "national_vocabulary_or_open_scope",
       "education_raw": "硕士研究生及以上",
-      "positions": 107
+      "positions": 106
     },
     {
       "bucket": "agency_category_no_public_list",
