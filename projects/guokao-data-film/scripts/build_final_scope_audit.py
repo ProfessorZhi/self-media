@@ -340,6 +340,17 @@ def main():
                 'use_in_this_round': '同上，未提供专业成员表',
             },
             {
+                'id': 'msa-2027-qualification-notice',
+                'url': ('https://www.msa.gov.cn/html/cnmsa/xxgk/article/2026/'
+                        'aef40dfa0db14427b456ba009d370411.html'),
+                'authority': '中华人民共和国海事局',
+                'date': '2026-10-13',
+                'applies_to_2027_civil_service': '交通运输部直属海事系统 2027 年度考录公务员职位',
+                'use_in_this_round': ('第七条“部分职位按照专业门类或者专业大类、专业小类招录的，'
+                                      '属于相应类别下的专业均可报考”用于佐证海事系统岗位的门类写法；'
+                                      '门类成员仍取自教育部目录。'),
+            },
+            {
                 'id': 'scs-2027-application-guide',
                 'url': 'http://dl.scs.gov.cn/api/article/8a81f6d8a129c66701a132bae3a70082',
                 'authority': '中央公务员主管部门',

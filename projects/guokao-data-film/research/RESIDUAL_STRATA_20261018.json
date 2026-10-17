@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "report_id": "residual-strata-20261018",
-  "generated_at_utc": "2026-10-17T19:51:31.923194+00:00",
+  "generated_at_utc": "2026-10-17T22:15:22.770420+00:00",
   "method": "Residual buckets are assigned from the raw 专业 text, not from extracted term labels, so a category phrase inside a longer sentence is still counted.",
   "totals": {
     "residual_positions": 727,
@@ -927,7 +927,8 @@
         "category_phrase_without_exact_catalog_node",
         "no_machine_readable_code_in_major_column",
         "no_machine_readable_code_in_remarks_column",
-        "bachelor_category_name_in_graduate_position"
+        "bachelor_category_name_in_graduate_position",
+        "agency_category_membership_unverified"
       ]
     },
     {
@@ -964,7 +965,8 @@
         "category_phrase_without_exact_catalog_node",
         "no_machine_readable_code_in_major_column",
         "no_machine_readable_code_in_remarks_column",
-        "bachelor_category_name_in_graduate_position"
+        "bachelor_category_name_in_graduate_position",
+        "agency_category_membership_unverified"
       ]
     },
     {
@@ -983,7 +985,8 @@
         "category_phrase_without_exact_catalog_node",
         "no_machine_readable_code_in_major_column",
         "no_machine_readable_code_in_remarks_column",
-        "bachelor_category_name_in_graduate_position"
+        "bachelor_category_name_in_graduate_position",
+        "agency_category_membership_unverified"
       ]
     },
     {
@@ -1019,7 +1022,8 @@
         "no_explicit_code_in_major_column",
         "category_phrase_without_exact_catalog_node",
         "no_machine_readable_code_in_major_column",
-        "no_machine_readable_code_in_remarks_column"
+        "no_machine_readable_code_in_remarks_column",
+        "agency_category_membership_unverified"
       ]
     },
     {
@@ -1038,7 +1042,8 @@
         "category_phrase_without_exact_catalog_node",
         "no_machine_readable_code_in_major_column",
         "no_machine_readable_code_in_remarks_column",
-        "bachelor_category_name_in_graduate_position"
+        "bachelor_category_name_in_graduate_position",
+        "agency_category_membership_unverified"
       ]
     },
     {
@@ -1057,7 +1062,8 @@
         "no_explicit_code_in_major_column",
         "category_phrase_without_exact_catalog_node",
         "no_machine_readable_code_in_major_column",
-        "no_machine_readable_code_in_remarks_column"
+        "no_machine_readable_code_in_remarks_column",
+        "agency_category_membership_unverified"
       ]
     },
     {
@@ -1080,7 +1086,8 @@
         "category_phrase_without_exact_catalog_node",
         "no_machine_readable_code_in_major_column",
         "no_machine_readable_code_in_remarks_column",
-        "bachelor_category_name_in_graduate_position"
+        "bachelor_category_name_in_graduate_position",
+        "agency_category_membership_unverified"
       ]
     },
     {
@@ -1117,7 +1124,8 @@
         "category_phrase_without_exact_catalog_node",
         "no_machine_readable_code_in_major_column",
         "no_machine_readable_code_in_remarks_column",
-        "colloquial_gate_name_with_类_suffix"
+        "colloquial_gate_name_with_类_suffix",
+        "agency_category_membership_unverified"
       ]
     },
     {
@@ -1137,7 +1145,8 @@
         "category_phrase_without_exact_catalog_node",
         "no_machine_readable_code_in_major_column",
         "no_machine_readable_code_in_remarks_column",
-        "colloquial_gate_name_with_类_suffix"
+        "colloquial_gate_name_with_类_suffix",
+        "agency_category_membership_unverified"
       ]
     },
     {
@@ -1157,7 +1166,8 @@
         "category_phrase_without_exact_catalog_node",
         "no_machine_readable_code_in_major_column",
         "no_machine_readable_code_in_remarks_column",
-        "colloquial_gate_name_with_类_suffix"
+        "colloquial_gate_name_with_类_suffix",
+        "agency_category_membership_unverified"
       ]
     },
     {
@@ -1192,7 +1202,8 @@
         "category_phrase_without_exact_catalog_node",
         "no_machine_readable_code_in_major_column",
         "no_machine_readable_code_in_remarks_column",
-        "colloquial_gate_name_with_类_suffix"
+        "colloquial_gate_name_with_类_suffix",
+        "agency_category_membership_unverified"
       ]
     },
     {
@@ -1212,7 +1223,8 @@
         "category_phrase_without_exact_catalog_node",
         "no_machine_readable_code_in_major_column",
         "no_machine_readable_code_in_remarks_column",
-        "colloquial_gate_name_with_类_suffix"
+        "colloquial_gate_name_with_类_suffix",
+        "agency_category_membership_unverified"
       ]
     },
     {
@@ -1232,7 +1244,8 @@
         "category_phrase_without_exact_catalog_node",
         "no_machine_readable_code_in_major_column",
         "no_machine_readable_code_in_remarks_column",
-        "colloquial_gate_name_with_类_suffix"
+        "colloquial_gate_name_with_类_suffix",
+        "agency_category_membership_unverified"
       ]
     }
   ]

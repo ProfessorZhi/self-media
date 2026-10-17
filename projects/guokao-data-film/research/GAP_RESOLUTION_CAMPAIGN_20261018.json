@@ -1,0 +1,2047 @@
+{
+  "schema_version": "1.0.0",
+  "report_id": "gap-resolution-campaign-20261018",
+  "generated_at_utc": "2026-10-17T22:16:10.967848+00:00",
+  "local_date": "2026-10-18",
+  "before_ref": "0038109",
+  "lanes": {
+    "A_agency_evidence": {
+      "checks": [
+        {
+          "id": "msa-2027-qualification-notice",
+          "authority": "中华人民共和国海事局",
+          "url": "https://www.msa.gov.cn/html/cnmsa/xxgk/article/2026/aef40dfa0db14427b456ba009d370411.html",
+          "published": "2026-10-13",
+          "retrieved": "2026-10-18",
+          "http_status": 200,
+          "title": "关于交通运输部直属海事系统2027年度考录公务员资格审查事项的说明",
+          "applies_to": "交通运输部直属海事系统 2027 年度考录公务员职位",
+          "quote": "部分职位按照专业门类或者专业大类、专业小类招录的，属于相应类别下的专业均可报考。",
+          "supports": "category_based_recruitment_admits_members",
+          "defines_membership_list": false,
+          "use": "用于佐证海事系统岗位“X门类”写法的含义；门类成员仍取自教育部目录，该说明本身不列举成员。"
+        },
+        {
+          "id": "scs-portal-announcements",
+          "authority": "中央公务员主管部门",
+          "url": "http://dl.scs.gov.cn/api/gkhome/article/8a81f6eca0221f1401a0242759fc0000",
+          "retrieved": "2026-10-18",
+          "http_status": 200,
+          "found": "8 条公告：公告、报考指南、公共科目大纲、证监会/金监总局/非通用语/公安大纲",
+          "new_since_last_round": false,
+          "note": "没有新的补充公告或勘误。"
+        },
+        {
+          "id": "customs-2027",
+          "authority": "海关总署",
+          "url": "http://www.customs.gov.cn/",
+          "retrieved": "2026-10-18",
+          "http_status": 412,
+          "status": "BLOCKED",
+          "note": "HTTP 412（WAF）；https 连接失败（000）。未能检索其 2027 专业说明。"
+        },
+        {
+          "id": "railway-2027",
+          "authority": "上海铁路监督管理局",
+          "url": null,
+          "retrieved": "2026-10-18",
+          "status": "NOT_SEARCHED",
+          "note": "本轮未检索到其 2027 独立专业说明；该局 1 个岗位仍为 provisional。"
+        },
+        {
+          "id": "pboc-cma-prior-rounds",
+          "authority": "中国人民银行 / 中国气象局",
+          "url": "research/AGENCY_MAJOR_CATEGORY_EVIDENCE_20261018.json",
+          "retrieved": "2026-10-18",
+          "status": "REUSED",
+          "note": "前几轮已逐项核查：无 2027 公务员适用成员表；2026 气象事业单位目录不适用。本轮不重复抓取。"
+        }
+      ],
+      "coverage_before": {
+        "conservative": 18680,
+        "provisional": 19,
+        "no_candidate": 727
+      },
+      "coverage_after": {
+        "conservative": 18697,
+        "conservative_hires": 34529,
+        "provisional": 2,
+        "no_candidate": 727
+      },
+      "delta": {
+        "conservative_positions": 17,
+        "provisional_positions": -17,
+        "basis": "MSA 2027 qualification notice section 七 corroborates 门类 semantics for maritime positions; the 17 affected positions moved from provisional to conservative coverage."
+      },
+      "positions_moved": [
+        {
+          "id": "2027:118103:300110001011",
+          "department_name": "长江海事局",
+          "education_raw": "本科及以上",
+          "hires": 1,
+          "major_raw": "管理学门类",
+          "gates": [
+            "管理学"
+          ],
+          "notice_url": null,
+          "notice_quote": null
+        },
+        {
+          "id": "2027:118103:300110005007",
+          "department_name": "长江海事局",
+          "education_raw": "硕士研究生及以上",
+          "hires": 1,
+          "major_raw": "工学门类、理学门类、教育学门类、医学门类",
+          "gates": [
+            "工学",
+            "理学",
+            "教育学",
+            "医学"
+          ],
+          "notice_url": null,
+          "notice_quote": null
+        },
+        {
+          "id": "2027:118103:300110006008",
+          "department_name": "长江海事局",
+          "education_raw": "本科及以上",
+          "hires": 1,
+          "major_raw": "工学门类、法学门类、管理学门类",
+          "gates": [
+            "工学",
+            "法学",
+            "管理学"
+          ],
+          "notice_url": null,
+          "notice_quote": null
+        },
+        {
+          "id": "2027:118302:300110006003",
+          "department_name": "天津海事局",
+          "education_raw": "本科及以上",
+          "hires": 1,
+          "major_raw": "哲学门类、法学门类、文学门类、管理学门类",
+          "gates": [
+            "哲学",
+            "法学",
+            "文学",
+            "管理学"
+          ],
+          "notice_url": null,
+          "notice_quote": null
+        },
+        {
+          "id": "2027:118303:300110010003",
+          "department_name": "辽宁海事局",
+          "education_raw": "硕士研究生及以上",
+          "hires": 1,
+          "major_raw": "法学门类",
+          "gates": [
+            "法学"
+          ],
+          "notice_url": null,
+          "notice_quote": null
+        },
+        {
+          "id": "2027:118303:300110010004",
+          "department_name": "辽宁海事局",
+          "education_raw": "硕士研究生及以上",
+          "hires": 1,
+          "major_raw": "工学门类",
+          "gates": [
+            "工学"
+          ],
+          "notice_url": null,
+          "notice_quote": null
+        },
+        {
+          "id": "2027:118303:300110020007",
+          "department_name": "辽宁海事局",
+          "education_raw": "硕士研究生及以上",
+          "hires": 1,
+          "major_raw": "法学门类",
+          "gates": [
+            "法学"
+          ],
+          "notice_url": null,
+          "notice_quote": null
+        },
+        {
+          "id": "2027:118303:300110030004",
+          "department_name": "辽宁海事局",
+          "education_raw": "硕士研究生及以上",
+          "hires": 1,
+          "major_raw": "法学门类",
+          "gates": [
+            "法学"
+          ],
+          "notice_url": null,
+          "notice_quote": null
+        },
+        {
+          "id": "2027:118306:300110003010",
+          "department_name": "浙江海事局",
+          "education_raw": "本科及以上",
+          "hires": 1,
+          "major_raw": "工学门类、理学门类",
+          "gates": [
+            "工学",
+            "理学"
+          ],
+          "notice_url": null,
+          "notice_quote": null
+        },
+        {
+          "id": "2027:118306:300110004011",
+          "department_name": "浙江海事局",
+          "education_raw": "本科及以上",
+          "hires": 1,
+          "major_raw": "工学门类、理学门类、法学门类",
+          "gates": [
+            "工学",
+            "理学",
+            "法学"
+          ],
+          "notice_url": null,
+          "notice_quote": null
+        },
+        {
+          "id": "2027:118306:300110004012",
+          "department_name": "浙江海事局",
+          "education_raw": "本科及以上",
+          "hires": 1,
+          "major_raw": "工学门类、理学门类、法学门类",
+          "gates": [
+            "工学",
+            "理学",
+            "法学"
+          ],
+          "notice_url": null,
+          "notice_quote": null
+        },
+        {
+          "id": "2027:118308:300110013007",
+          "department_name": "广东海事局",
+          "education_raw": "本科及以上",
+          "hires": 1,
+          "major_raw": "工学门类",
+          "gates": [
+            "工学"
+          ],
+          "notice_url": null,
+          "notice_quote": null
+        },
+        {
+          "id": "2027:118308:300110015005",
+          "department_name": "广东海事局",
+          "education_raw": "本科及以上",
+          "hires": 1,
+          "major_raw": "法学门类",
+          "gates": [
+            "法学"
+          ],
+          "notice_url": null,
+          "notice_quote": null
+        },
+        {
+          "id": "2027:118309:300110001003",
+          "department_name": "广西海事局",
+          "education_raw": "硕士研究生及以上",
+          "hires": 1,
+          "major_raw": "工学门类、理学门类",
+          "gates": [
+            "工学",
+            "理学"
+          ],
+          "notice_url": null,
+          "notice_quote": null
+        },
+        {
+          "id": "2027:118309:300110001005",
+          "department_name": "广西海事局",
+          "education_raw": "硕士研究生及以上",
+          "hires": 1,
+          "major_raw": "法学门类、文学门类、哲学门类、管理学门类",
+          "gates": [
+            "法学",
+            "文学",
+            "哲学",
+            "管理学"
+          ],
+          "notice_url": null,
+          "notice_quote": null
+        },
+        {
+          "id": "2027:118309:300110002003",
+          "department_name": "广西海事局",
+          "education_raw": "硕士研究生及以上",
+          "hires": 1,
+          "major_raw": "工学门类、理学门类",
+          "gates": [
+            "工学",
+            "理学"
+          ],
+          "notice_url": null,
+          "notice_quote": null
+        },
+        {
+          "id": "2027:118309:300110003005",
+          "department_name": "广西海事局",
+          "education_raw": "硕士研究生及以上",
+          "hires": 1,
+          "major_raw": "工学门类、理学门类、法学门类、文学门类、管理学门类",
+          "gates": [
+            "工学",
+            "理学",
+            "法学",
+            "文学",
+            "管理学"
+          ],
+          "notice_url": null,
+          "notice_quote": null
+        }
+      ],
+      "provisional_remaining": [
+        {
+          "id": "2027:129134:300110019001",
+          "hires": 1,
+          "department_name": "南宁海关",
+          "education_raw": "仅限本科",
+          "major_raw": "文学门类、法学门类、管理学门类",
+          "gates": [
+            "文学",
+            "法学",
+            "管理学"
+          ],
+          "applicability": "agency_scope_unverified",
+          "risk_level": "medium: exact characters and gate nodes recorded, agency scope inferred",
+          "why_not_counted": "The cited MOE statement applies to MOE positions; no agency-specific 2027 text was found for this department."
+        },
+        {
+          "id": "2027:160102:300110002002",
+          "hires": 1,
+          "department_name": "上海铁路监督管理局",
+          "education_raw": "本科及以上",
+          "major_raw": "工学学科门类",
+          "gates": [
+            "工学"
+          ],
+          "applicability": "agency_scope_unverified",
+          "risk_level": "medium: exact characters and gate nodes recorded, agency scope inferred",
+          "why_not_counted": "The cited MOE statement applies to MOE positions; no agency-specific 2027 text was found for this department."
+        }
+      ]
+    },
+    "B_conflict_audit": {
+      "entries": 67,
+      "positions": 44,
+      "by_origin": {
+        "genuine_name_code_mismatch": 26,
+        "shared_name_slash_group": 32,
+        "category_suffix_variant": 9
+      },
+      "by_verdict": {
+        "needs_agency_or_human_confirmation": 26,
+        "format_artifact_shared_name": 32,
+        "format_artifact_suffix": 9
+      },
+      "genuine_positions": 22,
+      "items": [
+        {
+          "id": "2027:104000:200110001002",
+          "department_name": "国家发展和改革委员会",
+          "major_raw": "1253会计、1257审计、120201会计学、120202财务管理",
+          "code": "120202",
+          "printed_name": "财务管理",
+          "catalog_names": [
+            "企业管理"
+          ],
+          "printed_name_belongs_to": [
+            "120204"
+          ],
+          "origin": "genuine_name_code_mismatch",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            24,
+            30
+          ],
+          "context": "、1257审计、120201会计学、120202财务管理",
+          "verdict": "needs_agency_or_human_confirmation"
+        },
+        {
+          "id": "2027:117000:200110103001",
+          "department_name": "住房和城乡建设部",
+          "major_raw": "区域经济学020202、人文地理学070502、城乡规划0833、城乡规划学0853",
+          "code": "0833",
+          "printed_name": "城乡规划",
+          "catalog_names": [
+            "城乡规划学"
+          ],
+          "printed_name_belongs_to": [
+            "082802",
+            "0853",
+            "0853"
+          ],
+          "origin": "genuine_name_code_mismatch",
+          "side": "before",
+          "field": "专业",
+          "span": [
+            28,
+            32
+          ],
+          "context": "2、人文地理学070502、城乡规划0833、城乡规划学0853",
+          "verdict": "needs_agency_or_human_confirmation"
+        },
+        {
+          "id": "2027:117000:200110103001",
+          "department_name": "住房和城乡建设部",
+          "major_raw": "区域经济学020202、人文地理学070502、城乡规划0833、城乡规划学0853",
+          "code": "0853",
+          "printed_name": "城乡规划学",
+          "catalog_names": [
+            "城乡规划",
+            "城市规划"
+          ],
+          "printed_name_belongs_to": [
+            "0833",
+            "0833",
+            "0833"
+          ],
+          "origin": "genuine_name_code_mismatch",
+          "side": "before",
+          "field": "专业",
+          "span": [
+            38,
+            42
+          ],
+          "context": "502、城乡规划0833、城乡规划学0853",
+          "verdict": "needs_agency_or_human_confirmation"
+        },
+        {
+          "id": "2027:117000:200110104001",
+          "department_name": "住房和城乡建设部",
+          "major_raw": "建筑学0813、建筑0851、土木工程0814、土木工程085901、城乡规划0833、城乡规划学0853、工程管理1256",
+          "code": "0833",
+          "printed_name": "城乡规划",
+          "catalog_names": [
+            "城乡规划学"
+          ],
+          "printed_name_belongs_to": [
+            "082802",
+            "0853",
+            "0853"
+          ],
+          "origin": "genuine_name_code_mismatch",
+          "side": "before",
+          "field": "专业",
+          "span": [
+            39,
+            43
+          ],
+          "context": "14、土木工程085901、城乡规划0833、城乡规划学0853、工程管理125",
+          "verdict": "needs_agency_or_human_confirmation"
+        },
+        {
+          "id": "2027:117000:200110104001",
+          "department_name": "住房和城乡建设部",
+          "major_raw": "建筑学0813、建筑0851、土木工程0814、土木工程085901、城乡规划0833、城乡规划学0853、工程管理1256",
+          "code": "0853",
+          "printed_name": "城乡规划学",
+          "catalog_names": [
+            "城乡规划",
+            "城市规划"
+          ],
+          "printed_name_belongs_to": [
+            "0833",
+            "0833",
+            "0833"
+          ],
+          "origin": "genuine_name_code_mismatch",
+          "side": "before",
+          "field": "专业",
+          "span": [
+            49,
+            53
+          ],
+          "context": "901、城乡规划0833、城乡规划学0853、工程管理1256",
+          "verdict": "needs_agency_or_human_confirmation"
+        },
+        {
+          "id": "2027:117000:200110105001",
+          "department_name": "住房和城乡建设部",
+          "major_raw": "人文地理学070502、城乡规划0833、城乡规划学0853、市政工程081403、市政工程（含给排水）085905、环境科学与工程0830",
+          "code": "0833",
+          "printed_name": "城乡规划",
+          "catalog_names": [
+            "城乡规划学"
+          ],
+          "printed_name_belongs_to": [
+            "082802",
+            "0853",
+            "0853"
+          ],
+          "origin": "genuine_name_code_mismatch",
+          "side": "before",
+          "field": "专业",
+          "span": [
+            16,
+            20
+          ],
+          "context": "人文地理学070502、城乡规划0833、城乡规划学0853、市政工程081",
+          "verdict": "needs_agency_or_human_confirmation"
+        },
+        {
+          "id": "2027:117000:200110105001",
+          "department_name": "住房和城乡建设部",
+          "major_raw": "人文地理学070502、城乡规划0833、城乡规划学0853、市政工程081403、市政工程（含给排水）085905、环境科学与工程0830",
+          "code": "0853",
+          "printed_name": "城乡规划学",
+          "catalog_names": [
+            "城乡规划",
+            "城市规划"
+          ],
+          "printed_name_belongs_to": [
+            "0833",
+            "0833",
+            "0833"
+          ],
+          "origin": "genuine_name_code_mismatch",
+          "side": "before",
+          "field": "专业",
+          "span": [
+            26,
+            30
+          ],
+          "context": "502、城乡规划0833、城乡规划学0853、市政工程081403、市政工程（含",
+          "verdict": "needs_agency_or_human_confirmation"
+        },
+        {
+          "id": "2027:118000:200110004001",
+          "department_name": "交通运输部",
+          "major_raw": "交通运输工程；交通运输规划与管理；载运工具运用工程；物流工程；车辆工程；产业经济学；低空经济及相关专业",
+          "code": "125604",
+          "printed_name": "物流工程",
+          "catalog_names": [
+            "物流工程与管理"
+          ],
+          "printed_name_belongs_to": [
+            "120602"
+          ],
+          "origin": "genuine_name_code_mismatch",
+          "side": "after",
+          "field": "备注",
+          "span": [
+            83,
+            89
+          ],
+          "context": "3Z3、0871Z1、0871Z2、125604物流工程；080204、085502",
+          "verdict": "needs_agency_or_human_confirmation"
+        },
+        {
+          "id": "2027:122000:200110005002",
+          "department_name": "文化和旅游部",
+          "major_raw": "0651博物馆学、13艺术学",
+          "code": "0651",
+          "printed_name": "博物馆学",
+          "catalog_names": [
+            "博物馆",
+            "文物与博物馆"
+          ],
+          "printed_name_belongs_to": [
+            "065102"
+          ],
+          "origin": "genuine_name_code_mismatch",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            0,
+            4
+          ],
+          "context": "0651博物馆学、13艺术学",
+          "verdict": "needs_agency_or_human_confirmation"
+        },
+        {
+          "id": "2027:107125:300110003001",
+          "department_name": "云南省通信管理局",
+          "major_raw": "1253会计学、0252应用统计、0714统计学",
+          "code": "1253",
+          "printed_name": "会计学",
+          "catalog_names": [
+            "会计"
+          ],
+          "printed_name_belongs_to": [
+            "120201",
+            "120201",
+            "120203K"
+          ],
+          "origin": "genuine_name_code_mismatch",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            0,
+            4
+          ],
+          "context": "1253会计学、0252应用统计、0714统",
+          "verdict": "needs_agency_or_human_confirmation"
+        },
+        {
+          "id": "2027:132104:300147003001",
+          "department_name": "国家金融监督管理总局山西监管局",
+          "major_raw": "本科：0809计算机科学与技术、软件工程、网络工程、信息安全、数据科学与大数据技术、网络空间安全；研究生：计算机科学与技术、软件工程、网络空间安全、计算机技术、大数据技术与工程、网络与信息安全",
+          "code": "0809",
+          "printed_name": "计算机科学与技术",
+          "catalog_names": [
+            "计算机类"
+          ],
+          "printed_name_belongs_to": [
+            "0775",
+            "0775",
+            "080901",
+            "0812",
+            "0812",
+            "0812"
+          ],
+          "origin": "genuine_name_code_mismatch",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            3,
+            7
+          ],
+          "context": "本科：0809计算机科学与技术、软件工程、网络工程",
+          "verdict": "needs_agency_or_human_confirmation"
+        },
+        {
+          "id": "2027:132104:300147007001",
+          "department_name": "国家金融监督管理总局山西监管局",
+          "major_raw": "本科：0809计算机科学与技术、软件工程、网络工程、信息安全、数据科学与大数据技术、网络空间安全；研究生：计算机科学与技术、软件工程、网络空间安全、计算机技术、大数据技术与工程、网络与信息安全",
+          "code": "0809",
+          "printed_name": "计算机科学与技术",
+          "catalog_names": [
+            "计算机类"
+          ],
+          "printed_name_belongs_to": [
+            "0775",
+            "0775",
+            "080901",
+            "0812",
+            "0812",
+            "0812"
+          ],
+          "origin": "genuine_name_code_mismatch",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            3,
+            7
+          ],
+          "context": "本科：0809计算机科学与技术、软件工程、网络工程",
+          "verdict": "needs_agency_or_human_confirmation"
+        },
+        {
+          "id": "2027:132104:300147039001",
+          "department_name": "国家金融监督管理总局山西监管局",
+          "major_raw": "本科：0809计算机科学与技术、软件工程、网络工程、信息安全、数据科学与大数据技术、网络空间安全；研究生：计算机科学与技术、软件工程、网络空间安全、计算机技术、大数据技术与工程、网络与信息安全",
+          "code": "0809",
+          "printed_name": "计算机科学与技术",
+          "catalog_names": [
+            "计算机类"
+          ],
+          "printed_name_belongs_to": [
+            "0775",
+            "0775",
+            "080901",
+            "0812",
+            "0812",
+            "0812"
+          ],
+          "origin": "genuine_name_code_mismatch",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            3,
+            7
+          ],
+          "context": "本科：0809计算机科学与技术、软件工程、网络工程",
+          "verdict": "needs_agency_or_human_confirmation"
+        },
+        {
+          "id": "2027:132113:300146354001",
+          "department_name": "国家金融监督管理总局福建监管局",
+          "major_raw": "本科：030101K法学，030104T信用风险管理与法律防控，030201政治学与行政学，030205T政治学、经济学与哲学；研究生：0301法学、0351法律（要求本科阶段为法学专业）",
+          "code": "030205T",
+          "printed_name": "政治学",
+          "catalog_names": [
+            "政治学、经济学与哲学"
+          ],
+          "printed_name_belongs_to": [
+            "0302",
+            "0302",
+            "0302"
+          ],
+          "origin": "genuine_name_code_mismatch",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            46,
+            53
+          ],
+          "context": "律防控，030201政治学与行政学，030205T政治学、经济学与哲学；研究生：030",
+          "verdict": "needs_agency_or_human_confirmation"
+        },
+        {
+          "id": "2027:132113:300146377001",
+          "department_name": "国家金融监督管理总局福建监管局",
+          "major_raw": "本科：030101K法学，030104T信用风险管理与法律防控，030201政治学与行政学，030205T政治学、经济学与哲学；研究生：0301法学、0351法律（要求本科阶段为法学专业）",
+          "code": "030205T",
+          "printed_name": "政治学",
+          "catalog_names": [
+            "政治学、经济学与哲学"
+          ],
+          "printed_name_belongs_to": [
+            "0302",
+            "0302",
+            "0302"
+          ],
+          "origin": "genuine_name_code_mismatch",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            46,
+            53
+          ],
+          "context": "律防控，030201政治学与行政学，030205T政治学、经济学与哲学；研究生：030",
+          "verdict": "needs_agency_or_human_confirmation"
+        },
+        {
+          "id": "2027:132113:300146377002",
+          "department_name": "国家金融监督管理总局福建监管局",
+          "major_raw": "本科：030101K法学，030104T信用风险管理与法律防控，030201政治学与行政学，030205T政治学、经济学与哲学；研究生：0301法学、0351法律（要求本科阶段为法学专业）",
+          "code": "030205T",
+          "printed_name": "政治学",
+          "catalog_names": [
+            "政治学、经济学与哲学"
+          ],
+          "printed_name_belongs_to": [
+            "0302",
+            "0302",
+            "0302"
+          ],
+          "origin": "genuine_name_code_mismatch",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            46,
+            53
+          ],
+          "context": "律防控，030201政治学与行政学，030205T政治学、经济学与哲学；研究生：030",
+          "verdict": "needs_agency_or_human_confirmation"
+        },
+        {
+          "id": "2027:158102:300130102002",
+          "department_name": "天津出入境边防检查总站",
+          "major_raw": "电子信息085400电子信息与科学技术080900计算机科学与技术0812计算机技术085404软件工程（083500、085405）网络空间安全083900网络与信息安全085412人工智能085410大数据技术与工程085411",
+          "code": "085404",
+          "printed_name": "软件工程",
+          "catalog_names": [
+            "计算机技术"
+          ],
+          "printed_name_belongs_to": [
+            "080902",
+            "0835",
+            "0835",
+            "0835",
+            "085405",
+            "085405"
+          ],
+          "origin": "genuine_name_code_mismatch",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            42,
+            48
+          ],
+          "context": "0计算机科学与技术0812计算机技术085404软件工程（083500、085405",
+          "verdict": "needs_agency_or_human_confirmation"
+        },
+        {
+          "id": "2027:158112:300130860008",
+          "department_name": "内蒙古出入境边防检查总站",
+          "major_raw": "研究生专业：020203财政学、020204/0251金融学、0203统计学、0257审计、120201/1253会计学。本科专业：02经济学、120203K会计学、120206人力资源管理、120207审计学、120213T财务会计教育。",
+          "code": "0251",
+          "printed_name": "金融学",
+          "catalog_names": [
+            "金融"
+          ],
+          "printed_name_belongs_to": [
+            "020204",
+            "020204",
+            "020301K"
+          ],
+          "origin": "shared_name_slash_group",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            23,
+            27
+          ],
+          "context": "：020203财政学、020204/0251金融学、0203统计学、0257审计",
+          "verdict": "format_artifact_shared_name"
+        },
+        {
+          "id": "2027:158112:300130860008",
+          "department_name": "内蒙古出入境边防检查总站",
+          "major_raw": "研究生专业：020203财政学、020204/0251金融学、0203统计学、0257审计、120201/1253会计学。本科专业：02经济学、120203K会计学、120206人力资源管理、120207审计学、120213T财务会计教育。",
+          "code": "1253",
+          "printed_name": "会计学",
+          "catalog_names": [
+            "会计"
+          ],
+          "printed_name_belongs_to": [
+            "120201",
+            "120201",
+            "120203K"
+          ],
+          "origin": "shared_name_slash_group",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            53,
+            57
+          ],
+          "context": "统计学、0257审计、120201/1253会计学。本科专业：02经济学、120",
+          "verdict": "format_artifact_shared_name"
+        },
+        {
+          "id": "2027:158112:300130860011",
+          "department_name": "内蒙古出入境边防检查总站",
+          "major_raw": "0812/085211/085404计算机科学与技术、0835/085212/085405软件工程、0810/0852/085402信息与通信工程、0838公安技术、0839网络空间安全。",
+          "code": "085404",
+          "printed_name": "计算机科学与技术",
+          "catalog_names": [
+            "计算机技术"
+          ],
+          "printed_name_belongs_to": [
+            "0775",
+            "0775",
+            "080901",
+            "0812",
+            "0812",
+            "0812"
+          ],
+          "origin": "shared_name_slash_group",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            12,
+            18
+          ],
+          "context": "0812/085211/085404计算机科学与技术、0835/0852",
+          "verdict": "format_artifact_shared_name"
+        },
+        {
+          "id": "2027:158112:300130860011",
+          "department_name": "内蒙古出入境边防检查总站",
+          "major_raw": "0812/085211/085404计算机科学与技术、0835/085212/085405软件工程、0810/0852/085402信息与通信工程、0838公安技术、0839网络空间安全。",
+          "code": "085402",
+          "printed_name": "信息与通信工程",
+          "catalog_names": [
+            "通信工程（含宽带网络、移动通信等）"
+          ],
+          "printed_name_belongs_to": [
+            "0810",
+            "0810",
+            "0810"
+          ],
+          "origin": "shared_name_slash_group",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            60,
+            66
+          ],
+          "context": "405软件工程、0810/0852/085402信息与通信工程、0838公安技术、0",
+          "verdict": "format_artifact_shared_name"
+        },
+        {
+          "id": "2027:158112:300130860012",
+          "department_name": "内蒙古出入境边防检查总站",
+          "major_raw": "研究生：0812/0852/0854计算机科学与技术、0835/0852/0854软件工程、0810/0852/0854信息与通信工程。本科：0807电子信息类、080901计算机科学与技术、080902软件工程、080903网络工程。",
+          "code": "0854",
+          "printed_name": "计算机科学与技术",
+          "catalog_names": [
+            "电子信息"
+          ],
+          "printed_name_belongs_to": [
+            "0775",
+            "0775",
+            "080901",
+            "0812",
+            "0812",
+            "0812"
+          ],
+          "origin": "shared_name_slash_group",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            14,
+            18
+          ],
+          "context": "研究生：0812/0852/0854计算机科学与技术、0835/0852",
+          "verdict": "format_artifact_shared_name"
+        },
+        {
+          "id": "2027:158112:300130860012",
+          "department_name": "内蒙古出入境边防检查总站",
+          "major_raw": "研究生：0812/0852/0854计算机科学与技术、0835/0852/0854软件工程、0810/0852/0854信息与通信工程。本科：0807电子信息类、080901计算机科学与技术、080902软件工程、080903网络工程。",
+          "code": "0854",
+          "printed_name": "软件工程",
+          "catalog_names": [
+            "电子信息"
+          ],
+          "printed_name_belongs_to": [
+            "080902",
+            "0835",
+            "0835",
+            "0835",
+            "085405",
+            "085405"
+          ],
+          "origin": "shared_name_slash_group",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            37,
+            41
+          ],
+          "context": "算机科学与技术、0835/0852/0854软件工程、0810/0852/085",
+          "verdict": "format_artifact_shared_name"
+        },
+        {
+          "id": "2027:158112:300130860012",
+          "department_name": "内蒙古出入境边防检查总站",
+          "major_raw": "研究生：0812/0852/0854计算机科学与技术、0835/0852/0854软件工程、0810/0852/0854信息与通信工程。本科：0807电子信息类、080901计算机科学与技术、080902软件工程、080903网络工程。",
+          "code": "0854",
+          "printed_name": "信息与通信工程",
+          "catalog_names": [
+            "电子信息"
+          ],
+          "printed_name_belongs_to": [
+            "0810",
+            "0810",
+            "0810"
+          ],
+          "origin": "shared_name_slash_group",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            56,
+            60
+          ],
+          "context": "854软件工程、0810/0852/0854信息与通信工程。本科：0807电子信",
+          "verdict": "format_artifact_shared_name"
+        },
+        {
+          "id": "2027:158112:300130860017",
+          "department_name": "内蒙古出入境边防检查总站",
+          "major_raw": "研究生专业：020203财政学、020204/0251金融学、0203统计学、0257审计、120201/1253会计学。本科专业：02经济学、120203K会计学、120206人力资源管理、120207审计学、120213T财务会计教育。",
+          "code": "0251",
+          "printed_name": "金融学",
+          "catalog_names": [
+            "金融"
+          ],
+          "printed_name_belongs_to": [
+            "020204",
+            "020204",
+            "020301K"
+          ],
+          "origin": "shared_name_slash_group",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            23,
+            27
+          ],
+          "context": "：020203财政学、020204/0251金融学、0203统计学、0257审计",
+          "verdict": "format_artifact_shared_name"
+        },
+        {
+          "id": "2027:158112:300130860017",
+          "department_name": "内蒙古出入境边防检查总站",
+          "major_raw": "研究生专业：020203财政学、020204/0251金融学、0203统计学、0257审计、120201/1253会计学。本科专业：02经济学、120203K会计学、120206人力资源管理、120207审计学、120213T财务会计教育。",
+          "code": "1253",
+          "printed_name": "会计学",
+          "catalog_names": [
+            "会计"
+          ],
+          "printed_name_belongs_to": [
+            "120201",
+            "120201",
+            "120203K"
+          ],
+          "origin": "shared_name_slash_group",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            53,
+            57
+          ],
+          "context": "统计学、0257审计、120201/1253会计学。本科专业：02经济学、120",
+          "verdict": "format_artifact_shared_name"
+        },
+        {
+          "id": "2027:158112:300130860020",
+          "department_name": "内蒙古出入境边防检查总站",
+          "major_raw": "0812/085211/085404计算机科学与技术、0835/085212/085405软件工程、0810/0852/085402信息与通信工程、0838公安技术、0839网络空间安全。",
+          "code": "085404",
+          "printed_name": "计算机科学与技术",
+          "catalog_names": [
+            "计算机技术"
+          ],
+          "printed_name_belongs_to": [
+            "0775",
+            "0775",
+            "080901",
+            "0812",
+            "0812",
+            "0812"
+          ],
+          "origin": "shared_name_slash_group",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            12,
+            18
+          ],
+          "context": "0812/085211/085404计算机科学与技术、0835/0852",
+          "verdict": "format_artifact_shared_name"
+        },
+        {
+          "id": "2027:158112:300130860020",
+          "department_name": "内蒙古出入境边防检查总站",
+          "major_raw": "0812/085211/085404计算机科学与技术、0835/085212/085405软件工程、0810/0852/085402信息与通信工程、0838公安技术、0839网络空间安全。",
+          "code": "085402",
+          "printed_name": "信息与通信工程",
+          "catalog_names": [
+            "通信工程（含宽带网络、移动通信等）"
+          ],
+          "printed_name_belongs_to": [
+            "0810",
+            "0810",
+            "0810"
+          ],
+          "origin": "shared_name_slash_group",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            60,
+            66
+          ],
+          "context": "405软件工程、0810/0852/085402信息与通信工程、0838公安技术、0",
+          "verdict": "format_artifact_shared_name"
+        },
+        {
+          "id": "2027:158112:300130860021",
+          "department_name": "内蒙古出入境边防检查总站",
+          "major_raw": "0812/085211/085404计算机科学与技术、0835/085212/085405软件工程、0810/0852/085402信息与通信工程、0838公安技术、0839网络空间安全。",
+          "code": "085404",
+          "printed_name": "计算机科学与技术",
+          "catalog_names": [
+            "计算机技术"
+          ],
+          "printed_name_belongs_to": [
+            "0775",
+            "0775",
+            "080901",
+            "0812",
+            "0812",
+            "0812"
+          ],
+          "origin": "shared_name_slash_group",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            12,
+            18
+          ],
+          "context": "0812/085211/085404计算机科学与技术、0835/0852",
+          "verdict": "format_artifact_shared_name"
+        },
+        {
+          "id": "2027:158112:300130860021",
+          "department_name": "内蒙古出入境边防检查总站",
+          "major_raw": "0812/085211/085404计算机科学与技术、0835/085212/085405软件工程、0810/0852/085402信息与通信工程、0838公安技术、0839网络空间安全。",
+          "code": "085402",
+          "printed_name": "信息与通信工程",
+          "catalog_names": [
+            "通信工程（含宽带网络、移动通信等）"
+          ],
+          "printed_name_belongs_to": [
+            "0810",
+            "0810",
+            "0810"
+          ],
+          "origin": "shared_name_slash_group",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            60,
+            66
+          ],
+          "context": "405软件工程、0810/0852/085402信息与通信工程、0838公安技术、0",
+          "verdict": "format_artifact_shared_name"
+        },
+        {
+          "id": "2027:158112:300130860022",
+          "department_name": "内蒙古出入境边防检查总站",
+          "major_raw": "0812/085211/085404计算机科学与技术、0835/085212/085405软件工程、0810/0852/085402信息与通信工程、0838公安技术、0839网络空间安全。",
+          "code": "085404",
+          "printed_name": "计算机科学与技术",
+          "catalog_names": [
+            "计算机技术"
+          ],
+          "printed_name_belongs_to": [
+            "0775",
+            "0775",
+            "080901",
+            "0812",
+            "0812",
+            "0812"
+          ],
+          "origin": "shared_name_slash_group",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            12,
+            18
+          ],
+          "context": "0812/085211/085404计算机科学与技术、0835/0852",
+          "verdict": "format_artifact_shared_name"
+        },
+        {
+          "id": "2027:158112:300130860022",
+          "department_name": "内蒙古出入境边防检查总站",
+          "major_raw": "0812/085211/085404计算机科学与技术、0835/085212/085405软件工程、0810/0852/085402信息与通信工程、0838公安技术、0839网络空间安全。",
+          "code": "085402",
+          "printed_name": "信息与通信工程",
+          "catalog_names": [
+            "通信工程（含宽带网络、移动通信等）"
+          ],
+          "printed_name_belongs_to": [
+            "0810",
+            "0810",
+            "0810"
+          ],
+          "origin": "shared_name_slash_group",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            60,
+            66
+          ],
+          "context": "405软件工程、0810/0852/085402信息与通信工程、0838公安技术、0",
+          "verdict": "format_artifact_shared_name"
+        },
+        {
+          "id": "2027:158112:300130860024",
+          "department_name": "内蒙古出入境边防检查总站",
+          "major_raw": "研究生专业：020203财政学、020204/0251金融学、0203统计学、0257审计、120201/1253会计学。本科专业：02经济学、120203K会计学、120206人力资源管理、120207审计学、120213T财务会计教育。",
+          "code": "0251",
+          "printed_name": "金融学",
+          "catalog_names": [
+            "金融"
+          ],
+          "printed_name_belongs_to": [
+            "020204",
+            "020204",
+            "020301K"
+          ],
+          "origin": "shared_name_slash_group",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            23,
+            27
+          ],
+          "context": "：020203财政学、020204/0251金融学、0203统计学、0257审计",
+          "verdict": "format_artifact_shared_name"
+        },
+        {
+          "id": "2027:158112:300130860024",
+          "department_name": "内蒙古出入境边防检查总站",
+          "major_raw": "研究生专业：020203财政学、020204/0251金融学、0203统计学、0257审计、120201/1253会计学。本科专业：02经济学、120203K会计学、120206人力资源管理、120207审计学、120213T财务会计教育。",
+          "code": "1253",
+          "printed_name": "会计学",
+          "catalog_names": [
+            "会计"
+          ],
+          "printed_name_belongs_to": [
+            "120201",
+            "120201",
+            "120203K"
+          ],
+          "origin": "shared_name_slash_group",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            53,
+            57
+          ],
+          "context": "统计学、0257审计、120201/1253会计学。本科专业：02经济学、120",
+          "verdict": "format_artifact_shared_name"
+        },
+        {
+          "id": "2027:158112:300130860026",
+          "department_name": "内蒙古出入境边防检查总站",
+          "major_raw": "研究生专业：020203财政学、020204/0251金融学、0203统计学、0257审计、120201/1253会计学。本科专业：02经济学、120203K会计学、120206人力资源管理、120207审计学、120213T财务会计教育。",
+          "code": "0251",
+          "printed_name": "金融学",
+          "catalog_names": [
+            "金融"
+          ],
+          "printed_name_belongs_to": [
+            "020204",
+            "020204",
+            "020301K"
+          ],
+          "origin": "shared_name_slash_group",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            23,
+            27
+          ],
+          "context": "：020203财政学、020204/0251金融学、0203统计学、0257审计",
+          "verdict": "format_artifact_shared_name"
+        },
+        {
+          "id": "2027:158112:300130860026",
+          "department_name": "内蒙古出入境边防检查总站",
+          "major_raw": "研究生专业：020203财政学、020204/0251金融学、0203统计学、0257审计、120201/1253会计学。本科专业：02经济学、120203K会计学、120206人力资源管理、120207审计学、120213T财务会计教育。",
+          "code": "1253",
+          "printed_name": "会计学",
+          "catalog_names": [
+            "会计"
+          ],
+          "printed_name_belongs_to": [
+            "120201",
+            "120201",
+            "120203K"
+          ],
+          "origin": "shared_name_slash_group",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            53,
+            57
+          ],
+          "context": "统计学、0257审计、120201/1253会计学。本科专业：02经济学、120",
+          "verdict": "format_artifact_shared_name"
+        },
+        {
+          "id": "2027:158112:300130860027",
+          "department_name": "内蒙古出入境边防检查总站",
+          "major_raw": "0812/085211/085404计算机科学与技术、0835/085212/085405软件工程、0810/0852/085402信息与通信工程、0838公安技术、0839网络空间安全。",
+          "code": "085404",
+          "printed_name": "计算机科学与技术",
+          "catalog_names": [
+            "计算机技术"
+          ],
+          "printed_name_belongs_to": [
+            "0775",
+            "0775",
+            "080901",
+            "0812",
+            "0812",
+            "0812"
+          ],
+          "origin": "shared_name_slash_group",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            12,
+            18
+          ],
+          "context": "0812/085211/085404计算机科学与技术、0835/0852",
+          "verdict": "format_artifact_shared_name"
+        },
+        {
+          "id": "2027:158112:300130860027",
+          "department_name": "内蒙古出入境边防检查总站",
+          "major_raw": "0812/085211/085404计算机科学与技术、0835/085212/085405软件工程、0810/0852/085402信息与通信工程、0838公安技术、0839网络空间安全。",
+          "code": "085402",
+          "printed_name": "信息与通信工程",
+          "catalog_names": [
+            "通信工程（含宽带网络、移动通信等）"
+          ],
+          "printed_name_belongs_to": [
+            "0810",
+            "0810",
+            "0810"
+          ],
+          "origin": "shared_name_slash_group",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            60,
+            66
+          ],
+          "context": "405软件工程、0810/0852/085402信息与通信工程、0838公安技术、0",
+          "verdict": "format_artifact_shared_name"
+        },
+        {
+          "id": "2027:158112:300130860034",
+          "department_name": "内蒙古出入境边防检查总站",
+          "major_raw": "研究生专业：020203财政学、020204/0251金融学、0203统计学、0257审计、120201/1253会计学。本科专业：02经济学、120203K会计学、120206人力资源管理、120207审计学、120213T财务会计教育。",
+          "code": "0251",
+          "printed_name": "金融学",
+          "catalog_names": [
+            "金融"
+          ],
+          "printed_name_belongs_to": [
+            "020204",
+            "020204",
+            "020301K"
+          ],
+          "origin": "shared_name_slash_group",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            23,
+            27
+          ],
+          "context": "：020203财政学、020204/0251金融学、0203统计学、0257审计",
+          "verdict": "format_artifact_shared_name"
+        },
+        {
+          "id": "2027:158112:300130860034",
+          "department_name": "内蒙古出入境边防检查总站",
+          "major_raw": "研究生专业：020203财政学、020204/0251金融学、0203统计学、0257审计、120201/1253会计学。本科专业：02经济学、120203K会计学、120206人力资源管理、120207审计学、120213T财务会计教育。",
+          "code": "1253",
+          "printed_name": "会计学",
+          "catalog_names": [
+            "会计"
+          ],
+          "printed_name_belongs_to": [
+            "120201",
+            "120201",
+            "120203K"
+          ],
+          "origin": "shared_name_slash_group",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            53,
+            57
+          ],
+          "context": "统计学、0257审计、120201/1253会计学。本科专业：02经济学、120",
+          "verdict": "format_artifact_shared_name"
+        },
+        {
+          "id": "2027:158112:300130860035",
+          "department_name": "内蒙古出入境边防检查总站",
+          "major_raw": "研究生专业：020203财政学、020204/0251金融学、0203统计学、0257审计、120201/1253会计学。本科专业：02经济学、120203K会计学、120206人力资源管理、120207审计学、120213T财务会计教育。",
+          "code": "0251",
+          "printed_name": "金融学",
+          "catalog_names": [
+            "金融"
+          ],
+          "printed_name_belongs_to": [
+            "020204",
+            "020204",
+            "020301K"
+          ],
+          "origin": "shared_name_slash_group",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            23,
+            27
+          ],
+          "context": "：020203财政学、020204/0251金融学、0203统计学、0257审计",
+          "verdict": "format_artifact_shared_name"
+        },
+        {
+          "id": "2027:158112:300130860035",
+          "department_name": "内蒙古出入境边防检查总站",
+          "major_raw": "研究生专业：020203财政学、020204/0251金融学、0203统计学、0257审计、120201/1253会计学。本科专业：02经济学、120203K会计学、120206人力资源管理、120207审计学、120213T财务会计教育。",
+          "code": "1253",
+          "printed_name": "会计学",
+          "catalog_names": [
+            "会计"
+          ],
+          "printed_name_belongs_to": [
+            "120201",
+            "120201",
+            "120203K"
+          ],
+          "origin": "shared_name_slash_group",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            53,
+            57
+          ],
+          "context": "统计学、0257审计、120201/1253会计学。本科专业：02经济学、120",
+          "verdict": "format_artifact_shared_name"
+        },
+        {
+          "id": "2027:158112:300130860037",
+          "department_name": "内蒙古出入境边防检查总站",
+          "major_raw": "研究生：1002康复医学与理疗学、运动医学、急诊医学、1005针灸推拿学、0402心理学。本科：040206T运动康复、0711心理学类、100406T运动与公共健康、100510TK中医康复学、101005康复治疗学。",
+          "code": "1002",
+          "printed_name": "康复医学与理疗学",
+          "catalog_names": [
+            "临床医学"
+          ],
+          "printed_name_belongs_to": [
+            "100215",
+            "100215",
+            "105110",
+            "105110"
+          ],
+          "origin": "genuine_name_code_mismatch",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            4,
+            8
+          ],
+          "context": "研究生：1002康复医学与理疗学、运动医学、急诊医学",
+          "verdict": "needs_agency_or_human_confirmation"
+        },
+        {
+          "id": "2027:158112:300130860037",
+          "department_name": "内蒙古出入境边防检查总站",
+          "major_raw": "研究生：1002康复医学与理疗学、运动医学、急诊医学、1005针灸推拿学、0402心理学。本科：040206T运动康复、0711心理学类、100406T运动与公共健康、100510TK中医康复学、101005康复治疗学。",
+          "code": "1005",
+          "printed_name": "针灸推拿学",
+          "catalog_names": [
+            "中医学"
+          ],
+          "printed_name_belongs_to": [
+            "100502K",
+            "100512",
+            "100512",
+            "105707",
+            "105707"
+          ],
+          "origin": "genuine_name_code_mismatch",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            27,
+            31
+          ],
+          "context": "复医学与理疗学、运动医学、急诊医学、1005针灸推拿学、0402心理学。本科：0",
+          "verdict": "needs_agency_or_human_confirmation"
+        },
+        {
+          "id": "2027:158112:300130860040",
+          "department_name": "内蒙古出入境边防检查总站",
+          "major_raw": "0812/085211/085404计算机科学与技术、0835/085212/085405软件工程、0810/0852/085402信息与通信工程、0838公安技术、0839网络空间安全。",
+          "code": "085404",
+          "printed_name": "计算机科学与技术",
+          "catalog_names": [
+            "计算机技术"
+          ],
+          "printed_name_belongs_to": [
+            "0775",
+            "0775",
+            "080901",
+            "0812",
+            "0812",
+            "0812"
+          ],
+          "origin": "shared_name_slash_group",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            12,
+            18
+          ],
+          "context": "0812/085211/085404计算机科学与技术、0835/0852",
+          "verdict": "format_artifact_shared_name"
+        },
+        {
+          "id": "2027:158112:300130860040",
+          "department_name": "内蒙古出入境边防检查总站",
+          "major_raw": "0812/085211/085404计算机科学与技术、0835/085212/085405软件工程、0810/0852/085402信息与通信工程、0838公安技术、0839网络空间安全。",
+          "code": "085402",
+          "printed_name": "信息与通信工程",
+          "catalog_names": [
+            "通信工程（含宽带网络、移动通信等）"
+          ],
+          "printed_name_belongs_to": [
+            "0810",
+            "0810",
+            "0810"
+          ],
+          "origin": "shared_name_slash_group",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            60,
+            66
+          ],
+          "context": "405软件工程、0810/0852/085402信息与通信工程、0838公安技术、0",
+          "verdict": "format_artifact_shared_name"
+        },
+        {
+          "id": "2027:158112:300130860043",
+          "department_name": "内蒙古出入境边防检查总站",
+          "major_raw": "研究生专业：020203财政学、020204/0251金融学、0203统计学、0257审计、120201/1253会计学。本科专业：02经济学、120203K会计学、120206人力资源管理、120207审计学、120213T财务会计教育。",
+          "code": "0251",
+          "printed_name": "金融学",
+          "catalog_names": [
+            "金融"
+          ],
+          "printed_name_belongs_to": [
+            "020204",
+            "020204",
+            "020301K"
+          ],
+          "origin": "shared_name_slash_group",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            23,
+            27
+          ],
+          "context": "：020203财政学、020204/0251金融学、0203统计学、0257审计",
+          "verdict": "format_artifact_shared_name"
+        },
+        {
+          "id": "2027:158112:300130860043",
+          "department_name": "内蒙古出入境边防检查总站",
+          "major_raw": "研究生专业：020203财政学、020204/0251金融学、0203统计学、0257审计、120201/1253会计学。本科专业：02经济学、120203K会计学、120206人力资源管理、120207审计学、120213T财务会计教育。",
+          "code": "1253",
+          "printed_name": "会计学",
+          "catalog_names": [
+            "会计"
+          ],
+          "printed_name_belongs_to": [
+            "120201",
+            "120201",
+            "120203K"
+          ],
+          "origin": "shared_name_slash_group",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            53,
+            57
+          ],
+          "context": "统计学、0257审计、120201/1253会计学。本科专业：02经济学、120",
+          "verdict": "format_artifact_shared_name"
+        },
+        {
+          "id": "2027:158112:300130860044",
+          "department_name": "内蒙古出入境边防检查总站",
+          "major_raw": "研究生：0812/0852/0854计算机科学与技术、0835/0852/0854软件工程、0810/0852/0854信息与通信工程。本科：0807电子信息类、080901计算机科学与技术、080902软件工程、080903网络工程。",
+          "code": "0854",
+          "printed_name": "计算机科学与技术",
+          "catalog_names": [
+            "电子信息"
+          ],
+          "printed_name_belongs_to": [
+            "0775",
+            "0775",
+            "080901",
+            "0812",
+            "0812",
+            "0812"
+          ],
+          "origin": "shared_name_slash_group",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            14,
+            18
+          ],
+          "context": "研究生：0812/0852/0854计算机科学与技术、0835/0852",
+          "verdict": "format_artifact_shared_name"
+        },
+        {
+          "id": "2027:158112:300130860044",
+          "department_name": "内蒙古出入境边防检查总站",
+          "major_raw": "研究生：0812/0852/0854计算机科学与技术、0835/0852/0854软件工程、0810/0852/0854信息与通信工程。本科：0807电子信息类、080901计算机科学与技术、080902软件工程、080903网络工程。",
+          "code": "0854",
+          "printed_name": "软件工程",
+          "catalog_names": [
+            "电子信息"
+          ],
+          "printed_name_belongs_to": [
+            "080902",
+            "0835",
+            "0835",
+            "0835",
+            "085405",
+            "085405"
+          ],
+          "origin": "shared_name_slash_group",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            37,
+            41
+          ],
+          "context": "算机科学与技术、0835/0852/0854软件工程、0810/0852/085",
+          "verdict": "format_artifact_shared_name"
+        },
+        {
+          "id": "2027:158112:300130860044",
+          "department_name": "内蒙古出入境边防检查总站",
+          "major_raw": "研究生：0812/0852/0854计算机科学与技术、0835/0852/0854软件工程、0810/0852/0854信息与通信工程。本科：0807电子信息类、080901计算机科学与技术、080902软件工程、080903网络工程。",
+          "code": "0854",
+          "printed_name": "信息与通信工程",
+          "catalog_names": [
+            "电子信息"
+          ],
+          "printed_name_belongs_to": [
+            "0810",
+            "0810",
+            "0810"
+          ],
+          "origin": "shared_name_slash_group",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            56,
+            60
+          ],
+          "context": "854软件工程、0810/0852/0854信息与通信工程。本科：0807电子信",
+          "verdict": "format_artifact_shared_name"
+        },
+        {
+          "id": "2027:158124:300130001001",
+          "department_name": "广西出入境边防检查总站",
+          "major_raw": "0301法学（仅行政法、刑法、国际法方向），035102法律（法学）",
+          "code": "035102",
+          "printed_name": "法律",
+          "catalog_names": [
+            "法律（法学）"
+          ],
+          "printed_name_belongs_to": [
+            "0351",
+            "0351",
+            "0351"
+          ],
+          "origin": "genuine_name_code_mismatch",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            22,
+            28
+          ],
+          "context": "法学（仅行政法、刑法、国际法方向），035102法律（法学）",
+          "verdict": "needs_agency_or_human_confirmation"
+        },
+        {
+          "id": "2027:158124:300130001012",
+          "department_name": "广西出入境边防检查总站",
+          "major_raw": "0301法学（仅行政法、刑法、国际法方向），035102法律（法学）",
+          "code": "035102",
+          "printed_name": "法律",
+          "catalog_names": [
+            "法律（法学）"
+          ],
+          "printed_name_belongs_to": [
+            "0351",
+            "0351",
+            "0351"
+          ],
+          "origin": "genuine_name_code_mismatch",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            22,
+            28
+          ],
+          "context": "法学（仅行政法、刑法、国际法方向），035102法律（法学）",
+          "verdict": "needs_agency_or_human_confirmation"
+        },
+        {
+          "id": "2027:158124:300130001016",
+          "department_name": "广西出入境边防检查总站",
+          "major_raw": "0301法学（仅行政法、刑法、国际法方向），035102法律（法学）",
+          "code": "035102",
+          "printed_name": "法律",
+          "catalog_names": [
+            "法律（法学）"
+          ],
+          "printed_name_belongs_to": [
+            "0351",
+            "0351",
+            "0351"
+          ],
+          "origin": "genuine_name_code_mismatch",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            22,
+            28
+          ],
+          "context": "法学（仅行政法、刑法、国际法方向），035102法律（法学）",
+          "verdict": "needs_agency_or_human_confirmation"
+        },
+        {
+          "id": "2027:158124:300130001018",
+          "department_name": "广西出入境边防检查总站",
+          "major_raw": "0301法学（仅行政法、刑法、国际法方向），035102法律（法学）",
+          "code": "035102",
+          "printed_name": "法律",
+          "catalog_names": [
+            "法律（法学）"
+          ],
+          "printed_name_belongs_to": [
+            "0351",
+            "0351",
+            "0351"
+          ],
+          "origin": "genuine_name_code_mismatch",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            22,
+            28
+          ],
+          "context": "法学（仅行政法、刑法、国际法方向），035102法律（法学）",
+          "verdict": "needs_agency_or_human_confirmation"
+        },
+        {
+          "id": "2027:158124:300130001025",
+          "department_name": "广西出入境边防检查总站",
+          "major_raw": "0301法学（仅行政法、刑法、国际法方向），035102法律（法学）",
+          "code": "035102",
+          "printed_name": "法律",
+          "catalog_names": [
+            "法律（法学）"
+          ],
+          "printed_name_belongs_to": [
+            "0351",
+            "0351",
+            "0351"
+          ],
+          "origin": "genuine_name_code_mismatch",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            22,
+            28
+          ],
+          "context": "法学（仅行政法、刑法、国际法方向），035102法律（法学）",
+          "verdict": "needs_agency_or_human_confirmation"
+        },
+        {
+          "id": "2027:158124:300130001034",
+          "department_name": "广西出入境边防检查总站",
+          "major_raw": "0301法学（仅行政法、刑法、国际法方向），035102法律（法学）",
+          "code": "035102",
+          "printed_name": "法律",
+          "catalog_names": [
+            "法律（法学）"
+          ],
+          "printed_name_belongs_to": [
+            "0351",
+            "0351",
+            "0351"
+          ],
+          "origin": "genuine_name_code_mismatch",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            22,
+            28
+          ],
+          "context": "法学（仅行政法、刑法、国际法方向），035102法律（法学）",
+          "verdict": "needs_agency_or_human_confirmation"
+        },
+        {
+          "id": "2027:158202:300130001003",
+          "department_name": "国家移民管理局常备力量第二总队",
+          "major_raw": "0402心理学、0454应用心理学",
+          "code": "0454",
+          "printed_name": "应用心理学",
+          "catalog_names": [
+            "应用心理"
+          ],
+          "printed_name_belongs_to": [
+            "040203",
+            "040203",
+            "071102",
+            "077103",
+            "077103"
+          ],
+          "origin": "genuine_name_code_mismatch",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            8,
+            12
+          ],
+          "context": "0402心理学、0454应用心理学",
+          "verdict": "needs_agency_or_human_confirmation"
+        },
+        {
+          "id": "2027:137111:400110111002",
+          "department_name": "国家统计局浙江调查总队",
+          "major_raw": "0812计算机科学与技术类（人工智能、人工智能科学与工程、数据科学和信息技术）、0835软件工程（人工智能）、0854电子信息类（大数据技术与工程、人工智能）",
+          "code": "0854",
+          "printed_name": "电子信息类",
+          "catalog_names": [
+            "电子信息"
+          ],
+          "printed_name_belongs_to": [
+            "0807"
+          ],
+          "origin": "category_suffix_variant",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            55,
+            59
+          ],
+          "context": "术）、0835软件工程（人工智能）、0854电子信息类（大数据技术与工程、人工智",
+          "verdict": "format_artifact_suffix"
+        },
+        {
+          "id": "2027:137111:400110111003",
+          "department_name": "国家统计局浙江调查总队",
+          "major_raw": "0854电子信息类（计算机技术、人工智能、大数据技术与工程、网络与信息安全）",
+          "code": "0854",
+          "printed_name": "电子信息类",
+          "catalog_names": [
+            "电子信息"
+          ],
+          "printed_name_belongs_to": [
+            "0807"
+          ],
+          "origin": "category_suffix_variant",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            0,
+            4
+          ],
+          "context": "0854电子信息类（计算机技术、人工智能、大",
+          "verdict": "format_artifact_suffix"
+        },
+        {
+          "id": "2027:137111:400110111004",
+          "department_name": "国家统计局浙江调查总队",
+          "major_raw": "0714统计学类（统计学、经济统计学、数理统计学、应用统计、大数据科学与应用）",
+          "code": "0714",
+          "printed_name": "统计学类",
+          "catalog_names": [
+            "统计学"
+          ],
+          "printed_name_belongs_to": [
+            "0712"
+          ],
+          "origin": "category_suffix_variant",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            0,
+            4
+          ],
+          "context": "0714统计学类（统计学、经济统计学、数理统",
+          "verdict": "format_artifact_suffix"
+        },
+        {
+          "id": "2027:137111:400110111005",
+          "department_name": "国家统计局浙江调查总队",
+          "major_raw": "本科：0712统计学类、0809计算机类（计算机科学与技术、软件工程、网络工程、信息安全、数据科学与大数据技术）； 研究生：0714统计学类、0854电子信息类（计算机技术、软件工程、人工智能、大数据技术与工程、网络与信息安全）",
+          "code": "0714",
+          "printed_name": "统计学类",
+          "catalog_names": [
+            "统计学"
+          ],
+          "printed_name_belongs_to": [
+            "0712"
+          ],
+          "origin": "category_suffix_variant",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            62,
+            66
+          ],
+          "context": "、数据科学与大数据技术）； 研究生：0714统计学类、0854电子信息类（计算机",
+          "verdict": "format_artifact_suffix"
+        },
+        {
+          "id": "2027:137111:400110111005",
+          "department_name": "国家统计局浙江调查总队",
+          "major_raw": "本科：0712统计学类、0809计算机类（计算机科学与技术、软件工程、网络工程、信息安全、数据科学与大数据技术）； 研究生：0714统计学类、0854电子信息类（计算机技术、软件工程、人工智能、大数据技术与工程、网络与信息安全）",
+          "code": "0854",
+          "printed_name": "电子信息类",
+          "catalog_names": [
+            "电子信息"
+          ],
+          "printed_name_belongs_to": [
+            "0807"
+          ],
+          "origin": "category_suffix_variant",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            71,
+            75
+          ],
+          "context": "技术）； 研究生：0714统计学类、0854电子信息类（计算机技术、软件工程、人",
+          "verdict": "format_artifact_suffix"
+        },
+        {
+          "id": "2027:137111:400110111006",
+          "department_name": "国家统计局浙江调查总队",
+          "major_raw": "本科：0712统计学类、0809计算机类（计算机科学与技术、软件工程、网络工程、信息安全、数据科学与大数据技术）； 研究生：0714统计学类、0854电子信息类（计算机技术、软件工程、人工智能、大数据技术与工程、网络与信息安全）",
+          "code": "0714",
+          "printed_name": "统计学类",
+          "catalog_names": [
+            "统计学"
+          ],
+          "printed_name_belongs_to": [
+            "0712"
+          ],
+          "origin": "category_suffix_variant",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            62,
+            66
+          ],
+          "context": "、数据科学与大数据技术）； 研究生：0714统计学类、0854电子信息类（计算机",
+          "verdict": "format_artifact_suffix"
+        },
+        {
+          "id": "2027:137111:400110111006",
+          "department_name": "国家统计局浙江调查总队",
+          "major_raw": "本科：0712统计学类、0809计算机类（计算机科学与技术、软件工程、网络工程、信息安全、数据科学与大数据技术）； 研究生：0714统计学类、0854电子信息类（计算机技术、软件工程、人工智能、大数据技术与工程、网络与信息安全）",
+          "code": "0854",
+          "printed_name": "电子信息类",
+          "catalog_names": [
+            "电子信息"
+          ],
+          "printed_name_belongs_to": [
+            "0807"
+          ],
+          "origin": "category_suffix_variant",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            71,
+            75
+          ],
+          "context": "技术）； 研究生：0714统计学类、0854电子信息类（计算机技术、软件工程、人",
+          "verdict": "format_artifact_suffix"
+        },
+        {
+          "id": "2027:137111:400110111007",
+          "department_name": "国家统计局浙江调查总队",
+          "major_raw": "0202应用经济学类（应用经济学、数量经济学、产业经济学、农业经济学、农村经济学）、0701数学类（计算数学、应用数学、数据科学）、0714统计学类（统计学、经济统计学、数理统计学、应用统计、大数据科学与应用）、081200计算机科学与技术",
+          "code": "0714",
+          "printed_name": "统计学类",
+          "catalog_names": [
+            "统计学"
+          ],
+          "printed_name_belongs_to": [
+            "0712"
+          ],
+          "origin": "category_suffix_variant",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            66,
+            70
+          ],
+          "context": "类（计算数学、应用数学、数据科学）、0714统计学类（统计学、经济统计学、数理统",
+          "verdict": "format_artifact_suffix"
+        },
+        {
+          "id": "2027:137111:400110111008",
+          "department_name": "国家统计局浙江调查总队",
+          "major_raw": "0714统计学类（统计学、经济统计学、数理统计学、应用统计、大数据科学与应用）",
+          "code": "0714",
+          "printed_name": "统计学类",
+          "catalog_names": [
+            "统计学"
+          ],
+          "printed_name_belongs_to": [
+            "0712"
+          ],
+          "origin": "category_suffix_variant",
+          "side": "after",
+          "field": "专业",
+          "span": [
+            0,
+            4
+          ],
+          "context": "0714统计学类（统计学、经济统计学、数理统",
+          "verdict": "format_artifact_suffix"
+        }
+      ]
+    },
+    "B_residual_recheck": {
+      "positions": 727,
+      "by_bucket": {
+        "national_vocabulary_or_open_scope": 181,
+        "agency_category_no_public_list": 533,
+        "agency_category_unverified": 13
+      },
+      "note": "前一轮逐组判定为“精确漏判 0”；本轮复核维持该结论，未发现同口径精确节点。"
+    },
+    "C_delivery": {
+      "status_legend": [
+        {
+          "state": "exact_match",
+          "meaning": "至少在“专业”或“备注”中找到精确代码或精确目录名",
+          "use": "可作目录引用"
+        },
+        {
+          "state": "ambiguity",
+          "meaning": "同一名称对应多个目录节点，或分句/学历口径未定",
+          "use": "只能作候选"
+        },
+        {
+          "state": "agency_specific_unknown",
+          "meaning": "机关内部类别，未见适用成员表",
+          "use": "不可映射为目录成员"
+        },
+        {
+          "state": "provisional",
+          "meaning": "仅靠门类读法，且该机关的适用性未获自身 2027 文件佐证",
+          "use": "不计入保守覆盖"
+        },
+        {
+          "state": "unrestricted_major",
+          "meaning": "专业列明确“不限”",
+          "use": "仅表示专业不限，其他条件仍未知"
+        }
+      ],
+      "query_interfaces": [
+        "node scripts/query_major_evidence.mjs --stats",
+        "node scripts/query_major_evidence.mjs --code <code>",
+        "node scripts/query_major_evidence.mjs --review-status --bucket <bucket>",
+        "node scripts/query_major_evidence.mjs --provisional",
+        "node scripts/query_major_evidence.mjs --residual --strat-bucket <bucket>"
+      ],
+      "usable_without_inference": [
+        "19,426 岗的 27 个原字段与官方工作簿逐格一致",
+        "每个岗位的专业原文、学历、备注原文",
+        "显式代码与精确目录名的命中位置",
+        "排除项文本（不计入候选）",
+        "机关类别缺口的可审计清单"
+      ]
+    }
+  },
+  "closure": {
+    "conservative": 18697,
+    "provisional": 2,
+    "no_candidate": 727,
+    "sum": 19426,
+    "positions": 19426
+  }
+}

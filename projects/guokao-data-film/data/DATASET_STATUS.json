@@ -16,7 +16,7 @@
     {
       "path": "major_evidence_2027/manifest.json",
       "role": "per_position_major_evidence_across_major_and_remarks_columns",
-      "coverage_note": "专业 + 备注 with explicit degree-scope labels; conservative 18,680, provisional gate-rule 19, no candidate 727; review status 11 buckets; conflicts 54 positions / 87 entries"
+      "coverage_note": "专业 + 备注 with explicit degree-scope labels; conservative 18,697, provisional gate-rule 2, no candidate 727; review status 11 buckets; conflicts 54 positions / 87 entries"
     },
     {
       "path": "catalogs/",
@@ -152,6 +152,15 @@
     {
       "path": "../research/FINAL_DELIVERY_STATUS.md",
       "role": "human-readable delivery status"
+    },
+    {
+      "path": "../research/GAP_RESOLUTION_CAMPAIGN_20261018.json",
+      "role": "gap-resolution campaign: agency evidence, conflict audit, residual recheck",
+      "result": "17 maritime positions moved from provisional to conservative coverage via the MSA 2027 notice; 26 of 67 semantic entries are genuine mismatches"
+    },
+    {
+      "path": "../research/GAP_RESOLUTION_CAMPAIGN_20261018.md",
+      "role": "human-readable campaign summary"
     }
   ],
   "legacy": [

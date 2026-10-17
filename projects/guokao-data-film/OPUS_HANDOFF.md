@@ -9,6 +9,7 @@
 2. [data/README.md](data/README.md)：现行数据文件与历史资料。
 3. [research/MAJOR_CODE_MATCHING.md](research/MAJOR_CODE_MATCHING.md)：逐岗位专业原文、代码目录与候选关系。
 4. [research/DATA_SOURCES_AND_CHECKS.md](research/DATA_SOURCES_AND_CHECKS.md)：来源版本、官方核验范围。
+5a. [research/GAP_RESOLUTION_CAMPAIGN_20261018.md](research/GAP_RESOLUTION_CAMPAIGN_20261018.md)：本轮取证、冲突成因三分与覆盖变化。
 5. [research/FINAL_EVIDENCE_SCOPE_AUDIT_20261018.json](research/FINAL_EVIDENCE_SCOPE_AUDIT_20261018.json)：范围审计与安全读取口径。
 6. [research/REVIEW_STATUS_20261018.json](research/REVIEW_STATUS_20261018.json) 与 [RESIDUAL_STRATA_20261018.json](research/RESIDUAL_STRATA_20261018.json)：复核分层与残留分层。
 
@@ -16,10 +17,10 @@
 
 - 2027 全国 19,426 岗的完整 27 个原始字段，合计 35,691 人。每岗有稳定 ID、源工作表和行号。
 - 全岗位专业原文及学历分句；734 种完整显式词元，覆盖 3,357 岗、4,599 人。代码可查回岗位。
-- 双列专业证据层：**保守覆盖 18,680 岗**；另有 19 岗只有门类推定（provisional），含推定为 18,699；残留 727 岗（1,160 人）已按“机关类别/国家目录词汇”分层。
-- 5,835 岗复核状态分十一桶、互斥：非推定、有候选、仍需解释 4,108、旧告警不再复现 981、仅门类推定 19、无候选 727（四桶合计 5,835）。**有候选不等于核清，5,835 也不是未覆盖数。**
+- 双列专业证据层：**保守覆盖 18,697 岗**；另有 2 岗只有门类推定（provisional），含推定为 18,699；残留 727 岗（1,160 人）已按“机关类别/国家目录词汇”分层。
+- 5,835 岗复核状态分十一桶、互斥：非推定、有候选、仍需解释 4,108、旧告警不再复现 998、仅门类推定 2、无候选 727（四桶合计 5,835）。**有候选不等于核清，5,835 也不是未覆盖数。**
 - 备注里的“本科专业应为…”按**显式标签**定层解析；混合标签（本科或研究生）回退并标记，不代表任何一层已确认。
-- 安全口径见 [FINAL_EVIDENCE_SCOPE_AUDIT_20261018.json](research/FINAL_EVIDENCE_SCOPE_AUDIT_20261018.json) 的 `opus_safe_read_guidance`：引用覆盖率用 18,680；19 个 provisional 不得表述为“该机关已确认接受”。
+- 安全口径见 [FINAL_EVIDENCE_SCOPE_AUDIT_20261018.json](research/FINAL_EVIDENCE_SCOPE_AUDIT_20261018.json) 的 `opus_safe_read_guidance`：引用覆盖率用 18,697；19 个 provisional 不得表述为“该机关已确认接受”。
 - 本科 2026、研究生 2022、税务 2027 官方目录，以及税务多对多类别关系。
 - 岗位条件统计和联合分布，备注中的可追溯文字线索。
 - 2024—2027 招录表年度汇总；2024—2026 官方资格审查、实际参考与全国政策合格线。

@@ -12,11 +12,11 @@
 | 项 | 岗位 | 名额 |
 | --- | ---: | ---: |
 | 全国岗位 | 19,426 | 35,691 |
-| 保守目录候选 | 18,680 | 34,512 |
-| 仅门类推定（provisional） | 19 | 19 |
+| 保守目录候选 | 18,697 | 34,529 |
+| 仅门类推定（provisional） | 2 | 2 |
 | 无任何候选 | 727 | 1,160 |
 
-闭合：18,680 + 19 + 727 = 19,426。
+闭合：18,697 + 2 + 727 = 19,426。
 
 官方工作簿逐格核验：19,426 岗、524,502 单元格、
 内容差异 0、工作表/行号差异 0。
@@ -37,7 +37,7 @@
 | agency_category_no_public_list | 533 | needs_recruiting_agency_explanation | 否 |
 | agency_category_unverified | 13 | needs_recruiting_agency_explanation | 否 |
 | national_vocabulary_or_open_scope | 181 | human_interpretation_only | 否 |
-| provisional_gate_rule | 19 | needs_recruiting_agency_explanation | 否 |
+| provisional_gate_rule | 2 | needs_recruiting_agency_explanation | 否 |
 | semantic_conflict | 44 | needs_recruiting_agency_explanation | 否 |
 | multi_namespace_diagnostic | 11 | human_interpretation_only | 否 |
 | mixed_degree_label | 15 | human_interpretation_only | 否 |
@@ -57,7 +57,7 @@
 3. `research/CURRENT_SNAPSHOT.json`：唯一当前口径，引用数字先读它。
 4. 查询：`node scripts/query_major_evidence.mjs --stats` 及 README 中的其它命令。
 
-**引用纪律**：覆盖率用 18,680（保守）；19 个 provisional 不得说成“机关已确认”；
+**引用纪律**：覆盖率用 18,697（保守）；2 个 provisional 不得说成“机关已确认”；
 727 个无候选不等于“不限专业”或“不可报”；冲突三个数（岗位/条目/语义条目）不可互换。
 
 ## 复现

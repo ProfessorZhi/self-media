@@ -179,7 +179,24 @@ def compact_resolution(resolution):
 # of the check date. This is "not found", not "does not exist"; other agencies
 # are recorded as unverified.
 AGENCIES_VERIFIED_NO_PUBLIC_LIST = {'pboc', 'cma'}
-AGENCIES_WITH_INHOUSE_CATEGORIES = {'pboc', 'cma', 'csrc', 'customs', 'nfra'}
+AGENCIES_WITH_INHOUSE_CATEGORIES = {'pboc', 'cma', 'csrc', 'customs', 'nfra', 'msa'}
+
+# A recruiting agency's own 2027 notice can corroborate the 门类 reading for its
+# own positions. Only statements that are (a) published by the recruiting agency,
+# (b) explicitly scoped to its 2027 civil-service positions, and (c) quoted in
+# full below may be used. Everything else stays agency_scope_unverified.
+AGENCY_2027_NOTICES = {
+    'msa': {
+        'authority': '中华人民共和国海事局',
+        'title': '关于交通运输部直属海事系统2027年度考录公务员资格审查事项的说明',
+        'date': '2026-10-13',
+        'url': ('https://www.msa.gov.cn/html/cnmsa/xxgk/article/2026/'
+                'aef40dfa0db14427b456ba009d370411.html'),
+        'quote': ('部分职位按照专业门类或者专业大类、专业小类招录的，属于相应类别下的专业均可报考。'),
+        'applies_to': '交通运输部直属海事系统 2027 年度考录公务员职位',
+        'source_file': 'data/sources/msa_2027_qualification_notice.html',
+    },
+}
 
 AGENCY_PATTERNS = [
     ('pboc', '中国人民银行'),
@@ -188,6 +205,7 @@ AGENCY_PATTERNS = [
     ('tax', '税务'),
     ('nfra', '金融监督管理'),
     ('csrc', '证券监督管理'),
+    ('msa', '海事局'),
 ]
 
 
@@ -625,8 +643,19 @@ def name_conflicts(text, code_spans, index, scopes):
                             for node in nodes:
                                 belongs_to.append({'code': node['code'], 'namespace': node['namespace'],
                                                    'education_scope': node['education_scope']})
+                # A printed name can differ from the catalog name for three quite
+                # different reasons. Record which one, so an audit does not have to
+                # re-derive it and so a format artefact is not read as a source error.
+                if span['start'] > 0 and text[span['start'] - 1] == '/':
+                    origin = 'shared_name_slash_group'
+                elif candidate.endswith('类') and candidate[:-1] in catalog_names:
+                    origin = 'category_suffix_variant'
+                else:
+                    origin = 'genuine_name_code_mismatch'
+
                 conflicts.append({
                     'code': span['code'],
+                    'origin': origin,
                     'family': ('semantic_conflict' if conflict_class == 'content_conflict'
                                else 'multi_namespace_diagnostic'),
                     'catalog_names': sorted(catalog_names),
@@ -680,6 +709,7 @@ def main():
     reason_counter = collections.Counter()
     conflict_class_counter = collections.Counter()
     conflict_entry_count = collections.Counter()
+    conflict_origin_counter = collections.Counter()
     conflict_in_review = 0
     review_reason_counter = collections.Counter()
     agency_category_positions = collections.Counter()
@@ -751,14 +781,24 @@ def main():
         # the shared meaning of 学科门类, so it must not enter the conservative
         # coverage numerator. It stays as provisional evidence with full trace.
         is_moe = raw['部门代码'] == '105000' or raw['部门名称'] == '教育部'
+        position_agency = agency_of(raw['部门名称'])
+        corroborating_notice = AGENCY_2027_NOTICES.get(position_agency)
         for hit in gate_scope:
             if hit.get('resolution_method') == 'gate_scope_rule':
-                hit['applicability'] = ('own_agency_statement' if is_moe
-                                        else 'agency_scope_unverified')
+                if is_moe:
+                    hit['applicability'] = 'own_agency_statement'
+                elif corroborating_notice:
+                    hit['applicability'] = 'agency_2027_notice_corroborated'
+                    hit['notice_url'] = corroborating_notice['url']
+                    hit['notice_quote'] = corroborating_notice['quote']
+                else:
+                    hit['applicability'] = 'agency_scope_unverified'
 
         # Evidence that does not depend on the gate-scope inference.
+        corroborated_gate = [g for g in resolved_gate_rule if corroborating_notice]
         exact_evidence = bool(unrestricted or coverage_before or resolved_major or resolved_gate_names
                               or resolved_term_names or resolved_paren_names or resolved_declared
+                              or corroborated_gate
                               or resolved_remarks or remarks_name_hits)
         # source_declared_gate_code rests on the position's own printed two-digit
         # code, so it is direct evidence and counts as exact.
@@ -904,6 +944,7 @@ def main():
                 conflict_in_review += 1
             for conflict in conflicts:
                 conflict_class_counter[conflict['conflict_class']] += 1
+                conflict_origin_counter[conflict.get('origin')] += 1
 
         for code in major_codes + remarks_codes:
             entry = code_index[code['code']]
@@ -1193,6 +1234,11 @@ def main():
             'entries': sum(conflict_entry_count.values()),
             'by_class': dict(conflict_class_counter),
             'gate_code_name_mismatch_positions': reason_counter['gate_code_name_mismatch'],
+            'by_origin': dict(conflict_origin_counter),
+            'origin_note': ('shared_name_slash_group = the printed name belongs to a slash-separated '
+                            'code run such as 020204/0251金融学; category_suffix_variant = the name is '
+                            'another code name plus 类; genuine_name_code_mismatch = the source pairs a '
+                            'name with a code that is not its catalog code.'),
             'by_family': {
                 'semantic_conflict': conflict_class_counter['content_conflict'],
                 'multi_namespace_diagnostic': (conflict_class_counter['cross_level_same_code']

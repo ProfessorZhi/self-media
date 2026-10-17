@@ -240,7 +240,9 @@ def main():
     for record in records:
         for hit in record.get('major_gate_scope_hits') or []:
             if hit.get('resolution_method') == 'gate_scope_rule':
-                assert hit.get('applicability') in ('own_agency_statement', 'agency_scope_unverified'), \
+                assert hit.get('applicability') in ('own_agency_statement',
+                                                    'agency_2027_notice_corroborated',
+                                                    'agency_scope_unverified'), \
                     f'{record["id"]}: gate_scope_rule hit without applicability'
 
     # conflict metrics must agree with the manifest, and the three counts are distinct

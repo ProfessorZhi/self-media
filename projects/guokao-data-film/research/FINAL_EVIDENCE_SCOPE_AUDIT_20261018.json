@@ -1,21 +1,21 @@
 {
   "schema_version": "1.0.0",
   "report_id": "final-evidence-scope-audit-20261018",
-  "generated_at_utc": "2026-10-17T20:46:20.804903+00:00",
+  "generated_at_utc": "2026-10-17T22:16:09.941239+00:00",
   "generated_date_timezone": "Asia/Shanghai",
   "local_date": "2026-10-18",
   "question": "How far does the professional evidence reach, which parts rest on an inference about another agency, and what is still undecidable from public sources?",
-  "answer_in_one_paragraph": "19,426 positions are complete on the 27 source fields. 18,680 positions have professional evidence independent of any cross-agency inference; 19 more are covered only by the 门类 rule on non-MOE positions and are therefore provisional; 727 have no catalog candidate at all. No residual phrase hides an exact in-scope catalog name that the matcher missed, so the remaining gap is semantic, cross-level or agency-internal, not a parser defect.",
+  "answer_in_one_paragraph": "19,426 positions are complete on the 27 source fields. 18,697 positions have professional evidence independent of any cross-agency inference; 2 more are covered only by the 门类 rule on non-MOE positions and are therefore provisional; 727 have no catalog candidate at all. No residual phrase hides an exact in-scope catalog name that the matcher missed, so the remaining gap is semantic, cross-level or agency-internal, not a parser defect.",
   "coverage_tiers": {
     "conservative": {
-      "positions_with_catalog_candidate": 18680,
-      "hires": 34512,
+      "positions_with_catalog_candidate": 18697,
+      "hires": 34529,
       "basis": "exact codes or names in the 专业 and 备注 columns, gate-prefixed exact names, source-declared gate codes, and explicitly unrestricted texts",
       "excludes": "gate_scope_rule on non-MOE positions"
     },
     "provisional_gate_rule": {
-      "positions": 19,
-      "hires": 19,
+      "positions": 2,
+      "hires": 2,
       "basis": "gate_scope_rule only, agency scope unverified",
       "status": "provisional; not part of the conservative numerator"
     },
@@ -28,7 +28,7 @@
       "positions": 727,
       "hires": 1160
     },
-    "closure": "18,680 conservative + 19 provisional + 727 no-candidate = 19,426"
+    "closure": "18,697 conservative + 2 provisional + 727 no-candidate = 19,426"
   },
   "gate_scope_rule_audit": {
     "rule": "专业要求写作“X门类/学科门类”时解析到 X 学科门类节点",
@@ -44,7 +44,7 @@
     "hits_on_moe_positions": 0,
     "hits_on_other_agencies": 95,
     "positions_with_hits": 69,
-    "positions_covered_only_by_this_rule": 19,
+    "positions_covered_only_by_this_rule": 2,
     "decision": "The rule is kept as a traceable reading aid but is excluded from the conservative coverage numerator, because the only cited statement is scoped to MOE positions and no agency-specific corroboration was found for the others.",
     "contrast_source_declared_gate_code": {
       "positions": 145,
@@ -52,215 +52,6 @@
       "why": "The position text itself prints the two-digit gate code (e.g. 经济学类（02）); no external rule is needed."
     },
     "provisional_positions": [
-      {
-        "id": "2027:118103:300110001011",
-        "department_name": "长江海事局",
-        "education_raw": "本科及以上",
-        "hires": 1,
-        "major_raw": "管理学门类",
-        "gates": [
-          "管理学"
-        ],
-        "risk_level": "medium: exact characters and gate nodes recorded, agency scope inferred"
-      },
-      {
-        "id": "2027:118103:300110005007",
-        "department_name": "长江海事局",
-        "education_raw": "硕士研究生及以上",
-        "hires": 1,
-        "major_raw": "工学门类、理学门类、教育学门类、医学门类",
-        "gates": [
-          "工学",
-          "理学",
-          "教育学",
-          "医学"
-        ],
-        "risk_level": "medium: exact characters and gate nodes recorded, agency scope inferred"
-      },
-      {
-        "id": "2027:118103:300110006008",
-        "department_name": "长江海事局",
-        "education_raw": "本科及以上",
-        "hires": 1,
-        "major_raw": "工学门类、法学门类、管理学门类",
-        "gates": [
-          "工学",
-          "法学",
-          "管理学"
-        ],
-        "risk_level": "medium: exact characters and gate nodes recorded, agency scope inferred"
-      },
-      {
-        "id": "2027:118302:300110006003",
-        "department_name": "天津海事局",
-        "education_raw": "本科及以上",
-        "hires": 1,
-        "major_raw": "哲学门类、法学门类、文学门类、管理学门类",
-        "gates": [
-          "哲学",
-          "法学",
-          "文学",
-          "管理学"
-        ],
-        "risk_level": "medium: exact characters and gate nodes recorded, agency scope inferred"
-      },
-      {
-        "id": "2027:118303:300110010003",
-        "department_name": "辽宁海事局",
-        "education_raw": "硕士研究生及以上",
-        "hires": 1,
-        "major_raw": "法学门类",
-        "gates": [
-          "法学"
-        ],
-        "risk_level": "medium: exact characters and gate nodes recorded, agency scope inferred"
-      },
-      {
-        "id": "2027:118303:300110010004",
-        "department_name": "辽宁海事局",
-        "education_raw": "硕士研究生及以上",
-        "hires": 1,
-        "major_raw": "工学门类",
-        "gates": [
-          "工学"
-        ],
-        "risk_level": "medium: exact characters and gate nodes recorded, agency scope inferred"
-      },
-      {
-        "id": "2027:118303:300110020007",
-        "department_name": "辽宁海事局",
-        "education_raw": "硕士研究生及以上",
-        "hires": 1,
-        "major_raw": "法学门类",
-        "gates": [
-          "法学"
-        ],
-        "risk_level": "medium: exact characters and gate nodes recorded, agency scope inferred"
-      },
-      {
-        "id": "2027:118303:300110030004",
-        "department_name": "辽宁海事局",
-        "education_raw": "硕士研究生及以上",
-        "hires": 1,
-        "major_raw": "法学门类",
-        "gates": [
-          "法学"
-        ],
-        "risk_level": "medium: exact characters and gate nodes recorded, agency scope inferred"
-      },
-      {
-        "id": "2027:118306:300110003010",
-        "department_name": "浙江海事局",
-        "education_raw": "本科及以上",
-        "hires": 1,
-        "major_raw": "工学门类、理学门类",
-        "gates": [
-          "工学",
-          "理学"
-        ],
-        "risk_level": "medium: exact characters and gate nodes recorded, agency scope inferred"
-      },
-      {
-        "id": "2027:118306:300110004011",
-        "department_name": "浙江海事局",
-        "education_raw": "本科及以上",
-        "hires": 1,
-        "major_raw": "工学门类、理学门类、法学门类",
-        "gates": [
-          "工学",
-          "理学",
-          "法学"
-        ],
-        "risk_level": "medium: exact characters and gate nodes recorded, agency scope inferred"
-      },
-      {
-        "id": "2027:118306:300110004012",
-        "department_name": "浙江海事局",
-        "education_raw": "本科及以上",
-        "hires": 1,
-        "major_raw": "工学门类、理学门类、法学门类",
-        "gates": [
-          "工学",
-          "理学",
-          "法学"
-        ],
-        "risk_level": "medium: exact characters and gate nodes recorded, agency scope inferred"
-      },
-      {
-        "id": "2027:118308:300110013007",
-        "department_name": "广东海事局",
-        "education_raw": "本科及以上",
-        "hires": 1,
-        "major_raw": "工学门类",
-        "gates": [
-          "工学"
-        ],
-        "risk_level": "medium: exact characters and gate nodes recorded, agency scope inferred"
-      },
-      {
-        "id": "2027:118308:300110015005",
-        "department_name": "广东海事局",
-        "education_raw": "本科及以上",
-        "hires": 1,
-        "major_raw": "法学门类",
-        "gates": [
-          "法学"
-        ],
-        "risk_level": "medium: exact characters and gate nodes recorded, agency scope inferred"
-      },
-      {
-        "id": "2027:118309:300110001003",
-        "department_name": "广西海事局",
-        "education_raw": "硕士研究生及以上",
-        "hires": 1,
-        "major_raw": "工学门类、理学门类",
-        "gates": [
-          "工学",
-          "理学"
-        ],
-        "risk_level": "medium: exact characters and gate nodes recorded, agency scope inferred"
-      },
-      {
-        "id": "2027:118309:300110001005",
-        "department_name": "广西海事局",
-        "education_raw": "硕士研究生及以上",
-        "hires": 1,
-        "major_raw": "法学门类、文学门类、哲学门类、管理学门类",
-        "gates": [
-          "法学",
-          "文学",
-          "哲学",
-          "管理学"
-        ],
-        "risk_level": "medium: exact characters and gate nodes recorded, agency scope inferred"
-      },
-      {
-        "id": "2027:118309:300110002003",
-        "department_name": "广西海事局",
-        "education_raw": "硕士研究生及以上",
-        "hires": 1,
-        "major_raw": "工学门类、理学门类",
-        "gates": [
-          "工学",
-          "理学"
-        ],
-        "risk_level": "medium: exact characters and gate nodes recorded, agency scope inferred"
-      },
-      {
-        "id": "2027:118309:300110003005",
-        "department_name": "广西海事局",
-        "education_raw": "硕士研究生及以上",
-        "hires": 1,
-        "major_raw": "工学门类、理学门类、法学门类、文学门类、管理学门类",
-        "gates": [
-          "工学",
-          "理学",
-          "法学",
-          "文学",
-          "管理学"
-        ],
-        "risk_level": "medium: exact characters and gate nodes recorded, agency scope inferred"
-      },
       {
         "id": "2027:129134:300110019001",
         "department_name": "南宁海关",
@@ -287,12 +78,6 @@
       }
     ],
     "provisional_by_department": {
-      "长江海事局": 3,
-      "天津海事局": 1,
-      "辽宁海事局": 4,
-      "浙江海事局": 3,
-      "广东海事局": 2,
-      "广西海事局": 4,
       "南宁海关": 1,
       "上海铁路监督管理局": 1
     }
@@ -822,6 +607,14 @@
       "use_in_this_round": "同上，未提供专业成员表"
     },
     {
+      "id": "msa-2027-qualification-notice",
+      "url": "https://www.msa.gov.cn/html/cnmsa/xxgk/article/2026/aef40dfa0db14427b456ba009d370411.html",
+      "authority": "中华人民共和国海事局",
+      "date": "2026-10-13",
+      "applies_to_2027_civil_service": "交通运输部直属海事系统 2027 年度考录公务员职位",
+      "use_in_this_round": "第七条“部分职位按照专业门类或者专业大类、专业小类招录的，属于相应类别下的专业均可报考”用于佐证海事系统岗位的门类写法；门类成员仍取自教育部目录。"
+    },
+    {
       "id": "scs-2027-application-guide",
       "url": "http://dl.scs.gov.cn/api/article/8a81f6d8a129c66701a132bae3a70082",
       "authority": "中央公务员主管部门",
@@ -831,9 +624,9 @@
     }
   ],
   "updated_this_round": [
-    "三层覆盖口径：conservative 18,680、provisional 19、no_candidate 727，校验器断言三者之和为 19,426",
+    "三层覆盖口径：conservative 18,697、provisional 2、no_candidate 727，校验器断言三者之和为 19,426",
     "gate_scope_rule 命中全部标为 agency_scope_unverified，且不计入保守分子；命中 95 处",
-    "复核桶 candidate_provisional_agency_scope_rule（19 岗）",
+    "复核桶 candidate_provisional_agency_scope_rule（2 岗）",
     "冲突拆分语族：semantic_conflict 67 条 / multi_namespace_diagnostic 20 条",
     "对 194 个残留岗位逐组判定，真实解析缺口 0"
   ],
@@ -843,8 +636,8 @@
     "历史报告 RESIDUAL_20271018_V2.json、OFFICIAL_NATIONAL_TABLE_VERIFICATION_20261018.json 未被改写"
   ],
   "opus_safe_read_guidance": [
-    "引用“专业候选覆盖”时用 18,680（保守），不要用 18,699，除非同时说明其中 19 岗依赖跨机关推定。",
-    "19 个 provisional 岗位可描述为“原文门类写法 + 目录节点”，但不得表述为“该机关已确认接受这些门类”。",
+    "引用“专业候选覆盖”时用 18,697（保守），不要用 18,699，除非同时说明其中 2 岗依赖跨机关推定。",
+    "2 个 provisional 岗位可描述为“原文门类写法 + 目录节点”，但不得表述为“该机关已确认接受这些门类”。",
     "727 个无候选岗位不等于“不限专业”，也不等于“不可报”；多数是机关内部类别或开放表述。",
     "冲突数按口径引用：54 岗位 / 87 条目 / 67 语义冲突条目；三者不可互换。",
     "任何“可报/不可报”结论都不在本数据内；本节只描述原文证据与解析状态。",

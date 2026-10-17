@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "status": "PASS",
   "evidence_manifest": "data/major_evidence_2027/manifest.json",
-  "evidence_manifest_sha256": "99b96c091d74f777703f7228e0a1113be7bb5fcfb45b30ccc779aec89370423a",
+  "evidence_manifest_sha256": "ebf30c0e3f3412f096ef6447ec09a1b2cf38a3372e6026cbc7ff6bddbdfc1c70",
   "positions": 19426,
   "hires": 35691,
   "coverage_before": 18176,
@@ -26,18 +26,18 @@
     "buckets": {
       "candidate_with_degree_scope": 1994,
       "candidate_with_open_scope": 1236,
-      "candidate_legacy_reason_superseded": 981,
+      "candidate_legacy_reason_superseded": 998,
       "no_candidate_other": 181,
       "candidate_with_namespace_ambiguity": 501,
       "candidate_with_conflict": 55,
       "candidate_with_exclusion": 276,
-      "candidate_provisional_agency_scope_rule": 19,
       "candidate_with_unresolved_vocabulary": 46,
       "no_candidate_agency_no_public_list": 533,
-      "no_candidate_agency_unverified": 13
+      "no_candidate_agency_unverified": 13,
+      "candidate_provisional_agency_scope_rule": 2
     },
     "no_candidate_matches_residual": true,
-    "legacy_reason_superseded": 981
+    "legacy_reason_superseded": 998
   },
   "remark_scope": {
     "explicit_label": 712,

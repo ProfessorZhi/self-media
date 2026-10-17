@@ -83,6 +83,19 @@
       "contents": [],
       "bytes": 135189,
       "sha256": "46cfad33160c5959826122bc703de6d732730a37484a3867421ccd098cde224a"
+    },
+    {
+      "file": "msa_2027_qualification_notice.html",
+      "id": "msa-2027-qualification-notice",
+      "url": "https://www.msa.gov.cn/html/cnmsa/xxgk/article/2026/aef40dfa0db14427b456ba009d370411.html",
+      "title": "关于交通运输部直属海事系统2027年度考录公务员资格审查事项的说明",
+      "authority": "中华人民共和国海事局",
+      "role": "applies to 2027 maritime civil-service positions; section 七 states that recruitment by 专业门类/专业大类/专业小类 admits all majors within that category",
+      "retrieved": "2026-10-18",
+      "published": "2026-10-13",
+      "contents": [],
+      "bytes": 87618,
+      "sha256": "8951afa6a283a51f4533080d7aed931464ff2a6f0906dc8f4270aa4b4ed6ef80"
     }
   ]
 }

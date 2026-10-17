@@ -9,12 +9,12 @@
     "hires": 35691,
     "coverage": {
       "conservative": {
-        "positions": 18680,
-        "hires": 34512
+        "positions": 18697,
+        "hires": 34529
       },
       "provisional": {
-        "positions": 19,
-        "hires": 19
+        "positions": 2,
+        "hires": 2
       },
       "inclusive": {
         "positions": 18699,
@@ -61,29 +61,29 @@
     "review": {
       "universe": 5835,
       "covered": 5108,
-      "legacy_superseded": 981,
-      "needs_interpretation": 4127,
+      "legacy_superseded": 998,
+      "needs_interpretation": 4110,
       "needs_interpretation_includes_provisional": true,
       "candidate_requires_review_excluding_provisional": 4108,
-      "candidate_requires_review_including_provisional": 4127,
+      "candidate_requires_review_including_provisional": 4110,
       "four_way": {
         "candidate_requires_review_excluding_provisional": 4108,
-        "legacy_reason_superseded": 981,
-        "provisional_only": 19,
+        "legacy_reason_superseded": 998,
+        "provisional_only": 2,
         "no_candidate": 727,
         "sum": 5835
       },
       "buckets": {
         "candidate_with_degree_scope": 1994,
         "candidate_with_open_scope": 1236,
-        "candidate_legacy_reason_superseded": 981,
+        "candidate_legacy_reason_superseded": 998,
         "no_candidate_other": 181,
         "candidate_with_namespace_ambiguity": 501,
         "candidate_with_conflict": 55,
         "candidate_with_exclusion": 276,
         "no_candidate_agency_no_public_list": 533,
         "no_candidate_agency_unverified": 13,
-        "candidate_provisional_agency_scope_rule": 19,
+        "candidate_provisional_agency_scope_rule": 2,
         "candidate_with_unresolved_vocabulary": 46
       },
       "bucket_sum": 5835
