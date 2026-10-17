@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
   "report_id": "final-delivery-audit-20261018",
-  "generated_at_utc": "2026-10-17T22:22:23.043696+00:00",
+  "generated_at_utc": "2026-10-17T22:26:34.966353+00:00",
   "local_date": "2026-10-18",
-  "generated_from_commit": "7f4dacf25002c487ddf8ba30c377528c2a46d2bb",
+  "generated_from_commit": "dd316035215426740da467cc5a18872f9efd040f",
   "statement": "The fact and evidence layers are deliverable. Applicant eligibility is not determined and cannot be, from public sources alone.",
   "headline": {
     "positions": 19426,
@@ -91,8 +91,10 @@
       "group": "semantic_conflict",
       "positions": 44,
       "entries": 67,
-      "classification": "needs_recruiting_agency_explanation",
-      "why": "A printed name belongs to a different code. The source text itself is inconsistent; the data records the span and both names rather than picking a winner. Position and entry counts are distinct: one position can carry several entries.",
+      "direct_entries": 2,
+      "direct_positions": 2,
+      "classification": "mostly_context_or_format; a small direct subset needs the agency",
+      "why": "These are the machine-recorded content_conflict entries. Re-audit shows most of them are reading artefacts: a slash-grouped code run sharing one name, a catalog name that itself contains 、, a category code followed by its members, a 类 suffix, or an old/short alias. Only direct_pair_needs_agency_confirmation (see direct_entries) cannot be explained by the surrounding text and may need the recruiting agency to clarify. None of these entries is asserted to be a source error, and none changes what the position accepts.",
       "autonomously_fixable": false,
       "evidence": "node scripts/query_major_evidence.mjs --review-status --bucket candidate_with_conflict"
     },
@@ -119,7 +121,7 @@
   "external_blockers": [
     "No applicable 2027 membership list found for the PBOC 经济金融类 or CMA 气象类 categories.",
     "Some 备注 sentences mix degree levels without a clean label and need a human reading.",
-    "Semantic conflicts inside the source text need the recruiting agency to clarify."
+    "Only the 2 direct name/code pairs inside content_conflict may need the recruiting agency to clarify; the other entries are context, format or alias artefacts and are not claims that the source is wrong."
   ],
   "not_delivered": [
     "Any applicant-eligibility verdict.",

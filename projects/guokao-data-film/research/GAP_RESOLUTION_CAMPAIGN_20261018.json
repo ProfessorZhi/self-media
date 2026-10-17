@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "report_id": "gap-resolution-campaign-20261018",
-  "generated_at_utc": "2026-10-17T22:22:55.802243+00:00",
+  "generated_at_utc": "2026-10-17T22:26:34.812781+00:00",
   "local_date": "2026-10-18",
   "before_ref": "0038109",
   "lanes": {
@@ -395,11 +395,15 @@
         "category_suffix_variant": 9
       },
       "by_verdict": {
-        "unclassified": 26,
-        "format_artifact_shared_name": 32,
-        "format_artifact_suffix": 9
+        "direct_pair_needs_agency_confirmation": 2,
+        "alias_or_abbreviation_requires_context": 15,
+        "category_member_example": 6,
+        "tokenizer_boundary_artifact": 3,
+        "grouped_notation": 32,
+        "suffix_variant": 9
       },
-      "genuine_positions": 0,
+      "direct_positions": 2,
+      "verdict_note": "All 67 content_conflict entries are the machine-recorded conflicts. Only direct_pair_needs_agency_confirmation means the text cannot be explained by context, format or a catalog alias; the other verdicts are reading artefacts, not evidence that the source is wrong.",
       "items": [
         {
           "id": "2027:104000:200110001002",
@@ -421,7 +425,7 @@
             30
           ],
           "context": "、1257审计、120201会计学、120202财务管理",
-          "verdict": "unclassified"
+          "verdict": "direct_pair_needs_agency_confirmation"
         },
         {
           "id": "2027:117000:200110103001",
@@ -445,7 +449,7 @@
             32
           ],
           "context": "2、人文地理学070502、城乡规划0833、城乡规划学0853",
-          "verdict": "unclassified"
+          "verdict": "alias_or_abbreviation_requires_context"
         },
         {
           "id": "2027:117000:200110103001",
@@ -470,7 +474,7 @@
             42
           ],
           "context": "502、城乡规划0833、城乡规划学0853",
-          "verdict": "unclassified"
+          "verdict": "alias_or_abbreviation_requires_context"
         },
         {
           "id": "2027:117000:200110104001",
@@ -494,7 +498,7 @@
             43
           ],
           "context": "14、土木工程085901、城乡规划0833、城乡规划学0853、工程管理125",
-          "verdict": "unclassified"
+          "verdict": "alias_or_abbreviation_requires_context"
         },
         {
           "id": "2027:117000:200110104001",
@@ -519,7 +523,7 @@
             53
           ],
           "context": "901、城乡规划0833、城乡规划学0853、工程管理1256",
-          "verdict": "unclassified"
+          "verdict": "alias_or_abbreviation_requires_context"
         },
         {
           "id": "2027:117000:200110105001",
@@ -543,7 +547,7 @@
             20
           ],
           "context": "人文地理学070502、城乡规划0833、城乡规划学0853、市政工程081",
-          "verdict": "unclassified"
+          "verdict": "alias_or_abbreviation_requires_context"
         },
         {
           "id": "2027:117000:200110105001",
@@ -568,7 +572,7 @@
             30
           ],
           "context": "502、城乡规划0833、城乡规划学0853、市政工程081403、市政工程（含",
-          "verdict": "unclassified"
+          "verdict": "alias_or_abbreviation_requires_context"
         },
         {
           "id": "2027:118000:200110004001",
@@ -590,7 +594,7 @@
             89
           ],
           "context": "3Z3、0871Z1、0871Z2、125604物流工程；080204、085502",
-          "verdict": "unclassified"
+          "verdict": "alias_or_abbreviation_requires_context"
         },
         {
           "id": "2027:122000:200110005002",
@@ -613,7 +617,7 @@
             4
           ],
           "context": "0651博物馆学、13艺术学",
-          "verdict": "unclassified"
+          "verdict": "category_member_example"
         },
         {
           "id": "2027:107125:300110003001",
@@ -637,7 +641,7 @@
             4
           ],
           "context": "1253会计学、0252应用统计、0714统",
-          "verdict": "unclassified"
+          "verdict": "alias_or_abbreviation_requires_context"
         },
         {
           "id": "2027:132104:300147003001",
@@ -664,7 +668,7 @@
             7
           ],
           "context": "本科：0809计算机科学与技术、软件工程、网络工程",
-          "verdict": "unclassified"
+          "verdict": "category_member_example"
         },
         {
           "id": "2027:132104:300147007001",
@@ -691,7 +695,7 @@
             7
           ],
           "context": "本科：0809计算机科学与技术、软件工程、网络工程",
-          "verdict": "unclassified"
+          "verdict": "category_member_example"
         },
         {
           "id": "2027:132104:300147039001",
@@ -718,7 +722,7 @@
             7
           ],
           "context": "本科：0809计算机科学与技术、软件工程、网络工程",
-          "verdict": "unclassified"
+          "verdict": "category_member_example"
         },
         {
           "id": "2027:132113:300146354001",
@@ -742,7 +746,7 @@
             53
           ],
           "context": "律防控，030201政治学与行政学，030205T政治学、经济学与哲学；研究生：030",
-          "verdict": "unclassified"
+          "verdict": "tokenizer_boundary_artifact"
         },
         {
           "id": "2027:132113:300146377001",
@@ -766,7 +770,7 @@
             53
           ],
           "context": "律防控，030201政治学与行政学，030205T政治学、经济学与哲学；研究生：030",
-          "verdict": "unclassified"
+          "verdict": "tokenizer_boundary_artifact"
         },
         {
           "id": "2027:132113:300146377002",
@@ -790,7 +794,7 @@
             53
           ],
           "context": "律防控，030201政治学与行政学，030205T政治学、经济学与哲学；研究生：030",
-          "verdict": "unclassified"
+          "verdict": "tokenizer_boundary_artifact"
         },
         {
           "id": "2027:158102:300130102002",
@@ -817,7 +821,7 @@
             48
           ],
           "context": "0计算机科学与技术0812计算机技术085404软件工程（083500、085405",
-          "verdict": "unclassified"
+          "verdict": "direct_pair_needs_agency_confirmation"
         },
         {
           "id": "2027:158112:300130860008",
@@ -841,7 +845,7 @@
             27
           ],
           "context": "：020203财政学、020204/0251金融学、0203统计学、0257审计",
-          "verdict": "format_artifact_shared_name"
+          "verdict": "grouped_notation"
         },
         {
           "id": "2027:158112:300130860008",
@@ -865,7 +869,7 @@
             57
           ],
           "context": "统计学、0257审计、120201/1253会计学。本科专业：02经济学、120",
-          "verdict": "format_artifact_shared_name"
+          "verdict": "grouped_notation"
         },
         {
           "id": "2027:158112:300130860011",
@@ -892,7 +896,7 @@
             18
           ],
           "context": "0812/085211/085404计算机科学与技术、0835/0852",
-          "verdict": "format_artifact_shared_name"
+          "verdict": "grouped_notation"
         },
         {
           "id": "2027:158112:300130860011",
@@ -916,7 +920,7 @@
             66
           ],
           "context": "405软件工程、0810/0852/085402信息与通信工程、0838公安技术、0",
-          "verdict": "format_artifact_shared_name"
+          "verdict": "grouped_notation"
         },
         {
           "id": "2027:158112:300130860012",
@@ -943,7 +947,7 @@
             18
           ],
           "context": "研究生：0812/0852/0854计算机科学与技术、0835/0852",
-          "verdict": "format_artifact_shared_name"
+          "verdict": "grouped_notation"
         },
         {
           "id": "2027:158112:300130860012",
@@ -970,7 +974,7 @@
             41
           ],
           "context": "算机科学与技术、0835/0852/0854软件工程、0810/0852/085",
-          "verdict": "format_artifact_shared_name"
+          "verdict": "grouped_notation"
         },
         {
           "id": "2027:158112:300130860012",
@@ -994,7 +998,7 @@
             60
           ],
           "context": "854软件工程、0810/0852/0854信息与通信工程。本科：0807电子信",
-          "verdict": "format_artifact_shared_name"
+          "verdict": "grouped_notation"
         },
         {
           "id": "2027:158112:300130860017",
@@ -1018,7 +1022,7 @@
             27
           ],
           "context": "：020203财政学、020204/0251金融学、0203统计学、0257审计",
-          "verdict": "format_artifact_shared_name"
+          "verdict": "grouped_notation"
         },
         {
           "id": "2027:158112:300130860017",
@@ -1042,7 +1046,7 @@
             57
           ],
           "context": "统计学、0257审计、120201/1253会计学。本科专业：02经济学、120",
-          "verdict": "format_artifact_shared_name"
+          "verdict": "grouped_notation"
         },
         {
           "id": "2027:158112:300130860020",
@@ -1069,7 +1073,7 @@
             18
           ],
           "context": "0812/085211/085404计算机科学与技术、0835/0852",
-          "verdict": "format_artifact_shared_name"
+          "verdict": "grouped_notation"
         },
         {
           "id": "2027:158112:300130860020",
@@ -1093,7 +1097,7 @@
             66
           ],
           "context": "405软件工程、0810/0852/085402信息与通信工程、0838公安技术、0",
-          "verdict": "format_artifact_shared_name"
+          "verdict": "grouped_notation"
         },
         {
           "id": "2027:158112:300130860021",
@@ -1120,7 +1124,7 @@
             18
           ],
           "context": "0812/085211/085404计算机科学与技术、0835/0852",
-          "verdict": "format_artifact_shared_name"
+          "verdict": "grouped_notation"
         },
         {
           "id": "2027:158112:300130860021",
@@ -1144,7 +1148,7 @@
             66
           ],
           "context": "405软件工程、0810/0852/085402信息与通信工程、0838公安技术、0",
-          "verdict": "format_artifact_shared_name"
+          "verdict": "grouped_notation"
         },
         {
           "id": "2027:158112:300130860022",
@@ -1171,7 +1175,7 @@
             18
           ],
           "context": "0812/085211/085404计算机科学与技术、0835/0852",
-          "verdict": "format_artifact_shared_name"
+          "verdict": "grouped_notation"
         },
         {
           "id": "2027:158112:300130860022",
@@ -1195,7 +1199,7 @@
             66
           ],
           "context": "405软件工程、0810/0852/085402信息与通信工程、0838公安技术、0",
-          "verdict": "format_artifact_shared_name"
+          "verdict": "grouped_notation"
         },
         {
           "id": "2027:158112:300130860024",
@@ -1219,7 +1223,7 @@
             27
           ],
           "context": "：020203财政学、020204/0251金融学、0203统计学、0257审计",
-          "verdict": "format_artifact_shared_name"
+          "verdict": "grouped_notation"
         },
         {
           "id": "2027:158112:300130860024",
@@ -1243,7 +1247,7 @@
             57
           ],
           "context": "统计学、0257审计、120201/1253会计学。本科专业：02经济学、120",
-          "verdict": "format_artifact_shared_name"
+          "verdict": "grouped_notation"
         },
         {
           "id": "2027:158112:300130860026",
@@ -1267,7 +1271,7 @@
             27
           ],
           "context": "：020203财政学、020204/0251金融学、0203统计学、0257审计",
-          "verdict": "format_artifact_shared_name"
+          "verdict": "grouped_notation"
         },
         {
           "id": "2027:158112:300130860026",
@@ -1291,7 +1295,7 @@
             57
           ],
           "context": "统计学、0257审计、120201/1253会计学。本科专业：02经济学、120",
-          "verdict": "format_artifact_shared_name"
+          "verdict": "grouped_notation"
         },
         {
           "id": "2027:158112:300130860027",
@@ -1318,7 +1322,7 @@
             18
           ],
           "context": "0812/085211/085404计算机科学与技术、0835/0852",
-          "verdict": "format_artifact_shared_name"
+          "verdict": "grouped_notation"
         },
         {
           "id": "2027:158112:300130860027",
@@ -1342,7 +1346,7 @@
             66
           ],
           "context": "405软件工程、0810/0852/085402信息与通信工程、0838公安技术、0",
-          "verdict": "format_artifact_shared_name"
+          "verdict": "grouped_notation"
         },
         {
           "id": "2027:158112:300130860034",
@@ -1366,7 +1370,7 @@
             27
           ],
           "context": "：020203财政学、020204/0251金融学、0203统计学、0257审计",
-          "verdict": "format_artifact_shared_name"
+          "verdict": "grouped_notation"
         },
         {
           "id": "2027:158112:300130860034",
@@ -1390,7 +1394,7 @@
             57
           ],
           "context": "统计学、0257审计、120201/1253会计学。本科专业：02经济学、120",
-          "verdict": "format_artifact_shared_name"
+          "verdict": "grouped_notation"
         },
         {
           "id": "2027:158112:300130860035",
@@ -1414,7 +1418,7 @@
             27
           ],
           "context": "：020203财政学、020204/0251金融学、0203统计学、0257审计",
-          "verdict": "format_artifact_shared_name"
+          "verdict": "grouped_notation"
         },
         {
           "id": "2027:158112:300130860035",
@@ -1438,7 +1442,7 @@
             57
           ],
           "context": "统计学、0257审计、120201/1253会计学。本科专业：02经济学、120",
-          "verdict": "format_artifact_shared_name"
+          "verdict": "grouped_notation"
         },
         {
           "id": "2027:158112:300130860037",
@@ -1463,7 +1467,7 @@
             8
           ],
           "context": "研究生：1002康复医学与理疗学、运动医学、急诊医学",
-          "verdict": "unclassified"
+          "verdict": "category_member_example"
         },
         {
           "id": "2027:158112:300130860037",
@@ -1489,7 +1493,7 @@
             31
           ],
           "context": "复医学与理疗学、运动医学、急诊医学、1005针灸推拿学、0402心理学。本科：0",
-          "verdict": "unclassified"
+          "verdict": "category_member_example"
         },
         {
           "id": "2027:158112:300130860040",
@@ -1516,7 +1520,7 @@
             18
           ],
           "context": "0812/085211/085404计算机科学与技术、0835/0852",
-          "verdict": "format_artifact_shared_name"
+          "verdict": "grouped_notation"
         },
         {
           "id": "2027:158112:300130860040",
@@ -1540,7 +1544,7 @@
             66
           ],
           "context": "405软件工程、0810/0852/085402信息与通信工程、0838公安技术、0",
-          "verdict": "format_artifact_shared_name"
+          "verdict": "grouped_notation"
         },
         {
           "id": "2027:158112:300130860043",
@@ -1564,7 +1568,7 @@
             27
           ],
           "context": "：020203财政学、020204/0251金融学、0203统计学、0257审计",
-          "verdict": "format_artifact_shared_name"
+          "verdict": "grouped_notation"
         },
         {
           "id": "2027:158112:300130860043",
@@ -1588,7 +1592,7 @@
             57
           ],
           "context": "统计学、0257审计、120201/1253会计学。本科专业：02经济学、120",
-          "verdict": "format_artifact_shared_name"
+          "verdict": "grouped_notation"
         },
         {
           "id": "2027:158112:300130860044",
@@ -1615,7 +1619,7 @@
             18
           ],
           "context": "研究生：0812/0852/0854计算机科学与技术、0835/0852",
-          "verdict": "format_artifact_shared_name"
+          "verdict": "grouped_notation"
         },
         {
           "id": "2027:158112:300130860044",
@@ -1642,7 +1646,7 @@
             41
           ],
           "context": "算机科学与技术、0835/0852/0854软件工程、0810/0852/085",
-          "verdict": "format_artifact_shared_name"
+          "verdict": "grouped_notation"
         },
         {
           "id": "2027:158112:300130860044",
@@ -1666,7 +1670,7 @@
             60
           ],
           "context": "854软件工程、0810/0852/0854信息与通信工程。本科：0807电子信",
-          "verdict": "format_artifact_shared_name"
+          "verdict": "grouped_notation"
         },
         {
           "id": "2027:158124:300130001001",
@@ -1690,7 +1694,7 @@
             28
           ],
           "context": "法学（仅行政法、刑法、国际法方向），035102法律（法学）",
-          "verdict": "unclassified"
+          "verdict": "alias_or_abbreviation_requires_context"
         },
         {
           "id": "2027:158124:300130001012",
@@ -1714,7 +1718,7 @@
             28
           ],
           "context": "法学（仅行政法、刑法、国际法方向），035102法律（法学）",
-          "verdict": "unclassified"
+          "verdict": "alias_or_abbreviation_requires_context"
         },
         {
           "id": "2027:158124:300130001016",
@@ -1738,7 +1742,7 @@
             28
           ],
           "context": "法学（仅行政法、刑法、国际法方向），035102法律（法学）",
-          "verdict": "unclassified"
+          "verdict": "alias_or_abbreviation_requires_context"
         },
         {
           "id": "2027:158124:300130001018",
@@ -1762,7 +1766,7 @@
             28
           ],
           "context": "法学（仅行政法、刑法、国际法方向），035102法律（法学）",
-          "verdict": "unclassified"
+          "verdict": "alias_or_abbreviation_requires_context"
         },
         {
           "id": "2027:158124:300130001025",
@@ -1786,7 +1790,7 @@
             28
           ],
           "context": "法学（仅行政法、刑法、国际法方向），035102法律（法学）",
-          "verdict": "unclassified"
+          "verdict": "alias_or_abbreviation_requires_context"
         },
         {
           "id": "2027:158124:300130001034",
@@ -1810,7 +1814,7 @@
             28
           ],
           "context": "法学（仅行政法、刑法、国际法方向），035102法律（法学）",
-          "verdict": "unclassified"
+          "verdict": "alias_or_abbreviation_requires_context"
         },
         {
           "id": "2027:158202:300130001003",
@@ -1836,7 +1840,7 @@
             12
           ],
           "context": "0402心理学、0454应用心理学",
-          "verdict": "unclassified"
+          "verdict": "alias_or_abbreviation_requires_context"
         },
         {
           "id": "2027:137111:400110111002",
@@ -1858,7 +1862,7 @@
             59
           ],
           "context": "术）、0835软件工程（人工智能）、0854电子信息类（大数据技术与工程、人工智",
-          "verdict": "format_artifact_suffix"
+          "verdict": "suffix_variant"
         },
         {
           "id": "2027:137111:400110111003",
@@ -1880,7 +1884,7 @@
             4
           ],
           "context": "0854电子信息类（计算机技术、人工智能、大",
-          "verdict": "format_artifact_suffix"
+          "verdict": "suffix_variant"
         },
         {
           "id": "2027:137111:400110111004",
@@ -1902,7 +1906,7 @@
             4
           ],
           "context": "0714统计学类（统计学、经济统计学、数理统",
-          "verdict": "format_artifact_suffix"
+          "verdict": "suffix_variant"
         },
         {
           "id": "2027:137111:400110111005",
@@ -1924,7 +1928,7 @@
             66
           ],
           "context": "、数据科学与大数据技术）； 研究生：0714统计学类、0854电子信息类（计算机",
-          "verdict": "format_artifact_suffix"
+          "verdict": "suffix_variant"
         },
         {
           "id": "2027:137111:400110111005",
@@ -1946,7 +1950,7 @@
             75
           ],
           "context": "技术）； 研究生：0714统计学类、0854电子信息类（计算机技术、软件工程、人",
-          "verdict": "format_artifact_suffix"
+          "verdict": "suffix_variant"
         },
         {
           "id": "2027:137111:400110111006",
@@ -1968,7 +1972,7 @@
             66
           ],
           "context": "、数据科学与大数据技术）； 研究生：0714统计学类、0854电子信息类（计算机",
-          "verdict": "format_artifact_suffix"
+          "verdict": "suffix_variant"
         },
         {
           "id": "2027:137111:400110111006",
@@ -1990,7 +1994,7 @@
             75
           ],
           "context": "技术）； 研究生：0714统计学类、0854电子信息类（计算机技术、软件工程、人",
-          "verdict": "format_artifact_suffix"
+          "verdict": "suffix_variant"
         },
         {
           "id": "2027:137111:400110111007",
@@ -2012,7 +2016,7 @@
             70
           ],
           "context": "类（计算数学、应用数学、数据科学）、0714统计学类（统计学、经济统计学、数理统",
-          "verdict": "format_artifact_suffix"
+          "verdict": "suffix_variant"
         },
         {
           "id": "2027:137111:400110111008",
@@ -2034,7 +2038,7 @@
             4
           ],
           "context": "0714统计学类（统计学、经济统计学、数理统",
-          "verdict": "format_artifact_suffix"
+          "verdict": "suffix_variant"
         }
       ]
     },

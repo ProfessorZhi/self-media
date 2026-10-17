@@ -211,6 +211,56 @@ def check_audit_claims(project, facts):
     return errors
 
 
+def check_campaign_verdicts(project, facts):
+    """The campaign's origin and verdict tables must agree and close."""
+    errors = []
+    path = project / 'research' / 'GAP_RESOLUTION_CAMPAIGN_20261018.json'
+    if not path.exists():
+        return [{'file': path.name, 'kind': 'missing_file'}]
+    campaign = json.loads(path.read_text())
+    audit = campaign['lanes']['B_conflict_audit']
+    origins = audit.get('by_origin', {})
+    verdicts = audit.get('by_verdict', {})
+    if 'unclassified' in verdicts or 'unmapped_origin' in verdicts:
+        errors.append({'file': path.name, 'kind': 'unmapped_verdict',
+                       'detail': 'every entry must map to a named verdict'})
+    if sum(verdicts.values()) != audit.get('entries'):
+        errors.append({'file': path.name, 'kind': 'verdict_sum',
+                       'sum': sum(verdicts.values()), 'entries': audit.get('entries')})
+    if audit.get('entries') != facts['conflicts']['semantic_entries']:
+        errors.append({'file': path.name, 'kind': 'campaign_entry_mismatch'})
+    pairs = {
+        'shared_name_slash_group': 'grouped_notation',
+        'old_name_or_short_name': 'alias_or_abbreviation_requires_context',
+        'category_suffix_variant': 'suffix_variant',
+        'category_member_enumeration': 'category_member_example',
+        'compound_catalog_name_truncation': 'tokenizer_boundary_artifact',
+        'direct_code_name_inconsistency': 'direct_pair_needs_agency_confirmation',
+    }
+    for origin, verdict in pairs.items():
+        if origins.get(origin) != verdicts.get(verdict):
+            errors.append({'file': path.name, 'kind': 'origin_verdict_mismatch',
+                           'origin': origin, 'origin_count': origins.get(origin),
+                           'verdict': verdict, 'verdict_count': verdicts.get(verdict)})
+    direct = verdicts.get('direct_pair_needs_agency_confirmation')
+    if direct != origins.get('direct_code_name_inconsistency'):
+        errors.append({'file': path.name, 'kind': 'direct_count_mismatch'})
+    if audit.get('direct_positions') != 2:
+        errors.append({'file': path.name, 'kind': 'direct_positions_unexpected',
+                       'found': audit.get('direct_positions')})
+    if 'direct_positions' not in audit and direct != 2:
+        errors.append({'file': path.name, 'kind': 'direct_count_unexpected', 'found': direct})
+    # the human report must carry the same reading
+    md = project / 'research' / 'FINAL_DELIVERY_STATUS.md'
+    if md.exists():
+        text = md.read_text(encoding='utf-8')
+        if f'{direct} 条' not in text:
+            errors.append({'file': md.name, 'kind': 'status_missing_direct_count', 'token': f'{direct} 条'})
+        if '源表写错' not in text:
+            errors.append({'file': md.name, 'kind': 'status_missing_no-blame-note'})
+    return errors
+
+
 def check_links(project):
     errors = []
     for rel in LINK_DOCS:
@@ -272,11 +322,12 @@ def main():
     guidance_errors = check_audit_guidance(project, facts)
     claims_errors = check_audit_claims(project, facts)
     block_errors = check_blocks(project, facts)
+    campaign_errors = check_campaign_verdicts(project, facts)
     arithmetic_errors = check_review_arithmetic(facts)
     link_errors = check_links(project)
     status_errors = check_status_paths(project)
     errors = (snapshot_errors + doc_errors + guidance_errors + claims_errors
-              + block_errors + arithmetic_errors + link_errors + status_errors)
+              + block_errors + campaign_errors + arithmetic_errors + link_errors + status_errors)
 
     report = {
         'schema_version': '1.0.0',
@@ -291,6 +342,7 @@ def main():
             'guidance_errors': len(guidance_errors),
             'audit_claim_errors': len(claims_errors),
             'block_errors': len(block_errors),
+            'campaign_verdict_errors': len(campaign_errors),
             'review_arithmetic_errors': len(arithmetic_errors),
             'broken_links': len(link_errors),
             'status_path_errors': len(status_errors),

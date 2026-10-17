@@ -77,6 +77,17 @@ AGENCY_CHECKS = [
     },
 ]
 
+# Origin -> verdict. Kept as an explicit table so a new origin cannot silently
+# fall into an "unclassified" bucket.
+VERDICT_BY_ORIGIN = {
+    'shared_name_slash_group': 'grouped_notation',
+    'old_name_or_short_name': 'alias_or_abbreviation_requires_context',
+    'category_suffix_variant': 'suffix_variant',
+    'category_member_enumeration': 'category_member_example',
+    'compound_catalog_name_truncation': 'tokenizer_boundary_artifact',
+    'direct_code_name_inconsistency': 'direct_pair_needs_agency_confirmation',
+}
+
 STATUS_LEGEND = [
     {'state': 'exact_match', 'meaning': '至少在“专业”或“备注”中找到精确代码或精确目录名', 'use': '可作目录引用'},
     {'state': 'ambiguity', 'meaning': '同一名称对应多个目录节点，或分句/学历口径未定', 'use': '只能作候选'},
@@ -200,11 +211,8 @@ def main():
                 'field': conflict['field'],
                 'span': conflict['span'],
                 'context': conflict['context'],
-                'verdict': {
-                    'shared_name_slash_group': 'format_artifact_shared_name',
-                    'category_suffix_variant': 'format_artifact_suffix',
-                    'genuine_name_code_mismatch': 'needs_agency_or_human_confirmation',
-                }.get(conflict.get('origin'), 'unclassified'),
+                # One verdict per origin, and every entry must land in exactly one.
+                'verdict': VERDICT_BY_ORIGIN.get(conflict.get('origin'), 'unmapped_origin'),
             })
     origin_counts = collections.Counter(entry['origin'] for entry in entries)
     verdict_counts = collections.Counter(entry['verdict'] for entry in entries)
@@ -252,8 +260,12 @@ def main():
                 'positions': len({entry['id'] for entry in entries}),
                 'by_origin': dict(origin_counts),
                 'by_verdict': dict(verdict_counts),
-                'genuine_positions': len({e['id'] for e in entries
-                                          if e['verdict'] == 'needs_agency_or_human_confirmation'}),
+                'direct_positions': len({e['id'] for e in entries
+                                         if e['verdict'] == 'direct_pair_needs_agency_confirmation'}),
+                'verdict_note': ('All 67 content_conflict entries are the machine-recorded conflicts. Only '
+                                 'direct_pair_needs_agency_confirmation means the text cannot be explained '
+                                 'by context, format or a catalog alias; the other verdicts are reading '
+                                 'artefacts, not evidence that the source is wrong.'),
                 'items': entries,
             },
             'B_residual_recheck': {

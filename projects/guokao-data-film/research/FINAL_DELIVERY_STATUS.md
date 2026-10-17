@@ -27,6 +27,7 @@
 - 备注代码 1,832 处：显式学历标签 712、回退岗位学历 1,105、混合标签回退并标记 15。
 - 结构化冲突 **54 岗 / 87 条**。
   - 语义冲突（content_conflict）：**44 岗 / 67 条**——该类自己触达的岗位数，不等于全库结构化冲突 54 岗，也不等于复核桶的 55。
+  - 其中**无法由上下文/格式/旧名直接解释的仅 2 条（2 岗）**；其余 65 条为：斜杠共享名称 32、旧名/简称 15、类后缀 9、成员枚举 6、全名含顿号被截断 3。**这些不是“源表写错”的结论。**
   - 多学历诊断（跨层 12 条 + 省略“类” 8 条）：**11 岗 / 20 条**，与语义类有 1 岗重叠。
 - 另有 5 岗门类码与名称错配，只记 `gate_code_name_mismatch`，不进 `conflicts` 数组。
 
@@ -38,7 +39,7 @@
 | agency_category_unverified | 13 | needs_recruiting_agency_explanation | 否 |
 | national_vocabulary_or_open_scope | 181 | human_interpretation_only | 否 |
 | provisional_gate_rule | 5 | needs_recruiting_agency_explanation | 否 |
-| semantic_conflict | 44 | needs_recruiting_agency_explanation | 否 |
+| semantic_conflict | 44 | mostly_context_or_format; a small direct subset needs the agency | 否 |
 | multi_namespace_diagnostic | 11 | human_interpretation_only | 否 |
 | mixed_degree_label | 15 | human_interpretation_only | 否 |
 
@@ -48,7 +49,7 @@
 
 - No applicable 2027 membership list found for the PBOC 经济金融类 or CMA 气象类 categories.
 - Some 备注 sentences mix degree levels without a clean label and need a human reading.
-- Semantic conflicts inside the source text need the recruiting agency to clarify.
+- Only the 2 direct name/code pairs inside content_conflict may need the recruiting agency to clarify; the other entries are context, format or alias artefacts and are not claims that the source is wrong.
 
 ## 能给 Opus 直接用
 

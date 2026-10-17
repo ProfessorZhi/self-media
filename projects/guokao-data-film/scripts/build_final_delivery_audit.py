@@ -40,6 +40,9 @@ def main():
     audit = json.loads((project / 'research' / 'FINAL_EVIDENCE_SCOPE_AUDIT_20261018.json').read_text())
     review = json.loads((project / 'research' / 'REVIEW_STATUS_20261018.json').read_text())
     manifest = json.loads((project / 'data' / 'major_evidence_2027' / 'manifest.json').read_text())
+    campaign_path = project / 'research' / 'GAP_RESOLUTION_CAMPAIGN_20261018.json'
+    campaign = json.loads(campaign_path.read_text()) if campaign_path.exists() else {}
+    campaign_conflicts = campaign.get('lanes', {}).get('B_conflict_audit', {})
 
     coverage = facts['coverage']
     conflicts = facts['conflicts']
@@ -94,10 +97,17 @@ def main():
             # structured conflict count (54) and NOT the review bucket (55)
             'positions': conflicts['semantic_positions'],
             'entries': conflicts['semantic_entries'],
-            'classification': 'needs_recruiting_agency_explanation',
-            'why': ('A printed name belongs to a different code. The source text itself is inconsistent; '
-                    'the data records the span and both names rather than picking a winner. '
-                    'Position and entry counts are distinct: one position can carry several entries.'),
+            'direct_entries': campaign_conflicts.get(
+                'by_verdict', {}).get('direct_pair_needs_agency_confirmation'),
+            'direct_positions': campaign_conflicts.get('direct_positions'),
+            'classification': 'mostly_context_or_format; a small direct subset needs the agency',
+            'why': ('These are the machine-recorded content_conflict entries. Re-audit shows most of them '
+                    'are reading artefacts: a slash-grouped code run sharing one name, a catalog name '
+                    'that itself contains 、, a category code followed by its members, a 类 suffix, or an '
+                    'old/short alias. Only direct_pair_needs_agency_confirmation (see direct_entries) '
+                    'cannot be explained by the surrounding text and may need the recruiting agency to '
+                    'clarify. None of these entries is asserted to be a source error, and none changes '
+                    'what the position accepts.'),
             'autonomously_fixable': False,
             'evidence': 'node scripts/query_major_evidence.mjs --review-status --bucket candidate_with_conflict',
         },
@@ -170,7 +180,10 @@ def main():
         'external_blockers': [
             'No applicable 2027 membership list found for the PBOC 经济金融类 or CMA 气象类 categories.',
             'Some 备注 sentences mix degree levels without a clean label and need a human reading.',
-            'Semantic conflicts inside the source text need the recruiting agency to clarify.',
+            (f'Only the {campaign_conflicts.get("by_verdict", {}).get("direct_pair_needs_agency_confirmation", 2)} '
+             'direct name/code pairs inside content_conflict may need the recruiting agency to clarify; '
+             'the other entries are context, format or alias artefacts and are not claims that the source '
+             'is wrong.'),
         ],
         'not_delivered': [
             'Any applicant-eligibility verdict.',
@@ -187,6 +200,9 @@ def main():
     path = project / 'research' / 'FINAL_DELIVERY_AUDIT_20261018.json'
     path.write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
 
+    verdicts = campaign_conflicts.get('by_verdict', {})
+    direct_entries = campaign_conflicts.get('by_verdict', {}).get('direct_pair_needs_agency_confirmation')
+    direct_positions = campaign_conflicts.get('direct_positions')
     md = f"""# 国考 2027 专业证据：交付状态
 
 生成：2026-10-18（本地，Asia/Shanghai）。数据口径来自 [CURRENT_SNAPSHOT](CURRENT_SNAPSHOT.json)，该文件由
@@ -216,6 +232,7 @@ def main():
 - 备注代码 {facts['remarks']['codes_total']:,} 处：显式学历标签 {facts['remarks']['explicit_label']}、回退岗位学历 {facts['remarks']['fallback']:,}、混合标签回退并标记 {facts['remarks']['ambiguous']}。
 - 结构化冲突 **{conflicts['positions']} 岗 / {conflicts['entries']} 条**。
   - 语义冲突（content_conflict）：**{conflicts['semantic_positions']} 岗 / {conflicts['semantic_entries']} 条**——该类自己触达的岗位数，不等于全库结构化冲突 {conflicts['positions']} 岗，也不等于复核桶的 55。
+  - 其中**无法由上下文/格式/旧名直接解释的仅 {direct_entries} 条（{direct_positions} 岗）**；其余 {conflicts['semantic_entries'] - (direct_entries or 0)} 条为：斜杠共享名称 {verdicts.get('grouped_notation',0)}、旧名/简称 {verdicts.get('alias_or_abbreviation_requires_context',0)}、类后缀 {verdicts.get('suffix_variant',0)}、成员枚举 {verdicts.get('category_member_example',0)}、全名含顿号被截断 {verdicts.get('tokenizer_boundary_artifact',0)}。**这些不是“源表写错”的结论。**
   - 多学历诊断（跨层 {conflicts['cross_level_same_code']} 条 + 省略“类” {conflicts['category_suffix_omitted']} 条）：**{conflicts['diagnostic_positions']} 岗 / {conflicts['diagnostic_entries']} 条**，与语义类有 {conflicts['semantic_and_diagnostic_overlap']} 岗重叠。
 - 另有 {conflicts['gate_code_name_mismatch']} 岗门类码与名称错配，只记 `gate_code_name_mismatch`，不进 `conflicts` 数组。
 
