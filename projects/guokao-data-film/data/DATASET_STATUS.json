@@ -1,19 +1,30 @@
 {
-  "schema_version": "1.0.0",
-  "updated": "2026-10-17",
+  "schema_version": "1.1.0",
+  "updated": "2026-10-18",
   "primary_handoff": "../DATA_HANDOFF.md",
   "current": [
     {
       "path": "positions_2027/manifest.json",
-      "role": "2027_raw_position_facts"
+      "role": "2027_raw_position_facts",
+      "verification": "19,426 positions cell-verified against the official national 招考简章 workbook (524,502 cells, 0 differences)"
     },
     {
       "path": "majors_2027/manifest.json",
-      "role": "all_position_major_texts_and_catalog_reference_candidates"
+      "role": "all_position_major_texts_and_catalog_reference_candidates",
+      "coverage_note": "专业 column only, three catalogs. Superseded for coverage statistics by major_evidence_2027; retained as the reproducible before-layer."
+    },
+    {
+      "path": "major_evidence_2027/manifest.json",
+      "role": "per_position_major_evidence_across_major_and_remarks_columns",
+      "coverage_note": "专业 + 备注, five catalogs, exclusion lists, conflict classes, reason taxonomy"
     },
     {
       "path": "catalogs/",
       "role": "official_catalogs_with_separate_namespaces"
+    },
+    {
+      "path": "sources/manifest.json",
+      "role": "pinned_source_binaries_with_url_and_sha256"
     },
     {
       "path": "position_conditions_2027.json",
@@ -38,6 +49,61 @@
     {
       "path": "official_2027_immigration_plan.json",
       "role": "official_agency_plan"
+    }
+  ],
+  "catalogs": [
+    {
+      "path": "catalogs/major_bachelor_2026_official_parsed.json",
+      "namespace": "moe-bachelor:2026",
+      "scope": "13 gates / 92 categories / 883 majors",
+      "added": "2026-10-17"
+    },
+    {
+      "path": "catalogs/major_graduate_2022_official_parsed.json",
+      "namespace": "moe-graduate:2022",
+      "scope": "14 gates / 117 first-level disciplines / 67 professional degree categories; no six-digit secondary disciplines",
+      "added": "2026-10-17"
+    },
+    {
+      "path": "catalogs/major_graduate_codebook_2023_admissions_official_parsed.json",
+      "namespace": "moe-graduate-codebook:2023-admissions",
+      "scope": "785 nodes including 602 six-digit secondary disciplines; enrollment code book dated 2022-09",
+      "added": "2026-10-18"
+    },
+    {
+      "path": "catalogs/major_graduate_codebook_2024_admissions_official_parsed.json",
+      "namespace": "moe-graduate-codebook:2024-admissions",
+      "scope": "791 nodes including 554 six-digit secondary disciplines; enrollment code book dated 2023-09",
+      "added": "2026-10-18"
+    },
+    {
+      "path": "catalogs/major_selfset_2026_official_parsed.json",
+      "namespace": "moe-selfset:2026",
+      "scope": "5,536 self-set secondary entries and 1,214 cross-discipline entries across 497 institutions; names only, no locally assigned codes",
+      "added": "2026-10-18"
+    },
+    {
+      "path": "catalogs/major_tax_2027_official_parsed.json",
+      "namespace": "sat-recruitment:2027",
+      "scope": "53 categories / 849 membership edges; no per-member education level or MOE code",
+      "added": "2026-10-17"
+    }
+  ],
+  "reports": [
+    {
+      "path": "../research/OFFICIAL_NATIONAL_TABLE_VERIFICATION_20261018.json",
+      "role": "official national workbook cell verification",
+      "result": "PASS: 19,426 positions, 524,502 compared cells, 0 content differences"
+    },
+    {
+      "path": "../research/MAJOR_EVIDENCE_VERIFICATION_20261018.json",
+      "role": "major-evidence invariants",
+      "result": "PASS"
+    },
+    {
+      "path": "../research/DATA_VALIDATION_20261017_V2.json",
+      "role": "repository-wide validation report",
+      "result": "PASS: 192,487 explicit assertions"
     }
   ],
   "legacy": [
@@ -89,7 +155,12 @@
     "Do not combine original HTML 28 groups with the 19 third-party analysis tags without an explicit row-level mapping.",
     "Source text and original conditions take priority over derived flags.",
     "Major-code mentions and catalog references are not applicant eligibility.",
+    "Never merge the same code across education levels; the enrollment code books keep one namespace per edition.",
+    "A code ending in 00 is the enrollment form of its four-digit parent, not a new major.",
+    "Names listed inside 不含/除 exclusion brackets are exclusions, never coverage.",
+    "Z, J and S codes are institution-local; the 2026 roster publishes names only, so no code-to-name link may be inferred.",
     "A missing job cutoff is not zero; retain year, batch and score basis.",
-    "Sources and SHA-256 attest only the verification scopes actually recorded."
+    "Sources and SHA-256 attest only the verification scopes actually recorded.",
+    "An official national workbook match does not cover later amendments or agency-specific major catalogs that were never published."
   ]
 }

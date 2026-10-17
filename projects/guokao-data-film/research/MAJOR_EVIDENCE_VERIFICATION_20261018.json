@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0.0",
+  "status": "PASS",
+  "evidence_manifest": "data/major_evidence_2027/manifest.json",
+  "evidence_manifest_sha256": "3f059d7f9fe3830438387a0163fe286648b8c182cca06efce9736f49eca2eef6",
+  "positions": 19426,
+  "hires": 35691,
+  "coverage_before": 18176,
+  "coverage_after": 18655,
+  "residual_positions": 771,
+  "checks": {
+    "position_records": 19426,
+    "major_code_spans": 13078,
+    "resolved_major_codes": 12210,
+    "codes_outside_education_scope": 41,
+    "remarks_code_spans": 1822,
+    "conflicts": 100,
+    "positions_with_exclusion_lists": 600,
+    "enrollment_00_alias_codes": 55,
+    "code_index_entries": 909,
+    "codes_present_in_both_columns": 238
+  },
+  "invariants": [
+    "every position appears exactly once and matches its position-shard row",
+    "every 专业 code span round-trips to the original characters",
+    "every 备注 code span round-trips to the original characters",
+    "a code never resolves outside the education scope of its own clause",
+    "trailing-00 codes are recorded as enrollment aliases, never as new majors",
+    "every code-name conflict carries a class, a span and surrounding context",
+    "the code index position sets equal the per-position records"
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0.0",
+  "audit_name": "official_national_2027_position_table_verification",
+  "generated_at_utc": "2026-10-17T18:04:53.913614+00:00",
+  "generated_date_timezone": "Asia/Shanghai",
+  "source": {
+    "id": "national_2027_official_zhaokao_jianzhang",
+    "portal_url": "http://bm.scs.gov.cn/kl2027",
+    "portal_redirect": "http://bm.scs.gov.cn/pp/gkweb/core/web/ui/business/home/gkhome.html",
+    "resource_list_api": "http://dl.scs.gov.cn/api/res/8a81f6eca0221f1401a0242759fc0000/1110",
+    "download_url": "http://dl.scs.gov.cn/download/8a81f6d1a129c3d401a133dca26b00d2",
+    "resource_id": "8a81f6d1a129c3d401a133dca26b00d2",
+    "resource_name": "中央机关及其直属机构2027年度考试录用公务员招考简章.zip",
+    "zip_sha256": "bbe7fb85ac4ab2932672203392ef5f1756a454dab54346f0fb42286a874c1831",
+    "zip_bytes": 1764109,
+    "workbook_filename": "中央机关及其直属机构2027年度考试录用公务员招考简章.xls",
+    "workbook_sha256": "6b3da70baabe31a4a202c6b1179040db7003a956bc85c79cd35e3fb739d9520a",
+    "workbook_bytes": 9654272,
+    "retrieval_date": "2026-10-18",
+    "source_level": "recruiting_authority_official_attachment"
+  },
+  "method": {
+    "join_key": [
+      "年度",
+      "部门代码",
+      "职位代码"
+    ],
+    "key_serialization": "2027:<six-digit department code>:<twelve-digit position code>",
+    "text_comparison": "exact Unicode string equality",
+    "numeric_handling": "integral Excel floats rendered as decimal strings, same rule on both sides",
+    "blank_handling": "empty cell becomes the empty string on both sides",
+    "workbook_location_compared": "source_sheet and source_row",
+    "read_only": true
+  },
+  "scope": {
+    "national_positions_compared": 19426,
+    "national_hires_compared": 35691,
+    "original_fields_per_position": 27,
+    "compared_cells": 524502,
+    "content_difference_cells": 0,
+    "workbook_location_differences": 0,
+    "compared_sheets": [
+      {
+        "sheet": "中央党群机关",
+        "positions": 99,
+        "hires": 138
+      },
+      {
+        "sheet": "中央国家行政机关（本级）",
+        "positions": 312,
+        "hires": 538
+      },
+      {
+        "sheet": "中央国家行政机关省级以下直属机构",
+        "positions": 18193,
+        "hires": 34091
+      },
+      {
+        "sheet": "中央国家行政机关参照公务员法管理事业单位",
+        "positions": 822,
+        "hires": 924
+      }
+    ]
+  },
+  "result": {
+    "status": "PASS",
+    "all_19_426_positions_cell_equal": true,
+    "all_27_fields_equal": true,
+    "hires_conserved": true,
+    "statement": "Every one of the 19,426 2027 positions matches the official 招考简章 workbook cell for cell across all 27 original fields, including workbook sheet and row."
+  },
+  "limitations": [
+    "This verifies the national workbook published on the exam portal on 2026-10-18 against the committed mirror-derived shards. It does not verify later amendments or corrections.",
+    "It does not produce applicant eligibility, and it does not verify the major catalogs.",
+    "Department-specific attachments verified in earlier rounds remain separate evidence; this national workbook supersedes their coverage for the fields it contains."
+  ],
+  "supersedes": {
+    "prior_subset_verification_positions": 805,
+    "prior_subset_verification_hires": 1501,
+    "note": "The 805-position figure covered three department attachments only. The official national workbook covers all 19,426 positions and is recorded separately."
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0.0",
+  "as_of": "2026-10-18",
+  "purpose": "Pinned public source binaries obtained in this round, with URL and SHA-256.",
+  "note": "These files are stored so the hashes in the parsed catalogs and reports can be re-checked without network access.",
+  "sources": [
+    {
+      "file": "zhaokao_jianzhang_2027.zip",
+      "id": "national_2027_official_zhaokao_jianzhang",
+      "url": "http://dl.scs.gov.cn/download/8a81f6d1a129c3d401a133dca26b00d2",
+      "discovery_urls": [
+        "http://bm.scs.gov.cn/kl2027",
+        "http://dl.scs.gov.cn/api/res/8a81f6eca0221f1401a0242759fc0000/1110"
+      ],
+      "title": "中央机关及其直属机构2027年度考试录用公务员招考简章.zip",
+      "authority": "中央公务员主管部门",
+      "role": "national position workbook, all 19,426 positions cell-verified",
+      "retrieved": "2026-10-18",
+      "contents": [
+        "中央机关及其直属机构2027年度考试录用公务员招考简章.xls"
+      ],
+      "bytes": 1764109,
+      "sha256": "bbe7fb85ac4ab2932672203392ef5f1756a454dab54346f0fb42286a874c1831"
+    },
+    {
+      "file": "grad_codebook_2023_admissions.docx",
+      "id": "moe-graduate-codebook-2023-admissions",
+      "url": "https://www.wcjyj.com/data/upload/file/2311/15/65548688b8aae.docx",
+      "title": "研究生招生学科、专业代码册（二〇二二年九月）",
+      "authority": "教育部高校学生司",
+      "role": "six-digit graduate secondary discipline codes for 2023 admissions",
+      "retrieved": "2026-10-18",
+      "contents": [],
+      "bytes": 34045,
+      "sha256": "7e9dcc8a2186bcaa32e7d135259ee61939044fbfca3fc5690607558db8c16850"
+    },
+    {
+      "file": "grad_codebook_2024_admissions.pdf",
+      "id": "moe-graduate-codebook-2024-admissions",
+      "url": "https://rst.xinjiang.gov.cn/xjrst/c112746/202606/6200d15452494c00a1a50f6d7bb9edbf/files/2.%E9%99%84%E4%BB%B62%EF%BC%9A%E7%A0%94%E7%A9%B6%E7%94%9F%E6%8B%9B%E7%94%9F%E5%AD%A6%E7%A7%91%E4%B8%93%E4%B8%9A%E4%BB%A3%E7%A0%81%E5%86%8C%EF%BC%882023%E5%B9%B49%E6%9C%88%EF%BC%89.pdf",
+      "title": "研究生招生学科专业代码册（二〇二三年九月，教学司〔2023〕11号 附件）",
+      "authority": "教育部高校学生司",
+      "role": "six-digit graduate secondary discipline codes for 2024 admissions",
+      "retrieved": "2026-10-18",
+      "contents": [],
+      "bytes": 500452,
+      "sha256": "b653de028b6a288be3f7fda676619a1a04639e42fe834e2be50e6e506096940d"
+    },
+    {
+      "file": "selfset_secondary_2026.pdf",
+      "id": "moe-selfset-2026-secondary",
+      "url": "http://www.moe.gov.cn/jyb_xxgk/s5743/s5744/A22/202610/W020261009665543280642.pdf",
+      "source_page_url": "http://www.moe.gov.cn/jyb_xxgk/s5743/s5744/A22/202610/t20261008_1453325.html",
+      "title": "学位授予单位（不含军队单位）自主设置二级学科名单（截至2026年6月30日）",
+      "authority": "中华人民共和国教育部",
+      "role": "self-set secondary discipline names, 5,536 entries",
+      "retrieved": "2026-10-18",
+      "contents": [],
+      "bytes": 628523,
+      "sha256": "a5350282f7e968f66f5a47bea9c79f0a049efe9f7c2a49c6d1e1eb1beeae75a8"
+    },
+    {
+      "file": "selfset_cross_2026.pdf",
+      "id": "moe-selfset-2026-cross",
+      "url": "http://www.moe.gov.cn/jyb_xxgk/s5743/s5744/A22/202610/W020261009665543299282.pdf",
+      "source_page_url": "http://www.moe.gov.cn/jyb_xxgk/s5743/s5744/A22/202610/t20261008_1453325.html",
+      "title": "学位授予单位（不含军队单位）自主设置交叉学科名单（截至2026年6月30日）",
+      "authority": "中华人民共和国教育部",
+      "role": "self-set cross discipline names, 1,214 entries",
+      "retrieved": "2026-10-18",
+      "contents": [],
+      "bytes": 281771,
+      "sha256": "98c0f760f98d3983435deaf2a99afa92cce998f32832d83cc6f24115daf8817c"
+    }
+  ]
+}
