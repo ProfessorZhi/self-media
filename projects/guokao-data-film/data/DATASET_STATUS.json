@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1.0",
-  "updated": "2026-10-18",
+  "updated": "2026-10-19",
   "primary_handoff": "../DATA_HANDOFF.md",
   "current": [
     {
@@ -16,7 +16,7 @@
     {
       "path": "major_evidence_2027/manifest.json",
       "role": "per_position_major_evidence_across_major_and_remarks_columns",
-      "coverage_note": "专业 + 备注, five catalogs, exclusion lists, conflict classes, reason taxonomy, two documented gate normalizations; coverage 18,680 / residual 746"
+      "coverage_note": "专业 + 备注, five catalogs, exclusion lists, conflict classes, reason taxonomy, documented gate normalizations, parser fixes for 或 and 等专业; coverage 18,698 / residual 728 / review-status 10 mutually exclusive buckets"
     },
     {
       "path": "catalogs/",
@@ -114,6 +114,16 @@
       "path": "../research/AGENCY_MAJOR_CATEGORY_EVIDENCE_20261018.json",
       "role": "agency major-category evidence casebook (PBOC, CMA)",
       "result": "no applicable 2027 membership list found; recorded as unresolved"
+    },
+    {
+      "path": "../research/REVIEW_STATUS_20261019.json",
+      "role": "mutually exclusive review-status stratification of 5,835 positions",
+      "result": "PASS: 10 buckets sum to 5,835; no-candidate buckets equal the residual list"
+    },
+    {
+      "path": "../research/RESIDUAL_STRATA_20261019.json",
+      "role": "residual stratification by raw text (agency vs national vocabulary)",
+      "result": "728 positions: 533 agency no public list, 13 agency unverified, 182 national vocabulary/open scope"
     }
   ],
   "legacy": [
@@ -174,6 +184,9 @@
     "An official national workbook match does not cover later amendments or agency-specific major catalogs that were never published.",
     "A requirement written as X门类 may resolve to the X discipline-gate node, citing the MOE 2027 statement; no other suffix normalization is allowed.",
     "A source-declared two-digit gate code in parentheses may resolve to that gate node.",
-    "Agency category phrases with no published membership list stay unresolved; a 2026 institution-recruitment catalog is not applicable to 2027 civil service positions."
+    "Agency category phrases with no published membership list stay unresolved; a 2026 institution-recruitment catalog is not applicable to 2027 civil service positions.",
+    "Review status is a work state: a catalog candidate is not a cleared position, and the 5,835 review denominator is not an uncovered count.",
+    "The MOE 门类 rule is cited from a statement scoped to MOE positions; applying it to other agencies is an inference and is flagged as such.",
+    "Conflict metrics are distinct: positions (59), structured conflict entries (100) and content_conflict entries (67) must not be interchanged."
   ]
 }

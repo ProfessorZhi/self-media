@@ -2,12 +2,12 @@
   "schema_version": "1.0.0",
   "status": "PASS",
   "evidence_manifest": "data/major_evidence_2027/manifest.json",
-  "evidence_manifest_sha256": "bd3ce93d6769b329e63c24456e842a705dc215c2f06b27f898e1775c3b7a39c2",
+  "evidence_manifest_sha256": "fb432265a78c255948cbff94f3858e3784e8d59136f2854e325b97749f66bfcb",
   "positions": 19426,
   "hires": 35691,
   "coverage_before": 18176,
-  "coverage_after": 18680,
-  "residual_positions": 746,
+  "coverage_after": 18698,
+  "residual_positions": 728,
   "checks": {
     "position_records": 19426,
     "major_code_spans": 13078,
@@ -20,6 +20,23 @@
     "code_index_entries": 909,
     "codes_present_in_both_columns": 238
   },
+  "review_status": {
+    "review_records": 5835,
+    "buckets": {
+      "candidate_with_degree_scope": 1994,
+      "candidate_with_open_scope": 1234,
+      "candidate_legacy_reason_superseded": 997,
+      "no_candidate_other": 182,
+      "candidate_with_conflict": 59,
+      "candidate_with_namespace_ambiguity": 501,
+      "candidate_with_exclusion": 276,
+      "candidate_with_unresolved_vocabulary": 46,
+      "no_candidate_agency_no_public_list": 533,
+      "no_candidate_agency_unverified": 13
+    },
+    "no_candidate_matches_residual": true,
+    "legacy_reason_superseded": 997
+  },
   "invariants": [
     "every position appears exactly once and matches its position-shard row",
     "every 专业 code span round-trips to the original characters",
@@ -27,6 +44,8 @@
     "a code never resolves outside the education scope of its own clause",
     "trailing-00 codes are recorded as enrollment aliases, never as new majors",
     "every code-name conflict carries a class, a span and surrounding context",
-    "the code index position sets equal the per-position records"
+    "the code index position sets equal the per-position records",
+    "review buckets are mutually exclusive and sum to the legacy denominator 5,835",
+    "the union of no-candidate buckets equals the residual list exactly"
   ]
 }

@@ -83,6 +83,14 @@ function positionFacts(row) {
   };
 }
 
+const AGENCY_MARKERS = {
+  pboc: '中国人民银行', cma: '气象', customs: '海关', tax: '税务',
+  nfra: '金融监督管理', csrc: '证券监督管理',
+};
+function agencyMarkersFor(code) {
+  return AGENCY_MARKERS[code] ?? null;
+}
+
 function matchesEducation(scopes) {
   if (!education) return true;
   const wanted = education === 'undergraduate' ? 'bachelor' : education;
@@ -91,6 +99,10 @@ function matchesEducation(scopes) {
 
 const records = await loadShards(evidenceDir, evidenceManifest.position_evidence);
 const positions = await loadPositions();
+const reviewStatus = evidenceManifest.review_status
+  ? await loadShards(evidenceDir, evidenceManifest.review_status.shards) : [];
+const residualStrata = evidenceManifest.residual_strata
+  ? await loadShards(evidenceDir, evidenceManifest.residual_strata.shards) : [];
 
 function report(summary, rows) {
   if (asJson) {
@@ -159,14 +171,47 @@ if (args.includes('--stats')) {
     note: 'Catalog-reference candidates only. Not an applicant-eligibility result.',
   };
   report(summary, rows.slice(0, limit));
+} else if (args.includes('--review-status')) {
+  const bucket = flag('--bucket');
+  const riskOnly = args.includes('--risk');
+  const rows = [];
+  for (const item of reviewStatus) {
+    if (bucket && item.bucket !== bucket) continue;
+    if (riskOnly && !(item.risk_flags ?? []).length) continue;
+    if (agency && !(item.department_name ?? '').includes(agencyMarkersFor(agency))) continue;
+    const facts = positionFacts(positions.get(item.id));
+    rows.push({...facts, bucket: item.bucket, markers: item.markers,
+      risk_flags: item.risk_flags, excluded_terms: item.excluded_terms,
+      unresolved_codes: item.unresolved_codes, conflict_count: item.conflict_count,
+      old_layer_review_reasons: item.old_layer_review_reasons, matched: []});
+  }
+  const summary = {
+    query: {review_status: true, bucket, risk_only: riskOnly, agency, education},
+    positions: rows.length,
+    hires: rows.reduce((total, row) => total + row.hires, 0),
+    note: 'Review work state, not an eligibility verdict. legacy_reason_superseded means the old warning no longer reproduces.',
+  };
+  report(summary, rows.slice(0, limit));
+} else if (args.includes('--review-stats')) {
+  console.log(JSON.stringify(evidenceManifest.review_status?.summary ?? {}, null, 2));
+} else if (args.includes('--residual') && flag('--strat-bucket')) {
+  const wanted = flag('--strat-bucket');
+  const rows = [];
+  for (const item of residualStrata) {
+    if (item.bucket !== wanted) continue;
+    if (agency && !(item.department_name ?? '').includes(agencyMarkersFor(agency))) continue;
+    const facts = positionFacts(positions.get(item.id));
+    rows.push({...facts, bucket: item.bucket, unresolved_phrases: item.unresolved_phrases,
+      reason_classes: item.reason_classes, matched: []});
+  }
+  const summary = {query: {strat_bucket: wanted, agency}, positions: rows.length,
+    hires: rows.reduce((total, row) => total + row.hires, 0),
+    note: 'No catalog candidate. Bucket assigned from the raw 专业 text.'};
+  report(summary, rows.slice(0, limit));
 } else if (args.includes('--residual')) {
   const reasons = multi('--reason');
-  const agencyMarkers = {
-    pboc: '中国人民银行', cma: '气象', customs: '海关', tax: '税务',
-    nfra: '金融监督管理', csrc: '证券监督管理',
-  };
-  if (agency && !agencyMarkers[agency]) {
-    console.error(`unknown --agency ${agency}; expected one of ${Object.keys(agencyMarkers).join(', ')}`);
+  if (agency && !agencyMarkersFor(agency)) {
+    console.error(`unknown --agency ${agency}; expected one of pboc, cma, customs, tax, nfra, csrc`);
     process.exit(2);
   }
   const rows = [];
@@ -175,7 +220,7 @@ if (args.includes('--stats')) {
     if (!matchesEducation(record.education_scopes)) continue;
     if (reasons.length && !reasons.every(reason => (record.reason_classes ?? []).includes(reason))) continue;
     const facts = positionFacts(positions.get(record.id));
-    if (agency && !facts.department_name.includes(agencyMarkers[agency])) continue;
+    if (agency && !facts.department_name.includes(agencyMarkersFor(agency))) continue;
     if (flag('--text') && !facts.major_raw.includes(flag('--text'))) continue;
     rows.push({...facts, reason_classes: record.reason_classes, matched: []});
   }
@@ -188,7 +233,9 @@ if (args.includes('--stats')) {
   report(summary, rows.slice(0, limit));
 } else {
   console.log(
-    'Usage: node scripts/query_major_evidence.mjs --code <code> | --name <name> | --catalog <catalog-id> | --position <id> | --residual [--reason <r>] | --stats\n' +
+    'Usage: node scripts/query_major_evidence.mjs --code <code> | --name <name> | --catalog <catalog-id> | --position <id>\n' +
+    '       | --residual [--reason <r>] [--strat-bucket <b>] | --review-status [--bucket <b>] [--risk]\n' +
+    '       | --review-stats | --stats\n' +
     '  optional: --field 专业|备注  --education bachelor|graduate  --agency pboc|cma|tax|customs|nfra|csrc  --limit N  --json'
   );
 }

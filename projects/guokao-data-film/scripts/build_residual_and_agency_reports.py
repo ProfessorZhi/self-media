@@ -78,6 +78,28 @@ AGENCY_CHECKS = [
         'conclusion': '气象局未发布适用于 2027 公务员岗位的“气象类”成员名单。',
     },
     {
+        'id': 'nfra_exam_outline_2027',
+        'authority': '国家金融监督管理总局',
+        'url': 'http://dl.scs.gov.cn/api/article/8a81f6d8a129c66701a1335b58c700c4',
+        'title': '2027年度国家金融监督管理总局招考职位专业科目笔试考试大纲',
+        'checked_at': '2026-10-19',
+        'http_status': 200,
+        'contains_category_membership_list': False,
+        'evidence': '正文 4,197 字；“专业目录/专业分类/学科门类/专业要求/学位/所学专业”各 0 次；文中“财经类”指笔试试卷类别。',
+        'conclusion': '笔试大纲不定义专业类别成员。',
+    },
+    {
+        'id': 'csrc_exam_outline_2027',
+        'authority': '中国证券监督管理委员会',
+        'url': 'http://dl.scs.gov.cn/api/article/8a81f6d0a135938a01a135d657580004',
+        'title': '2027年度中国证监会招考职位专业科目笔试考试大纲',
+        'checked_at': '2026-10-19',
+        'http_status': 200,
+        'contains_category_membership_list': False,
+        'evidence': '页面正文仅“见附件”，资源列表为财金类/法律类/会计类/计算机类等 .doc 笔试大纲；这些类别是试卷类别，不是专业类别。',
+        'conclusion': '未提供专业目录；仅有按职位类别划分的笔试大纲。',
+    },
+    {
         'id': 'cma_institution_catalog_2026',
         'authority': '中国气象局人事司（经河南省气象局公告引用）',
         'url': 'http://ha.cma.gov.cn/zfxxgk/zwgk/rsxx/zpxx/202510/W020251029534266455165.pdf',
@@ -158,11 +180,88 @@ def v1_coverage(record):
     return False
 
 
+def build_agency_report():
+    """Agency category evidence payload: constants plus verified page checks."""
+    return {
+        'schema_version': '1.0.0',
+        'report_id': 'agency-major-category-evidence-20261018',
+        'generated_at_utc': datetime.now(timezone.utc).isoformat(),
+        'question': ('是否存在明确适用于 2027 年度公务员岗位的权威“经济金融类”/“气象类”成员名单？'),
+        'answer': ('截至 2026-10-18，公开官方来源中没有找到此类成员名单。'
+                   '两类职位只能按原文的举例与排除句理解，不能据此判定个人可报。'),
+        'checked_sources': AGENCY_CHECKS,
+        'category_findings': [
+            {
+                'phrase': '经济金融类（不含统计、国际商务、资产评估、经济与贸易类、国际贸易等专业）',
+                'agency': 'pboc',
+                'agency_label': '中国人民银行系统',
+                'positions': 420,
+                'hires': 722,
+                'published_membership': False,
+                'explicitly_excluded': ['统计', '国际商务', '资产评估', '经济与贸易类', '国际贸易'],
+                'examples_used_in_some_positions': [
+                    '国际金融', '世界经济', '西方经济学', '货币银行学', '计量经济学',
+                    '数量经济学', '金融工程', '金融数学', '金融科技', '金融审计', '计算金融',
+                ],
+                'note': ('这十一个名称出自部分职位的专业栏，是对“经济金融类”的举例，不是定义；'
+                         '其中若干名称可在教育部目录中找到精确节点，但类别本身没有成员表。'),
+            },
+            {
+                'phrase': '气象类',
+                'agency': 'cma',
+                'agency_label': '中国气象局系统',
+                'positions': 88,
+                'hires': 88,
+                'published_membership': False,
+                'non_applicable_reference': {
+                    'title': '气象部门人员招聘专业目录（2026版）',
+                    'publisher': '中国气象局人事司',
+                    'scope': '事业单位公开招聘，非公务员录用',
+                    'applies_to_2027_civil_service': False,
+                    'retrieved': False,
+                    'referenced_by': 'http://ha.cma.gov.cn/zfxxgk/zwgk/rsxx/zpxx/202510/W020251029534266455165.pdf',
+                    'why_not_used': ('版本年份为 2026、适用对象为事业单位公开招聘；'
+                                     '本轮未取得附件原表，且按用户口径不得据此清除 2027 公务员缺口。'),
+                },
+            },
+        ],
+        'applicable_rules_found': [
+            {
+                'title': '关于教育部2027年度公务员考录职位要求的说明',
+                'authority': '教育部人事司',
+                'date': '2026-10-14',
+                'url': 'http://www.moe.gov.cn/s78/A04/tongzhi/202610/t20261014_1454189.html',
+                'applies_to': '教育部 2027 年度考录职位',
+                'rule_used': '学科门类要求覆盖该门类下的专业与一级学科；一级学科要求覆盖其二级学科。',
+                'usage_scope': '仅作为“门类=学科门类节点”的解析依据，未用于判定个人资格。',
+            }
+        ],
+        'what_would_change_the_answer': CHANGE_PATH,
+        'status': 'unresolved_by_public_sources',
+        'operational_note': ('这不是工具缺陷：数据层已经能解析代码与精确名称，剩下的是招录机关从未公开的类别成员定义。'
+                             '若后续发布，按同一流程新增 agency-scoped catalog 并重跑即可。'),
+    }
+
+
+
+def write_agency(project):
+    path = project / 'research' / 'AGENCY_MAJOR_CATEGORY_EVIDENCE_20261018.json'
+    path.write_text(json.dumps(build_agency_report(), ensure_ascii=False, indent=2) + '\n',
+                    encoding='utf-8')
+    print(json.dumps({'report': str(path), 'bytes': path.stat().st_size,
+                      'sha256': sha256_bytes(path.read_bytes())}, ensure_ascii=False))
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--project', type=Path, default=Path(__file__).resolve().parents[1])
+    parser.add_argument('--casebook-only', action='store_true',
+                        help='rewrite only the agency casebook; the historical v2 residual report stays frozen')
     args = parser.parse_args()
     project = args.project
+    if args.casebook_only:
+        write_agency(project)
+        return
     manifest, records, residual, positions, index, requirements = load(project)
     summary = manifest['summary']
 
@@ -309,69 +408,9 @@ def main():
         ],
     }
 
-    agency_report = {
-        'schema_version': '1.0.0',
-        'report_id': 'agency-major-category-evidence-20261018',
-        'generated_at_utc': datetime.now(timezone.utc).isoformat(),
-        'question': ('是否存在明确适用于 2027 年度公务员岗位的权威“经济金融类”/“气象类”成员名单？'),
-        'answer': ('截至 2026-10-18，公开官方来源中没有找到此类成员名单。'
-                   '两类职位只能按原文的举例与排除句理解，不能据此判定个人可报。'),
-        'checked_sources': AGENCY_CHECKS,
-        'category_findings': [
-            {
-                'phrase': '经济金融类（不含统计、国际商务、资产评估、经济与贸易类、国际贸易等专业）',
-                'agency': 'pboc',
-                'agency_label': '中国人民银行系统',
-                'positions': 420,
-                'hires': 722,
-                'published_membership': False,
-                'explicitly_excluded': ['统计', '国际商务', '资产评估', '经济与贸易类', '国际贸易'],
-                'examples_used_in_some_positions': [
-                    '国际金融', '世界经济', '西方经济学', '货币银行学', '计量经济学',
-                    '数量经济学', '金融工程', '金融数学', '金融科技', '金融审计', '计算金融',
-                ],
-                'note': ('这十一个名称出自部分职位的专业栏，是对“经济金融类”的举例，不是定义；'
-                         '其中若干名称可在教育部目录中找到精确节点，但类别本身没有成员表。'),
-            },
-            {
-                'phrase': '气象类',
-                'agency': 'cma',
-                'agency_label': '中国气象局系统',
-                'positions': 88,
-                'hires': 88,
-                'published_membership': False,
-                'non_applicable_reference': {
-                    'title': '气象部门人员招聘专业目录（2026版）',
-                    'publisher': '中国气象局人事司',
-                    'scope': '事业单位公开招聘，非公务员录用',
-                    'applies_to_2027_civil_service': False,
-                    'retrieved': False,
-                    'referenced_by': 'http://ha.cma.gov.cn/zfxxgk/zwgk/rsxx/zpxx/202510/W020251029534266455165.pdf',
-                    'why_not_used': ('版本年份为 2026、适用对象为事业单位公开招聘；'
-                                     '本轮未取得附件原表，且按用户口径不得据此清除 2027 公务员缺口。'),
-                },
-            },
-        ],
-        'applicable_rules_found': [
-            {
-                'title': '关于教育部2027年度公务员考录职位要求的说明',
-                'authority': '教育部人事司',
-                'date': '2026-10-14',
-                'url': 'http://www.moe.gov.cn/s78/A04/tongzhi/202610/t20261014_1454189.html',
-                'applies_to': '教育部 2027 年度考录职位',
-                'rule_used': '学科门类要求覆盖该门类下的专业与一级学科；一级学科要求覆盖其二级学科。',
-                'usage_scope': '仅作为“门类=学科门类节点”的解析依据，未用于判定个人资格。',
-            }
-        ],
-        'what_would_change_the_answer': CHANGE_PATH,
-        'status': 'unresolved_by_public_sources',
-        'operational_note': ('这不是工具缺陷：数据层已经能解析代码与精确名称，剩下的是招录机关从未公开的类别成员定义。'
-                             '若后续发布，按同一流程新增 agency-scoped catalog 并重跑即可。'),
-    }
-
+    write_agency(project)
     out_dir = project / 'research'
-    for name, payload in (('RESIDUAL_20271018_V2.json', residual_report),
-                          ('AGENCY_MAJOR_CATEGORY_EVIDENCE_20261018.json', agency_report)):
+    for name, payload in (('RESIDUAL_20271018_V2.json', residual_report),):
         path = out_dir / name
         path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
         print(json.dumps({'report': str(path), 'bytes': path.stat().st_size,

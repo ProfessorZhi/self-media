@@ -174,6 +174,12 @@ def compact_resolution(resolution):
     return out
 
 
+# Agencies whose 2027 civil-service pages were actually checked and found to
+# publish no major-category membership list. Other agencies are recorded as
+# unverified rather than asserted to have no list.
+AGENCIES_VERIFIED_NO_PUBLIC_LIST = {'pboc', 'cma'}
+AGENCIES_WITH_INHOUSE_CATEGORIES = {'pboc', 'cma', 'csrc', 'customs', 'nfra'}
+
 AGENCY_PATTERNS = [
     ('pboc', '中国人民银行'),
     ('cma', '气象'),
@@ -387,7 +393,27 @@ def term_name_hits(requirement, index, scopes):
     hits = []
     for term in requirement['name_references']:
         label = term.get('name_candidate')
-        if not label or label not in index.names:
+        if not label:
+            continue
+        # "会计学或审计学或财务管理" is a disjunction of exact names; the earlier
+        # parser only split on 、,，;；, so the whole string never matched.
+        if '或' in label:
+            for part in (p.strip() for p in label.split('或')):
+                if not part or part not in index.names:
+                    continue
+                resolution = index.resolve_name(part, scopes)
+                if resolution['status'] == 'unresolved':
+                    continue
+                hits.append({
+                    'name': part,
+                    'reference_kind_before': term['reference_kind'],
+                    'text': term['text'],
+                    'resolution': {'status': resolution['status'], 'nodes': resolution['nodes']},
+                    'evidence_quality': 'exact_name_in_disjunction',
+                    'member_in_open_list': False,
+                })
+            continue
+        if label not in index.names:
             continue
         # A term the earlier pass already matched adds no new evidence.
         if term['reference_kind'] == 'catalog_exact_name':
@@ -421,8 +447,16 @@ def parenthetical_names(major_raw, index, scopes):
         offset = group.start(1)
         lead = major_raw[max(0, group.start() - 16):group.start()]
         is_exclusion = bool(NEGATIVE.search(lead) or NEGATIVE.search(inner[:8]))
+        # "等专业" closes an open list. The listed members before it are still
+        # exact references, but the list is not exhaustive; the flag travels with
+        # the hit so the open scope is not lost.
+        open_list = '等' in inner
         for piece_match in re.finditer(r'[^、,，;；\s]+', inner):
             piece = piece_match.group()
+            stripped = re.sub(r'等(专业|学科|门类|类|相关专业)?$', '', piece).strip()
+            if stripped != piece:
+                open_list = True
+                piece = stripped
             if piece in index.names:
                 resolution = index.resolve_name(piece, scopes)
                 if resolution['status'] == 'unresolved':
@@ -434,6 +468,7 @@ def parenthetical_names(major_raw, index, scopes):
                     'resolution': {'status': resolution['status'], 'nodes': resolution['nodes']},
                     'evidence_quality': 'exact_name_inside_parentheses',
                     'is_exclusion': is_exclusion,
+                    'member_in_open_list': open_list,
                 })
     return hits
 
@@ -725,12 +760,16 @@ def main():
             # Only vocabulary that exists in no catalog at all is agency-internal.
             # 中国语言文学类 is an official bachelor category and is classified
             # as a level mismatch instead.
-            unknown_labels = [label for label in
-                              ((t.get('name_candidate') or '').strip() for t in requirement['name_references'])
-                              if label.endswith('类') and label not in index.names]
+            # Judged on the raw text, not on extracted term labels: phrasings such
+            # as "研究生为经济金融类专业" never become a standalone term.
+            unknown_labels = [phrase for phrase in re.findall(r'[\u4e00-\u9fff]{2,8}类', raw['专业'])
+                              if phrase not in index.names]
             agency = agency_of(raw['部门名称'])
-            if agency and unknown_labels:
+            if agency in AGENCIES_VERIFIED_NO_PUBLIC_LIST and (unknown_labels or '经济金融' in raw['专业']):
                 reasons.append('agency_category_without_published_membership')
+                agency_category_positions[agency] += 1
+            elif agency in AGENCIES_WITH_INHOUSE_CATEGORIES and unknown_labels:
+                reasons.append('agency_category_membership_unverified')
                 agency_category_positions[agency] += 1
         for reason in reasons:
             reason_counter[reason] += 1
@@ -746,6 +785,9 @@ def main():
         if conflicts:
             conflicts = conflicts[:6]
             conflict_records.append({'id': position_id, 'conflicts': conflicts})
+            # The per-record reason list must carry the marker too, otherwise a
+            # downstream report that reads only reason_classes misses the conflict.
+            reasons.append('code_name_conflict')
             reason_counter['code_name_conflict'] += 1
             for conflict in conflicts:
                 conflict_class_counter[conflict['conflict_class']] += 1
@@ -758,6 +800,21 @@ def main():
             entry['forms'][code['resolution']['form']] += 1
             for node in code['resolution'].get('nodes', []):
                 entry['names'].add(node['name'])
+
+        agency_code = agency_of(raw['部门名称'])
+        agency_category_phrases = []
+        if agency_code in AGENCIES_WITH_INHOUSE_CATEGORIES:
+            agency_category_phrases = sorted({
+                phrase for phrase in re.findall(r'[\u4e00-\u9fff]{2,8}类', raw['专业'])
+                if phrase not in index.names
+            })
+        if agency_category_phrases:
+            agency_context = {
+                'agency': agency_code,
+                'phrases': agency_category_phrases,
+                'membership_published': (False if agency_code in AGENCIES_VERIFIED_NO_PUBLIC_LIST
+                                         else 'unknown'),
+            }
 
         record = {
             'id': position_id,
@@ -782,6 +839,7 @@ def main():
             ],
             'major_parenthetical_names': [
                 {'name': hit['name'], 'is_exclusion': hit['is_exclusion'],
+                 'member_in_open_list': hit.get('member_in_open_list', False),
                  'resolution': compact_resolution(hit['resolution'])}
                 for hit in paren_names
             ],
@@ -812,6 +870,9 @@ def main():
             'reason_classes': reasons,
             'conflicts': conflicts,
         }
+        if agency_category_phrases:
+            record['agency_category_context'] = agency_context
+
         record = {key: value for key, value in record.items() if value not in ([], None, '')}
         records.append(record)
 
@@ -1028,7 +1089,9 @@ def main():
             'colloquial_gate_name_with_类_suffix': ('a discipline-gate name written with a 类 suffix, e.g. 理学类; '
                                                     'not an official category and not normalized'),
             'agency_category_without_published_membership': ('the agency uses an in-house category phrase such as '
-                                                             '经济金融类 or 气象类 and publishes no membership list'),
+                                                             '经济金融类 or 气象类 and its 2027 pages publish no membership list'),
+            'agency_category_membership_unverified': ('the agency uses an in-house category phrase, but whether it '
+                                                      'publishes a membership list was not verified in this round'),
             'code_name_conflict': 'a printed name next to a code disagrees with the catalog name',
         },
         'field_semantics': {

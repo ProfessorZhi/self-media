@@ -55,7 +55,15 @@ def load(project):
         assert len(content) == shard['bytes'], f'{shard["path"]}: byte length mismatch'
         assert sha256(content) == shard['sha256'], f'{shard["path"]}: SHA-256 mismatch'
         residual.extend(json.loads(content))
-    return manifest, index, positions, records, codes, residual
+    review = []
+    review_manifest = manifest.get('review_status')
+    if review_manifest:
+        for shard in review_manifest['shards']:
+            content = (evidence_dir / shard['path']).read_bytes()
+            assert len(content) == shard['bytes'], f'{shard["path"]}: byte length mismatch'
+            assert sha256(content) == shard['sha256'], f'{shard["path"]}: SHA-256 mismatch'
+            review.extend(json.loads(content))
+    return manifest, index, positions, records, codes, residual, review
 
 
 def main():
@@ -64,7 +72,7 @@ def main():
     parser.add_argument('--write-report', action='store_true')
     args = parser.parse_args()
     project = args.project
-    manifest, index, positions, records, code_records, residual = load(project)
+    manifest, index, positions, records, code_records, residual, review = load(project)
 
     checks = collections.Counter()
     ids = [record['id'] for record in records]
@@ -163,6 +171,34 @@ def main():
     dual_field = [code for code in code_records if len(code['fields']) == 2]
     checks['codes_present_in_both_columns'] = len(dual_field)
 
+    # ---- review-status stratification ---------------------------------
+    review_checks = {}
+    if review:
+        review_ids = [item['id'] for item in review]
+        assert len(review_ids) == len(set(review_ids)), 'review-status ids must be unique'
+        assert set(review_ids) <= set(positions), 'review-status ids must exist in the position shards'
+        declared = manifest['review_status']['summary']['buckets']
+        recomputed = collections.Counter(item['bucket'] for item in review)
+        assert sum(recomputed.values()) == 5_835, \
+            f'review buckets must sum to the legacy denominator 5,835, got {sum(recomputed.values())}'
+        assert dict(recomputed) == declared, 'review bucket counts must match the manifest summary'
+        no_candidate = {'no_candidate_agency_no_public_list', 'no_candidate_agency_unverified',
+                        'no_candidate_other'}
+        residual_ids = {item['id'] for item in residual}
+        bucket_no_candidate = {item['id'] for item in review if item['bucket'] in no_candidate}
+        assert bucket_no_candidate == residual_ids, \
+            'every residual position must sit in exactly one no-candidate bucket'
+        for item in review:
+            if item['bucket'] == 'candidate_legacy_reason_superseded':
+                assert item['old_layer_review_reasons'], 'superseded bucket requires a legacy reason'
+            assert set(item['risk_flags']) <= set(item['markers']), 'risk flags must be a subset of markers'
+        review_checks = {
+            'review_records': len(review),
+            'buckets': dict(recomputed),
+            'no_candidate_matches_residual': True,
+            'legacy_reason_superseded': recomputed['candidate_legacy_reason_superseded'],
+        }
+
     result = {
         'schema_version': '1.0.0',
         'status': 'PASS',
@@ -175,6 +211,7 @@ def main():
         'coverage_after': after,
         'residual_positions': len(residual),
         'checks': dict(checks),
+        'review_status': review_checks,
         'invariants': [
             'every position appears exactly once and matches its position-shard row',
             'every 专业 code span round-trips to the original characters',
@@ -183,6 +220,8 @@ def main():
             'trailing-00 codes are recorded as enrollment aliases, never as new majors',
             'every code-name conflict carries a class, a span and surrounding context',
             'the code index position sets equal the per-position records',
+            'review buckets are mutually exclusive and sum to the legacy denominator 5,835',
+            'the union of no-candidate buckets equals the residual list exactly',
         ],
     }
     text = json.dumps(result, ensure_ascii=False, indent=2) + '\n'

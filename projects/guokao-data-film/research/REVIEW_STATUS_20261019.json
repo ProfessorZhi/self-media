@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0.0",
+  "report_id": "review-status-20261019",
+  "generated_at_utc": "2026-10-17T19:18:32.618576+00:00",
+  "universe": {
+    "review_universe": 5835,
+    "review_universe_note": "Legacy denominator: requirements carrying at least one review reason in the original three-catalog layer.",
+    "buckets": {
+      "candidate_with_degree_scope": 1994,
+      "candidate_with_open_scope": 1234,
+      "candidate_legacy_reason_superseded": 997,
+      "no_candidate_other": 182,
+      "candidate_with_conflict": 59,
+      "candidate_with_namespace_ambiguity": 501,
+      "candidate_with_exclusion": 276,
+      "no_candidate_agency_no_public_list": 533,
+      "no_candidate_agency_unverified": 13,
+      "candidate_with_unresolved_vocabulary": 46
+    },
+    "markers": {
+      "degree_scope_issue": 2094,
+      "open_scope": 2744,
+      "namespace_ambiguity": 757,
+      "unresolved_or_imprecise_vocabulary": 336,
+      "code_name_conflict": 59,
+      "exclusion_or_negative": 722
+    },
+    "legacy_reason_superseded": 997,
+    "with_risk_flag": 3396
+  },
+  "caution": [
+    "5,835 是旧三层目录时代的“带复核原因”分母，不是未覆盖数。",
+    "1,003 个岗位的旧原因在现行五目录层已不再复现；这表示本工具的旧告警消失，不等于岗位已核清。",
+    "有目录候选不等于约束解析完整，更不等于个人可报。"
+  ],
+  "bucket_definitions": {
+    "no_candidate_agency_no_public_list": "no catalog candidate; agency verified to publish no membership list",
+    "no_candidate_agency_unverified": "no catalog candidate; agency uses in-house categories but publication not verified",
+    "no_candidate_other": "no catalog candidate; national catalog vocabulary or open scope",
+    "candidate_with_conflict": "has candidate; a printed name contradicts the code",
+    "candidate_with_exclusion": "has candidate; exclusion or negative condition present",
+    "candidate_with_degree_scope": "has candidate; clause/degree scope still ambiguous",
+    "candidate_with_unresolved_vocabulary": "has candidate; another term remains unresolved",
+    "candidate_with_open_scope": "has candidate; 相关/等/方向 style open scope",
+    "candidate_with_namespace_ambiguity": "has candidate; multiple catalog nodes for one name",
+    "candidate_legacy_reason_superseded": "has candidate; the legacy review reason no longer reproduces"
+  },
+  "shards": [
+    {
+      "path": "review-status-01.json",
+      "records": 2004,
+      "bytes": 817887,
+      "sha256": "6856f4802c55948d7f493df120e8b6ed524b140589d606eab5f47ebb6951a26c"
+    },
+    {
+      "path": "review-status-02.json",
+      "records": 2038,
+      "bytes": 817361,
+      "sha256": "da515db8158244c0348b902132f9750f76da50dc55b431ca6325ca23c1207aa9"
+    },
+    {
+      "path": "review-status-03.json",
+      "records": 1793,
+      "bytes": 721951,
+      "sha256": "195ed98605313f14e15dfe284d18b9013caa24651a0f5269fac936725e69e899"
+    }
+  ]
+}

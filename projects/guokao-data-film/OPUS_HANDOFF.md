@@ -8,11 +8,14 @@
 2. [data/README.md](data/README.md)：现行数据文件与历史资料。
 3. [research/MAJOR_CODE_MATCHING.md](research/MAJOR_CODE_MATCHING.md)：逐岗位专业原文、代码目录与候选关系。
 4. [research/DATA_SOURCES_AND_CHECKS.md](research/DATA_SOURCES_AND_CHECKS.md)：来源版本、官方核验范围。
+5. [research/REVIEW_STATUS_20261019.json](research/REVIEW_STATUS_20261019.json) 与 [RESIDUAL_STRATA_20261019.json](research/RESIDUAL_STRATA_20261019.json)：复核分层与残留分层。
 
 ## 可直接使用
 
 - 2027 全国 19,426 岗的完整 27 个原始字段，合计 35,691 人。每岗有稳定 ID、源工作表和行号。
 - 全岗位专业原文及学历分句；734 种完整显式词元，覆盖 3,357 岗、4,599 人。代码可查回岗位。
+- 双列专业证据层：专业+备注两列，18,698 岗至少有一个目录候选；残留 728 岗（1,164 人）已按“机关类别/国家目录词汇”分层。
+- 5,835 岗复核状态分十桶、互斥：有候选但要解释 4,110、旧告警不再复现 997、无候选 728。**有候选不等于核清，5,835 也不是未覆盖数。**
 - 本科 2026、研究生 2022、税务 2027 官方目录，以及税务多对多类别关系。
 - 岗位条件统计和联合分布，备注中的可追溯文字线索。
 - 2024—2027 招录表年度汇总；2024—2026 官方资格审查、实际参考与全国政策合格线。
@@ -29,7 +32,9 @@
 - 全国表已与官方招考简章工作簿全表逐格核验：19,426 岗、524,502 单元格、0 差异。这只覆盖本次取得的官方工作簿，不覆盖后续更正，也不覆盖专业目录。前轮 805 岗机关附件核验作为独立证据保留。
 - 全国政策合格线、逐岗位入围最低线和实际面试成绩分别使用；不同计分科目或年份不直接混排。2027 尚无未来笔试产生的入围线。
 
-运行 `node scripts/verify_position_data.mjs` 可回读验证整包；加 `--write-report` 保存当前校验报告。示例及全部读取器接口见 DATA_HANDOFF.md。
+运行 `node scripts/verify_position_data.mjs` 可回读验证整包；`python3 scripts/verify_major_evidence.py --write-report` 校验证据层与复核分层（含“十桶相加=5,835”“无候选桶并集=残留清单”）。示例及全部读取器接口见 DATA_HANDOFF.md。
+
+分层查询：`node scripts/query_major_evidence.mjs --review-stats`、`--review-status --bucket <桶>`、`--residual --strat-bucket <层>`。
 
 CREATIVE_BRIEF.md、PRODUCTION_PLAN.md 和早期内容卡作为既有项目资料保留。数字及数据能力判断以当前数据入口为准。
 

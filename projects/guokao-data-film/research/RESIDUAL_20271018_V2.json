@@ -986,5 +986,6 @@
     "python3 scripts/build_major_evidence.py",
     "python3 scripts/verify_major_evidence.py --write-report",
     "python3 scripts/build_residual_and_agency_reports.py"
-  ]
+  ],
+  "historical_note": "本文件冻结在第二轮（v2，18,680 / 746）。第三轮结果为 18,698 / 728，见 RESIDUAL_STRATA_20261019.json 与 REVIEW_STATUS_20261019.json；v2 的分层口径与第三轮不同（v2 按 reason_classes，v3 按专业原文），两者不可直接相减。"
 }

@@ -1,8 +1,8 @@
 {
   "schema_version": "2.0.0",
   "status": "PASS",
-  "started_at_utc": "2026-10-17T18:27:36.815Z",
-  "generated_at_utc": "2026-10-17T18:27:38.352Z",
+  "started_at_utc": "2026-10-17T19:21:02.370Z",
+  "generated_at_utc": "2026-10-17T19:21:04.078Z",
   "verification_script": "scripts/verify_position_data.mjs",
   "network_used": false,
   "original_excel_or_pdf_files_required": false,
@@ -176,25 +176,25 @@
       "bytes": 23153,
       "sha256": "1a715baf6d106ab82ccc61706190fb72eec8796c06736629c084149df234f26e"
     },
-    "data/interview_cutoffs_2026/manifest.json": {
-      "bytes": 12603,
-      "sha256": "00dad34a9d0a5f7b743174c7e8976815ad967f478495f811c22ef58adce6d486"
-    },
     "data/majors_2027/manifest.json": {
       "bytes": 4327,
       "sha256": "9f12d5ddbc1aaea35a627087f3c41bc13e7d1e103807ce9b534256a93d27772d"
+    },
+    "data/interview_cutoffs_2026/manifest.json": {
+      "bytes": 12603,
+      "sha256": "00dad34a9d0a5f7b743174c7e8976815ad967f478495f811c22ef58adce6d486"
     },
     "data/catalogs/major_graduate_2022_official_parsed.json": {
       "bytes": 76076,
       "sha256": "d0482ef4b96ea0b52143e9d6a50fc6dcef1bb308d355c9c0a79b18580469219e"
     },
-    "data/catalogs/major_bachelor_2026_official_parsed.json": {
-      "bytes": 437598,
-      "sha256": "b1aea29b1331c6697a6fd330bb1514af14a68215fb0b08503b8e3b5214543d66"
-    },
     "data/majors_2027/tax-catalog-name-crosswalk.json": {
       "bytes": 269848,
       "sha256": "b1f774e20be7c81dacf083fb33b6535d9df1b35e8382eca1698c49f9252f1505"
+    },
+    "data/catalogs/major_bachelor_2026_official_parsed.json": {
+      "bytes": 437598,
+      "sha256": "b1aea29b1331c6697a6fd330bb1514af14a68215fb0b08503b8e3b5214543d66"
     },
     "data/catalogs/major_tax_2027_official_parsed.json": {
       "bytes": 503226,
