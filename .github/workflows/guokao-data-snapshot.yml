@@ -1,0 +1,32 @@
+name: Guokao research input snapshot
+on:
+  push:
+    branches: ['data/guokao-gap-closure-20261017']
+    paths: ['.github/workflows/guokao-data-snapshot.yml']
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ed7aff9bce85e136b4534776992cdb1f789ec6d0
+          persist-credentials: false
+      - name: Package existing research inputs only
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, pathlib
+          root = pathlib.Path('projects/guokao-data-film')
+          files = sorted(p for p in root.rglob('*') if p.is_file())
+          index = [{'path': str(p), 'bytes': p.stat().st_size, 'sha256': hashlib.sha256(p.read_bytes()).hexdigest()} for p in files]
+          pathlib.Path('snapshot-index.json').write_text(json.dumps({'base_commit':'ed7aff9bce85e136b4534776992cdb1f789ec6d0','files':index}, ensure_ascii=False), encoding='utf-8')
+          print(json.dumps({'files':len(files),'bytes':sum(x['bytes'] for x in index)}))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: guokao-pinned-inputs-ed7aff9
+          path: |
+            projects/guokao-data-film/
+            snapshot-index.json
+          retention-days: 7
+          if-no-files-found: error
