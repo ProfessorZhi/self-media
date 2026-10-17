@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "report_id": "final-evidence-scope-audit-20261018",
-  "generated_at_utc": "2026-10-17T19:51:32.546714+00:00",
+  "generated_at_utc": "2026-10-17T20:37:53.743190+00:00",
   "generated_date_timezone": "Asia/Shanghai",
   "local_date": "2026-10-18",
   "question": "How far does the professional evidence reach, which parts rest on an inference about another agency, and what is still undecidable from public sources?",
@@ -844,11 +844,11 @@
   ],
   "opus_safe_read_guidance": [
     "引用“专业候选覆盖”时用 18,680（保守），不要用 18,699，除非同时说明其中 19 岗依赖跨机关推定。",
-    "25 个 provisional 岗位可描述为“原文门类写法 + 目录节点”，但不得表述为“该机关已确认接受这些门类”。",
-    "728 个无候选岗位不等于“不限专业”，也不等于“不可报”；多数是机关内部类别或开放表述。",
-    "冲突数按口径引用：59 岗位 / 101 条目 / 67 语义冲突条目；三者不可互换。",
+    "19 个 provisional 岗位可描述为“原文门类写法 + 目录节点”，但不得表述为“该机关已确认接受这些门类”。",
+    "727 个无候选岗位不等于“不限专业”，也不等于“不可报”；多数是机关内部类别或开放表述。",
+    "冲突数按口径引用：54 岗位 / 87 条目 / 67 语义冲突条目；三者不可互换。",
     "任何“可报/不可报”结论都不在本数据内；本节只描述原文证据与解析状态。",
-    "机关类别（人行 441、气象 92 等）应表述为“截至 2026-10-18 已查来源未找到 2027 适用名单”，不是“不存在”。"
+    "机关类别（人行、气象等）应表述为“截至 2026-10-18 已查来源未找到 2027 适用名单”，不是“不存在”。"
   ],
   "reproduce": [
     "python3 scripts/build_major_evidence.py",

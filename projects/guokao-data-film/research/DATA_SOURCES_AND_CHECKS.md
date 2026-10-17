@@ -99,7 +99,7 @@ python3 scripts/verify_official_national_table.py --workspace <inputs>
 | [证监会 2027 笔试大纲](http://dl.scs.gov.cn/api/article/8a81f6d0a135938a01a135d657580004) | 页面仅“见附件”，附件为财金类/法律类/会计类/计算机类 .doc 笔试大纲；是试卷类别 |
 | [《气象部门人员招聘专业目录》（2026版）引用出处](http://ha.cma.gov.cn/zfxxgk/zwgk/rsxx/zpxx/202510/W020251029534266455165.pdf) | 确有此目录，但属**事业单位公开招聘**（河南 2026 公告附件2），且为 2026 版；本轮未取得原表，登记为非适用参考，**未据其清除任何 2027 公务员岗位** |
 
-因此“经济金融类”（420 岗）与“气象类”（88 岗）不能落到教育部目录的近似名称上，保持未解析并列入残留清单。残留分层：机关类别已核实无名单 533、机关类别未核实 13、国家目录词汇 182。完整取证（URL、时间、HTTP 状态、判定）见 [AGENCY_MAJOR_CATEGORY_EVIDENCE_20261018.json](AGENCY_MAJOR_CATEGORY_EVIDENCE_20261018.json)。
+因此“经济金融类”（420 岗）与“气象类”（88 岗）不能落到教育部目录的近似名称上，保持未解析并列入残留清单。残留分层：机关类别已查来源未找到名单 533、机关类别未核实 13、国家目录词汇 181。完整取证（URL、时间、HTTP 状态、判定）见 [AGENCY_MAJOR_CATEGORY_EVIDENCE_20261018.json](AGENCY_MAJOR_CATEGORY_EVIDENCE_20261018.json)。
 
 ## 6. 岗位条件及历史招录
 

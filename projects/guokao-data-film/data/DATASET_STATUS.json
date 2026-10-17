@@ -128,12 +128,30 @@
     {
       "path": "../research/FINAL_EVIDENCE_SCOPE_AUDIT_20261018.json",
       "role": "final evidence-scope audit and safe-read guidance",
-      "result": "18,679 conservative / 19 provisional / 728 no-candidate; 0 exact in-scope parser gaps across 195 audited residual positions"
+      "result": "18,680 conservative / 19 provisional / 727 no-candidate; 0 exact in-scope parser gaps across the audited residual groups"
     },
     {
       "path": "../research/REMARK_SCOPE_FIX_DIFF_20261018.json",
       "role": "before/after diff for the 备注 degree-scope fix",
       "result": "conflicts 59->54 positions, 101->87 entries; conservative 18,679->18,680; residual 728->727"
+    },
+    {
+      "path": "../research/CURRENT_SNAPSHOT.json",
+      "role": "single derived source for every current figure"
+    },
+    {
+      "path": "../research/HANDOFF_CONSISTENCY_20261018.json",
+      "role": "cross-file consistency audit of current-stat statements",
+      "result": "PASS: anchored current-stat lines match the derived snapshot; links resolve"
+    },
+    {
+      "path": "../research/FINAL_DELIVERY_AUDIT_20261018.json",
+      "role": "delivery audit with hard-problem grouping",
+      "result": "fact and evidence layers deliverable; 0 autonomously fixable items remaining"
+    },
+    {
+      "path": "../research/FINAL_DELIVERY_STATUS.md",
+      "role": "human-readable delivery status"
     }
   ],
   "legacy": [

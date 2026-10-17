@@ -1,0 +1,111 @@
+{
+  "schema_version": "1.0.0",
+  "audit": "handoff-consistency",
+  "as_of": "2026-10-18",
+  "status": "PASS",
+  "derived_facts": {
+    "as_of": "2026-10-18",
+    "positions": 19426,
+    "hires": 35691,
+    "coverage": {
+      "conservative": {
+        "positions": 18680,
+        "hires": 34512
+      },
+      "provisional": {
+        "positions": 19,
+        "hires": 19
+      },
+      "inclusive": {
+        "positions": 18699,
+        "hires": 34531
+      },
+      "no_candidate": {
+        "positions": 727,
+        "hires": 1160
+      }
+    },
+    "coverage_sum_check": 19426,
+    "newly_covered_since_before_layer": 523,
+    "conflicts": {
+      "positions": 54,
+      "entries": 87,
+      "content_conflict": 67,
+      "cross_level_same_code": 12,
+      "category_suffix_omitted": 8,
+      "semantic": 67,
+      "diagnostic": 20,
+      "in_review_universe": 50,
+      "outside_review_universe": 4,
+      "gate_code_name_mismatch": 5
+    },
+    "remarks": {
+      "codes_total": 1832,
+      "explicit_label": 712,
+      "fallback": 1105,
+      "ambiguous": 15,
+      "positions_with_code": 1069,
+      "positions_resolved": 370,
+      "positions_exact_name": 67,
+      "positions_both_columns": 706
+    },
+    "codes": {
+      "distinct": 912,
+      "both_columns": 240
+    },
+    "review": {
+      "universe": 5835,
+      "covered": 5108,
+      "legacy_superseded": 981,
+      "needs_interpretation": 4127,
+      "buckets": {
+        "candidate_with_degree_scope": 1994,
+        "candidate_with_open_scope": 1236,
+        "candidate_legacy_reason_superseded": 981,
+        "no_candidate_other": 181,
+        "candidate_with_namespace_ambiguity": 501,
+        "candidate_with_conflict": 55,
+        "candidate_with_exclusion": 276,
+        "no_candidate_agency_no_public_list": 533,
+        "no_candidate_agency_unverified": 13,
+        "candidate_provisional_agency_scope_rule": 19,
+        "candidate_with_unresolved_vocabulary": 46
+      },
+      "bucket_sum": 5835
+    },
+    "residual_strata": {
+      "agency_no_public_list": 533,
+      "agency_unverified": 13,
+      "national_vocabulary": 181,
+      "sum": 727
+    },
+    "residual_strata_hires": {
+      "agency_no_public_list": 853,
+      "agency_unverified": 25,
+      "national_vocabulary": 282
+    },
+    "official_verification": {
+      "positions": 19426,
+      "hires": 35691,
+      "compared_cells": 524502,
+      "content_differences": 0,
+      "location_differences": 0
+    },
+    "consistency": {
+      "coverage_tiers_sum_to_positions": true,
+      "residual_strata_sum_to_residual": true,
+      "review_buckets_sum_to_universe": true,
+      "conflict_classes_sum_to_entries": true,
+      "remark_scope_sum_to_codes": true
+    }
+  },
+  "checks": {
+    "snapshot_matches_manifests": true,
+    "current_stat_lines_checked": 21,
+    "current_stat_errors": 0,
+    "guidance_errors": 0,
+    "broken_links": 0,
+    "status_path_errors": 0
+  },
+  "errors": []
+}
