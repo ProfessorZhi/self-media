@@ -6,7 +6,7 @@
 
 | 编号 | 名称 | 阶段 | 项目主旨及接手入口 |
 | --- | --- | --- | --- |
-| **VIDEO-001** | 国考宇宙 · 2027 招录数据电影 | `REVIEW`（V2 候选，尚未完成最终审片和发布） | [项目章程](guokao-data-film/PROJECT_CHARTER.md) · [项目首页](guokao-data-film/README.md) · [V1/V2 源码版本](guokao-data-film/remotion/README.md) |
+| **VIDEO-001** | 席位之间 · 35,691｜2027 国考数据电影 | `REVIEW`（V2 候选，尚未完成最终审片和发布） | [项目章程](guokao-data-film/PROJECT_CHARTER.md) · [项目首页](guokao-data-film/README.md) · [V1/V2 源码版本](guokao-data-film/remotion/README.md) |
 
 ## 开立新项目
 
