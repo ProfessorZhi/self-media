@@ -118,6 +118,7 @@ const border = families.find(f => f.name === '边检');
 const official = JSON.parse(await readFile(fileURLToPath(new URL('../../data/official_historical_exam_data.json', import.meta.url)), 'utf8'));
 const competition = official.exam_years.map(y => ({
   year: y.exam_year,
+  examDate: y.public_written_exam_date,
   planned: y.recruitment_plan.planned_seats.value,
   plannedText: y.recruitment_plan.planned_seats.published_text,
   approved: y.qualification.approved_applicants.value,
@@ -194,6 +195,9 @@ const query = {
   },
 };
 
+// ---- Act VII context: secondary research with source links (see the file's own caveats)
+const context = JSON.parse(await readFile(fileURLToPath(new URL('../../data/context_2026_research.json', import.meta.url)), 'utf8'));
+
 const src = (field, rule) => ({file: 'data/positions_2027', field, rule});
 const facts = {
   seats: {value: seats, source: src('招考人数', '19,426 岗逐岗加总')},
@@ -230,6 +234,7 @@ const payload = {
   change,
   conditions,
   query,
+  context,
   positions: rows,
   facts,
 };

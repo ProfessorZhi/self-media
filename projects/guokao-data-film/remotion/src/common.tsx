@@ -1,7 +1,7 @@
 import React from 'react';
-import {AbsoluteFill, interpolate} from 'remotion';
+import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
 import {ChapterRail} from './ChapterRail';
-import {C, FONT, H, W} from './theme';
+import {C, DPR, FONT, H, W} from './theme';
 
 export const fade = (frame: number, a: number, b: number, c?: number, d?: number) =>
   c === undefined
@@ -41,7 +41,7 @@ export const Stage: React.FC<{
 }> = ({act, canvas, source, children}) => (
   <AbsoluteFill style={{background: C.bg, fontFamily: FONT, color: C.ink, fontVariantNumeric: 'tabular-nums'}}>
     <AbsoluteFill style={{background: 'radial-gradient(ellipse at 50% 55%, rgba(40,48,60,0.35), rgba(0,0,0,0) 60%)'}} />
-    {canvas ? <canvas ref={canvas} width={W} height={H} style={{position: 'absolute', inset: 0}} /> : null}
+    {canvas ? <canvas ref={canvas} width={W * DPR} height={H * DPR} style={{position: 'absolute', inset: 0, width: W, height: H}} /> : null}
     {children}
     <ChapterRail active={act} />
     <div style={{position: 'absolute', right: 40, bottom: 30, fontSize: 15, color: C.faint, textAlign: 'right', lineHeight: 1.6, maxWidth: 900}}>{source}</div>
@@ -72,8 +72,13 @@ export function useCanvas(draw: ((ctx: CanvasRenderingContext2D) => void) | null
     const c = ref.current;
     if (!c || !draw) return;
     const ctx = c.getContext('2d')!;
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
     ctx.clearRect(0, 0, W, H);
     draw(ctx);
   });
   return ref;
 }
+
+/** Time stretch for acts inside the full film: an act reads frame / k, so k > 1 slows it down. */
+export const SlowContext = React.createContext(1);
+export const useActFrame = () => useCurrentFrame() / React.useContext(SlowContext);

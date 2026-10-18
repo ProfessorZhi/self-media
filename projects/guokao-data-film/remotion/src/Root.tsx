@@ -6,6 +6,8 @@ import {Act3Change, T as T3} from './Act3Change';
 import {Act4Profile, T as T4} from './Act4Profile';
 import {Act5Scores, T as T5} from './Act5Scores';
 import {Act6OneSeat, T as T6} from './Act6OneSeat';
+import {Act7Thinking, T as T7} from './Act7Thinking';
+import {Epilogue, EPILOGUE, Prologue, PROLOGUE} from './Bookends';
 import {FILM_LENGTH, Film} from './Film';
 import {FPS, H, W} from './theme';
 
@@ -18,5 +20,8 @@ export const Root: React.FC = () => (
     <Composition id="Act4-Profile" component={Act4Profile} durationInFrames={T4.end} fps={FPS} width={W} height={H} />
     <Composition id="Act5-Scores" component={Act5Scores} durationInFrames={T5.end} fps={FPS} width={W} height={H} />
     <Composition id="Act6-OneSeat" component={Act6OneSeat} durationInFrames={T6.end} fps={FPS} width={W} height={H} />
+    <Composition id="Act7-Thinking" component={Act7Thinking} durationInFrames={T7.end} fps={FPS} width={W} height={H} />
+    <Composition id="Prologue" component={Prologue} durationInFrames={PROLOGUE} fps={FPS} width={W} height={H} />
+    <Composition id="Epilogue" component={Epilogue} durationInFrames={EPILOGUE} fps={FPS} width={W} height={H} />
   </>
 );

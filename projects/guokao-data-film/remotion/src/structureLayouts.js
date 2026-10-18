@@ -63,7 +63,7 @@ export function squarify(items, rect) {
 }
 
 /** Fill a rectangle with seats on a near-square grid; centre the last row. */
-function fillRect(xy, list, r, inset) {
+function fillRect(xy, list, r, inset, cellSize) {
   const x = r.x + inset;
   const y = r.y + inset;
   const w = Math.max(1, r.w - inset * 2);
@@ -83,10 +83,13 @@ function fillRect(xy, list, r, inset) {
   const rows = Math.ceil(n / cols);
   const lastStart = (rows - 1) * cols;
   const lastShift = (cols - (n - lastStart)) / 2;
+  // Square dots sized to this rect's own cell, so no rect shows stretched dashes.
+  const cell = Math.min(w / cols, h / rows) * 0.78;
   list.forEach((s, k) => {
     const c = (k % cols) + (k >= lastStart ? lastShift : 0);
     xy[s * 2] = x + ((c + 0.5) * w) / cols;
     xy[s * 2 + 1] = y + ((Math.floor(k / cols) + 0.5) * h) / rows;
+    if (cellSize) cellSize[s] = cell;
   });
 }
 
@@ -149,9 +152,10 @@ export function buildStructure(data, seats) {
     bySeatDept.get(d).push(s);
   }
   const treemap = new Float32Array(seats.count * 2);
+  const cell = new Float32Array(seats.count);
   for (const [d, list] of bySeatDept) {
     const r = rectOf.get(d);
-    fillRect(treemap, list, r, Math.min(1.2, r.w / 6, r.h / 6));
+    fillRect(treemap, list, r, Math.min(1.2, r.w / 6, r.h / 6), cell);
   }
 
   // ---- Pareto: departments ranked by seats; each seat sits on the cumulative-share curve
@@ -191,6 +195,8 @@ export function buildStructure(data, seats) {
     levelArcs,
     treemap,
     famRects,
+    area,
+    cell,
     rects: [...rectOf.entries()].map(([d, r]) => ({d, name: data.departments[d][1], value: deptSeats.get(d), fam: deptFamily.get(d), ...r})),
     pitch: Math.sqrt((W * H) / seats.count),
     pareto,

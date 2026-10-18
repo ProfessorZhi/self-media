@@ -1,14 +1,15 @@
 import React, {useLayoutEffect, useMemo, useRef} from 'react';
-import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
+import {AbsoluteFill, interpolate} from 'remotion';
 import {clamp01, easeInOutCubic, hash01, seatProgress} from './seatModel.js';
 import {buildStructure, CENTER, shortName} from './structureLayouts.js';
 import {ChapterRail} from './ChapterRail';
-import {C, FAMILY_RGB, FONT, H, W, famCss, fmt} from './theme';
+import {useActFrame} from './common';
+import {C, DPR, FAMILY_RGB, FONT, H, W, famCss, fmt} from './theme';
 import {useFilmData, type Model} from './useFilmData';
 
 // Act II "谁在招": field -> sunburst (机构层级, coloured by system) -> system treemap
 // -> camera tour of four systems -> Pareto curve of all 589 departments.
-const TOUR = ['海关', '金融监管', '边检', '中央及其他'];
+const TOUR = ['海关', '金融监管', '人民银行', '边检', '铁路公安', '中央及其他'];
 const STOP0 = 366;
 const STOP_LEN = 100; // fly 40 + hold 60
 export const T = {
@@ -25,12 +26,20 @@ type Rect = {x: number; y: number; w: number; h: number};
 type Cam = {S: number; fx: number; fy: number};
 const BASE: [number, number] = [960, 600];
 const OVERVIEW: Cam = {S: 1, fx: BASE[0], fy: BASE[1]};
-const camFor = (r: Rect): Cam => ({S: Math.min(1500 / r.w, 600 / r.h, 6), fx: r.x + r.w / 2, fy: r.y + r.h / 2 - 10});
+/** Frame a rect, but never let the view run off the treemap into empty space. */
+const camFor = (r: Rect, area: Rect): Cam => {
+  const S = Math.min(1500 / r.w, 600 / r.h, 6);
+  const clamp = (v: number, lo: number, hi: number) => (lo > hi ? (lo + hi) / 2 : Math.min(hi, Math.max(lo, v)));
+  const halfW = BASE[0] / S;
+  const fx = clamp(r.x + r.w / 2, area.x + halfW, area.x + area.w - halfW);
+  const fy = clamp(r.y + r.h / 2 - 10, area.y + (BASE[1] - 240) / S, area.y + area.h - (1000 - BASE[1]) / S);
+  return {S, fx, fy};
+};
 
 function camKeys(st: Structure, famIndex: (n: string) => number) {
   const keys: {f: number; cam: Cam}[] = [{f: STOP0, cam: OVERVIEW}];
   TOUR.forEach((name, k) => {
-    const cam = camFor(st.famRects[famIndex(name)]);
+    const cam = camFor(st.famRects[famIndex(name)], st.area);
     keys.push({f: STOP0 + k * STOP_LEN + 40, cam}, {f: STOP0 + (k + 1) * STOP_LEN, cam});
   });
   keys.push({f: T.tourEnd, cam: OVERVIEW});
@@ -69,7 +78,7 @@ const q = (v: number) => Math.round(v / 6) * 6;
 function paint(ctx: CanvasRenderingContext2D, m: Model, st: Structure, frame: number, cam: Cam, focus: {fam: number; w: number}) {
   const {seats, layouts} = m;
   const field = layouts.field;
-  const {polar, treemap, pareto, pitch, family} = st;
+  const {polar, treemap, pareto, cell, family} = st;
   const rot = rotation(frame);
   const buckets = new Map<string, number[]>();
   const [cx, cy] = CENTER;
@@ -102,7 +111,7 @@ function paint(ctx: CanvasRenderingContext2D, m: Model, st: Structure, frame: nu
     y += (pareto[i * 2 + 1] - y) * g3;
 
     const [px, py] = project(cam, x, y);
-    let size = 3.5 + (2.3 - 3.5) * g1 + (pitch * 0.72 - 2.3) * g2 + (2.8 - pitch * 0.72) * g3;
+    let size = 3.5 + (2.3 - 3.5) * g1 + (cell[i] - 2.3) * g2 + (2.8 - cell[i]) * g3;
     size *= Math.pow(cam.S, 0.92);
     if (px < -40 || px > W + 40 || py < -40 || py > H + 40) continue;
 
@@ -168,11 +177,10 @@ const fade = (frame: number, a: number, b: number, c?: number, d?: number) =>
     ? interpolate(frame, [a, b], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})
     : interpolate(frame, [a, b, c, d!], [0, 1, 1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
 const rise = (o: number) => ({opacity: o, transform: `translateY(${(1 - o) * 14}px)`});
-const offscreen: {c?: HTMLCanvasElement} = {};
 const pct = (v: number, total: number) => `${((v / total) * 100).toFixed(1)}%`;
 
 export const Act2WhoHires: React.FC = () => {
-  const frame = useCurrentFrame();
+  const frame = useActFrame();
   const model = useFilmData();
   const canvas = useRef<HTMLCanvasElement>(null);
   const st = useMemo(() => (model ? buildStructure(model.data, model.seats) : null), [model]);
@@ -183,13 +191,9 @@ export const Act2WhoHires: React.FC = () => {
 
   useLayoutEffect(() => {
     if (!model || !st || !canvas.current) return;
-    const off = (offscreen.c ??= document.createElement('canvas'));
-    off.width = W;
-    off.height = H;
-    paint(off.getContext('2d')!, model, st, frame, cam, focus);
     const ctx = canvas.current.getContext('2d')!;
-    ctx.clearRect(0, 0, W, H);
-    ctx.drawImage(off, 0, 0);
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    paint(ctx, model, st, frame, cam, focus);
   });
 
   if (!model || !st) return <AbsoluteFill style={{background: C.bg}} />;
@@ -208,7 +212,7 @@ export const Act2WhoHires: React.FC = () => {
   return (
     <AbsoluteFill style={{background: C.bg, fontFamily: FONT, color: C.ink, fontVariantNumeric: 'tabular-nums'}}>
       <AbsoluteFill style={{background: 'radial-gradient(ellipse at 50% 55%, rgba(40,48,60,0.35), rgba(0,0,0,0) 60%)'}} />
-      <canvas ref={canvas} width={W} height={H} style={{position: 'absolute', inset: 0}} />
+      <canvas ref={canvas} width={W * DPR} height={H * DPR} style={{position: 'absolute', inset: 0, width: W, height: H}} />
 
       <div style={{position: 'absolute', left: 125, top: 100, ...rise(intro)}}>
         <div style={{fontSize: 22, color: C.muted, letterSpacing: 4}}>02 · 谁在招</div>
@@ -257,14 +261,34 @@ export const Act2WhoHires: React.FC = () => {
         const [x, y] = project(cam, r.x, r.y);
         const w = r.w * cam.S;
         const h = r.h * cam.S;
-        const big = w > 220 && h > 120;
-        if (w < 60 || h < 40) return null;
+        const tier = w > 220 && h > 120 ? 2 : w >= 110 ? 1 : 0;
         return (
-          <div key={fam.name} style={{position: 'absolute', left: x + 10, top: y + 8, width: w - 20, opacity: Math.max(tree, treeBack), textShadow: '0 1px 8px rgba(13,16,21,1)', overflow: 'hidden', whiteSpace: 'nowrap'}}>
-            <div style={{fontSize: big ? 30 : 15, fontWeight: 700}}>{fam.name}</div>
-            <div style={{fontSize: big ? 20 : 13}}>
-              {fmt(fam.seats)} · {pct(fam.seats, total)}
-            </div>
+          <div
+            key={fam.name}
+            style={{
+              position: 'absolute',
+              left: x + (tier ? 10 : 5),
+              top: y + (tier ? 8 : 5),
+              opacity: Math.max(tree, treeBack),
+              textShadow: '0 1px 6px rgba(13,16,21,1), 0 0 2px rgba(13,16,21,1)',
+              whiteSpace: 'nowrap',
+              lineHeight: 1.25,
+              padding: tier ? 0 : '2px 3px',
+              background: tier ? 'none' : 'rgba(13,16,21,0.55)',
+              borderRadius: 3,
+            }}
+          >
+            <div style={{fontSize: tier === 2 ? 30 : tier === 1 ? 17 : 12, fontWeight: 700}}>{fam.name}</div>
+            {tier ? (
+              <div style={{fontSize: tier === 2 ? 20 : 14}}>
+                {fmt(fam.seats)} · {pct(fam.seats, total)}
+              </div>
+            ) : (
+              <>
+                <div style={{fontSize: 12}}>{fmt(fam.seats)}</div>
+                <div style={{fontSize: 12}}>{pct(fam.seats, total)}</div>
+              </>
+            )}
           </div>
         );
       })}
@@ -275,8 +299,12 @@ export const Act2WhoHires: React.FC = () => {
         const fam = families[fi];
         const o = focus.k === k ? focus.w : 0;
         if (o <= 0) return null;
+        const levelSeats = model.data.levels.map((_, li) => model.data.positions.filter(r => r[4] === fi && r[1] === li).reduce((t, r) => t + r[2], 0));
+        const onlyLevel = levelSeats.findIndex(v => v === fam.seats);
         const note =
-          name === '边检' && f.borderOfficial.matches
+          onlyLevel >= 0 && name !== '边检'
+            ? `${fam.departments} 个单位全部为${model.data.levels[onlyLevel]}机构 · 最多：${shortName(fam.top!.name)} ${fmt(fam.top!.seats)} 个`
+            : name === '边检' && f.borderOfficial.matches
             ? `与国家移民管理局公告一致：${fam.departments} 个单位 · ${fmt(f.borderOfficial.value)} 人 ✓`
             : name === '中央及其他'
               ? `平均每个部门 ${(fam.seats / fam.departments).toFixed(1)} 个名额 · 最多：${fam.top!.name} ${fam.top!.seats}`
@@ -296,21 +324,66 @@ export const Act2WhoHires: React.FC = () => {
           </div>
         );
       })}
-      {focus.fam >= 0 &&
-        st.rects
-          .filter(r => r.fam === focus.fam)
-          .map(r => {
-            const [x, y] = project(cam, r.x, r.y);
-            const w = r.w * cam.S;
-            const h = r.h * cam.S;
-            if (w < 86 || h < 44 || x > W || y > H || x + w < 0 || y + h < 0) return null;
-            return (
-              <div key={r.d} style={{position: 'absolute', left: x + 8, top: y + 6, width: w - 16, opacity: focus.w, textShadow: '0 1px 8px rgba(13,16,21,1)', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis'}}>
-                <div style={{fontSize: w > 200 ? 20 : 15, fontWeight: 700, overflow: 'hidden', textOverflow: 'ellipsis'}}>{shortName(r.name)}</div>
-                <div style={{fontSize: w > 200 ? 17 : 13}}>{fmt(r.value)}</div>
-              </div>
-            );
-          })}
+      {/* every department gets its name, fitted to its own rect (overview and tour) */}
+      {(() => {
+        const overview = Math.max(tree, treeBack);
+        const o = Math.max(overview, focus.w);
+        if (o <= 0.01) return null;
+        // family label boxes (screen space) that department labels must not cover in overview
+        const famBoxes = families.map((_, fi) => {
+          const r = st.famRects[fi];
+          const [x, y] = project(cam, r.x, r.y);
+          const w = r.w * cam.S;
+          const h = r.h * cam.S;
+          const tier = w > 220 && h > 120 ? 2 : w >= 110 ? 1 : 0;
+          return tier === 2 ? [x, y, 230, 72] : tier === 1 ? [x, y, 130, 46] : [x, y, w, h];
+        });
+        return st.rects.map(r => {
+          const inFocus = focus.fam >= 0 && r.fam === focus.fam;
+          const a = inFocus ? Math.max(focus.w, overview) : overview * (1 - focus.w);
+          if (a <= 0.01) return null;
+          const [x, y] = project(cam, r.x, r.y);
+          const w = r.w * cam.S;
+          const h = r.h * cam.S;
+          if (x > W || y > H || x + w < 0 || y + h < 0) return null;
+          if (overview > focus.w) {
+            const [bx, by, bw, bh] = famBoxes[r.fam];
+            if (x < bx + bw && x + w > bx && y < by + bh && y + h > by) return null;
+          }
+          const name = shortName(r.name);
+          // shrink until the whole name fits inside the rect; skip if it would be unreadable
+          let fs = Math.min(w > 260 ? 22 : 16, Math.sqrt(((w - 6) * (h - 4)) / (name.length + 5)) * 0.9);
+          const linesAt = (f: number) => Math.ceil(name.length / Math.max(1, Math.floor((w - 6) / f)));
+          while (fs >= 6.5 && linesAt(fs) * fs * 1.18 > h - 4) fs -= 0.25;
+          if (fs < 6.5) return null;
+          const lineH = fs * 1.18;
+          const lines = linesAt(fs);
+          const showValue = (lines + 1) * lineH <= h - 4;
+          return (
+            <div
+              key={r.d}
+              style={{
+                position: 'absolute',
+                left: x + 3,
+                top: y + 2,
+                width: w - 6,
+                height: h - 4,
+                overflow: 'hidden',
+                fontSize: fs,
+                lineHeight: `${lineH}px`,
+                wordBreak: 'break-all',
+                color: 'rgba(250,248,244,0.96)',
+                textShadow: '0 0 3px rgba(13,16,21,0.95), 0 1px 4px rgba(13,16,21,0.9)',
+                opacity: a,
+                fontWeight: fs > 12 ? 700 : 500,
+              }}
+            >
+              {name}
+              {showValue ? <div style={{fontWeight: 400, opacity: 0.85}}>{fmt(r.value)}</div> : null}
+            </div>
+          );
+        });
+      })()}
 
       {/* Pareto */}
       {(() => {

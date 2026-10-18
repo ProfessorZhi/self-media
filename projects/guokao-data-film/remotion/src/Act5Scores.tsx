@@ -1,7 +1,6 @@
 import React, {useMemo} from 'react';
-import {useCurrentFrame} from 'remotion';
 import {clamp01, hash01, seatProgress} from './seatModel.js';
-import {Heading, Painter, Stage, fade, lerp, rise, useCanvas} from './common';
+import {Heading, Painter, Stage, fade, lerp, rise, useCanvas, useActFrame} from './common';
 import {C, W, fmt} from './theme';
 import {useFilmData, type Cutoffs} from './useFilmData';
 
@@ -57,7 +56,7 @@ function buildHistogram(c: Cutoffs) {
 }
 
 export const Act5Scores: React.FC = () => {
-  const frame = useCurrentFrame();
+  const frame = useActFrame();
   const model = useFilmData();
   const c = model?.cutoffs;
   const hist = useMemo(() => (c ? buildHistogram(c) : null), [c]);

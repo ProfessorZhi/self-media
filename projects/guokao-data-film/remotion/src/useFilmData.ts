@@ -21,7 +21,7 @@ export type FilmData = {
     borderOfficial: Fact & {matches: boolean};
   };
   families: Family[];
-  competition: {year: number; planned: number; plannedText: string; approved: number | null; approvedText: string; ratioText: string | null; attendees: number | null; attendeesText: string | null}[];
+  competition: {year: number; examDate?: string; planned: number; plannedText: string; approved: number | null; approvedText: string; ratioText: string | null; attendees: number | null; attendeesText: string | null}[];
   change: {
     gainers: Mover[];
     losers: Mover[];
@@ -42,6 +42,7 @@ export type FilmData = {
     cet6: {positions: number; seats: number};
   };
   query: {code: string; name: string; positions: number; seats: number; featured: {id: string; index: number; fields: [string, string][]; source: {sheet: string; row: number}}};
+  context: any;
   positions: number[][];
   departments: [string, string][];
   levels: string[];

@@ -1,6 +1,8 @@
 export const W = 1920;
 export const H = 1080;
 export const FPS = 30;
+// Canvas backing store is drawn at 2× so particles stay sharp in 4K renders (--scale=2).
+export const DPR = 2;
 
 // Restrained dark palette: one accent (coral) marks the current focus.
 export const C = {

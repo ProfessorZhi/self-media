@@ -1,7 +1,6 @@
 import React, {useMemo} from 'react';
-import {useCurrentFrame} from 'remotion';
 import {clamp01, easeInOutCubic, hash01} from './seatModel.js';
-import {Painter, Stage, fade, lerp, rise, useCanvas} from './common';
+import {Painter, Stage, fade, lerp, rise, useCanvas, useActFrame} from './common';
 import {C, H, W, fmt} from './theme';
 import {useFilmData} from './useFilmData';
 
@@ -20,7 +19,7 @@ export const T = {
 const ORIGIN: [number, number] = [960, 630];
 
 export const Act6OneSeat: React.FC = () => {
-  const frame = useCurrentFrame();
+  const frame = useActFrame();
   const model = useFilmData();
   const info = useMemo(() => {
     if (!model) return null;
@@ -106,7 +105,7 @@ export const Act6OneSeat: React.FC = () => {
       : null,
   );
 
-  if (!model || !info) return <Stage act={5} source="" />;
+  if (!model || !info) return <Stage act={6} source="" />;
   const q = model.data.query;
   const typed = q.code.slice(0, Math.floor(clamp01((frame - T.type[0] - 16) / 56) * q.code.length + 0.0001));
   const boxA = fade(frame, T.type[0], T.type[0] + 14, T.dive[0], T.dive[0] + 20);
@@ -117,7 +116,7 @@ export const Act6OneSeat: React.FC = () => {
 
   return (
     <Stage
-      act={5}
+      act={6}
       canvas={canvas}
       source={
         <>

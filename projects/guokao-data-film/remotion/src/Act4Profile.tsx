@@ -1,7 +1,6 @@
 import React, {useMemo} from 'react';
-import {useCurrentFrame} from 'remotion';
 import {clamp01, easeInOutCubic, hash01, seatProgress} from './seatModel.js';
-import {Heading, Painter, Stage, fade, lerp, pct, rise, useCanvas} from './common';
+import {Heading, Painter, Stage, fade, lerp, pct, rise, useCanvas, useActFrame} from './common';
 import {C, FONT, FAMILY_RGB, H, W, fmt} from './theme';
 import {useFilmData, type Model} from './useFilmData';
 
@@ -188,7 +187,7 @@ const bez = (x0: number, y0: number, x1: number, y1: number, t: number): [number
 };
 
 export const Act4Profile: React.FC = () => {
-  const frame = useCurrentFrame();
+  const frame = useActFrame();
   const model = useFilmData();
   const prof = useMemo(() => (model ? buildProfile(model) : null), [model]);
   const words = useMemo(() => (model && typeof document !== 'undefined' ? buildWords(model) : null), [model]);

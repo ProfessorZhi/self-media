@@ -1,8 +1,7 @@
 import React from 'react';
-import {useCurrentFrame} from 'remotion';
 import {clamp01, easeInOutCubic} from './seatModel.js';
 import {shortName} from './structureLayouts.js';
-import {Heading, Stage, fade, lerp, rise, signedPct, useCanvas} from './common';
+import {Heading, Stage, fade, lerp, rise, signedPct, useCanvas, useActFrame} from './common';
 import {C, FAMILY_RGB, fmt, famCss} from './theme';
 import {useFilmData, type Mover} from './useFilmData';
 
@@ -16,7 +15,7 @@ export const T = {
 } as const;
 
 // Tile grid (col,row) — a schematic, not a geographic map.
-const TILES: Record<string, [number, number]> = {
+export const TILES: Record<string, [number, number]> = {
   黑龙江: [8, 0], 新疆: [1, 1], 内蒙古: [6, 1], 吉林: [8, 1],
   甘肃: [2, 2], 宁夏: [3, 2], 山西: [5, 2], 河北: [6, 2], 北京: [7, 2], 辽宁: [8, 2],
   西藏: [1, 3], 青海: [2, 3], 陕西: [4, 3], 河南: [5, 3], 山东: [6, 3], 天津: [7, 3],
@@ -37,7 +36,7 @@ const moverName = (n: string) =>
   n.startsWith('国家税务总局') ? n.replace('国家税务总局', '') : n === '国家金融监督管理总局' ? '金融监管总局（机关）' : shortName(n);
 
 export const Act3Change: React.FC = () => {
-  const frame = useCurrentFrame();
+  const frame = useActFrame();
   const model = useFilmData();
   const ch = model?.data.change;
 

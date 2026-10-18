@@ -1,7 +1,6 @@
 import React from 'react';
-import {useCurrentFrame} from 'remotion';
 import {clamp01, easeInOutCubic, hash01} from './seatModel.js';
-import {Heading, Painter, Stage, fade, lerp, rise, useCanvas} from './common';
+import {Heading, Painter, Stage, fade, lerp, rise, useCanvas, useActFrame} from './common';
 import {C, fmt} from './theme';
 import {useFilmData} from './useFilmData';
 
@@ -21,7 +20,7 @@ const SEAT_RGB = [120, 197, 224];
 const plot = {x: 330, y: 280, w: 1260, h: 520};
 
 export const Act1Crowded: React.FC = () => {
-  const frame = useCurrentFrame();
+  const frame = useActFrame();
   const model = useFilmData();
   const comp = model?.data.competition ?? [];
   const ratio2026 = 98; // published "约98:1"

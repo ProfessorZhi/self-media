@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0.0",
+  "title": "国考宇宙 · 第七幕「冷思考」背景资料（宏观就业、财政与待遇制度）",
+  "researched_at": "2026-10-18",
+  "status": "secondary_research_with_source_links_not_row_verified",
+  "warning": "本文件为公开报道与第三方汇总的二手资料，未逐条对照官方原件；画面使用时须标注来源与口径。网传但缺乏官方依据的说法（如个别城市公务员降薪）不作为事实呈现。",
+  "graduates": {
+    "unit": "万人",
+    "note": "均为教育部、人社部公布的预计规模，不是最终毕业人数；2024 届数值由 2025 届 1222 万与同比增加 43 万推得，并与媒体报道一致。",
+    "series": [
+      {"cohort": 2024, "value": 1179},
+      {"cohort": 2025, "value": 1222},
+      {"cohort": 2026, "value": 1270}
+    ],
+    "sources": [
+      "https://www.thepaper.cn/newsDetail_forward_32005999",
+      "https://paper.people.com.cn/rmrb/html/2024-11/15/nw.D110000renmrb_20241115_3-07.htm",
+      "https://www.news.cn/fortune/20250614/312a74da7edd4b65890a80854e072854/c.html"
+    ]
+  },
+  "youth_unemployment_2026": {
+    "definition": "全国城镇不含在校生的 16–24 岁劳动力失业率（国家统计局月度发布）",
+    "unit": "%",
+    "series": [
+      {"month": "2026-03", "value": 16.9},
+      {"month": "2026-04", "value": 16.3},
+      {"month": "2026-05", "value": 15.6},
+      {"month": "2026-06", "value": 14.9}
+    ],
+    "sources": ["https://www.thepaper.cn/newsDetail_forward_33621182", "https://i.ifeng.com/c/8uwaEdznLS4"]
+  },
+  "graduate_intentions_2026": {
+    "publisher": "前程无忧（51job）2026 届毕业生调研，第一财经报道",
+    "plan_civil_service_or_public_institution_or_teacher_pct": 25.1,
+    "soe_plus_government_institution_pct": 73.3,
+    "private_enterprise_pct": 10.7,
+    "caveat": "商业机构问卷，样本与方法未能核实；为求职意向，不是实际去向。",
+    "sources": ["https://www.yicai.com/news/102735085.html"]
+  },
+  "fiscal_self_sufficiency_2025": {
+    "definition": "一般公共预算收入 ÷ 一般公共预算支出（全年）",
+    "publisher": "聚汇数据整理（标注来源为各省财政厅）；上海、河南数值与多篇报道一致",
+    "caveat": "第三方汇总；西藏另有 10.24% 的说法；未对照各省决算原文。",
+    "unit": "%",
+    "values": {
+      "上海": 85.2, "北京": 79.5, "广东": 76.9, "浙江": 71.1, "江苏": 67.5, "天津": 66.1, "福建": 60.6, "山东": 59.6,
+      "湖北": 56.4, "山西": 53.1, "重庆": 48.1, "陕西": 46.4, "安徽": 45.6, "内蒙古": 45.5, "辽宁": 44.1, "河北": 42.9,
+      "四川": 42.7, "江西": 41.5, "新疆": 40.2, "河南": 39.1, "海南": 38.5, "湖南": 36.8, "贵州": 33.9, "云南": 32.0,
+      "宁夏": 30.4, "广西": 28.5, "吉林": 28.2, "黑龙江": 23.4, "甘肃": 22.7, "青海": 16.4, "西藏": 8.0
+    },
+    "sources": ["https://www.gotohui.com/finance/topic-5554", "https://zhuanlan.zhihu.com/p/2025354605492549468", "https://www.sohu.com/a/1008771847_121920927"]
+  },
+  "transfer_payments_2026": {
+    "value_trillion_yuan": 10.4,
+    "definition": "2026 年中央对地方转移支付预算",
+    "note": "连续 4 年超过 10 万亿元；上半年已下达 9.4 万亿元（占年初预算 90.3%）。",
+    "sources": ["https://www.yicai.com/news/103115418.html", "https://finance.eastmoney.com/a/202610113892015437.html"]
+  },
+  "pension_reform": {
+    "summary": "自 2014 年 10 月 1 日起，机关事业单位工作人员基本养老保险由单位和个人共同缴费（个人 8%），并建立职业年金（单位 8%、个人 4%），与企业职工制度并轨。",
+    "sources": ["https://www.jiemian.com/article/225425.html", "https://www.cs.com.cn/xwzx/hg/201504/t20150407_4680690.html"]
+  },
+  "civil_servant_total": {
+    "value_wan": 716.7,
+    "as_of": "2015 年底",
+    "note": "人社部最后一次在统计公报中公布的全国公务员总数；此后未见更新口径。",
+    "sources": ["https://www.xinhuanet.com/politics/2016-06/21/c_129077723.htm"]
+  },
+  "excluded_claims": [
+    {
+      "claim": "苏州等沿海城市公务员大幅降薪",
+      "reason": "未检索到官方文件或权威媒体报道，仅见自媒体文章；画面只作为「网传，未证实」提及或不提及。"
+    },
+    {
+      "claim": "内陆地区普遍发不出公务员工资",
+      "reason": "未检索到可核实的权威数据；画面只呈现可查证的财政自给率差异与转移支付规模，不推断具体地区欠薪。"
+    }
+  ]
+}
