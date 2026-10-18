@@ -5,6 +5,7 @@
 ## 先读
 
 0. [research/FINAL_DELIVERY_STATUS.md](research/FINAL_DELIVERY_STATUS.md)：当前交付状态与安全读取口径（唯一当前数字）。
+0a. [research/VIDEO_READINESS_AUDIT_20261018.md](research/VIDEO_READINESS_AUDIT_20261018.md)：主片可使用的数据、不能混淆的分类与制作验收缺口（正式镜头需重新从官方原字段生成）。
 1. [DATA_HANDOFF.md](DATA_HANDOFF.md)：数据入口、字段、查询示例与完成范围。
 2. [data/README.md](data/README.md)：现行数据文件与历史资料。
 3. [research/MAJOR_CODE_MATCHING.md](research/MAJOR_CODE_MATCHING.md)：逐岗位专业原文、代码目录与候选关系。
@@ -21,7 +22,7 @@
 - 双列专业证据层：**保守覆盖 18,694 岗**；另有 5 岗只有门类推定（provisional），含推定为 18,699；残留 727 岗（1,160 人）已按“机关类别/国家目录词汇”分层。
 - 5,835 岗复核状态分十一桶、互斥：非推定、有候选、仍需解释 4,108、旧告警不再复现 995、仅门类推定 5、无候选 727（四桶合计 5,835）。**有候选不等于核清，5,835 也不是未覆盖数。**
 - 备注里的“本科专业应为…”按**显式标签**定层解析；混合标签（本科或研究生）回退并标记，不代表任何一层已确认。
-- 安全口径见 [FINAL_EVIDENCE_SCOPE_AUDIT_20261018.json](research/FINAL_EVIDENCE_SCOPE_AUDIT_20261018.json) 的 `opus_safe_read_guidance`：引用覆盖率用 18,694；19 个 provisional 不得表述为“该机关已确认接受”。
+- 安全口径见 [FINAL_EVIDENCE_SCOPE_AUDIT_20261018.json](research/FINAL_EVIDENCE_SCOPE_AUDIT_20261018.json) 的 `opus_safe_read_guidance`：引用覆盖率用 18,694；5 个 provisional 不得表述为“该机关已确认接受”。
 - 本科 2026、研究生 2022、税务 2027 官方目录，以及税务多对多类别关系。
 - 岗位条件统计和联合分布，备注中的可追溯文字线索。
 - 2024—2027 招录表年度汇总；2024—2026 官方资格审查、实际参考与全国政策合格线。
