@@ -4,17 +4,51 @@ import {buildLayouts, expandSeats} from './seatModel.js';
 
 export type Fact = {value: number; source: {file: string; field: string; rule: string}};
 export type Family = {name: string; rule: string; seats: number; positions: number; departments: number; top: {name: string; seats: number} | null};
+export type Mover = {name: string; from: number; to: number; pct: number; family: string};
+export type Cutoffs = {
+  total: number;
+  categories: string[];
+  main: [number, number][];
+  otherCount: number;
+  otherAttributes: [string, number][];
+  min: number;
+  max: number;
+  medians: number[];
+  top: {score: number; org: string; unit: string; post: string; seats: string}[];
+};
 export type FilmData = {
   facts: Record<'seats' | 'positions' | 'departments' | 'taxSeats' | 'taxPositions' | 'taxBureaus' | 'otherSeats' | 'taxSharePct' | 'deptsFor80' | 'deptsUpTo5' | 'deptsOnly1', Fact> & {
     borderOfficial: Fact & {matches: boolean};
   };
   families: Family[];
+  competition: {year: number; planned: number; plannedText: string; approved: number | null; approvedText: string; ratioText: string | null; attendees: number | null; attendeesText: string | null}[];
+  change: {
+    gainers: Mover[];
+    losers: Mover[];
+    levelsByYear: Record<string, number>[];
+    provinces: {name: string; from: number; to: number; pct: number}[];
+    deptNamesNew: number;
+    deptNamesGone: number;
+    source: string;
+  };
+  conditions: {
+    edu: {name: string; seats: number}[];
+    pol: {name: string; seats: number}[];
+    grass: {name: string; seats: number}[];
+    bySize: {k: string; positions: number}[];
+    singles: number;
+    maxHires: number;
+    words: {word: string; positions: number; seats: number}[];
+    cet6: {positions: number; seats: number};
+  };
+  query: {code: string; name: string; positions: number; seats: number; featured: {id: string; index: number; fields: [string, string][]; source: {sheet: string; row: number}}};
   positions: number[][];
   departments: [string, string][];
   levels: string[];
 };
 export type Model = {
   data: FilmData;
+  cutoffs: Cutoffs;
   seats: {count: number; tax: Uint8Array; position: Int32Array};
   layouts: {
     field: Float32Array;
@@ -41,9 +75,10 @@ const load = () =>
       }),
     );
     const data: FilmData = await (await fetch(staticFile('film_data.json'))).json();
+    const cutoffs: Cutoffs = await (await fetch(staticFile('cutoffs_2026.json'))).json();
     const seats = expandSeats(data);
     if (seats.count !== data.facts.seats.value) throw new Error('Seat expansion disagrees with facts');
-    return {data, seats, layouts: buildLayouts(seats)};
+    return {data, cutoffs, seats, layouts: buildLayouts(seats)};
   })());
 
 export function useFilmData(): Model | null {

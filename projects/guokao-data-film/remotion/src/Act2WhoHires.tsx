@@ -198,7 +198,7 @@ export const Act2WhoHires: React.FC = () => {
   const rot = rotation(frame);
   const [cx, cy] = CENTER;
 
-  const intro = fade(frame, 0, 1, T.spiral[0] + 34, T.spiral[0] + 54);
+  const intro = fade(frame, 0, 14, T.spiral[0] + 34, T.spiral[0] + 54);
   const sun = fade(frame, T.spiral[1] - 16, T.spiral[1] + 6, T.unroll[0] - 4, T.unroll[0] + 12);
   const tree = fade(frame, T.unroll[1] - 6, T.unroll[1] + 14, T.tourStart - 12, T.tourStart + 2);
   const treeBack = fade(frame, T.tourEnd - 16, T.tourEnd, T.pareto[0], T.pareto[0] + 12);
