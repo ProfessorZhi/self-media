@@ -1,54 +1,77 @@
-# self-media｜独立视频项目工作区
+# Self Media Lab
 
-**仓库定位：** 这里管理多个**相互独立**的自媒体视频及系列作品：立项、创意、资料/数据、制作源代码、版本、审片和发布记录。仓库不是某一部片子的专属应用；也不是把所有项目塞进一个全局 Remotion 工程。
+**Open-source, code-driven video projects · 开源程序化视频创作实验室**
 
-## 项目索引
+在这里，我们使用 **Remotion + React + TypeScript**、数据可视化、Canvas/SVG 与其他适合的工具，把资料与创意变成**能够运行、重建、审查的视频作品**。
 
-| 项目 ID | 项目 | 内容定位 | 当前阶段 | 立项与入口 |
+> **理念：一部视频，一个独立项目。** 源代码、数据、设计选择和版本记录都保留；大体积成片单独交付。项目可以使用不同技术栈，Remotion 是主要工具之一，**不是整个仓库的强制依赖**。
+
+**English:** A collection of independently managed, reproducible video projects. Learn from the code, explore data-driven motion design, and build your own films. Third-party content and dependencies keep their own licenses.
+
+## Projects / 视频项目
+
+| ID | Project | 技术及内容 | 阶段 | 源码与说明 |
 | --- | --- | --- | --- | --- |
-| **VIDEO-001** | **国考宇宙 · 2027 招录数据电影** | 真实招录数据 × Cinematic Data Film × 可复现 Motion Design；从全国招录结构走到一个岗位与一个人的选择 | **REVIEW**：V2 4K 源码已在独立开发分支提交；成片、数据证据与发行仍待最终审校 | [项目首页](projects/guokao-data-film/README.md) · [项目章程](projects/guokao-data-film/PROJECT_CHARTER.md) |
+| **VIDEO-001** | **国考宇宙 · Civil Service: The Data Universe** | 国考 2027 招录数据电影 · Remotion / React / Canvas / 程序化配乐 | **REVIEW** · V2 4K 源码已提交，待最终审片/跨环境验收 | [项目主页](projects/guokao-data-film/README.md) · [项目章程](projects/guokao-data-film/PROJECT_CHARTER.md) · [Remotion](projects/guokao-data-film/remotion/README.md) |
 
-这里列出的“阶段”只表示版本化文件中**已核对的项目状态**；V2 不等于已经合并到 `main` 或公开发布。各项目的精确 SHA、素材状态及交付证据以各自的章程/版本表为准。
+当前仅有这个已登记的独立项目，后续新增视频在 `projects/<slug>/` 立项；**V1/V2 是版本，不是两个项目**。详情见 [项目管理规范](projects/README.md)。
 
-## 如何独立立项
+## Start building / 快速运行
 
-一个有独立主旨、目标受众、数据范围和交付物的选题/系列，使用一个唯一编号及目录：
+```bash
+git clone https://github.com/ProfessorZhi/self-media.git
+cd self-media
 
-```text
-projects/
-  README.md                  # 项目索引、状态约定
-  _template/                 # 新立项模板
-    README.md
-    PROJECT_CHARTER.md
-  guokao-data-film/          # VIDEO-001，仅管理本片及其版本
-    PROJECT_CHARTER.md       # 主旨、边界、完成定义
-    README.md                # 当前状态与导航
-    CREATIVE_BRIEF.md        # 创意与早期研究
-    PRODUCTION_PLAN.md       # 制作里程碑/历史计划
-    data/  research/  reference/  content/
-    remotion/                # 本片独立工程与 V1/V2 版本
+# 进入想复现的视频项目（每条视频独立安装依赖）
+cd projects/guokao-data-film/remotion
+npm ci
+npm run data
+npm test
+
+# NumPy 需要另行安装在合适的 Python 虚拟环境内
+npm run score
+npm run render  # 默认 1080p；4K 命令见本项目 remotion/README.md
 ```
 
-**V1/V2/4K/竖屏切片是同一项目的版本或导出，不另外占用 VIDEO 编号。** 新选题若需要独立内容承诺和发布验收，才新增 `projects/<slug>/`。可从 [立项模板](projects/_template/PROJECT_CHARTER.md) 开始。
+**版本提示：** `main` 的可用性以当前合并状态为准。若 V2 尚未集成到 `main`，请从 [V2 源码分支](https://github.com/ProfessorZhi/self-media/tree/claude/sharp-pascal-uq4ccz) 检出，或按项目 README 指定的**完整 commit** 复现；不要只把某个旧版本的 `remotion/` 目录覆盖到新版本数据上。
 
-## 项目隔离原则
+需要 Node.js/npm、Python + NumPy、Chromium，4K 渲染还需要适当的磁盘/内存。原版 MP4 和 `score.wav` 不是 Git 必须保存的内容；源代码负责生成它们，**不同 OS/浏览器/编码器不承诺字节级相同**。
 
-- **创作边界**：每个项目有自己的主旨、资料、任务书、素材声明和审核责任；仓库根目录只做导航，不复制项目的旧统计数字。
-- **代码与分支**：项目只修改 `projects/<slug>/**` 内的工程/数据；仓库导航与模板调整单独通过文档 PR 审核。不同项目不默认共用全仓依赖、进程或工作树。
-- **版本与交付**：源码、锁文件、轻量可用资源用 Git commit/PR 管理；大体积 MP4、临时缓存、敏感凭据不入 Git 历史。是否有实际成片与是否已公开发布，分别记录。
-- **来源准确**：官方原始字段、规则衍生分析、第三方资料和作者观点分级保存。没有来源不填造数据；代码验证通过不等于事实已获官方解释。
-- **授权设备**：每个项目在自己的章程声明具体授权路径、工具和禁区；**VIDEO-001 的处理与渲染仅允许用户授权的 Dell A6000 隔离环境，不在东京部署/存留项目资料，也不经东京 Fleet 通路执行**。
-- **变更审批**：历史 V1/V2 提交保留可追溯；未经用户确认不改主分支、不合并其他项目、不打乱别人正在工作的分支或远程会话。
+## Repository layout / 仓库结构
 
-## 项目状态术语
+```text
+self-media/
+├── README.md                       # 项目目录入口
+├── LICENSE                         # 原创软件 MIT License
+├── RIGHTS_AND_SOURCES.md           # 第三方数据、字体、音视频的权利边界
+├── CONTRIBUTING.md                 # 新建项目、提交代码与测试
+├── SECURITY.md                     # 凭据与敏感信息处理
+└── projects/
+    ├── README.md                   # 独立项目生命周期
+    ├── _template/                  # README + PROJECT_CHARTER 模板
+    └── guokao-data-film/
+        ├── PROJECT_CHARTER.md      # 主旨、受众与发布闸门
+        ├── README.md
+        ├── CREATIVE_BRIEF.md
+        ├── PRODUCTION_PLAN.md
+        ├── data/ research/ reference/ content/
+        └── remotion/               # VIDEO-001 独立源码、字体、音频生成器
+```
 
-| 状态 | 条件 |
-| --- | --- |
-| `IDEA` | 选题想法，尚未立项 |
-| `PLANNED` | 已有章程、素材与目标验收 |
-| `BUILDING` | 数据或影片正在制作 |
-| `REVIEW` | 已有待验收的可运行工程/候选成片；**不等于已发布** |
-| `PUBLISHED` | 实际发布并记录平台链接及日期 |
-| `ARCHIVED` | 归档，注明最终版本和资产去向 |
+## Our standards / 项目原则
 
-详细规范见 [projects/README.md](projects/README.md)。如果发现仓库根目录与项目章程、当前数据证明之间状态不一致，优先核对项目的精确提交及数据来源后再更新索引，而不是由根目录反向覆盖项目事实。
+1. **Reproducible**：代码、锁文件、数据版本、音频/视频构建命令可追踪；测试报告注明实际运行环境。
+2. **Truthful data**：公开原表、第三方整理、规则归类与观点分级；不能把文字命中当成报考资格或把统计相关性说成因果。
+3. **Independent projects**：每个选题独立立项和验收；仓库不要求统一版本节奏，跨项目共享能力需要明确接口。
+4. **License-aware**：开源的是有权授权的源码。**源网站公开不代表素材属于 MIT。** 不上传凭据、Cookies、受限素材或未经授权的原文。
+5. **Source ≠ release**：提交源码不等于通过审片，更不等于成片正式发布。项目阶段为 `IDEA → PLANNED → BUILDING → REVIEW → PUBLISHED`（或 `ARCHIVED`）。
+
+## Open source & contributions / 开放许可
+
+本仓**贡献者拥有授权权利的原创源代码**以 [MIT License](LICENSE) 开放，欢迎学习、修改、引用或创建新作品。请先阅读 [贡献指南](CONTRIBUTING.md)、[来源与素材许可](RIGHTS_AND_SOURCES.md) 和 [安全准则](SECURITY.md)。
+
+**Remotion 本身另有许可要求**；公司/商业团队是否可免费使用，应以 [Remotion 官方 License](https://www.remotion.dev/docs/license) 为准。第三方字体、资料、原始数据和引用素材**不自动随根目录 MIT 授权**。任何利用本仓渲染结果发布的内容，仍由发布方确保素材许可及事实审核。
+
+---
+
+**Project status is based on verifiable GitHub commits and tested outputs, not marketing claims.**
