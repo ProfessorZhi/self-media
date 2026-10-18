@@ -6,10 +6,12 @@ export type Fact = {value: number; source: {file: string; field: string; rule: s
 export type FilmData = {
   facts: Record<'seats' | 'positions' | 'departments' | 'taxSeats' | 'taxPositions' | 'taxBureaus' | 'otherSeats' | 'taxSharePct', Fact>;
   positions: number[][];
+  departments: [string, string][];
+  levels: string[];
 };
 export type Model = {
   data: FilmData;
-  seats: {count: number; tax: Uint8Array};
+  seats: {count: number; tax: Uint8Array; position: Int32Array};
   layouts: {
     field: Float32Array;
     split: Float32Array;
