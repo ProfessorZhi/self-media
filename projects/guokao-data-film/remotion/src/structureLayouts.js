@@ -1,4 +1,4 @@
-// Layouts for the structure chapter: particle sunburst -> treemap -> tax zoom.
+// Layouts for Act II "谁在招": particle sunburst -> system treemap -> system tour -> Pareto.
 // Pure functions of the film data; every seat keeps its identity.
 import {hash01} from './seatModel.js';
 
@@ -8,9 +8,17 @@ const R1 = 416;
 const ROWS = 40;
 const LEVEL_GAP_COLS = 10;
 
-/** Short display name for a tax bureau: 国家税务总局云南省税务局 -> 云南 */
-export const bureauShort = name =>
-  name.replace(/^国家税务总局/, '').replace(/税务局$/, '').replace(/(省|市|自治区|壮族自治区|回族自治区|维吾尔自治区|特别行政区)$/, '') || '总局';
+/** Short display names inside a system. */
+export function shortName(name) {
+  return name
+    .replace(/^国家金融监督管理总局(.+)监管局$/, '$1监管局')
+    .replace(/^中国证券监督管理委员会(.+)监管局$/, '证监会$1局')
+    .replace(/^中国人民银行(.+)分行$/, '人行$1分行')
+    .replace(/^(.+)出入境边防检查总站$/, '$1边检总站')
+    .replace(/^国家税务总局(.+)税务局$/, '$1')
+    .replace(/^国家统计局(.+)调查总队$/, '$1调查总队')
+    .replace(/^国家矿山安全监察局(.+)局$/, '矿山安监$1局');
+}
 
 /** Squarified treemap. items: [{value}], sorted desc. Returns [{x,y,w,h}] in item order. */
 export function squarify(items, rect) {
@@ -54,20 +62,19 @@ export function squarify(items, rect) {
   return out;
 }
 
-/** Fill a rectangle with n seats on an even grid (row-major), inset for breathing room. */
-function fillRect(xy, seatsInRect, r, inset) {
+/** Fill a rectangle with seats on a near-square grid; centre the last row. */
+function fillRect(xy, list, r, inset) {
   const x = r.x + inset;
   const y = r.y + inset;
   const w = Math.max(1, r.w - inset * 2);
   const h = Math.max(1, r.h - inset * 2);
-  const n = seatsInRect.length;
-  // Pick the column count that wastes the fewest cells while keeping cells near-square.
+  const n = list.length;
   const ideal = Math.sqrt((n * w) / h);
   let cols = 1;
   let best = Infinity;
   for (let c = Math.max(1, Math.floor(ideal * 0.75)); c <= Math.ceil(ideal * 1.3); c++) {
-    const r = Math.ceil(n / c);
-    const cost = (c * r - n) / n + Math.abs(Math.log(w / c / (h / r))) * 0.35;
+    const rr = Math.ceil(n / c);
+    const cost = (c * rr - n) / n + Math.abs(Math.log(w / c / (h / rr))) * 0.35;
     if (cost < best) {
       best = cost;
       cols = c;
@@ -75,31 +82,36 @@ function fillRect(xy, seatsInRect, r, inset) {
   }
   const rows = Math.ceil(n / cols);
   const lastStart = (rows - 1) * cols;
-  const lastShift = (cols - (n - lastStart)) / 2; // centre the final row
-  seatsInRect.forEach((s, k) => {
+  const lastShift = (cols - (n - lastStart)) / 2;
+  list.forEach((s, k) => {
     const c = (k % cols) + (k >= lastStart ? lastShift : 0);
-    const rr = Math.floor(k / cols);
     xy[s * 2] = x + ((c + 0.5) * w) / cols;
-    xy[s * 2 + 1] = y + ((rr + 0.5) * h) / rows;
+    xy[s * 2 + 1] = y + ((Math.floor(k / cols) + 0.5) * h) / rows;
   });
 }
 
 export function buildStructure(data, seats) {
-  const P = data.positions; // [deptIdx, levelIdx, hires, isTax]
-  const deptSeats = new Map();
-  for (const r of P) deptSeats.set(r[0], (deptSeats.get(r[0]) ?? 0) + r[2]);
-
-  // ---- Sunburst: angle ordered by level (中央 at 12 o'clock, clockwise), then dept size, then source order
+  const P = data.positions; // [deptIdx, levelIdx, hires, isTax, familyIdx]
   const seatPos = seats.position;
+  const deptSeats = new Map();
+  const deptFamily = new Map();
+  for (const r of P) {
+    deptSeats.set(r[0], (deptSeats.get(r[0]) ?? 0) + r[2]);
+    deptFamily.set(r[0], r[4]);
+  }
+  const family = new Uint8Array(seats.count);
+  for (let s = 0; s < seats.count; s++) family[s] = P[seatPos[s]][4];
+
+  // ---- Sunburst: angle by level (中央 at 12 o'clock), then system, then department size
   const order = Array.from({length: seats.count}, (_, i) => i).sort((a, b) => {
     const A = P[seatPos[a]];
     const B = P[seatPos[b]];
-    return A[1] - B[1] || deptSeats.get(B[0]) - deptSeats.get(A[0]) || A[0] - B[0] || a - b;
+    return A[1] - B[1] || A[4] - B[4] || deptSeats.get(B[0]) - deptSeats.get(A[0]) || A[0] - B[0] || a - b;
   });
   const levelCount = data.levels.map(() => 0);
   for (const r of P) levelCount[r[1]] += r[2];
   const cols = Math.ceil(seats.count / ROWS) + LEVEL_GAP_COLS * data.levels.length;
-  const polar = new Float32Array(seats.count * 2); // [theta, radius]
+  const polar = new Float32Array(seats.count * 2);
   const levelArcs = [];
   let col = LEVEL_GAP_COLS / 2;
   let n = 0;
@@ -107,37 +119,29 @@ export function buildStructure(data, seats) {
     const startCol = col;
     for (let k = 0; k < levelCount[li]; k++, n++) {
       const s = order[n];
-      const c = col + Math.floor(k / ROWS);
-      const row = k % ROWS;
-      polar[s * 2] = ((c + 0.5) / cols) * Math.PI * 2;
-      polar[s * 2 + 1] = R0 + ((row + 0.5) * (R1 - R0)) / ROWS + (hash01(s, 11) - 0.5) * 1.2;
+      polar[s * 2] = ((col + Math.floor(k / ROWS) + 0.5) / cols) * Math.PI * 2;
+      polar[s * 2 + 1] = R0 + (((k % ROWS) + 0.5) * (R1 - R0)) / ROWS + (hash01(s, 11) - 0.5) * 1.2;
     }
     col += Math.ceil(levelCount[li] / ROWS);
     levelArcs.push({name, seats: levelCount[li], a0: (startCol / cols) * Math.PI * 2, a1: (col / cols) * Math.PI * 2});
     col += LEVEL_GAP_COLS;
   });
 
-  // ---- Treemap: root = [税务 group] + 551 other departments; tax group subdivided into 38 bureaus
+  // ---- Treemap: systems first, then departments inside each system
   const W = 1700;
-  const H = 800;
-  const area = {x: (1920 - W) / 2, y: 200, w: W, h: H};
-  const deptTax = new Map(P.map(r => [r[0], r[3] === 1]));
-  const depts = [...deptSeats.entries()].map(([d, v]) => ({d, value: v, tax: deptTax.get(d)}));
-  const taxDepts = depts.filter(x => x.tax).sort((a, b) => b.value - a.value);
-  const others = depts.filter(x => !x.tax).sort((a, b) => b.value - a.value);
-  const taxTotal = taxDepts.reduce((t, x) => t + x.value, 0);
-  const top = [{value: taxTotal, group: 'tax'}, ...others].sort((a, b) => b.value - a.value);
-  const topRects = squarify(top, area);
+  const H = 780;
+  const area = {x: (1920 - W) / 2, y: 210, w: W, h: H};
+  const fams = data.families.map((f, fi) => ({fi, value: f.seats})).sort((a, b) => b.value - a.value);
+  const famRects = new Array(data.families.length);
+  squarify(fams, area).forEach((r, k) => (famRects[fams[k].fi] = r));
   const rectOf = new Map();
-  let taxRect = area; // replaced by the tax group rect below
-  top.forEach((it, k) => {
-    if (it.group === 'tax') taxRect = topRects[k];
-    else rectOf.set(it.d, topRects[k]);
+  const GAP = 3;
+  data.families.forEach((_, fi) => {
+    const fr = famRects[fi];
+    const inner = {x: fr.x + GAP, y: fr.y + GAP, w: fr.w - GAP * 2, h: fr.h - GAP * 2};
+    const ds = [...deptSeats.entries()].filter(([d]) => deptFamily.get(d) === fi).map(([d, value]) => ({d, value})).sort((a, b) => b.value - a.value || a.d - b.d);
+    squarify(ds, inner).forEach((r, k) => rectOf.set(ds[k].d, r));
   });
-  const PAD = 3;
-  const inner = {x: taxRect.x + PAD, y: taxRect.y + PAD, w: taxRect.w - PAD * 2, h: taxRect.h - PAD * 2};
-  squarify(taxDepts, inner).forEach((r, k) => rectOf.set(taxDepts[k].d, r));
-
   const bySeatDept = new Map();
   for (let s = 0; s < seats.count; s++) {
     const d = P[seatPos[s]][0];
@@ -147,20 +151,50 @@ export function buildStructure(data, seats) {
   const treemap = new Float32Array(seats.count * 2);
   for (const [d, list] of bySeatDept) {
     const r = rectOf.get(d);
-    const inset = Math.min(1.5, r.w / 6, r.h / 6);
-    fillRect(treemap, list, r, inset);
+    fillRect(treemap, list, r, Math.min(1.2, r.w / 6, r.h / 6));
   }
 
-  const name = d => data.departments[d][1];
+  // ---- Pareto: departments ranked by seats; each seat sits on the cumulative-share curve
+  const ranked = [...deptSeats.entries()].sort((a, b) => b[1] - a[1] || a[0] - b[0]);
+  const plot = {x: 200, y: 250, w: 1540, h: 640};
+  const rankOf = new Map(ranked.map(([d], i) => [d, i]));
+  const cumBefore = new Map();
+  let acc = 0;
+  for (const [d, v] of ranked) {
+    cumBefore.set(d, acc);
+    acc += v;
+  }
+  const pareto = new Float32Array(seats.count * 2);
+  for (const [d, list] of bySeatDept) {
+    const rank = rankOf.get(d);
+    const x0 = plot.x + (rank / ranked.length) * plot.w;
+    const dw = plot.w / ranked.length;
+    list.forEach((s, k) => {
+      const share = (cumBefore.get(d) + k + 0.5) / seats.count;
+      pareto[s * 2] = x0 + dw * (0.15 + 0.7 * hash01(s, 5));
+      pareto[s * 2 + 1] = plot.y + plot.h - share * plot.h + (hash01(s, 6) - 0.5) * 9;
+    });
+  }
+
+  // cumulative curve vertices for the area fill
+  const curve = [[plot.x, plot.y + plot.h]];
+  acc = 0;
+  ranked.forEach(([, v], i) => {
+    acc += v;
+    curve.push([plot.x + ((i + 1) / ranked.length) * plot.w, plot.y + plot.h - (acc / seats.count) * plot.h]);
+  });
+
   return {
+    curve,
+    family,
     polar,
     levelArcs,
     treemap,
-    taxRect,
-    rects: [...rectOf.entries()].map(([d, r]) => ({d, name: name(d), value: deptSeats.get(d), tax: taxDepts.some(t => t.d === d), ...r})),
+    famRects,
+    rects: [...rectOf.entries()].map(([d, r]) => ({d, name: data.departments[d][1], value: deptSeats.get(d), fam: deptFamily.get(d), ...r})),
     pitch: Math.sqrt((W * H) / seats.count),
-    radii: [R0, R1],
-    deptCount: depts.length,
-    concentration: {top10: others.slice(0, 10)},
+    pareto,
+    plot,
+    deptTotal: ranked.length,
   };
 }

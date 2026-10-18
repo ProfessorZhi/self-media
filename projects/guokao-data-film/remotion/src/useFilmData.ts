@@ -3,8 +3,12 @@ import {cancelRender, continueRender, delayRender, staticFile} from 'remotion';
 import {buildLayouts, expandSeats} from './seatModel.js';
 
 export type Fact = {value: number; source: {file: string; field: string; rule: string}};
+export type Family = {name: string; rule: string; seats: number; positions: number; departments: number; top: {name: string; seats: number} | null};
 export type FilmData = {
-  facts: Record<'seats' | 'positions' | 'departments' | 'taxSeats' | 'taxPositions' | 'taxBureaus' | 'otherSeats' | 'taxSharePct', Fact>;
+  facts: Record<'seats' | 'positions' | 'departments' | 'taxSeats' | 'taxPositions' | 'taxBureaus' | 'otherSeats' | 'taxSharePct' | 'deptsFor80' | 'deptsUpTo5' | 'deptsOnly1', Fact> & {
+    borderOfficial: Fact & {matches: boolean};
+  };
+  families: Family[];
   positions: number[][];
   departments: [string, string][];
   levels: string[];
