@@ -1,3 +1,7 @@
+> **当前状态索引（2026-10-18）**：本文件保留早期 80–90 秒影片的创作/制作设想，**不是 V2 实际时长或当前进度单**。V2 已是约 5 分 27 秒的 Remotion 4K 候选（源码见 [remotion/README.md](remotion/README.md)），待独立审片、官方证据合流和复现验收；正式主旨/边界见 [PROJECT_CHARTER.md](PROJECT_CHARTER.md)。
+
+---
+
 > 数据状态更新（2026-10-17）：本文保留早期创意与制作讨论。当前逐岗位、专业目录、条件和历史分数均已补充，旧数字与“尚无逐岗位数据”等状态以 [DATA_HANDOFF.md](DATA_HANDOFF.md) 为准。用户当前要求是给 Opus 提供数据；创意和表达由 Opus 决定。
 
 # 创意 Brief · 国考宇宙
