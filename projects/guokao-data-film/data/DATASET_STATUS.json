@@ -49,6 +49,11 @@
     {
       "path": "official_2027_immigration_plan.json",
       "role": "official_agency_plan"
+    },
+    {
+      "path": "2027_registration_snapshot_20261018_1138_secondary.json",
+      "role": "2027 application/qualification counts as reported by third-party Huatu at 2026-10-18 11:38 Beijing time; 31 provinces, snapshot only",
+      "coverage_note": "591,223 applicants, 324,561 approved, 835 jobs reported without applicants; source/31-province totals checked, NOT official, NOT live and NOT per-position registration data"
     }
   ],
   "catalogs": [
@@ -118,17 +123,17 @@
     {
       "path": "../research/REVIEW_STATUS_20261018.json",
       "role": "mutually exclusive review-status stratification of 5,835 positions",
-      "result": "PASS: 10 buckets sum to 5,835; no-candidate buckets equal the residual list"
+      "result": "PASS: 11 mutually exclusive buckets sum to 5,835; no-candidate buckets equal the residual list"
     },
     {
       "path": "../research/RESIDUAL_STRATA_20261018.json",
       "role": "residual stratification by raw text (agency vs national vocabulary)",
-      "result": "728 positions: 533 agency no public list, 13 agency unverified, 182 national vocabulary/open scope"
+      "result": "727 positions: 533 agency category membership lists not found in checked sources, 13 agency-category publication status unverified, 181 vocabulary/open scope"
     },
     {
       "path": "../research/FINAL_EVIDENCE_SCOPE_AUDIT_20261018.json",
       "role": "final evidence-scope audit and safe-read guidance",
-      "result": "18,680 conservative / 19 provisional / 727 no-candidate; 0 exact in-scope parser gaps across the audited residual groups"
+      "result": "18,694 conservative / 5 provisional / 727 no-candidate; 14 maritime positions corroborated by a notice with a strict 13-agency whitelist; no newly found exact in-scope parser gap"
     },
     {
       "path": "../research/REMARK_SCOPE_FIX_DIFF_20261018.json",
@@ -156,7 +161,7 @@
     {
       "path": "../research/GAP_RESOLUTION_CAMPAIGN_20261018.json",
       "role": "gap-resolution campaign: agency evidence, conflict audit, residual recheck",
-      "result": "17 maritime positions moved from provisional to conservative coverage via the MSA 2027 notice; 26 of 67 semantic entries are genuine mismatches"
+      "result": "14 maritime positions moved from provisional to conservative within Article 12 scope; of 67 machine content_conflict entries, 2 direct name/code pairs remain unresolved (not asserted source errors)"
     },
     {
       "path": "../research/GAP_RESOLUTION_CAMPAIGN_20261018.md",
@@ -224,11 +229,12 @@
     "Agency category phrases with no published membership list stay unresolved; a 2026 institution-recruitment catalog is not applicable to 2027 civil service positions.",
     "Review status is a work state: a catalog candidate is not a cleared position, and the 5,835 review denominator is not an uncovered count.",
     "The MOE 门类 rule is cited from a statement scoped to MOE positions; applying it to other agencies is an inference and is flagged as such.",
-    "Conflict metrics are distinct: positions (59), structured conflict entries (101) and content_conflict entries (67) must not be interchanged.",
+    "Conflict metrics are distinct: 54 positions with 87 structured conflict entries, including 67 content_conflict entries across 44 positions; only 2 direct name/code pairs remain unresolved, and machine flags do not establish source errors.",
     "A gate_scope_rule hit on a non-MOE position is provisional and must not enter the conservative coverage numerator.",
     "A source-declared two-digit gate code printed in the position text is direct evidence and counts as exact.",
     "Conflict families are separate: semantic_conflict indicates a possible source inconsistency; multi_namespace_diagnostic does not.",
     "A 备注 code is resolved in the level named by an explicit bounded label; outside such a label the position education is used and the fallback is marked.",
-    "A mixed label such as 本科或研究生阶段 falls back to the position education and is flagged, never widened to both levels."
+    "A mixed label such as 本科或研究生阶段 falls back to the position education and is flagged, never widened to both levels.",
+    "2027 registration numbers are separately time-stamped third-party snapshots, not official, final, or per-position live datasets; never overwrite previous snapshots or confuse them with the 2027 original position workbook."
   ]
 }
