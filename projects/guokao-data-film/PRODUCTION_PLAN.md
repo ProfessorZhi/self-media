@@ -1,4 +1,4 @@
-> **当前状态索引（2026-10-18）**：本文件保留早期 80–90 秒影片的创作/制作设想，**不是 V2 实际时长或当前进度单**。V2 已是约 5 分 27 秒的 Remotion 4K 候选（源码见 [remotion/README.md](remotion/README.md)），待独立审片、官方证据合流和复现验收；正式主旨/边界见 [PROJECT_CHARTER.md](PROJECT_CHARTER.md)。
+> **当前状态索引（2026-10-18）**：项目现行片名为 [《席位之间》｜35,691](BRANDING.md)。本文件保留早期 80–90 秒影片的创作/制作设想，**不是 V2 实际时长或当前进度单**。V2 已是约 5 分 27 秒的 Remotion 4K 候选（源码见 [remotion/README.md](remotion/README.md)），待独立审片、官方证据合流和复现验收；正式主旨/边界见 [PROJECT_CHARTER.md](PROJECT_CHARTER.md)。
 
 ---
 

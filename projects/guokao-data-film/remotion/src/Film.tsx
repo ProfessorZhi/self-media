@@ -12,7 +12,7 @@ import {SlowContext} from './common';
 import {C} from './theme';
 import timeline from './timeline.json';
 
-// The full film: six acts back to back. Act I hands its seat field straight to Act II;
+// Full film: prologue + seven story acts + epilogue. Act I hands its seat field straight to Act II;
 // the other joins dip through the background for a few frames.
 // Acts are slowed by K (they read frame / K); bookends run in real time.
 export const K = timeline.slow;

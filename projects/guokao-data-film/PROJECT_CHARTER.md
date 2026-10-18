@@ -1,4 +1,4 @@
-# VIDEO-001｜国考宇宙 · 2027 招录数据电影
+# VIDEO-001｜席位之间 · 35,691｜2027 国考数据电影
 
 > 项目章程 / Editorial & Production Charter · 工作版 0.1 · 2026-10-18  
 > 状态：**REVIEW（V2 源码已提交；成片渲染由执行端报告完成，尚待本项目独立数据审片和交付验收）**。  
@@ -8,7 +8,7 @@
 
 **把 2027 国考 35,691 个计划招录名额拍成一部从全国结构走向一个具体岗位、最终回到人的数据电影：数字要真实，变化要能解释，情绪要有克制。**
 
-英文工作主题：**Civil Service · The Data Universe**。影片不是网页功能演示、招生广告或纯视觉 Demo；**内容洞察、电影化 Motion Design、可复现的程序化工程**是三条同等重要的主线。
+当前英文片名/视觉副题：**SEATS / 35,691 · A Data Film**。原工作名称为《国考宇宙》，仅在早期创意与历史提交中作为检索别名保留。影片不是网页功能演示、招生广告或纯视觉 Demo；**内容洞察、电影化 Motion Design、可复现的程序化工程**是三条同等重要的主线。
 
 ## 想回答的核心问题
 
@@ -59,6 +59,7 @@ V2 已把原始的 80–90 秒概念扩展为约 **5 分 27 秒**的完整作品
 | **V1** | [`28a6667`](https://github.com/ProfessorZhi/self-media/commit/28a6667b2746ed2343637064b2cd5b358e877ec0) | 六幕、约 2:57、1080p；历史版本 |
 | **V2** | [`93153d9`](https://github.com/ProfessorZhi/self-media/commit/93153d97ef0a6eb001c72041f142e193cdcf100e) | 序幕+七幕+尾声、约 5:27、4K；当前成片候选 |
 | V2 文档锚点 | [`dbb1060`](https://github.com/ProfessorZhi/self-media/commit/dbb106002078783c8197d2819eff44ba8b2bbc74) | 仅版本 README 变更；不作为新一版视觉源代码 |
+| **V2.1 品牌修订** | 当前片名修订 PR | 正式显示《席位之间》/ SEATS 35,691；末幕章节编号修为 07。源代码变化≠视频已重渲染；继续保持 REVIEW |
 | 视频代码版本 | [`claude/sharp-pascal-uq4ccz`](https://github.com/ProfessorZhi/self-media/tree/claude/sharp-pascal-uq4ccz) 及当前 `main` | Remotion 工程、锁文件、字体、内置数据、配乐生成脚本已合入 `main`；保留开发分支作历史来源 |
 | 官方专业证据版本 | [已合并 PR #2](https://github.com/ProfessorZhi/self-media/pull/2) | 2027 官方工作簿核验、专业+备注双列证据与关键字段 QA 已通过 Squash 进入 `main`；原始第三方附件不随正式主分支分发 |
 
@@ -89,6 +90,7 @@ V2 已把原始的 80–90 秒概念扩展为约 **5 分 27 秒**的完整作品
 | 文档 | 用途 |
 | --- | --- |
 | [README.md](README.md) | 当前阶段、目录、入口 |
+| [BRANDING.md](BRANDING.md) | 正式中英文片名、叙事签名、兼容 Composition ID 与更名阶段约定 |
 | [CREATIVE_BRIEF.md](CREATIVE_BRIEF.md) | 历史创意与艺术实验记录；不作为 V2 当前时长 |
 | [PRODUCTION_PLAN.md](PRODUCTION_PLAN.md) | 历史 M0–M5 计划；当前进度以本章程和工程 README 为准 |
 | [remotion/README.md](remotion/README.md) | V1/V2 版本、实际工程与渲染指令 |

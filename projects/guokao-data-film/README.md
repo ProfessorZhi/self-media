@@ -1,4 +1,4 @@
-# VIDEO-001｜国考宇宙 · Guokao Data Film
+# VIDEO-001｜席位之间 · 35,691｜2027 国考数据电影
 
 > **状态：REVIEW · V2 候选成片 / V2 源码与专业证据已合入 `main`，待发布级事实审查和实际重渲染验收**  
 > **项目类型：** 基于真实国考数据的电影化可视化 / Remotion × AI Coding × Motion Design  
@@ -13,8 +13,9 @@
 | 版本 | 源码锚点 | 已有作品 / 现状 |
 | --- | --- | --- |
 | **V1** | [`28a6667`](https://github.com/ProfessorZhi/self-media/commit/28a6667b2746ed2343637064b2cd5b358e877ec0) | 六幕、2 分 57 秒、1080p；历史版本 |
-| **V2** | [`93153d9`](https://github.com/ProfessorZhi/self-media/commit/93153d97ef0a6eb001c72041f142e193cdcf100e) | 序幕 + 七幕 + 尾声、约 5 分 27 秒、4K；当前候选 |
-| **V2 工程文档** | [`dbb1060`](https://github.com/ProfessorZhi/self-media/commit/dbb106002078783c8197d2819eff44ba8b2bbc74) | 只补版本表，不产生新版视频视觉代码 |
+| **V2** | [`93153d9`](https://github.com/ProfessorZhi/self-media/commit/93153d97ef0a6eb001c72041f142e193cdcf100e) | 序幕 + 七幕 + 尾声、约 5 分 27 秒、4K；历史工作名《国考宇宙》 |
+| **V2 工程文档** | [`dbb1060`](https://github.com/ProfessorZhi/self-media/commit/dbb106002078783c8197d2819eff44ba8b2bbc74) | 只补历史版本表 |
+| **V2.1（待新 MP4 验收）** | 更名 PR 提交，合并后固定 SHA | 片尾更名《席位之间》，修复末幕章节编号 07；尚未重渲染验证 |
 
 **当前完整代码与数据：** [主分支 `main`](https://github.com/ProfessorZhi/self-media/tree/main/projects/guokao-data-film)。历史开发来源分别为 [V2 分支 `claude/sharp-pascal-uq4ccz`](https://github.com/ProfessorZhi/self-media/tree/claude/sharp-pascal-uq4ccz) 与 [专业证据 PR #2](https://github.com/ProfessorZhi/self-media/pull/2)；两者已按项目约定集成到 `main`，历史提交继续保留为版本记录。
 
@@ -49,6 +50,7 @@ V2 的实际顺序为**序幕 → 越来越挤 → 谁在招 → 一年巨变 �
 | 入口 | 职责 |
 | --- | --- |
 | [PROJECT_CHARTER.md](PROJECT_CHARTER.md) | 项目主旨、受众、编辑承诺、边界和完成定义（优先读） |
+| [BRANDING.md](BRANDING.md) | 正式片名《席位之间》、英文题签、V1/V2 历史别名与渲染兼容约定 |
 | [RELEASE_CHECKLIST.md](RELEASE_CHECKLIST.md) | 主分支开源状态、来源与素材授权、V2 实际重渲染及最终审片清单 |
 | [remotion/README.md](remotion/README.md) | V1/V2 版本表、源码、安装与渲染命令 |
 | [HIGHLIGHTS.md](HIGHLIGHTS.md) | 镜头可用统计候选；最终入镜数字须从当前来源重算 |
@@ -59,7 +61,7 @@ V2 的实际顺序为**序幕 → 越来越挤 → 谁在招 → 一年巨变 �
 
 ## 下一阶段验收（不等于尚未制作）
 
-当前要做的是**V2 发布级复核**：实际播放抽检每一幕、修正“冷思考/一个座位”章号可能重复的显示问题、逐句校验专业代码和“官方/分析分类”文案、核实二手财经/就业数据与授权、基于现已集成的 `main` 重跑数据脚本与 4K 渲染、记录最终 MP4 与审片结果。
+当前要做的是**V2.1 发布级复核**：实际播放抽检每一幕，确认源码已修复的“冷思考 06 / 一个座位 07”在新 MP4 中正确显示、逐句校验专业代码和“官方/分析分类”文案、核实二手财经/就业数据与授权、基于现已集成的 `main` 重跑数据脚本与 4K 渲染、记录最终 MP4 与审片结果。
 
 **不得直接改历史 V1/V2 commit，不得因为代码已推 GitHub 就宣称已公开发布，也不得绕过显式授权合并 `main`。**
 

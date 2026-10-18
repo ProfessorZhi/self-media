@@ -5,11 +5,11 @@
   "type": "module",
   "scripts": {
     "data": "node scripts/build_film_data.mjs && node scripts/build_cutoff_data.mjs",
-    "test": "node scripts/check_film_data.mjs",
+    "test": "node scripts/check_film_data.mjs && node scripts/check_branding.mjs",
     "studio": "remotion studio",
     "still": "remotion still",
     "score": "python3 scripts/compose_score.py",
-    "render": "remotion render GuokaoUniverse out/guokao_universe.mp4"
+    "render": "remotion render GuokaoUniverse out/between_seats_2027.mp4"
   },
   "dependencies": {
     "@fontsource/noto-sans-sc": "^5.3.1",

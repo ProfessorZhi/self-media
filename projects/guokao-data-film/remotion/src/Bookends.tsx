@@ -65,7 +65,7 @@ export const Epilogue: React.FC = () => {
         <Line o={fade(frame, 150, 190)}>愿你的每一份准备，都不被辜负。</Line>
       </div>
       <div style={{position: 'absolute', left: 0, right: 0, top: 300, textAlign: 'center', ...rise(credits)}}>
-        <div style={{fontSize: 34, fontWeight: 700}}>国考宇宙 · 2027</div>
+        <div style={{fontSize: 34, fontWeight: 700}}>席位之间 · 35,691</div>
         <div style={{fontSize: 20, color: C.muted, marginTop: 34, lineHeight: 2}}>
           数据来源
           <br />

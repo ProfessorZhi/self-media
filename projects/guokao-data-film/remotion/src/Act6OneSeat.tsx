@@ -129,7 +129,7 @@ export const Act6OneSeat: React.FC = () => {
       }
     >
       <div style={{position: 'absolute', left: 125, top: 100, ...rise(titleA)}}>
-        <div style={{fontSize: 22, color: C.muted, letterSpacing: 4}}>06 · 一个座位</div>
+        <div style={{fontSize: 22, color: C.muted, letterSpacing: 4}}>07 · 一个座位</div>
         <div style={{fontSize: 46, fontWeight: 700, marginTop: 8}}>回到 2027 年的 {fmt(model.data.facts.seats.value)} 个名额</div>
       </div>
 
