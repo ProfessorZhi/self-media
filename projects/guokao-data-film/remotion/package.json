@@ -1,0 +1,24 @@
+{
+  "name": "guokao-data-film",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "data": "node scripts/build_film_data.mjs",
+    "test": "node scripts/check_film_data.mjs",
+    "studio": "remotion studio",
+    "still": "remotion still",
+    "render:m1": "remotion render M1-TaxReflow out/m1_tax_reflow.mp4"
+  },
+  "dependencies": {
+    "@fontsource/noto-sans-sc": "^5.3.1",
+    "@remotion/cli": "^4.0.536",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.536"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.31",
+    "typescript": "^5.9.3"
+  }
+}
