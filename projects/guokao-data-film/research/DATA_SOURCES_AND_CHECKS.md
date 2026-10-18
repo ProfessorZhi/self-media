@@ -20,7 +20,7 @@
 | 官方工作簿 | `6b3da70baabe31a4a202c6b1179040db7003a956bc85c79cd35e3fb739d9520a` |
 | 镜像 XLS | `a06e907c4544ac9f20e72a6532e7aa45d9a474e33a737a70953073230b026d83` |
 
-两份新取得的上游二进制存入 [data/sources/](../data/sources/manifest.json)，可在无网络时复核哈希。
+本仓公开交付只保留 [来源 URL / 文件名 / SHA-256 manifest](../data/sources/manifest.json) 与已生成的解析结果；上游 ZIP、PDF、DOCX、HTML **不随正式公开主分支再分发**。如需重新核验，请依 [原始来源复算说明](../data/sources/README.md) 在获授权的本地工作空间自行取得文件，并先核验哈希。历史已有验证报告保留为当时实测结果，不冒充本轮重跑。
 
 ## 2. 官方全表逐格核验（本轮关键进展）
 
