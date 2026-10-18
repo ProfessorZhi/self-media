@@ -42,6 +42,7 @@
 | --- | --- |
 | [CREATIVE_BRIEF.md](CREATIVE_BRIEF.md) | 创作意图、叙事与镜头方向 |
 | [PRODUCTION_PLAN.md](PRODUCTION_PLAN.md) | 里程碑、交付物与验收 |
+| [research/VIDEO_READINESS_AUDIT_20261018.md](research/VIDEO_READINESS_AUDIT_20261018.md) | 首片当前可引用数字、场景数据来源与实际制作缺口 |
 | [research/DATA_SOURCES_AND_CHECKS.md](research/DATA_SOURCES_AND_CHECKS.md) | 数据来源和核验记录 |
 | [research/MAJOR_CODE_MATCHING.md](research/MAJOR_CODE_MATCHING.md) | 专业目录与原文关系的处理规则 |
 | [content/knowledge_challenge_2027.json](content/knowledge_challenge_2027.json) | 已归档的程序化知识挑战内容 |
