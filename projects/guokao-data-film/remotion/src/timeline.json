@@ -1,0 +1,30 @@
+{
+  "fps": 30,
+  "slow": 1.3,
+  "prologue": 390,
+  "epilogue": 540,
+  "order": [
+    "prologue",
+    "act1",
+    "act2",
+    "act3",
+    "act4",
+    "act5",
+    "act7",
+    "act6",
+    "epilogue"
+  ],
+  "actLocal": {
+    "act1": 780,
+    "act2": 1646,
+    "act3": 960,
+    "act4": 1050,
+    "act5": 780,
+    "act7": 1050,
+    "act6": 720
+  },
+  "crossfade": 30,
+  "seamless": [
+    "act2"
+  ]
+}
