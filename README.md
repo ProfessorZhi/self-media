@@ -12,7 +12,7 @@
 
 | ID | Project | 技术及内容 | 阶段 | 源码与说明 |
 | --- | --- | --- | --- | --- |
-| **VIDEO-001** | **国考宇宙 · Civil Service: The Data Universe** | 国考 2027 招录数据电影 · Remotion / React / Canvas / 程序化配乐 | **REVIEW** · V2 4K 源码已提交，待最终审片/跨环境验收 | [项目主页](projects/guokao-data-film/README.md) · [项目章程](projects/guokao-data-film/PROJECT_CHARTER.md) · [Remotion](projects/guokao-data-film/remotion/README.md) |
+| **VIDEO-001** | **席位之间 · 35,691 · A Data Film** | 国考 2027 招录数据电影 · Remotion / React / Canvas / 程序化配乐 | **REVIEW** · V2 4K 源码已提交，待最终审片/跨环境验收 | [项目主页](projects/guokao-data-film/README.md) · [项目章程](projects/guokao-data-film/PROJECT_CHARTER.md) · [Remotion](projects/guokao-data-film/remotion/README.md) |
 
 当前仅有这个已登记的独立项目，后续新增视频在 `projects/<slug>/` 立项；**V1/V2 是版本，不是两个项目**。详情见 [项目管理规范](projects/README.md)。
 
