@@ -7,7 +7,8 @@
 | 版本 | 提交 | 内容 | 成片 |
 |---|---|---|---|
 | **V1** | `28a6667` | 六幕，2 分 57 秒，1080p，初版配乐 | `npm run render`（检出该提交） |
-| **V2（当前）** | `93153d9` 及之后 | 序幕 + 七幕（新增「冷思考」）+ 尾声，5 分 27 秒，4K，悲伤配乐，交叉溶解转场，税务纳入镜头巡游 | `npx remotion render GuokaoUniverse out/guokao_universe_4k.mp4 --scale=2 --audio-codec=aac` |
+| **V2（原始候选）** | `93153d9` | 序幕 + 七幕 + 尾声，5 分 27 秒，4K；历史工作名《国考宇宙》 | `npx remotion render GuokaoUniverse out/guokao_universe_4k.mp4 --scale=2 --audio-codec=aac`（检出原提交） |
+| **V2.1（源码候选，尚未重渲染）** | 本次片名修订 PR 的提交（合并后锁定完整 SHA） | **《席位之间》｜35,691**，更正最后一幕编号为 07；保留原时间轴和核心数据 | `npm run render` 默认 1080p；4K 按下方命令 |
 
 **按完整仓库版本回放，不要仅把 `remotion/` 目录从旧 commit 覆盖到当前数据：**
 
@@ -18,11 +19,11 @@ git switch --detach 28a6667b2746ed2343637064b2cd5b358e877ec0   # V1
 git switch --detach 93153d97ef0a6eb001c72041f142e193cdcf100e    # V2
 ```
 
-源代码与所依赖的数据必须来自兼容的提交；**V2 此后仅提交了 README 更新（`dbb1060`），没有新的视频渲染源码**。V2 4K 成片文件较大、用户反馈约 259 MB（不同编码版本可能有差异），不提交 Git。用户/执行端曾报告成功渲染，但本次文档整理没有重新实际渲染或做全片视觉 QA。
+源代码与所依赖的数据必须来自兼容的提交；**原 V2 到 `dbb1060` 仅增加了 README 更新**；V2.1 另行修改片尾显示名称、章节编号和默认导出文件名。V1/V2 历史提交仍保持不变。V2 4K 成片文件较大、用户反馈约 259 MB（不同编码版本可能有差异），不提交 Git。用户/执行端曾报告成功渲染，但本次文档整理没有重新实际渲染或做全片视觉 QA。
 
-## V2 结构（当前源码）
+## V2 / V2.1 结构
 
-由 `src/timeline.json` 与 `src/Film.tsx` 共同定义：**序幕 → 越来越挤 → 谁在招 → 一年巨变 → 门槛与画像 → 分数 → 冷思考 → 一个座位 → 尾声**。30fps、总长约 5:27。交叉溶解的时长由同一个时间轴文件和配乐脚本使用；个别章节的画面“06”编号尚需发布前 QA。
+由 `src/timeline.json` 与 `src/Film.tsx` 共同定义：**序幕 → 越来越挤 → 谁在招 → 一年巨变 → 门槛与画像 → 分数 → 冷思考 → 一个座位 → 尾声**。30fps、总长约 5:27。交叉溶解的时长由同一个时间轴文件和配乐脚本使用；原 V2 的两个章节曾同用“06”；**V2.1 源码已经把末幕「一个座位」改成 07**，但还需在实际重渲染的 MP4 中逐帧验收。
 
 V2 增加 `Act7Thinking.tsx` 和 `Bookends.tsx`，其中“冷思考”的就业、财政资料有独立二手数据文件，不能混为 2027 职位表的官方原文。完整统计原字段与后续证据分支之间的关系，见 [项目章程](../PROJECT_CHARTER.md)。
 
@@ -39,7 +40,7 @@ V2 增加 `Act7Thinking.tsx` 和 `Bookends.tsx`，其中“冷思考”的就业
 | 五 分数 | `Act5-Scores` | 780 | 2026 年 17,377 岗进面分点阵直方图、中位数、最高 153.7 / 最低 90.1；2,850 岗不同口径单列 |
 | 六 一个座位 | `Act6-OneSeat` | 720 | 输入 030101K → 信号点亮 329 岗 / 399 名额 → 推近一个点，展开原表一行 → 收尾 |
 
-完整影片：`GuokaoUniverse`（`src/Film.tsx`），含原创合成配乐。
+完整影片的内部 Composition ID 仍为 `GuokaoUniverse`（`src/Film.tsx`），用于兼容旧版脚本；它不是当前对外片名。当前片名与封面规范见 [BRANDING.md](../BRANDING.md)。
 
 ## 复现
 
@@ -54,7 +55,7 @@ python3 -m pip install numpy        # 如运行环境尚未具备 NumPy；建议
 npm run score                       # 生成被 .gitignore 排除的 public/score.wav
 
 npm run studio                      # 预览
-npx remotion render GuokaoUniverse out/guokao_universe_4k.mp4 --scale=2 --audio-codec=aac
+npx remotion render GuokaoUniverse out/between_seats_2027_4k.mp4 --scale=2 --audio-codec=aac
 ```
 
 **环境依赖：** Node.js / npm、Python3 + NumPy、Chromium、FFmpeg 与适合 4K 的可用 RAM/磁盘。仓库保存 npm lockfile 及字体，但尚未容器化锁定操作系统、Python/NumPy、Chromium、FFmpeg 的完整版本；**可从源码重新渲染 ≠ 不同设备能得到字节完全相同的 MP4**。若使用本机预装 Chromium，设置 `REMOTION_BROWSER` 为实际可执行文件路径；下面历史路径只适用于当时的容器。
