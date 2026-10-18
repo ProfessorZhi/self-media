@@ -1,4 +1,4 @@
-# VIDEO-001｜国考宇宙 · Guokao Data Film
+# VIDEO-001｜席位之间 · 35,691｜2027 国考数据电影
 
 > **状态：REVIEW · V2 候选成片 / V2 源码与专业证据已合入 `main`，待发布级事实审查和实际重渲染验收**  
 > **项目类型：** 基于真实国考数据的电影化可视化 / Remotion × AI Coding × Motion Design  
