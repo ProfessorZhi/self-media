@@ -49,6 +49,7 @@ V2 的实际顺序为**序幕 → 越来越挤 → 谁在招 → 一年巨变 �
 | 入口 | 职责 |
 | --- | --- |
 | [PROJECT_CHARTER.md](PROJECT_CHARTER.md) | 项目主旨、受众、编辑承诺、边界和完成定义（优先读） |
+| [RELEASE_CHECKLIST.md](RELEASE_CHECKLIST.md) | 主分支开源状态、来源与素材授权、V2 实际重渲染及最终审片清单 |
 | [remotion/README.md](remotion/README.md) | V1/V2 版本表、源码、安装与渲染命令 |
 | [HIGHLIGHTS.md](HIGHLIGHTS.md) | 镜头可用统计候选；最终入镜数字须从当前来源重算 |
 | [DATA_HANDOFF.md](DATA_HANDOFF.md) / [OPUS_HANDOFF.md](OPUS_HANDOFF.md) | 当前 `main` 的数据字段、来源、专业风险及制作接手入口 |
