@@ -1,5 +1,16 @@
 # 国考宇宙 · Remotion 工程
 
+## 版本
+
+| 版本 | 提交 | 内容 | 成片 |
+|---|---|---|---|
+| **V1** | `28a6667` | 六幕，2 分 57 秒，1080p，初版配乐 | `npm run render`（检出该提交） |
+| **V2（当前）** | `93153d9` 及之后 | 序幕 + 七幕（新增「冷思考」）+ 尾声，5 分 27 秒，4K，悲伤配乐，交叉溶解转场，税务纳入镜头巡游 | `npx remotion render GuokaoUniverse out/guokao_universe_4k.mp4 --scale=2 --audio-codec=aac` |
+
+取回某个版本：`git checkout 28a6667 -- projects/guokao-data-film/remotion`（V1）。成片视频体积大（V2 4K 约 270–600 MB），不提交 Git。
+
+## V1 结构（历史）
+
 全片约 2 分 57 秒（5,306 帧，1920×1080，30fps），六幕：
 
 | 幕 | 合成 | 帧数 | 内容 |
