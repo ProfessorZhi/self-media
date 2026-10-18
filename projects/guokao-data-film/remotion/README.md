@@ -1,4 +1,4 @@
-# 国考宇宙 · Remotion 工程
+# 席位之间 · 35,691｜Remotion 工程
 
 **项目定位与 V2 数据口径：** [VIDEO-001 项目章程](../PROJECT_CHARTER.md)。这里是**本片独立的源码与渲染入口**，不是整个 `self-media` 仓库的构建系统。
 
