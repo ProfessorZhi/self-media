@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "data": "node scripts/build_film_data.mjs && node scripts/build_cutoff_data.mjs",
-    "test": "node scripts/check_film_data.mjs",
+    "test": "node scripts/check_film_data.mjs && node scripts/check_branding.mjs",
     "studio": "remotion studio",
     "still": "remotion still",
     "score": "python3 scripts/compose_score.py",
