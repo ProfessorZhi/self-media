@@ -1,0 +1,51 @@
+# Secrets and local settings
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.credentials.json
+**/cookies*.json
+**/*-session-profile/
+**/browser-profile/
+
+# OS, editor, caches
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+**/node_modules/
+**/.cache/
+**/__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.log
+
+# Per-project build output (source and manifests remain tracked)
+**/out/
+**/dist/
+**/.remotion/
+**/coverage/
+**/tmp/
+**/temp/
+**/public/score.wav
+*.mp4
+*.mov
+*.mkv
+*.webm
+*.wav
+
+# New third-party raw source downloads: record source URL/hash instead.
+# Already tracked source files are unaffected by .gitignore and must be reviewed separately.
+**/data/sources/*.zip
+**/data/sources/*.pdf
+**/data/sources/*.docx
+**/data/sources/*.xls
+**/data/sources/*.xlsx
