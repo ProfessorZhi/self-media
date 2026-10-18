@@ -1,0 +1,122 @@
+{
+  "schema_version": "1.0.0",
+  "as_of": "2026-10-18",
+  "purpose": "Pinned public source binaries obtained in this round, with URL and SHA-256.",
+  "note": "仅记录来源标识、官方或转引下载 URL、时间与 SHA-256；公共开源代码主线不随仓库再分发 ZIP/PDF/DOCX/HTML 原文副本。需要复算时，请从对应上游自行下载，将文件放入本地授权的 --workspace，先验证哈希，再运行项目脚本。历史 Git 分支上可能存在早期附件提交；此清理不代表旧提交已经删除。",
+  "sources": [
+    {
+      "file": "zhaokao_jianzhang_2027.zip",
+      "id": "national_2027_official_zhaokao_jianzhang",
+      "url": "http://dl.scs.gov.cn/download/8a81f6d1a129c3d401a133dca26b00d2",
+      "discovery_urls": [
+        "http://bm.scs.gov.cn/kl2027",
+        "http://dl.scs.gov.cn/api/res/8a81f6eca0221f1401a0242759fc0000/1110"
+      ],
+      "title": "中央机关及其直属机构2027年度考试录用公务员招考简章.zip",
+      "authority": "中央公务员主管部门",
+      "role": "national position workbook, all 19,426 positions cell-verified",
+      "retrieved": "2026-10-18",
+      "contents": [
+        "中央机关及其直属机构2027年度考试录用公务员招考简章.xls"
+      ],
+      "bytes": 1764109,
+      "sha256": "bbe7fb85ac4ab2932672203392ef5f1756a454dab54346f0fb42286a874c1831",
+      "redistribution_in_public_branch": "url_and_hash_only",
+      "file_locally_required_for_full_source_reverification": true
+    },
+    {
+      "file": "grad_codebook_2023_admissions.docx",
+      "id": "moe-graduate-codebook-2023-admissions",
+      "url": "https://www.wcjyj.com/data/upload/file/2311/15/65548688b8aae.docx",
+      "title": "研究生招生学科、专业代码册（二〇二二年九月）",
+      "authority": "教育部高校学生司",
+      "role": "six-digit graduate secondary discipline codes for 2023 admissions",
+      "retrieved": "2026-10-18",
+      "contents": [],
+      "bytes": 34045,
+      "sha256": "7e9dcc8a2186bcaa32e7d135259ee61939044fbfca3fc5690607558db8c16850",
+      "redistribution_in_public_branch": "url_and_hash_only",
+      "file_locally_required_for_full_source_reverification": true
+    },
+    {
+      "file": "grad_codebook_2024_admissions.pdf",
+      "id": "moe-graduate-codebook-2024-admissions",
+      "url": "https://rst.xinjiang.gov.cn/xjrst/c112746/202606/6200d15452494c00a1a50f6d7bb9edbf/files/2.%E9%99%84%E4%BB%B62%EF%BC%9A%E7%A0%94%E7%A9%B6%E7%94%9F%E6%8B%9B%E7%94%9F%E5%AD%A6%E7%A7%91%E4%B8%93%E4%B8%9A%E4%BB%A3%E7%A0%81%E5%86%8C%EF%BC%882023%E5%B9%B49%E6%9C%88%EF%BC%89.pdf",
+      "title": "研究生招生学科专业代码册（二〇二三年九月，教学司〔2023〕11号 附件）",
+      "authority": "教育部高校学生司",
+      "role": "six-digit graduate secondary discipline codes for 2024 admissions",
+      "retrieved": "2026-10-18",
+      "contents": [],
+      "bytes": 500452,
+      "sha256": "b653de028b6a288be3f7fda676619a1a04639e42fe834e2be50e6e506096940d",
+      "redistribution_in_public_branch": "url_and_hash_only",
+      "file_locally_required_for_full_source_reverification": true
+    },
+    {
+      "file": "selfset_secondary_2026.pdf",
+      "id": "moe-selfset-2026-secondary",
+      "url": "http://www.moe.gov.cn/jyb_xxgk/s5743/s5744/A22/202610/W020261009665543280642.pdf",
+      "source_page_url": "http://www.moe.gov.cn/jyb_xxgk/s5743/s5744/A22/202610/t20261008_1453325.html",
+      "title": "学位授予单位（不含军队单位）自主设置二级学科名单（截至2026年6月30日）",
+      "authority": "中华人民共和国教育部",
+      "role": "self-set secondary discipline names, 5,536 entries",
+      "retrieved": "2026-10-18",
+      "contents": [],
+      "bytes": 628523,
+      "sha256": "a5350282f7e968f66f5a47bea9c79f0a049efe9f7c2a49c6d1e1eb1beeae75a8",
+      "redistribution_in_public_branch": "url_and_hash_only",
+      "file_locally_required_for_full_source_reverification": true
+    },
+    {
+      "file": "selfset_cross_2026.pdf",
+      "id": "moe-selfset-2026-cross",
+      "url": "http://www.moe.gov.cn/jyb_xxgk/s5743/s5744/A22/202610/W020261009665543299282.pdf",
+      "source_page_url": "http://www.moe.gov.cn/jyb_xxgk/s5743/s5744/A22/202610/t20261008_1453325.html",
+      "title": "学位授予单位（不含军队单位）自主设置交叉学科名单（截至2026年6月30日）",
+      "authority": "中华人民共和国教育部",
+      "role": "self-set cross discipline names, 1,214 entries",
+      "retrieved": "2026-10-18",
+      "contents": [],
+      "bytes": 281771,
+      "sha256": "98c0f760f98d3983435deaf2a99afa92cce998f32832d83cc6f24115daf8817c",
+      "redistribution_in_public_branch": "url_and_hash_only",
+      "file_locally_required_for_full_source_reverification": true
+    },
+    {
+      "file": "cma_2026_henan_notice.pdf",
+      "id": "cma-2026-institution-catalog-reference",
+      "url": "http://ha.cma.gov.cn/zfxxgk/zwgk/rsxx/zpxx/202510/W020251029534266455165.pdf",
+      "title": "河南省气象部门2026年度公开招聘应届高校毕业生公告（第1号）",
+      "authority": "河南省气象局",
+      "role": "non-applicable reference: the notice says 气象类专业 are determined by 《气象部门人员招聘专业目录》（2026版）, which is a 2026 institution-recruitment catalog, not a 2027 civil-service category list",
+      "retrieved": "2026-10-18",
+      "contents": [],
+      "bytes": 135189,
+      "sha256": "46cfad33160c5959826122bc703de6d732730a37484a3867421ccd098cde224a",
+      "redistribution_in_public_branch": "url_and_hash_only",
+      "file_locally_required_for_full_source_reverification": true
+    },
+    {
+      "file": "msa_2027_qualification_notice.html",
+      "id": "msa-2027-qualification-notice",
+      "url": "https://www.msa.gov.cn/html/cnmsa/xxgk/article/2026/aef40dfa0db14427b456ba009d370411.html",
+      "title": "关于交通运输部直属海事系统2027年度考录公务员资格审查事项的说明",
+      "authority": "中华人民共和国海事局",
+      "role": "applies to 2027 maritime civil-service positions; section 七 states that recruitment by 专业门类/专业大类/专业小类 admits all majors within that category",
+      "retrieved": "2026-10-18",
+      "published": "2026-10-13",
+      "contents": [],
+      "bytes": 87618,
+      "sha256": "8951afa6a283a51f4533080d7aed931464ff2a6f0906dc8f4270aa4b4ed6ef80",
+      "redistribution_in_public_branch": "url_and_hash_only",
+      "file_locally_required_for_full_source_reverification": true
+    }
+  ],
+  "public_release_policy": {
+    "raw_source_files_embedded": false,
+    "all_sources_need_independent_retrieval": true,
+    "hash_verification_required": true,
+    "license_scope": "Third-party original documents retain upstream rights and are excluded from self-media MIT code license",
+    "source_names_are_expected_local_input_filenames": true
+  }
+}

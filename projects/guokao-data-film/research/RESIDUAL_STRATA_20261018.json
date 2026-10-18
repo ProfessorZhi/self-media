@@ -1,0 +1,1252 @@
+{
+  "schema_version": "1.0.0",
+  "report_id": "residual-strata-20261018",
+  "generated_at_utc": "2026-10-18T04:22:41.592077+00:00",
+  "method": "Residual buckets are assigned from the raw 专业 text, not from extracted term labels, so a category phrase inside a longer sentence is still counted.",
+  "totals": {
+    "residual_positions": 727,
+    "residual_hires": 1160,
+    "by_bucket": {
+      "national_vocabulary_or_open_scope": 181,
+      "agency_category_no_public_list": 533,
+      "agency_category_unverified": 13
+    },
+    "by_bucket_hires": {
+      "national_vocabulary_or_open_scope": 282,
+      "agency_category_no_public_list": 853,
+      "agency_category_unverified": 25
+    }
+  },
+  "by_agency": [
+    {
+      "bucket": "agency_category_no_public_list",
+      "agency": "pboc",
+      "positions": 441
+    },
+    {
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": "other",
+      "positions": 126
+    },
+    {
+      "bucket": "agency_category_no_public_list",
+      "agency": "cma",
+      "positions": 92
+    },
+    {
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": "pboc",
+      "positions": 38
+    },
+    {
+      "bucket": "agency_category_unverified",
+      "agency": "nfra",
+      "positions": 8
+    },
+    {
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": "nfra",
+      "positions": 7
+    },
+    {
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": "tax",
+      "positions": 5
+    },
+    {
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": "csrc",
+      "positions": 4
+    },
+    {
+      "bucket": "agency_category_unverified",
+      "agency": "csrc",
+      "positions": 3
+    },
+    {
+      "bucket": "agency_category_unverified",
+      "agency": "customs",
+      "positions": 2
+    },
+    {
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": "cma",
+      "positions": 1
+    }
+  ],
+  "by_education": [
+    {
+      "bucket": "agency_category_no_public_list",
+      "education_raw": "硕士研究生及以上",
+      "positions": 221
+    },
+    {
+      "bucket": "agency_category_no_public_list",
+      "education_raw": "本科及以上",
+      "positions": 186
+    },
+    {
+      "bucket": "national_vocabulary_or_open_scope",
+      "education_raw": "硕士研究生及以上",
+      "positions": 106
+    },
+    {
+      "bucket": "agency_category_no_public_list",
+      "education_raw": "仅限本科",
+      "positions": 102
+    },
+    {
+      "bucket": "national_vocabulary_or_open_scope",
+      "education_raw": "仅限硕士研究生",
+      "positions": 25
+    },
+    {
+      "bucket": "agency_category_no_public_list",
+      "education_raw": "仅限硕士研究生",
+      "positions": 24
+    },
+    {
+      "bucket": "national_vocabulary_or_open_scope",
+      "education_raw": "本科及以上",
+      "positions": 23
+    },
+    {
+      "bucket": "national_vocabulary_or_open_scope",
+      "education_raw": "仅限本科",
+      "positions": 20
+    },
+    {
+      "bucket": "national_vocabulary_or_open_scope",
+      "education_raw": "仅限大专",
+      "positions": 7
+    },
+    {
+      "bucket": "agency_category_unverified",
+      "education_raw": "仅限硕士研究生",
+      "positions": 5
+    },
+    {
+      "bucket": "agency_category_unverified",
+      "education_raw": "仅限本科",
+      "positions": 5
+    },
+    {
+      "bucket": "agency_category_unverified",
+      "education_raw": "硕士研究生及以上",
+      "positions": 2
+    },
+    {
+      "bucket": "agency_category_unverified",
+      "education_raw": "本科及以上",
+      "positions": 1
+    }
+  ],
+  "unknown_phrases": [
+    {
+      "phrase": "经济金融类",
+      "positions": 422
+    },
+    {
+      "phrase": "气象类",
+      "positions": 92
+    },
+    {
+      "phrase": "研究生为经济金融类",
+      "positions": 19
+    },
+    {
+      "phrase": "计算机科学与技术类",
+      "positions": 16
+    },
+    {
+      "phrase": "船舶与海洋工程类",
+      "positions": 14
+    },
+    {
+      "phrase": "工学类",
+      "positions": 9
+    },
+    {
+      "phrase": "交通运输工程类",
+      "positions": 8
+    },
+    {
+      "phrase": "理学类",
+      "positions": 8
+    },
+    {
+      "phrase": "网络空间安全类",
+      "positions": 7
+    },
+    {
+      "phrase": "应用统计类",
+      "positions": 6
+    },
+    {
+      "phrase": "电气工程类",
+      "positions": 5
+    },
+    {
+      "phrase": "材料科学与工程类",
+      "positions": 4
+    },
+    {
+      "phrase": "信息与通信工程类",
+      "positions": 4
+    },
+    {
+      "phrase": "地理学类",
+      "positions": 4
+    },
+    {
+      "phrase": "电子科学与技术类",
+      "positions": 4
+    },
+    {
+      "phrase": "历专业为经济学门类",
+      "positions": 3
+    },
+    {
+      "phrase": "会计学类",
+      "positions": 3
+    },
+    {
+      "phrase": "管理学类",
+      "positions": 3
+    },
+    {
+      "phrase": "法律类",
+      "positions": 3
+    },
+    {
+      "phrase": "控制科学与工程类",
+      "positions": 3
+    },
+    {
+      "phrase": "会计类",
+      "positions": 3
+    },
+    {
+      "phrase": "经济学门类",
+      "positions": 3
+    },
+    {
+      "phrase": "应用经济学类",
+      "positions": 3
+    },
+    {
+      "phrase": "理工类",
+      "positions": 2
+    },
+    {
+      "phrase": "核相关理工类",
+      "positions": 2
+    },
+    {
+      "phrase": "环境与科学工程类",
+      "positions": 2
+    },
+    {
+      "phrase": "机械工程类",
+      "positions": 2
+    },
+    {
+      "phrase": "审计类",
+      "positions": 2
+    },
+    {
+      "phrase": "统计类",
+      "positions": 2
+    },
+    {
+      "phrase": "经济学学科门类",
+      "positions": 1
+    }
+  ],
+  "named_phrases": [
+    {
+      "text": "数学、统计",
+      "positions": 20,
+      "hires": 22,
+      "education_mix": {
+        "仅限本科": 20
+      },
+      "bucket": "national_vocabulary_or_open_scope",
+      "unresolved_phrases": [],
+      "verdict": "inherently_fuzzy"
+    },
+    {
+      "text": "财会类专业（会计、审计、财务管理等专业）",
+      "positions": 0,
+      "verdict": "not_present_now",
+      "note": "本轮已不再出现在残留中"
+    },
+    {
+      "text": "中国语言文学类、新闻传播学类",
+      "positions": 14,
+      "hires": 17,
+      "education_mix": {
+        "硕士研究生及以上": 13,
+        "仅限硕士研究生": 1
+      },
+      "bucket": "national_vocabulary_or_open_scope",
+      "unresolved_phrases": [],
+      "verdict": "cross_level_vocabulary"
+    },
+    {
+      "text": "英语",
+      "positions": 8,
+      "hires": 14,
+      "education_mix": {
+        "硕士研究生及以上": 8
+      },
+      "bucket": "national_vocabulary_or_open_scope",
+      "unresolved_phrases": [],
+      "verdict": "cross_level_vocabulary"
+    },
+    {
+      "text": "理学类、工学类",
+      "positions": 8,
+      "hires": 10,
+      "education_mix": {
+        "硕士研究生及以上": 8
+      },
+      "bucket": "national_vocabulary_or_open_scope",
+      "unresolved_phrases": [
+        [
+          "工学类",
+          8
+        ],
+        [
+          "理学类",
+          8
+        ]
+      ],
+      "verdict": "colloquial_gate_suffix"
+    }
+  ],
+  "precise_gains_this_round": {
+    "positions": 18,
+    "rule_disjunction": {
+      "positions": 2,
+      "example": "会计学或审计学或财务管理",
+      "support": "岗位原文本身列举三个精确专业名，仅因旧解析器不按“或”切分"
+    },
+    "rule_open_list_member": {
+      "positions": 16,
+      "example": "财会类专业（会计、审计、财务管理等专业）",
+      "support": "括号内“财务管理”是精确本科专业名；列表开放，故保留 open_scope 标记"
+    }
+  },
+  "positions_sample": [
+    {
+      "id": "2027:031000:100223003001",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "中央党史和文献研究院",
+      "education_raw": "硕士研究生及以上",
+      "hires": 1,
+      "major_raw": "德语",
+      "unresolved_phrases": [],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column",
+        "name_exists_only_in_other_education_level"
+      ]
+    },
+    {
+      "id": "2027:031000:100210004001",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "中央党史和文献研究院",
+      "education_raw": "硕士研究生及以上",
+      "hires": 1,
+      "major_raw": "英语",
+      "unresolved_phrases": [],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column",
+        "name_exists_only_in_other_education_level"
+      ]
+    },
+    {
+      "id": "2027:038000:100110001009",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "最高人民法院",
+      "education_raw": "硕士研究生及以上",
+      "hires": 5,
+      "major_raw": "法律相关专业",
+      "unresolved_phrases": [],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "open_scope_or_qualifier",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column"
+      ]
+    },
+    {
+      "id": "2027:053000:100310007001",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "全国妇联",
+      "education_raw": "仅限硕士研究生",
+      "hires": 1,
+      "major_raw": "英语（包括英语语言文学、英语翻译、口译、同传）",
+      "unresolved_phrases": [],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column"
+      ]
+    },
+    {
+      "id": "2027:102000:200110001002",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "外交部",
+      "education_raw": "本科及以上",
+      "hires": 15,
+      "major_raw": "法律相关专业",
+      "unresolved_phrases": [],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "open_scope_or_qualifier",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column"
+      ]
+    },
+    {
+      "id": "2027:102000:200110001003",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "外交部",
+      "education_raw": "本科及以上",
+      "hires": 8,
+      "major_raw": "经济学学科门类专业",
+      "unresolved_phrases": [
+        "经济学学科门类"
+      ],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column"
+      ]
+    },
+    {
+      "id": "2027:105000:200110012001",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "教育部",
+      "education_raw": "硕士研究生及以上",
+      "hires": 1,
+      "major_raw": "英语语言文学翻译相关专业",
+      "unresolved_phrases": [],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "open_scope_or_qualifier",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column"
+      ]
+    },
+    {
+      "id": "2027:106000:200110001006",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "科学技术部",
+      "education_raw": "硕士研究生及以上",
+      "hires": 1,
+      "major_raw": "英语及相关专业",
+      "unresolved_phrases": [],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "open_scope_or_qualifier",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column"
+      ]
+    },
+    {
+      "id": "2027:106000:200110001008",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "科学技术部",
+      "education_raw": "硕士研究生及以上",
+      "hires": 1,
+      "major_raw": "英语及相关专业",
+      "unresolved_phrases": [],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "open_scope_or_qualifier",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column"
+      ]
+    },
+    {
+      "id": "2027:114000:200110005001",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "人力资源和社会保障部",
+      "education_raw": "仅限硕士研究生",
+      "hires": 1,
+      "major_raw": "经济学类、社会学类、统计学类、数学类",
+      "unresolved_phrases": [],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "category_phrase_without_exact_catalog_node",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column",
+        "bachelor_category_name_in_graduate_position"
+      ]
+    },
+    {
+      "id": "2027:116000:200110010001",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "生态环境部",
+      "education_raw": "硕士研究生及以上",
+      "hires": 1,
+      "major_raw": "经济学类、经济与贸易类、法学类、政治学类、能源动力类、环境科学与工程类、碳中和科学与工程、新闻传播学类、工商管理类、英语、英语翻译",
+      "unresolved_phrases": [],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "category_phrase_without_exact_catalog_node",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column",
+        "bachelor_category_name_in_graduate_position"
+      ]
+    },
+    {
+      "id": "2027:116000:200110017001",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "生态环境部",
+      "education_raw": "硕士研究生及以上",
+      "hires": 1,
+      "major_raw": "环境科学与工程类、生态学类、环境法学等相关专业",
+      "unresolved_phrases": [
+        "生态学类"
+      ],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "open_scope_or_qualifier",
+        "category_phrase_without_exact_catalog_node",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column",
+        "bachelor_category_name_in_graduate_position"
+      ]
+    },
+    {
+      "id": "2027:118000:200110007001",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "交通运输部",
+      "education_raw": "硕士研究生及以上",
+      "hires": 2,
+      "major_raw": "交通运输类",
+      "unresolved_phrases": [],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "category_phrase_without_exact_catalog_node",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column",
+        "name_exists_only_in_other_education_level",
+        "bachelor_category_name_in_graduate_position"
+      ]
+    },
+    {
+      "id": "2027:119000:200110027001",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "水利部",
+      "education_raw": "硕士研究生及以上",
+      "hires": 3,
+      "major_raw": "水利类",
+      "unresolved_phrases": [],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "category_phrase_without_exact_catalog_node",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column",
+        "name_exists_only_in_other_education_level",
+        "bachelor_category_name_in_graduate_position"
+      ]
+    },
+    {
+      "id": "2027:121000:200122007001",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "商务部",
+      "education_raw": "本科及以上",
+      "hires": 1,
+      "major_raw": "朝语、韩语",
+      "unresolved_phrases": [],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column"
+      ]
+    },
+    {
+      "id": "2027:126000:200110006001",
+      "bucket": "agency_category_no_public_list",
+      "agency": "pboc",
+      "department_name": "中国人民银行",
+      "education_raw": "硕士研究生及以上",
+      "hires": 5,
+      "major_raw": "经济金融类",
+      "unresolved_phrases": [
+        "经济金融类"
+      ],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "category_phrase_without_exact_catalog_node",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column",
+        "agency_category_without_published_membership"
+      ]
+    },
+    {
+      "id": "2027:126000:200110009001",
+      "bucket": "agency_category_no_public_list",
+      "agency": "pboc",
+      "department_name": "中国人民银行",
+      "education_raw": "硕士研究生及以上",
+      "hires": 5,
+      "major_raw": "经济金融类",
+      "unresolved_phrases": [
+        "经济金融类"
+      ],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "category_phrase_without_exact_catalog_node",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column",
+        "agency_category_without_published_membership"
+      ]
+    },
+    {
+      "id": "2027:132000:200144001001",
+      "bucket": "agency_category_unverified",
+      "agency": "nfra",
+      "department_name": "国家金融监督管理总局",
+      "education_raw": "仅限硕士研究生",
+      "hires": 10,
+      "major_raw": "最高学历专业为经济学门类专业以及会计、财务管理、审计相关专业",
+      "unresolved_phrases": [
+        "历专业为经济学门类"
+      ],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "open_scope_or_qualifier",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column",
+        "agency_category_membership_unverified"
+      ]
+    },
+    {
+      "id": "2027:132000:200144002001",
+      "bucket": "agency_category_unverified",
+      "agency": "nfra",
+      "department_name": "国家金融监督管理总局",
+      "education_raw": "仅限硕士研究生",
+      "hires": 3,
+      "major_raw": "最高学历专业为经济学门类专业以及会计、财务管理、审计相关专业",
+      "unresolved_phrases": [
+        "历专业为经济学门类"
+      ],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "open_scope_or_qualifier",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column",
+        "agency_category_membership_unverified"
+      ]
+    },
+    {
+      "id": "2027:133000:200141009001",
+      "bucket": "agency_category_unverified",
+      "agency": "csrc",
+      "department_name": "中国证券监督管理委员会",
+      "education_raw": "硕士研究生及以上",
+      "hires": 1,
+      "major_raw": "会计学类",
+      "unresolved_phrases": [
+        "会计学类"
+      ],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "category_phrase_without_exact_catalog_node",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column",
+        "agency_category_membership_unverified"
+      ]
+    },
+    {
+      "id": "2027:137000:200110001002",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "国家统计局",
+      "education_raw": "硕士研究生及以上",
+      "hires": 2,
+      "major_raw": "统计学类、数学类",
+      "unresolved_phrases": [],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "category_phrase_without_exact_catalog_node",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column",
+        "bachelor_category_name_in_graduate_position"
+      ]
+    },
+    {
+      "id": "2027:142000:200110001001",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "国家机关事务管理局",
+      "education_raw": "硕士研究生及以上",
+      "hires": 2,
+      "major_raw": "管理学类专业",
+      "unresolved_phrases": [
+        "管理学类"
+      ],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column"
+      ]
+    },
+    {
+      "id": "2027:142000:200110002001",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "国家机关事务管理局",
+      "education_raw": "硕士研究生及以上",
+      "hires": 2,
+      "major_raw": "经济学类专业",
+      "unresolved_phrases": [],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column",
+        "bachelor_category_name_in_graduate_position"
+      ]
+    },
+    {
+      "id": "2027:142000:200110004001",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "国家机关事务管理局",
+      "education_raw": "硕士研究生及以上",
+      "hires": 4,
+      "major_raw": "工学类专业",
+      "unresolved_phrases": [
+        "工学类"
+      ],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column"
+      ]
+    },
+    {
+      "id": "2027:156000:200110001001",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "国家国防科技工业局",
+      "education_raw": "硕士研究生及以上",
+      "hires": 1,
+      "major_raw": "理工类专业",
+      "unresolved_phrases": [
+        "理工类"
+      ],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column"
+      ]
+    },
+    {
+      "id": "2027:156000:200110003001",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "国家国防科技工业局",
+      "education_raw": "硕士研究生及以上",
+      "hires": 1,
+      "major_raw": "电子相关理工类专业",
+      "unresolved_phrases": [
+        "电子相关理工类"
+      ],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "open_scope_or_qualifier",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column"
+      ]
+    },
+    {
+      "id": "2027:156000:200110004001",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "国家国防科技工业局",
+      "education_raw": "硕士研究生及以上",
+      "hires": 1,
+      "major_raw": "船舶、计算机相关理工类专业",
+      "unresolved_phrases": [
+        "计算机相关理工类"
+      ],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "open_scope_or_qualifier",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column"
+      ]
+    },
+    {
+      "id": "2027:156000:200110006001",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "国家国防科技工业局",
+      "education_raw": "硕士研究生及以上",
+      "hires": 2,
+      "major_raw": "核相关理工类专业",
+      "unresolved_phrases": [
+        "核相关理工类"
+      ],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "open_scope_or_qualifier",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column"
+      ]
+    },
+    {
+      "id": "2027:156000:200110007001",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "国家国防科技工业局",
+      "education_raw": "硕士研究生及以上",
+      "hires": 1,
+      "major_raw": "理工类专业",
+      "unresolved_phrases": [
+        "理工类"
+      ],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column"
+      ]
+    },
+    {
+      "id": "2027:113101:300110101001",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "财政部北京监管局",
+      "education_raw": "仅限硕士研究生",
+      "hires": 1,
+      "major_raw": "经济学类",
+      "unresolved_phrases": [],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "category_phrase_without_exact_catalog_node",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column",
+        "name_exists_only_in_other_education_level",
+        "bachelor_category_name_in_graduate_position"
+      ]
+    },
+    {
+      "id": "2027:113123:300110123001",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "财政部广东监管局",
+      "education_raw": "仅限硕士研究生",
+      "hires": 3,
+      "major_raw": "经济学类、管理学类",
+      "unresolved_phrases": [
+        "管理学类"
+      ],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "category_phrase_without_exact_catalog_node",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column",
+        "bachelor_category_name_in_graduate_position",
+        "colloquial_gate_name_with_类_suffix"
+      ]
+    },
+    {
+      "id": "2027:113130:300110130001",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "财政部云南监管局",
+      "education_raw": "仅限硕士研究生",
+      "hires": 1,
+      "major_raw": "经济学类、管理学类",
+      "unresolved_phrases": [
+        "管理学类"
+      ],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "category_phrase_without_exact_catalog_node",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column",
+        "bachelor_category_name_in_graduate_position",
+        "colloquial_gate_name_with_类_suffix"
+      ]
+    },
+    {
+      "id": "2027:118103:300110001006",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "长江海事局",
+      "education_raw": "硕士研究生及以上",
+      "hires": 1,
+      "major_raw": "港口、海岸及近海工程，交通运输安全与环境工程、综合交通运输科学与工程",
+      "unresolved_phrases": [],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column"
+      ]
+    },
+    {
+      "id": "2027:118103:300110001010",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "长江海事局",
+      "education_raw": "硕士研究生及以上",
+      "hires": 1,
+      "major_raw": "法学类、法律类",
+      "unresolved_phrases": [
+        "法律类"
+      ],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "category_phrase_without_exact_catalog_node",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column",
+        "bachelor_category_name_in_graduate_position",
+        "agency_category_membership_unverified"
+      ]
+    },
+    {
+      "id": "2027:118103:300110002001",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "长江海事局",
+      "education_raw": "硕士研究生及以上",
+      "hires": 1,
+      "major_raw": "法学类",
+      "unresolved_phrases": [],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "category_phrase_without_exact_catalog_node",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column",
+        "name_exists_only_in_other_education_level",
+        "bachelor_category_name_in_graduate_position"
+      ]
+    },
+    {
+      "id": "2027:118103:300110004008",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "长江海事局",
+      "education_raw": "硕士研究生及以上",
+      "hires": 1,
+      "major_raw": "法学类、法律类",
+      "unresolved_phrases": [
+        "法律类"
+      ],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "category_phrase_without_exact_catalog_node",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column",
+        "bachelor_category_name_in_graduate_position",
+        "agency_category_membership_unverified"
+      ]
+    },
+    {
+      "id": "2027:118103:300110006001",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "长江海事局",
+      "education_raw": "硕士研究生及以上",
+      "hires": 1,
+      "major_raw": "法学类、法律类",
+      "unresolved_phrases": [
+        "法律类"
+      ],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "category_phrase_without_exact_catalog_node",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column",
+        "bachelor_category_name_in_graduate_position",
+        "agency_category_membership_unverified"
+      ]
+    },
+    {
+      "id": "2027:118103:300110006002",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "长江海事局",
+      "education_raw": "硕士研究生及以上",
+      "hires": 1,
+      "major_raw": "智能交通系统工程",
+      "unresolved_phrases": [],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column"
+      ]
+    },
+    {
+      "id": "2027:118103:300110009004",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "长江海事局",
+      "education_raw": "硕士研究生及以上",
+      "hires": 1,
+      "major_raw": "电气工程类、材料科学与工程类、交通运输工程类、船舶与海洋工程类",
+      "unresolved_phrases": [
+        "交通运输工程类",
+        "材料科学与工程类",
+        "电气工程类",
+        "船舶与海洋工程类"
+      ],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "category_phrase_without_exact_catalog_node",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column",
+        "agency_category_membership_unverified"
+      ]
+    },
+    {
+      "id": "2027:118103:300110009005",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "长江海事局",
+      "education_raw": "硕士研究生及以上",
+      "hires": 1,
+      "major_raw": "中国语言文学类、新闻传播学类、新闻与传播类",
+      "unresolved_phrases": [
+        "新闻与传播类"
+      ],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "category_phrase_without_exact_catalog_node",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column",
+        "bachelor_category_name_in_graduate_position",
+        "agency_category_membership_unverified"
+      ]
+    },
+    {
+      "id": "2027:118103:300110011006",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "长江海事局",
+      "education_raw": "硕士研究生及以上",
+      "hires": 1,
+      "major_raw": "电气工程类、控制科学与工程类",
+      "unresolved_phrases": [
+        "控制科学与工程类",
+        "电气工程类"
+      ],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "category_phrase_without_exact_catalog_node",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column",
+        "agency_category_membership_unverified"
+      ]
+    },
+    {
+      "id": "2027:118103:300110011007",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "长江海事局",
+      "education_raw": "硕士研究生及以上",
+      "hires": 1,
+      "major_raw": "计算机科学与技术类、信息与通信工程类、交通运输工程类、交通运输类、网络空间安全类、软件工程类",
+      "unresolved_phrases": [
+        "交通运输工程类",
+        "信息与通信工程类",
+        "网络空间安全类",
+        "计算机科学与技术类",
+        "软件工程类"
+      ],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "category_phrase_without_exact_catalog_node",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column",
+        "bachelor_category_name_in_graduate_position",
+        "agency_category_membership_unverified"
+      ]
+    },
+    {
+      "id": "2027:118103:300110012005",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "长江海事局",
+      "education_raw": "硕士研究生及以上",
+      "hires": 1,
+      "major_raw": "法学类（不含监狱学）",
+      "unresolved_phrases": [],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "negative_or_exclusion_present",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column",
+        "bachelor_category_name_in_graduate_position"
+      ]
+    },
+    {
+      "id": "2027:118301:300110002003",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "上海海事局",
+      "education_raw": "硕士研究生及以上",
+      "hires": 2,
+      "major_raw": "理学类、工学类",
+      "unresolved_phrases": [
+        "工学类",
+        "理学类"
+      ],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "category_phrase_without_exact_catalog_node",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column",
+        "colloquial_gate_name_with_类_suffix",
+        "agency_category_membership_unverified"
+      ]
+    },
+    {
+      "id": "2027:118301:300110005007",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "上海海事局",
+      "education_raw": "硕士研究生及以上",
+      "hires": 1,
+      "major_raw": "理学类、工学类",
+      "unresolved_phrases": [
+        "工学类",
+        "理学类"
+      ],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "category_phrase_without_exact_catalog_node",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column",
+        "colloquial_gate_name_with_类_suffix",
+        "agency_category_membership_unverified"
+      ]
+    },
+    {
+      "id": "2027:118301:300110006006",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "上海海事局",
+      "education_raw": "硕士研究生及以上",
+      "hires": 1,
+      "major_raw": "理学类、工学类",
+      "unresolved_phrases": [
+        "工学类",
+        "理学类"
+      ],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "category_phrase_without_exact_catalog_node",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column",
+        "colloquial_gate_name_with_类_suffix",
+        "agency_category_membership_unverified"
+      ]
+    },
+    {
+      "id": "2027:118301:300110006007",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "上海海事局",
+      "education_raw": "硕士研究生及以上",
+      "hires": 1,
+      "major_raw": "英语、法语、西班牙语",
+      "unresolved_phrases": [],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column"
+      ]
+    },
+    {
+      "id": "2027:118301:300110006009",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "上海海事局",
+      "education_raw": "硕士研究生及以上",
+      "hires": 1,
+      "major_raw": "理学类、工学类",
+      "unresolved_phrases": [
+        "工学类",
+        "理学类"
+      ],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "category_phrase_without_exact_catalog_node",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column",
+        "colloquial_gate_name_with_类_suffix",
+        "agency_category_membership_unverified"
+      ]
+    },
+    {
+      "id": "2027:118301:300110007009",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "上海海事局",
+      "education_raw": "硕士研究生及以上",
+      "hires": 1,
+      "major_raw": "理学类、工学类",
+      "unresolved_phrases": [
+        "工学类",
+        "理学类"
+      ],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "category_phrase_without_exact_catalog_node",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column",
+        "colloquial_gate_name_with_类_suffix",
+        "agency_category_membership_unverified"
+      ]
+    },
+    {
+      "id": "2027:118301:300110008003",
+      "bucket": "national_vocabulary_or_open_scope",
+      "agency": null,
+      "department_name": "上海海事局",
+      "education_raw": "硕士研究生及以上",
+      "hires": 1,
+      "major_raw": "理学类、工学类",
+      "unresolved_phrases": [
+        "工学类",
+        "理学类"
+      ],
+      "reason_classes": [
+        "no_explicit_code_in_major_column",
+        "category_phrase_without_exact_catalog_node",
+        "no_machine_readable_code_in_major_column",
+        "no_machine_readable_code_in_remarks_column",
+        "colloquial_gate_name_with_类_suffix",
+        "agency_category_membership_unverified"
+      ]
+    }
+  ]
+}

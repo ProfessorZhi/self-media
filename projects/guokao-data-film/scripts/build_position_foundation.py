@@ -74,6 +74,21 @@ SHANGHAI_OFFICIAL = {
     'role': 'recorded_shanghai_tax_subset_cross_check',
 }
 EXTRACTED_SHA256 = '9bb70a26fddb3ea94a6c10c029e50ddf0b7603ddb865968f9e47282a6f03fbc3'
+OFFICIAL_NATIONAL = {
+    'id': 'national_2027_official_zhaokao_jianzhang',
+    'filename': 'zhaokao_jianzhang_2027.zip',
+    'url': 'http://dl.scs.gov.cn/download/8a81f6d1a129c3d401a133dca26b00d2',
+    'portal_url': 'http://bm.scs.gov.cn/kl2027',
+    'resource_name': '中央机关及其直属机构2027年度考试录用公务员招考简章.zip',
+    'workbook_filename': '中央机关及其直属机构2027年度考试录用公务员招考简章.xls',
+    'bytes': 1_764_109,
+    'sha256': 'bbe7fb85ac4ab2932672203392ef5f1756a454dab54346f0fb42286a874c1831',
+    'workbook_bytes': 9_654_272,
+    'workbook_sha256': '6b3da70baabe31a4a202c6b1179040db7003a956bc85c79cd35e3fb739d9520a',
+    'source_level': 'recruiting_authority_official_attachment',
+    'role': 'national_official_workbook_cell_verified_against_this_dataset',
+    'retrieval_date': '2026-10-18',
+}
 RECORDED_VERIFICATION = {
     'method': 'join_by_original_department_code_and_position_code_then_compare_available_original_fields',
     'mirror_vs_upstream_xlsx': {'positions': 19_426, 'hires': 35_691, 'compared_fields_per_position': 27, 'different_cells': 0},
@@ -95,6 +110,21 @@ RECORDED_VERIFICATION = {
     'audit_report_sha256': '0742e51bf63dec946a29ad858d92bc1dd34ec705965e42ba2d6853735155620b',
     'audit_generated_at_utc': '2026-10-16T19:23:16.232762+00:00',
     'audit_filename_date_timezone': 'Asia/Shanghai',
+    'official_national_workbook': {
+        'source_id': 'national_2027_official_zhaokao_jianzhang',
+        'positions': 19_426,
+        'hires': 35_691,
+        'compared_fields_per_position': 27,
+        'compared_cells': 524_502,
+        'content_difference_cells': 0,
+        'workbook_location_differences': 0,
+        'verification_script': '../../scripts/verify_official_national_table.py',
+        'report_path': '../../research/OFFICIAL_NATIONAL_TABLE_VERIFICATION_20261018.json',
+        'report_sha256': '0d3cfd490bfe495de349f2ea85930913f2b384918c2cfbad144503bf3f9e88e6',
+        'verified_at': '2026-10-18',
+        'scope_note': ('全表对官方招考简章工作簿逐格核验：19,426 岗、35,691 名额、27 原字段、'
+                       '524,502 单元格，内容差异 0，工作表与行号差异 0。'),
+    },
     'scope_note': '全国主表取自公开镜像，与上游转换表 27 字段一致。官方机构附件逐格核验累计覆盖 805 岗、1,501 个名额、21,713 个可比较单元格，内容差异为 0；核验范围仅为相应机构子集，未将全国主表标为官方直链逐格认证。',
     'rebuild_note': '这里保存已完成的来源交叉核对结果；本构建脚本负责输入哈希、岗位键、原文字段保全、分片回读和统计加总。',
 }
@@ -309,7 +339,7 @@ def build_positions(project, raw_rows, csv_rows):
         'primary_key': {'format': 'year:department_code:position_code', 'example': records[0][0], 'original_code_widths': {'部门代码': 6, '职位代码': 12}, 'position_code_alone_is_unique': False},
         'totals': {'positions': len(records), 'hires': 35_691, 'raw_fields_per_position': len(RAW_COLUMNS), 'distinct_department_codes': len({r['raw']['部门代码'] for r in raw_rows}), 'source_csv_provinces': len({r[4] for r in records}), 'source_system_tags': len({r[5] for r in records})},
         'by_source_sheet': [{'source_sheet': sheet, **counts} for sheet, counts in by_sheet.items()],
-        'sources': [MIRROR, {**csv_source(2027), 'role': 'source_csv_province_and_source_system_tag_only'}, UPSTREAM_XLSX, SHANGHAI_OFFICIAL],
+        'sources': [MIRROR, OFFICIAL_NATIONAL, {**csv_source(2027), 'role': 'source_csv_province_and_source_system_tag_only'}, UPSTREAM_XLSX, SHANGHAI_OFFICIAL],
         'recorded_source_verification': RECORDED_VERIFICATION,
         'source_text_preservation': {
             'original_columns_retained': 27,

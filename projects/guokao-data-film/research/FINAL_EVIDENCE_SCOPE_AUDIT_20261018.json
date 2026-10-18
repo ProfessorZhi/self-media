@@ -1,0 +1,692 @@
+{
+  "schema_version": "1.0.0",
+  "report_id": "final-evidence-scope-audit-20261018",
+  "generated_at_utc": "2026-10-18T04:22:42.207798+00:00",
+  "generated_date_timezone": "Asia/Shanghai",
+  "local_date": "2026-10-18",
+  "question": "How far does the professional evidence reach, which parts rest on an inference about another agency, and what is still undecidable from public sources?",
+  "answer_in_one_paragraph": "19,426 positions are complete on the 27 source fields. 18,694 positions have professional evidence independent of any cross-agency inference; 5 more are covered only by the 门类 rule on non-MOE positions and are therefore provisional; 727 have no catalog candidate at all. No residual phrase hides an exact in-scope catalog name that the matcher missed, so the remaining gap is semantic, cross-level or agency-internal, not a parser defect.",
+  "coverage_tiers": {
+    "conservative": {
+      "positions_with_catalog_candidate": 18694,
+      "hires": 34526,
+      "basis": "exact codes or names in the 专业 and 备注 columns, gate-prefixed exact names, source-declared gate codes, and explicitly unrestricted texts",
+      "excludes": "gate_scope_rule on non-MOE positions"
+    },
+    "provisional_gate_rule": {
+      "positions": 5,
+      "hires": 5,
+      "basis": "gate_scope_rule only, agency scope unverified",
+      "status": "provisional; not part of the conservative numerator"
+    },
+    "inclusive": {
+      "positions_with_catalog_candidate": 18699,
+      "positions_without_catalog_candidate": 727,
+      "basis": "conservative coverage plus provisional gate-scope positions"
+    },
+    "no_candidate": {
+      "positions": 727,
+      "hires": 1160
+    },
+    "closure": "18,694 conservative + 5 provisional + 727 no-candidate = 19,426"
+  },
+  "gate_scope_rule_audit": {
+    "rule": "专业要求写作“X门类/学科门类”时解析到 X 学科门类节点",
+    "cited_source": {
+      "title": "关于教育部2027年度公务员考录职位要求的说明",
+      "authority": "教育部人事司",
+      "date": "2026-10-14",
+      "url": "http://www.moe.gov.cn/s78/A04/tongzhi/202610/t20261014_1454189.html",
+      "scope_in_source": "教育部 2027 年度考录职位",
+      "is_national_eligibility_policy": false
+    },
+    "hits": 95,
+    "hits_on_moe_positions": 0,
+    "hits_on_other_agencies": 95,
+    "positions_with_hits": 69,
+    "positions_covered_only_by_this_rule": 5,
+    "decision": "The rule is kept as a traceable reading aid but is excluded from the conservative coverage numerator, because the only cited statement is scoped to MOE positions and no agency-specific corroboration was found for the others.",
+    "contrast_source_declared_gate_code": {
+      "positions": 145,
+      "status": "counted as exact evidence",
+      "why": "The position text itself prints the two-digit gate code (e.g. 经济学类（02）); no external rule is needed."
+    },
+    "provisional_positions": [
+      {
+        "id": "2027:118103:300110001011",
+        "department_name": "长江海事局",
+        "education_raw": "本科及以上",
+        "hires": 1,
+        "major_raw": "管理学门类",
+        "gates": [
+          "管理学"
+        ],
+        "risk_level": "medium: exact characters and gate nodes recorded, agency scope inferred"
+      },
+      {
+        "id": "2027:118103:300110005007",
+        "department_name": "长江海事局",
+        "education_raw": "硕士研究生及以上",
+        "hires": 1,
+        "major_raw": "工学门类、理学门类、教育学门类、医学门类",
+        "gates": [
+          "工学",
+          "理学",
+          "教育学",
+          "医学"
+        ],
+        "risk_level": "medium: exact characters and gate nodes recorded, agency scope inferred"
+      },
+      {
+        "id": "2027:118103:300110006008",
+        "department_name": "长江海事局",
+        "education_raw": "本科及以上",
+        "hires": 1,
+        "major_raw": "工学门类、法学门类、管理学门类",
+        "gates": [
+          "工学",
+          "法学",
+          "管理学"
+        ],
+        "risk_level": "medium: exact characters and gate nodes recorded, agency scope inferred"
+      },
+      {
+        "id": "2027:129134:300110019001",
+        "department_name": "南宁海关",
+        "education_raw": "仅限本科",
+        "hires": 1,
+        "major_raw": "文学门类、法学门类、管理学门类",
+        "gates": [
+          "文学",
+          "法学",
+          "管理学"
+        ],
+        "risk_level": "medium: exact characters and gate nodes recorded, agency scope inferred"
+      },
+      {
+        "id": "2027:160102:300110002002",
+        "department_name": "上海铁路监督管理局",
+        "education_raw": "本科及以上",
+        "hires": 1,
+        "major_raw": "工学学科门类",
+        "gates": [
+          "工学"
+        ],
+        "risk_level": "medium: exact characters and gate nodes recorded, agency scope inferred"
+      }
+    ],
+    "provisional_by_department": {
+      "长江海事局": 3,
+      "南宁海关": 1,
+      "上海铁路监督管理局": 1
+    }
+  },
+  "conflict_audit": {
+    "positions": 54,
+    "positions_in_review_universe": 50,
+    "positions_outside_review_universe": 4,
+    "entries": 87,
+    "by_class": {
+      "category_suffix_omitted": 8,
+      "content_conflict": 67,
+      "cross_level_same_code": 12
+    },
+    "by_family": {
+      "semantic_conflict": 67,
+      "multi_namespace_diagnostic": 20
+    },
+    "interpretation": {
+      "semantic_conflict": "The printed name belongs to a different code. This is the only family that indicates a genuine source inconsistency.",
+      "multi_namespace_diagnostic": "Same code naming something else at another education level, or a 类 suffix omitted by the source. These are diagnostics about how the text was resolved, not proof of an error."
+    },
+    "gate_code_name_mismatch_positions": 5,
+    "note": "The 5 gate-code/name mismatches do not appear in the conflicts array; they are a separate reason class. The review bucket candidate_with_conflict counts review-universe positions and is not the library-wide structured conflict set."
+  },
+  "residual_audit": {
+    "scope_examined": 194,
+    "scope_note": "181 national vocabulary/open scope + 13 agency unverified. The 533 agency positions with no public list found are reported separately and not re-litigated here.",
+    "groups": 114,
+    "verdict_totals": {
+      "name_exists_only_in_other_education_level": 45,
+      "no_exact_catalog_node": 63,
+      "catalog_name_plus_类_suffix": 86
+    },
+    "exact_in_scope_gaps": 0,
+    "exact_in_scope_gap_groups": [],
+    "verdict_meaning": {
+      "exact_in_scope_unmatched": "the catalog has this exact name in the position scope and the matcher missed it (a defect)",
+      "gate_scope_only": "a gate name; only the provisional 门类 rule would resolve it",
+      "catalog_name_plus_类_suffix": "the official node name plus a colloquial 类 (e.g. 中国语言文学类)",
+      "name_exists_only_in_other_education_level": "the name exists only for the other degree level",
+      "no_exact_catalog_node": "no catalog node by that name in any scope"
+    },
+    "largest_groups": [
+      {
+        "text": "数学、统计",
+        "positions": 20,
+        "hires": 22,
+        "verdict": "name_exists_only_in_other_education_level",
+        "education_mix": {
+          "仅限本科": 20
+        },
+        "departments": [
+          "中国人民银行四川省分行",
+          "中国人民银行吉林省分行",
+          "中国人民银行湖南省分行"
+        ]
+      },
+      {
+        "text": "中国语言文学类、新闻传播学类",
+        "positions": 14,
+        "hires": 17,
+        "verdict": "catalog_name_plus_类_suffix",
+        "education_mix": {
+          "硕士研究生及以上": 13,
+          "仅限硕士研究生": 1
+        },
+        "departments": [
+          "中国人民银行安徽省分行",
+          "辽宁海事局",
+          "中国人民银行辽宁省分行"
+        ]
+      },
+      {
+        "text": "英语",
+        "positions": 8,
+        "hires": 14,
+        "verdict": "name_exists_only_in_other_education_level",
+        "education_mix": {
+          "硕士研究生及以上": 8
+        },
+        "departments": [
+          "中国人民银行安徽省分行",
+          "中央党史和文献研究院",
+          "广西海事局"
+        ]
+      },
+      {
+        "text": "理学类、工学类",
+        "positions": 8,
+        "hires": 10,
+        "verdict": "catalog_name_plus_类_suffix",
+        "education_mix": {
+          "硕士研究生及以上": 8
+        },
+        "departments": [
+          "上海海事局"
+        ]
+      },
+      {
+        "text": "越南语相关专业",
+        "positions": 5,
+        "hires": 5,
+        "verdict": "no_exact_catalog_node",
+        "education_mix": {
+          "本科及以上": 4,
+          "仅限硕士研究生": 1
+        },
+        "departments": [
+          "海口出入境边防检查总站",
+          "国家税务总局云南省税务局"
+        ]
+      },
+      {
+        "text": "政治学类、中国语言文学类、新闻传播学类、网络空间安全类、船舶与海洋工程类",
+        "positions": 4,
+        "hires": 4,
+        "verdict": "catalog_name_plus_类_suffix",
+        "education_mix": {
+          "硕士研究生及以上": 4
+        },
+        "departments": [
+          "海南海事局"
+        ]
+      },
+      {
+        "text": "最高学历专业为经济学门类专业以及会计、财务管理、审计相关专业",
+        "positions": 3,
+        "hires": 14,
+        "verdict": "name_exists_only_in_other_education_level",
+        "education_mix": {
+          "仅限硕士研究生": 3
+        },
+        "departments": [
+          "国家金融监督管理总局"
+        ]
+      },
+      {
+        "text": "法学类、法律类",
+        "positions": 3,
+        "hires": 3,
+        "verdict": "catalog_name_plus_类_suffix",
+        "education_mix": {
+          "硕士研究生及以上": 3
+        },
+        "departments": [
+          "长江海事局"
+        ]
+      },
+      {
+        "text": "法学类",
+        "positions": 3,
+        "hires": 3,
+        "verdict": "catalog_name_plus_类_suffix",
+        "education_mix": {
+          "硕士研究生及以上": 3
+        },
+        "departments": [
+          "辽宁海事局",
+          "长江海事局"
+        ]
+      },
+      {
+        "text": "经济学门类专业",
+        "positions": 3,
+        "hires": 3,
+        "verdict": "no_exact_catalog_node",
+        "education_mix": {
+          "仅限本科": 3
+        },
+        "departments": [
+          "国家金融监督管理总局海南监管局"
+        ]
+      },
+      {
+        "text": "英语相关专业",
+        "positions": 3,
+        "hires": 3,
+        "verdict": "no_exact_catalog_node",
+        "education_mix": {
+          "本科及以上": 2,
+          "仅限硕士研究生": 1
+        },
+        "departments": [
+          "海口出入境边防检查总站"
+        ]
+      },
+      {
+        "text": "法律相关专业",
+        "positions": 2,
+        "hires": 20,
+        "verdict": "no_exact_catalog_node",
+        "education_mix": {
+          "硕士研究生及以上": 1,
+          "本科及以上": 1
+        },
+        "departments": [
+          "最高人民法院",
+          "外交部"
+        ]
+      },
+      {
+        "text": "英语及相关专业",
+        "positions": 2,
+        "hires": 2,
+        "verdict": "no_exact_catalog_node",
+        "education_mix": {
+          "硕士研究生及以上": 2
+        },
+        "departments": [
+          "科学技术部"
+        ]
+      },
+      {
+        "text": "会计学类",
+        "positions": 2,
+        "hires": 2,
+        "verdict": "catalog_name_plus_类_suffix",
+        "education_mix": {
+          "硕士研究生及以上": 2
+        },
+        "departments": [
+          "中国证券监督管理委员会",
+          "中国证券监督管理委员会大连监管局"
+        ]
+      },
+      {
+        "text": "理工类专业",
+        "positions": 2,
+        "hires": 2,
+        "verdict": "no_exact_catalog_node",
+        "education_mix": {
+          "硕士研究生及以上": 2
+        },
+        "departments": [
+          "国家国防科技工业局"
+        ]
+      },
+      {
+        "text": "核相关理工类专业",
+        "positions": 2,
+        "hires": 4,
+        "verdict": "no_exact_catalog_node",
+        "education_mix": {
+          "硕士研究生及以上": 2
+        },
+        "departments": [
+          "国家国防科技工业局"
+        ]
+      },
+      {
+        "text": "经济学类",
+        "positions": 2,
+        "hires": 3,
+        "verdict": "catalog_name_plus_类_suffix",
+        "education_mix": {
+          "仅限硕士研究生": 1,
+          "硕士研究生及以上": 1
+        },
+        "departments": [
+          "财政部北京监管局",
+          "中国证券监督管理委员会四川监管局"
+        ]
+      },
+      {
+        "text": "经济学类、管理学类",
+        "positions": 2,
+        "hires": 4,
+        "verdict": "catalog_name_plus_类_suffix",
+        "education_mix": {
+          "仅限硕士研究生": 2
+        },
+        "departments": [
+          "财政部广东监管局",
+          "财政部云南监管局"
+        ]
+      },
+      {
+        "text": "中国语言文学类、会计类、审计类、网络空间安全类、船舶与海洋工程类",
+        "positions": 2,
+        "hires": 2,
+        "verdict": "catalog_name_plus_类_suffix",
+        "education_mix": {
+          "硕士研究生及以上": 2
+        },
+        "departments": [
+          "海南海事局"
+        ]
+      },
+      {
+        "text": "俄语相关专业",
+        "positions": 2,
+        "hires": 2,
+        "verdict": "no_exact_catalog_node",
+        "education_mix": {
+          "硕士研究生及以上": 1,
+          "仅限硕士研究生": 1
+        },
+        "departments": [
+          "国家税务总局黑龙江省税务局",
+          "海口出入境边防检查总站"
+        ]
+      },
+      {
+        "text": "国际金融、货币银行学、计量经济学、金融工程、金融数学、金融科技、金融审计、计算金融",
+        "positions": 2,
+        "hires": 2,
+        "verdict": "name_exists_only_in_other_education_level",
+        "education_mix": {
+          "硕士研究生及以上": 2
+        },
+        "departments": [
+          "国家金融监督管理总局天津监管局"
+        ]
+      },
+      {
+        "text": "经济学类（不含统计、税务、资产评估、区域国别学）",
+        "positions": 2,
+        "hires": 2,
+        "verdict": "catalog_name_plus_类_suffix",
+        "education_mix": {
+          "硕士研究生及以上": 1,
+          "仅限硕士研究生": 1
+        },
+        "departments": [
+          "国家金融监督管理总局四川监管局"
+        ]
+      },
+      {
+        "text": "统计类专业",
+        "positions": 2,
+        "hires": 2,
+        "verdict": "no_exact_catalog_node",
+        "education_mix": {
+          "仅限本科": 2
+        },
+        "departments": [
+          "国家金融监督管理总局甘肃监管局"
+        ]
+      },
+      {
+        "text": "电力等相关专业",
+        "positions": 2,
+        "hires": 2,
+        "verdict": "no_exact_catalog_node",
+        "education_mix": {
+          "硕士研究生及以上": 1,
+          "本科及以上": 1
+        },
+        "departments": [
+          "国家能源局华中监管局"
+        ]
+      },
+      {
+        "text": "地质类相关专业",
+        "positions": 2,
+        "hires": 4,
+        "verdict": "no_exact_catalog_node",
+        "education_mix": {
+          "本科及以上": 2
+        },
+        "departments": [
+          "国家矿山安全监察局内蒙古局",
+          "国家矿山安全监察局重庆局"
+        ]
+      }
+    ],
+    "agency_unverified_positions": [
+      {
+        "id": "2027:132000:200144001001",
+        "department_name": "国家金融监督管理总局",
+        "education_raw": "仅限硕士研究生",
+        "hires": 10,
+        "major_raw": "最高学历专业为经济学门类专业以及会计、财务管理、审计相关专业",
+        "unresolved_phrases": [
+          "历专业为经济学门类"
+        ]
+      },
+      {
+        "id": "2027:132000:200144002001",
+        "department_name": "国家金融监督管理总局",
+        "education_raw": "仅限硕士研究生",
+        "hires": 3,
+        "major_raw": "最高学历专业为经济学门类专业以及会计、财务管理、审计相关专业",
+        "unresolved_phrases": [
+          "历专业为经济学门类"
+        ]
+      },
+      {
+        "id": "2027:133000:200141009001",
+        "department_name": "中国证券监督管理委员会",
+        "education_raw": "硕士研究生及以上",
+        "hires": 1,
+        "major_raw": "会计学类",
+        "unresolved_phrases": [
+          "会计学类"
+        ]
+      },
+      {
+        "id": "2027:129106:300110002001",
+        "department_name": "石家庄海关",
+        "education_raw": "仅限硕士研究生",
+        "hires": 1,
+        "major_raw": "公共卫生与预防医学类、生物医学工程类",
+        "unresolved_phrases": [
+          "共卫生与预防医学类"
+        ]
+      },
+      {
+        "id": "2027:129106:300110004001",
+        "department_name": "石家庄海关",
+        "education_raw": "仅限硕士研究生",
+        "hires": 1,
+        "major_raw": "化学类、材料与化工类、材料科学与工程类",
+        "unresolved_phrases": [
+          "材料与化工类",
+          "材料科学与工程类"
+        ]
+      },
+      {
+        "id": "2027:132121:300144006001",
+        "department_name": "国家金融监督管理总局海南监管局",
+        "education_raw": "仅限本科",
+        "hires": 1,
+        "major_raw": "经济学门类专业",
+        "unresolved_phrases": [
+          "经济学门类"
+        ]
+      },
+      {
+        "id": "2027:132121:300144008001",
+        "department_name": "国家金融监督管理总局海南监管局",
+        "education_raw": "仅限本科",
+        "hires": 1,
+        "major_raw": "经济学门类专业",
+        "unresolved_phrases": [
+          "经济学门类"
+        ]
+      },
+      {
+        "id": "2027:132121:300144014001",
+        "department_name": "国家金融监督管理总局海南监管局",
+        "education_raw": "仅限本科",
+        "hires": 1,
+        "major_raw": "经济学门类专业",
+        "unresolved_phrases": [
+          "经济学门类"
+        ]
+      },
+      {
+        "id": "2027:132128:300148003001",
+        "department_name": "国家金融监督管理总局甘肃监管局",
+        "education_raw": "仅限本科",
+        "hires": 1,
+        "major_raw": "统计类专业",
+        "unresolved_phrases": [
+          "统计类"
+        ]
+      },
+      {
+        "id": "2027:132128:300148028001",
+        "department_name": "国家金融监督管理总局甘肃监管局",
+        "education_raw": "仅限本科",
+        "hires": 1,
+        "major_raw": "统计类专业",
+        "unresolved_phrases": [
+          "统计类"
+        ]
+      },
+      {
+        "id": "2027:133104:300141001001",
+        "department_name": "中国证券监督管理委员会山西监管局",
+        "education_raw": "本科及以上",
+        "hires": 2,
+        "major_raw": "经济学大类、法学大类、管理学大类",
+        "unresolved_phrases": [
+          "法学大类",
+          "管理学大类",
+          "经济学大类"
+        ]
+      },
+      {
+        "id": "2027:133107:300141001001",
+        "department_name": "中国证券监督管理委员会大连监管局",
+        "education_raw": "硕士研究生及以上",
+        "hires": 1,
+        "major_raw": "会计学类",
+        "unresolved_phrases": [
+          "会计学类"
+        ]
+      },
+      {
+        "id": "2027:132000:400144003002",
+        "department_name": "国家金融监督管理总局",
+        "education_raw": "仅限硕士研究生",
+        "hires": 1,
+        "major_raw": "最高学历专业为经济学门类专业以及会计、财务管理、审计相关专业",
+        "unresolved_phrases": [
+          "历专业为经济学门类"
+        ]
+      }
+    ]
+  },
+  "official_sources_checked_this_round": [
+    {
+      "id": "moe-2027-position-statement",
+      "url": "http://www.moe.gov.cn/s78/A04/tongzhi/202610/t20261014_1454189.html",
+      "authority": "教育部人事司",
+      "date": "2026-10-14",
+      "applies_to_2027_civil_service": "只适用于教育部职位",
+      "use_in_this_round": "支撑“门类覆盖其下专业与一级学科”的读法；未推广为全国政策"
+    },
+    {
+      "id": "nfra-2027-exam-outline",
+      "url": "http://dl.scs.gov.cn/api/article/8a81f6d8a129c66701a1335b58c700c4",
+      "authority": "国家金融监督管理总局",
+      "date": "2027 年度",
+      "applies_to_2027_civil_service": "笔试大纲，不是专业目录",
+      "use_in_this_round": "复核后仍不提供类别成员；相关岗位保持未解析"
+    },
+    {
+      "id": "csrc-2027-exam-outline",
+      "url": "http://dl.scs.gov.cn/api/article/8a81f6d0a135938a01a135d657580004",
+      "authority": "中国证券监督管理委员会",
+      "date": "2027 年度",
+      "applies_to_2027_civil_service": "笔试大纲（财金/法律/会计/计算机类为试卷类别）",
+      "use_in_this_round": "同上，未提供专业成员表"
+    },
+    {
+      "id": "msa-2027-qualification-notice",
+      "url": "https://www.msa.gov.cn/html/cnmsa/xxgk/article/2026/aef40dfa0db14427b456ba009d370411.html",
+      "authority": "中华人民共和国海事局",
+      "date": "2026-10-13",
+      "applies_to_2027_civil_service": "交通运输部直属海事系统 2027 年度考录公务员职位",
+      "use_in_this_round": "第七条“部分职位按照专业门类或者专业大类、专业小类招录的，属于相应类别下的专业均可报考”用于佐证海事系统岗位的门类写法；门类成员仍取自教育部目录。"
+    },
+    {
+      "id": "scs-2027-application-guide",
+      "url": "http://dl.scs.gov.cn/api/article/8a81f6d8a129c66701a132bae3a70082",
+      "authority": "中央公务员主管部门",
+      "date": "2027 年度",
+      "applies_to_2027_civil_service": "是，但全文不定义任何专业类别成员",
+      "use_in_this_round": "再次确认无全国统一专业分类表"
+    }
+  ],
+  "updated_this_round": [
+    "三层覆盖口径：conservative 18,694、provisional 5、no_candidate 727，校验器断言三者之和为 19,426",
+    "gate_scope_rule 命中全部标为 agency_scope_unverified，且不计入保守分子；命中 95 处",
+    "复核桶 candidate_provisional_agency_scope_rule（5 岗）",
+    "冲突拆分语族：semantic_conflict 67 条 / multi_namespace_diagnostic 20 条",
+    "对 194 个残留岗位逐组判定，真实解析缺口 0"
+  ],
+  "not_updated_this_round": [
+    "19,426 岗的 27 个原字段与 524,502 单元格官方核验结果",
+    "727 个无候选岗位的文本与分类",
+    "历史报告 RESIDUAL_20271018_V2.json、OFFICIAL_NATIONAL_TABLE_VERIFICATION_20261018.json 未被改写"
+  ],
+  "opus_safe_read_guidance": [
+    "引用“专业候选覆盖”时用 18,694（保守），不要用 18,699，除非同时说明其中 5 岗依赖跨机关推定。",
+    "5 个 provisional 岗位可描述为“原文门类写法 + 目录节点”，但不得表述为“该机关已确认接受这些门类”。",
+    "727 个无候选岗位不等于“不限专业”，也不等于“不可报”；多数是机关内部类别或开放表述。",
+    "冲突数按口径引用：54 岗位 / 87 条目 / 67 语义冲突条目；三者不可互换。",
+    "任何“可报/不可报”结论都不在本数据内；本节只描述原文证据与解析状态。",
+    "机关类别（人行、气象等）应表述为“截至 2026-10-18 已查来源未找到 2027 适用名单”，不是“不存在”。"
+  ],
+  "reproduce": [
+    "python3 scripts/build_major_evidence.py",
+    "python3 scripts/build_review_status.py",
+    "python3 scripts/build_final_scope_audit.py",
+    "python3 scripts/verify_major_evidence.py --write-report",
+    "node scripts/verify_position_data.mjs --write-report"
+  ]
+}

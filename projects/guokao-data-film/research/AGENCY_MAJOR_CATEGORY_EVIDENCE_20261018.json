@@ -1,0 +1,165 @@
+{
+  "schema_version": "1.0.0",
+  "report_id": "agency-major-category-evidence-20261018",
+  "generated_at_utc": "2026-10-17T19:25:19.153808+00:00",
+  "question": "是否存在明确适用于 2027 年度公务员岗位的权威“经济金融类”/“气象类”成员名单？",
+  "answer": "截至 2026-10-18 的已查公开来源，未找到适用于 2027 年度公务员岗位的此类成员名单。这是“未找到”，不是“不存在”；两类职位只能按原文的举例与排除句理解，不能据此判定个人可报。",
+  "checked_sources": [
+    {
+      "id": "scs_portal_resource_list",
+      "authority": "中央公务员主管部门",
+      "url": "http://dl.scs.gov.cn/api/res/8a81f6eca0221f1401a0242759fc0000/1110",
+      "page_url": "http://bm.scs.gov.cn/kl2027",
+      "checked_at": "2026-10-18",
+      "http_status": 200,
+      "contains": "相关下载列表：招考简章.zip、电子社保卡扫码认证指南、报名推荐表、报名登记表",
+      "contains_category_membership_list": false,
+      "conclusion": "专题网站只提供招考简章等工作簿，没有专业分类目录附件。"
+    },
+    {
+      "id": "scs_application_guide",
+      "authority": "中央公务员主管部门",
+      "url": "http://dl.scs.gov.cn/api/article/8a81f6d8a129c66701a132bae3a70082",
+      "title": "中央机关及其直属机构2027年度考试录用公务员报考指南",
+      "checked_at": "2026-10-18",
+      "http_status": 200,
+      "contains": "报考政策问答全文（约 2 万字）",
+      "contains_category_membership_list": false,
+      "evidence": "正文“经济金融”0 次、“气象”0 次、“专业分类”0 次；15 处“专业”均为考试科目、专业能力测试或学历填报说明。",
+      "conclusion": "国家级报考指南不定义任何专业类别成员，也不提供专业分类表。"
+    },
+    {
+      "id": "pboc_recruitment_column",
+      "authority": "中国人民银行人事司",
+      "url": "http://www.pbc.gov.cn/renshisi/144501/144513/144695/index.html",
+      "checked_at": "2026-10-18",
+      "http_status": 200,
+      "contains": "唯一 2027 条目：欢迎报考中国人民银行公务员（2026-10-14）",
+      "contains_category_membership_list": false,
+      "evidence": "公告正文只给总行机关 27 名、分支机构 2,335 名、反洗钱中心 4 名，并写明“具体职位和资格条件请查看专题网站招考简章”。",
+      "conclusion": "人民银行未发布 2027 公务员专业分类目录或“经济金融类”成员名单。"
+    },
+    {
+      "id": "pboc_branch_notice_sample",
+      "authority": "中国人民银行新疆维吾尔自治区分行",
+      "url": "https://wulumuqi.pbc.gov.cn/wulumuqi/121749/5867645/index.html",
+      "checked_at": "2026-10-18",
+      "http_status": 200,
+      "contains": "分行职位介绍（2026 年度样本，展示该类公告的固定写法）",
+      "contains_category_membership_list": false,
+      "evidence": "公告列出经济金融、会计、法律、计算机、统计、管理、英语、中文、理工、安全保卫十类专业，随后直接给出“经济金融类（不含统计、国际商务、资产评估、经济与贸易类、国际贸易等）”等职位表述，无成员表、无附件。",
+      "conclusion": "分行层级的写法与全国表一致：类别只靠举例和排除句表达，不定义成员。"
+    },
+    {
+      "id": "cma_civil_service_column",
+      "authority": "中国气象局",
+      "url": "http://www.cma.gov.cn/zfxxgk/gknr/rsxx/gwyzl/",
+      "checked_at": "2026-10-18",
+      "http_status": 200,
+      "contains": "公务员招录栏目，最新为 2026 年度公告",
+      "contains_category_membership_list": false,
+      "evidence": "页面中“2027”出现 0 次；未发布 2027 年度公务员招录公告或专用专业目录。",
+      "conclusion": "气象局未发布适用于 2027 公务员岗位的“气象类”成员名单。"
+    },
+    {
+      "id": "nfra_exam_outline_2027",
+      "authority": "国家金融监督管理总局",
+      "url": "http://dl.scs.gov.cn/api/article/8a81f6d8a129c66701a1335b58c700c4",
+      "title": "2027年度国家金融监督管理总局招考职位专业科目笔试考试大纲",
+      "checked_at": "2026-10-18",
+      "http_status": 200,
+      "contains_category_membership_list": false,
+      "evidence": "正文 4,197 字；“专业目录/专业分类/学科门类/专业要求/学位/所学专业”各 0 次；文中“财经类”指笔试试卷类别。",
+      "conclusion": "笔试大纲不定义专业类别成员。"
+    },
+    {
+      "id": "csrc_exam_outline_2027",
+      "authority": "中国证券监督管理委员会",
+      "url": "http://dl.scs.gov.cn/api/article/8a81f6d0a135938a01a135d657580004",
+      "title": "2027年度中国证监会招考职位专业科目笔试考试大纲",
+      "checked_at": "2026-10-18",
+      "http_status": 200,
+      "contains_category_membership_list": false,
+      "evidence": "页面正文仅“见附件”，资源列表为财金类/法律类/会计类/计算机类等 .doc 笔试大纲；这些类别是试卷类别，不是专业类别。",
+      "conclusion": "未提供专业目录；仅有按职位类别划分的笔试大纲。"
+    },
+    {
+      "id": "cma_institution_catalog_2026",
+      "authority": "中国气象局人事司（经河南省气象局公告引用）",
+      "url": "http://ha.cma.gov.cn/zfxxgk/zwgk/rsxx/zpxx/202510/W020251029534266455165.pdf",
+      "title": "河南省气象部门2026年度公开招聘应届高校毕业生公告（第1号）",
+      "checked_at": "2026-10-18",
+      "http_status": 200,
+      "sha256": "46cfad33160c5959826122bc703de6d732730a37484a3867421ccd098cde224a",
+      "is_applicable_to_2027_civil_service": false,
+      "evidence": "公告为事业单位公开招聘，正文称“气象类专业按照中国气象局人事司《气象部门人员招聘专业目录》（2026版）（附件2）认定”。",
+      "conclusion": "气象部门确实有一份机关专业目录，但它是 2026 版、面向事业单位公开招聘的；本轮未取得附件原表，且其适用范围不是 2027 公务员录用，因此只作非适用参考。"
+    }
+  ],
+  "category_findings": [
+    {
+      "phrase": "经济金融类（不含统计、国际商务、资产评估、经济与贸易类、国际贸易等专业）",
+      "agency": "pboc",
+      "agency_label": "中国人民银行系统",
+      "positions": 420,
+      "hires": 722,
+      "published_membership": false,
+      "explicitly_excluded": [
+        "统计",
+        "国际商务",
+        "资产评估",
+        "经济与贸易类",
+        "国际贸易"
+      ],
+      "examples_used_in_some_positions": [
+        "国际金融",
+        "世界经济",
+        "西方经济学",
+        "货币银行学",
+        "计量经济学",
+        "数量经济学",
+        "金融工程",
+        "金融数学",
+        "金融科技",
+        "金融审计",
+        "计算金融"
+      ],
+      "note": "这十一个名称出自部分职位的专业栏，是对“经济金融类”的举例，不是定义；其中若干名称可在教育部目录中找到精确节点，但类别本身没有成员表。"
+    },
+    {
+      "phrase": "气象类",
+      "agency": "cma",
+      "agency_label": "中国气象局系统",
+      "positions": 88,
+      "hires": 88,
+      "published_membership": false,
+      "non_applicable_reference": {
+        "title": "气象部门人员招聘专业目录（2026版）",
+        "publisher": "中国气象局人事司",
+        "scope": "事业单位公开招聘，非公务员录用",
+        "applies_to_2027_civil_service": false,
+        "retrieved": false,
+        "referenced_by": "http://ha.cma.gov.cn/zfxxgk/zwgk/rsxx/zpxx/202510/W020251029534266455165.pdf",
+        "why_not_used": "版本年份为 2026、适用对象为事业单位公开招聘；本轮未取得附件原表，且按用户口径不得据此清除 2027 公务员缺口。"
+      }
+    }
+  ],
+  "applicable_rules_found": [
+    {
+      "title": "关于教育部2027年度公务员考录职位要求的说明",
+      "authority": "教育部人事司",
+      "date": "2026-10-14",
+      "url": "http://www.moe.gov.cn/s78/A04/tongzhi/202610/t20261014_1454189.html",
+      "applies_to": "教育部 2027 年度考录职位",
+      "rule_used": "学科门类要求覆盖该门类下的专业与一级学科；一级学科要求覆盖其二级学科。",
+      "usage_scope": "仅作为“门类=学科门类节点”的解析依据，未用于判定个人资格。"
+    }
+  ],
+  "what_would_change_the_answer": [
+    "中国气象局或省级气象局在 2027 年度公务员招录公告中直接附带《气象部门人员招录专业目录（2027版）》并声明适用于公务员职位",
+    "中国人民银行在专题网站或分行公告中发布 2027 年度“经济金融类”成员名单（含学科、专业代码与学历层次）",
+    "中央公务员主管部门发布统一的专业分类表，或招考简章中逐岗改用可枚举的专业代码"
+  ],
+  "status": "unresolved_by_public_sources",
+  "operational_note": "这不是工具缺陷：数据层已经能解析代码与精确名称，剩下的是本次核查范围内未找到的类别成员定义。若后续发布，按同一流程新增 agency-scoped catalog 并重跑即可。"
+}

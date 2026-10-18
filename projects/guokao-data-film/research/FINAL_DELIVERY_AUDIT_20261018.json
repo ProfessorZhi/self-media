@@ -1,0 +1,132 @@
+{
+  "schema_version": "1.0.0",
+  "report_id": "final-delivery-audit-20261018",
+  "generated_at_utc": "2026-10-18T04:22:42.795651+00:00",
+  "local_date": "2026-10-18",
+  "generated_from_commit": "879429ada00545a34df13d8c692c5f7a9e900d02",
+  "statement": "The fact and evidence layers are deliverable. Applicant eligibility is not determined and cannot be, from public sources alone.",
+  "headline": {
+    "positions": 19426,
+    "hires": 35691,
+    "coverage_conservative": {
+      "positions": 18694,
+      "hires": 34526
+    },
+    "coverage_provisional": {
+      "positions": 5,
+      "hires": 5
+    },
+    "no_candidate": {
+      "positions": 727,
+      "hires": 1160
+    },
+    "closure": "18,694 + 5 + 727 = 19,426",
+    "official_workbook_verification": {
+      "positions": 19426,
+      "hires": 35691,
+      "compared_cells": 524502,
+      "content_differences": 0,
+      "location_differences": 0
+    }
+  },
+  "delivered": {
+    "raw_positions": "data/positions_2027/manifest.json",
+    "major_evidence": "data/major_evidence_2027/manifest.json",
+    "review_status": "data/major_evidence_2027/review-status-*.json",
+    "residual_strata": "data/major_evidence_2027/residual-strata-01.json",
+    "provisional_list": "data/major_evidence_2027/provisional-gate-rule-01.json",
+    "current_snapshot": "research/CURRENT_SNAPSHOT.json",
+    "scope_audit": "research/FINAL_EVIDENCE_SCOPE_AUDIT_20261018.json",
+    "consistency_audit": "research/HANDOFF_CONSISTENCY_20261018.json",
+    "remark_scope_diff": "research/REMARK_SCOPE_FIX_DIFF_20261018.json",
+    "delivery_status": "research/FINAL_DELIVERY_STATUS.md"
+  },
+  "query_interfaces": [
+    "node scripts/query_major_evidence.mjs --stats",
+    "node scripts/query_major_evidence.mjs --code 030101K",
+    "node scripts/query_major_evidence.mjs --review-status --bucket candidate_with_conflict",
+    "node scripts/query_major_evidence.mjs --review-status --risk",
+    "node scripts/query_major_evidence.mjs --provisional",
+    "node scripts/query_major_evidence.mjs --residual --strat-bucket agency_category_no_public_list",
+    "node scripts/query_major_evidence.mjs --position 2027:002000:100110001001"
+  ],
+  "hard_problems": [
+    {
+      "group": "agency_category_no_public_list",
+      "positions": 533,
+      "hires": 853,
+      "classification": "needs_recruiting_agency_explanation",
+      "why": "The agency uses an in-house category such as 经济金融类 or 气象类. Its 2027 pages were checked and no applicable membership list was found. Not-found is not does-not-exist, so the positions stay unresolved.",
+      "autonomously_fixable": false,
+      "evidence": "research/AGENCY_MAJOR_CATEGORY_EVIDENCE_20261018.json"
+    },
+    {
+      "group": "agency_category_unverified",
+      "positions": 13,
+      "hires": 25,
+      "classification": "needs_recruiting_agency_explanation",
+      "why": "In-house category phrase, but whether the agency publishes a list was not verified.",
+      "autonomously_fixable": false,
+      "evidence": "research/FINAL_EVIDENCE_SCOPE_AUDIT_20261018.json"
+    },
+    {
+      "group": "national_vocabulary_or_open_scope",
+      "positions": 181,
+      "hires": 282,
+      "classification": "human_interpretation_only",
+      "why": "Colloquial 类 suffixes, cross-level vocabulary and open phrases such as 相关专业. Group audit found zero exact in-scope names that the matcher missed, so there is no parser defect left to fix.",
+      "autonomously_fixable": false,
+      "evidence": "research/RESIDUAL_STRATA_20261018.json"
+    },
+    {
+      "group": "provisional_gate_rule",
+      "positions": 5,
+      "hires": 5,
+      "classification": "needs_recruiting_agency_explanation",
+      "why": "Covered only by the 门类 reading, whose cited statement applies to MOE positions. Exact characters and gate nodes are recorded; agency applicability is not.",
+      "autonomously_fixable": false,
+      "evidence": "research/FINAL_EVIDENCE_SCOPE_AUDIT_20261018.json"
+    },
+    {
+      "group": "semantic_conflict",
+      "positions": 44,
+      "entries": 67,
+      "direct_entries": 2,
+      "direct_positions": 2,
+      "classification": "mostly_context_or_format; a small direct subset needs the agency",
+      "why": "These are the machine-recorded content_conflict entries. Re-audit shows most of them are reading artefacts: a slash-grouped code run sharing one name, a catalog name that itself contains 、, a category code followed by its members, a 类 suffix, or an old/short alias. Only direct_pair_needs_agency_confirmation (see direct_entries) cannot be explained by the surrounding text and may need the recruiting agency to clarify. None of these entries is asserted to be a source error, and none changes what the position accepts.",
+      "autonomously_fixable": false,
+      "evidence": "node scripts/query_major_evidence.mjs --review-status --bucket candidate_with_conflict"
+    },
+    {
+      "group": "multi_namespace_diagnostic",
+      "positions": 11,
+      "entries": 20,
+      "classification": "human_interpretation_only",
+      "why": "Same code naming something else at another level, or a dropped 类 suffix. This is a reading of the text, not a source error.",
+      "autonomously_fixable": false,
+      "evidence": "data/major_evidence_2027/position-evidence-*.json"
+    },
+    {
+      "group": "mixed_degree_label",
+      "entries": 15,
+      "classification": "human_interpretation_only",
+      "why": "备注 mixes levels in one label (本科或研究生阶段). The code falls back to the position scope and is flagged; it was deliberately not widened.",
+      "autonomously_fixable": false,
+      "evidence": "node scripts/query_major_evidence.mjs --position <id>"
+    }
+  ],
+  "autonomously_fixable_remaining": [],
+  "autonomously_fixable_scope": "在本次已审计范围内（19,426 岗的逐岗证据、残留分层、冲突语族、备注作用域），未发现可自主修复项；这不是“全世界不存在进一步问题”的证明。",
+  "external_blockers": [
+    "No applicable 2027 membership list found for the PBOC 经济金融类 or CMA 气象类 categories.",
+    "Some 备注 sentences mix degree levels without a clean label and need a human reading.",
+    "Only the 2 direct name/code pairs inside content_conflict may need the recruiting agency to clarify; the other entries are context, format or alias artefacts and are not claims that the source is wrong."
+  ],
+  "not_delivered": [
+    "Any applicant-eligibility verdict.",
+    "一张 2027 全国统一专业成员表：截至 2026-10-18 的已查公开来源未找到，不能据此断言不存在。",
+    "2027 interview cutoffs (they do not exist before the written exam)."
+  ],
+  "review_caveat": "5,835 is the legacy review denominator, not an uncovered count. 995 of them no longer reproduce a warning under the current catalogs; that is a statement about the tool, not a cleared position. Buckets are mutually exclusive but a position can carry several risk markers."
+}

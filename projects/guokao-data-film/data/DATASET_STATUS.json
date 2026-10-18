@@ -1,19 +1,30 @@
 {
-  "schema_version": "1.0.0",
-  "updated": "2026-10-17",
+  "schema_version": "1.1.0",
+  "updated": "2026-10-18",
   "primary_handoff": "../DATA_HANDOFF.md",
   "current": [
     {
       "path": "positions_2027/manifest.json",
-      "role": "2027_raw_position_facts"
+      "role": "2027_raw_position_facts",
+      "verification": "19,426 positions cell-verified against the official national 招考简章 workbook (524,502 cells, 0 differences)"
     },
     {
       "path": "majors_2027/manifest.json",
-      "role": "all_position_major_texts_and_catalog_reference_candidates"
+      "role": "all_position_major_texts_and_catalog_reference_candidates",
+      "coverage_note": "专业 column only, three catalogs. Superseded for coverage statistics by major_evidence_2027; retained as the reproducible before-layer."
+    },
+    {
+      "path": "major_evidence_2027/manifest.json",
+      "role": "per_position_major_evidence_across_major_and_remarks_columns",
+      "coverage_note": "专业 + 备注 with explicit degree-scope labels; conservative 18,694, provisional gate-rule 5, no candidate 727; review status 11 buckets; conflicts 54 positions / 87 entries"
     },
     {
       "path": "catalogs/",
       "role": "official_catalogs_with_separate_namespaces"
+    },
+    {
+      "path": "sources/manifest.json",
+      "role": "pinned_source_binaries_with_url_and_sha256"
     },
     {
       "path": "position_conditions_2027.json",
@@ -38,6 +49,132 @@
     {
       "path": "official_2027_immigration_plan.json",
       "role": "official_agency_plan"
+    },
+    {
+      "path": "2027_registration_snapshot_20261018_1138_secondary.json",
+      "role": "2027 application/qualification counts as reported by third-party Huatu at 2026-10-18 11:38 Beijing time; 31 provinces, snapshot only",
+      "coverage_note": "591,223 applicants, 324,561 approved, 835 jobs reported without applicants; source/31-province totals checked, NOT official, NOT live and NOT per-position registration data"
+    }
+  ],
+  "catalogs": [
+    {
+      "path": "catalogs/major_bachelor_2026_official_parsed.json",
+      "namespace": "moe-bachelor:2026",
+      "scope": "13 gates / 92 categories / 883 majors",
+      "added": "2026-10-17"
+    },
+    {
+      "path": "catalogs/major_graduate_2022_official_parsed.json",
+      "namespace": "moe-graduate:2022",
+      "scope": "14 gates / 117 first-level disciplines / 67 professional degree categories; no six-digit secondary disciplines",
+      "added": "2026-10-17"
+    },
+    {
+      "path": "catalogs/major_graduate_codebook_2023_admissions_official_parsed.json",
+      "namespace": "moe-graduate-codebook:2023-admissions",
+      "scope": "785 nodes including 602 six-digit secondary disciplines; enrollment code book dated 2022-09",
+      "added": "2026-10-18"
+    },
+    {
+      "path": "catalogs/major_graduate_codebook_2024_admissions_official_parsed.json",
+      "namespace": "moe-graduate-codebook:2024-admissions",
+      "scope": "791 nodes including 554 six-digit secondary disciplines; enrollment code book dated 2023-09",
+      "added": "2026-10-18"
+    },
+    {
+      "path": "catalogs/major_selfset_2026_official_parsed.json",
+      "namespace": "moe-selfset:2026",
+      "scope": "5,536 self-set secondary entries and 1,214 cross-discipline entries across 497 institutions; names only, no locally assigned codes",
+      "added": "2026-10-18"
+    },
+    {
+      "path": "catalogs/major_tax_2027_official_parsed.json",
+      "namespace": "sat-recruitment:2027",
+      "scope": "53 categories / 849 membership edges; no per-member education level or MOE code",
+      "added": "2026-10-17"
+    }
+  ],
+  "reports": [
+    {
+      "path": "../research/OFFICIAL_NATIONAL_TABLE_VERIFICATION_20261018.json",
+      "role": "official national workbook cell verification",
+      "result": "PASS: 19,426 positions, 524,502 compared cells, 0 content differences"
+    },
+    {
+      "path": "../research/MAJOR_EVIDENCE_VERIFICATION_20261018.json",
+      "role": "major-evidence invariants",
+      "result": "PASS"
+    },
+    {
+      "path": "../research/DATA_VALIDATION_20261017_V2.json",
+      "role": "repository-wide validation report",
+      "result": "PASS: 192,487 explicit assertions"
+    },
+    {
+      "path": "../research/RESIDUAL_20271018_V2.json",
+      "role": "v2 residual report with auditable v1 delta",
+      "result": "PASS: v1 recomputed 18,655, v2 18,680, delta 25 positions"
+    },
+    {
+      "path": "../research/AGENCY_MAJOR_CATEGORY_EVIDENCE_20261018.json",
+      "role": "agency major-category evidence casebook (PBOC, CMA)",
+      "result": "no applicable 2027 membership list found; recorded as unresolved"
+    },
+    {
+      "path": "../research/REVIEW_STATUS_20261018.json",
+      "role": "mutually exclusive review-status stratification of 5,835 positions",
+      "result": "PASS: 11 mutually exclusive buckets sum to 5,835; no-candidate buckets equal the residual list"
+    },
+    {
+      "path": "../research/RESIDUAL_STRATA_20261018.json",
+      "role": "residual stratification by raw text (agency vs national vocabulary)",
+      "result": "727 positions: 533 agency category membership lists not found in checked sources, 13 agency-category publication status unverified, 181 vocabulary/open scope"
+    },
+    {
+      "path": "../research/FINAL_EVIDENCE_SCOPE_AUDIT_20261018.json",
+      "role": "final evidence-scope audit and safe-read guidance",
+      "result": "18,694 conservative / 5 provisional / 727 no-candidate; 14 maritime positions corroborated by a notice with a strict 13-agency whitelist; no newly found exact in-scope parser gap"
+    },
+    {
+      "path": "../research/REMARK_SCOPE_FIX_DIFF_20261018.json",
+      "role": "before/after diff for the 备注 degree-scope fix",
+      "result": "conflicts 59->54 positions, 101->87 entries; conservative 18,679->18,680; residual 728->727"
+    },
+    {
+      "path": "../research/CURRENT_SNAPSHOT.json",
+      "role": "single derived source for every current figure"
+    },
+    {
+      "path": "../research/HANDOFF_CONSISTENCY_20261018.json",
+      "role": "cross-file consistency audit of current-stat statements",
+      "result": "PASS: anchored current-stat lines match the derived snapshot; links resolve"
+    },
+    {
+      "path": "../research/FINAL_DELIVERY_AUDIT_20261018.json",
+      "role": "delivery audit with hard-problem grouping",
+      "result": "fact and evidence layers deliverable; 0 autonomously fixable items remaining"
+    },
+    {
+      "path": "../research/FINAL_DELIVERY_STATUS.md",
+      "role": "human-readable delivery status"
+    },
+    {
+      "path": "../research/GAP_RESOLUTION_CAMPAIGN_20261018.json",
+      "role": "gap-resolution campaign: agency evidence, conflict audit, residual recheck",
+      "result": "14 maritime positions moved from provisional to conservative within Article 12 scope; of 67 machine content_conflict entries, 2 direct name/code pairs remain unresolved (not asserted source errors)"
+    },
+    {
+      "path": "../research/GAP_RESOLUTION_CAMPAIGN_20261018.md",
+      "role": "human-readable campaign summary"
+    },
+    {
+      "path": "../research/CRITICAL_POSITION_FIELD_AUDIT_20261018.json",
+      "role": "critical field QA: key, code widths, five official classification columns",
+      "result": "PASS: 19,426 positions, 11/11 aggregate cross-checks match, classification partitions sum to totals"
+    },
+    {
+      "path": "../research/CRITICAL_POSITION_FIELD_AUDIT_20261018.md",
+      "role": "human-readable critical-field audit"
     }
   ],
   "legacy": [
@@ -89,7 +226,24 @@
     "Do not combine original HTML 28 groups with the 19 third-party analysis tags without an explicit row-level mapping.",
     "Source text and original conditions take priority over derived flags.",
     "Major-code mentions and catalog references are not applicant eligibility.",
+    "Never merge the same code across education levels; the enrollment code books keep one namespace per edition.",
+    "A code ending in 00 is the enrollment form of its four-digit parent, not a new major.",
+    "Names listed inside 不含/除 exclusion brackets are exclusions, never coverage.",
+    "Z, J and S codes are institution-local; the 2026 roster publishes names only, so no code-to-name link may be inferred.",
     "A missing job cutoff is not zero; retain year, batch and score basis.",
-    "Sources and SHA-256 attest only the verification scopes actually recorded."
+    "Sources and SHA-256 attest only the verification scopes actually recorded.",
+    "An official national workbook match does not cover later amendments or agency-specific major catalogs that were never published.",
+    "A requirement written as X门类 may resolve to the X discipline-gate node, citing the MOE 2027 statement; no other suffix normalization is allowed.",
+    "A source-declared two-digit gate code in parentheses may resolve to that gate node.",
+    "Agency category phrases with no published membership list stay unresolved; a 2026 institution-recruitment catalog is not applicable to 2027 civil service positions.",
+    "Review status is a work state: a catalog candidate is not a cleared position, and the 5,835 review denominator is not an uncovered count.",
+    "The MOE 门类 rule is cited from a statement scoped to MOE positions; applying it to other agencies is an inference and is flagged as such.",
+    "Conflict metrics are distinct: 54 positions with 87 structured conflict entries, including 67 content_conflict entries across 44 positions; only 2 direct name/code pairs remain unresolved, and machine flags do not establish source errors.",
+    "A gate_scope_rule hit on a non-MOE position is provisional and must not enter the conservative coverage numerator.",
+    "A source-declared two-digit gate code printed in the position text is direct evidence and counts as exact.",
+    "Conflict families are separate: semantic_conflict indicates a possible source inconsistency; multi_namespace_diagnostic does not.",
+    "A 备注 code is resolved in the level named by an explicit bounded label; outside such a label the position education is used and the fallback is marked.",
+    "A mixed label such as 本科或研究生阶段 falls back to the position education and is flagged, never widened to both levels.",
+    "2027 registration numbers are separately time-stamped third-party snapshots, not official, final, or per-position live datasets; never overwrite previous snapshots or confuse them with the 2027 original position workbook."
   ]
 }

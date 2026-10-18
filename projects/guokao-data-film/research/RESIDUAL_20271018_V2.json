@@ -1,0 +1,991 @@
+{
+  "schema_version": "2.0.0",
+  "report_id": "residual-20271018-v2",
+  "generated_at_utc": "2026-10-17T18:26:56.010229+00:00",
+  "purpose": "第二版残留报告：记录本轮新增的可追溯解析规则、真实 delta，以及 771→746 之后仍然无法用公开权威来源解释的岗位。",
+  "baseline_v1": {
+    "described_in": "data/major_evidence_2027/manifest.json at commit b3da212",
+    "coverage_positions": 18655,
+    "coverage_hires": 34482,
+    "residual_positions": 771,
+    "residual_hires": 1209,
+    "note": "v1 的逐岗位分片已由本轮覆盖；v1 数字按 v1 规则从本轮字段重算得到，可复核。"
+  },
+  "current_v2": {
+    "coverage_positions": 18680,
+    "coverage_hires": 34507,
+    "residual_positions": 746,
+    "residual_hires": 1184
+  },
+  "delta": {
+    "positions": 25,
+    "hires": 25,
+    "rule_applied": "documented_gate_scope_normalization",
+    "positions_detail": [
+      {
+        "id": "2027:118103:300110001011",
+        "hires": 1,
+        "department_name": "长江海事局",
+        "education_raw": "本科及以上",
+        "major_raw": "管理学门类",
+        "rule": [
+          "gate_scope_rule"
+        ],
+        "gates": [
+          "管理学"
+        ]
+      },
+      {
+        "id": "2027:118103:300110005007",
+        "hires": 1,
+        "department_name": "长江海事局",
+        "education_raw": "硕士研究生及以上",
+        "major_raw": "工学门类、理学门类、教育学门类、医学门类",
+        "rule": [
+          "gate_scope_rule",
+          "gate_scope_rule",
+          "gate_scope_rule",
+          "gate_scope_rule"
+        ],
+        "gates": [
+          "工学",
+          "理学",
+          "教育学",
+          "医学"
+        ]
+      },
+      {
+        "id": "2027:118103:300110006008",
+        "hires": 1,
+        "department_name": "长江海事局",
+        "education_raw": "本科及以上",
+        "major_raw": "工学门类、法学门类、管理学门类",
+        "rule": [
+          "gate_scope_rule",
+          "gate_scope_rule",
+          "gate_scope_rule"
+        ],
+        "gates": [
+          "工学",
+          "法学",
+          "管理学"
+        ]
+      },
+      {
+        "id": "2027:118302:300110006003",
+        "hires": 1,
+        "department_name": "天津海事局",
+        "education_raw": "本科及以上",
+        "major_raw": "哲学门类、法学门类、文学门类、管理学门类",
+        "rule": [
+          "gate_scope_rule",
+          "gate_scope_rule",
+          "gate_scope_rule",
+          "gate_scope_rule"
+        ],
+        "gates": [
+          "哲学",
+          "法学",
+          "文学",
+          "管理学"
+        ]
+      },
+      {
+        "id": "2027:118303:300110010003",
+        "hires": 1,
+        "department_name": "辽宁海事局",
+        "education_raw": "硕士研究生及以上",
+        "major_raw": "法学门类",
+        "rule": [
+          "gate_scope_rule"
+        ],
+        "gates": [
+          "法学"
+        ]
+      },
+      {
+        "id": "2027:118303:300110010004",
+        "hires": 1,
+        "department_name": "辽宁海事局",
+        "education_raw": "硕士研究生及以上",
+        "major_raw": "工学门类",
+        "rule": [
+          "gate_scope_rule"
+        ],
+        "gates": [
+          "工学"
+        ]
+      },
+      {
+        "id": "2027:118303:300110020007",
+        "hires": 1,
+        "department_name": "辽宁海事局",
+        "education_raw": "硕士研究生及以上",
+        "major_raw": "法学门类",
+        "rule": [
+          "gate_scope_rule"
+        ],
+        "gates": [
+          "法学"
+        ]
+      },
+      {
+        "id": "2027:118303:300110030004",
+        "hires": 1,
+        "department_name": "辽宁海事局",
+        "education_raw": "硕士研究生及以上",
+        "major_raw": "法学门类",
+        "rule": [
+          "gate_scope_rule"
+        ],
+        "gates": [
+          "法学"
+        ]
+      },
+      {
+        "id": "2027:118306:300110003010",
+        "hires": 1,
+        "department_name": "浙江海事局",
+        "education_raw": "本科及以上",
+        "major_raw": "工学门类、理学门类",
+        "rule": [
+          "gate_scope_rule",
+          "gate_scope_rule"
+        ],
+        "gates": [
+          "工学",
+          "理学"
+        ]
+      },
+      {
+        "id": "2027:118306:300110004011",
+        "hires": 1,
+        "department_name": "浙江海事局",
+        "education_raw": "本科及以上",
+        "major_raw": "工学门类、理学门类、法学门类",
+        "rule": [
+          "gate_scope_rule",
+          "gate_scope_rule",
+          "gate_scope_rule"
+        ],
+        "gates": [
+          "工学",
+          "理学",
+          "法学"
+        ]
+      },
+      {
+        "id": "2027:118306:300110004012",
+        "hires": 1,
+        "department_name": "浙江海事局",
+        "education_raw": "本科及以上",
+        "major_raw": "工学门类、理学门类、法学门类",
+        "rule": [
+          "gate_scope_rule",
+          "gate_scope_rule",
+          "gate_scope_rule"
+        ],
+        "gates": [
+          "工学",
+          "理学",
+          "法学"
+        ]
+      },
+      {
+        "id": "2027:118308:300110013007",
+        "hires": 1,
+        "department_name": "广东海事局",
+        "education_raw": "本科及以上",
+        "major_raw": "工学门类",
+        "rule": [
+          "gate_scope_rule"
+        ],
+        "gates": [
+          "工学"
+        ]
+      },
+      {
+        "id": "2027:118308:300110015005",
+        "hires": 1,
+        "department_name": "广东海事局",
+        "education_raw": "本科及以上",
+        "major_raw": "法学门类",
+        "rule": [
+          "gate_scope_rule"
+        ],
+        "gates": [
+          "法学"
+        ]
+      },
+      {
+        "id": "2027:118309:300110001003",
+        "hires": 1,
+        "department_name": "广西海事局",
+        "education_raw": "硕士研究生及以上",
+        "major_raw": "工学门类、理学门类",
+        "rule": [
+          "gate_scope_rule",
+          "gate_scope_rule"
+        ],
+        "gates": [
+          "工学",
+          "理学"
+        ]
+      },
+      {
+        "id": "2027:118309:300110001005",
+        "hires": 1,
+        "department_name": "广西海事局",
+        "education_raw": "硕士研究生及以上",
+        "major_raw": "法学门类、文学门类、哲学门类、管理学门类",
+        "rule": [
+          "gate_scope_rule",
+          "gate_scope_rule",
+          "gate_scope_rule",
+          "gate_scope_rule"
+        ],
+        "gates": [
+          "法学",
+          "文学",
+          "哲学",
+          "管理学"
+        ]
+      },
+      {
+        "id": "2027:118309:300110002003",
+        "hires": 1,
+        "department_name": "广西海事局",
+        "education_raw": "硕士研究生及以上",
+        "major_raw": "工学门类、理学门类",
+        "rule": [
+          "gate_scope_rule",
+          "gate_scope_rule"
+        ],
+        "gates": [
+          "工学",
+          "理学"
+        ]
+      },
+      {
+        "id": "2027:118309:300110003005",
+        "hires": 1,
+        "department_name": "广西海事局",
+        "education_raw": "硕士研究生及以上",
+        "major_raw": "工学门类、理学门类、法学门类、文学门类、管理学门类",
+        "rule": [
+          "gate_scope_rule",
+          "gate_scope_rule",
+          "gate_scope_rule",
+          "gate_scope_rule",
+          "gate_scope_rule"
+        ],
+        "gates": [
+          "工学",
+          "理学",
+          "法学",
+          "文学",
+          "管理学"
+        ]
+      },
+      {
+        "id": "2027:129134:300110019001",
+        "hires": 1,
+        "department_name": "南宁海关",
+        "education_raw": "仅限本科",
+        "major_raw": "文学门类、法学门类、管理学门类",
+        "rule": [
+          "gate_scope_rule",
+          "gate_scope_rule",
+          "gate_scope_rule"
+        ],
+        "gates": [
+          "文学",
+          "法学",
+          "管理学"
+        ]
+      },
+      {
+        "id": "2027:132107:300144215001",
+        "hires": 1,
+        "department_name": "国家金融监督管理总局吉林监管局",
+        "education_raw": "硕士研究生及以上",
+        "major_raw": "经济学类（02）",
+        "rule": [
+          "source_declared_gate_code"
+        ],
+        "gates": [
+          "经济学"
+        ]
+      },
+      {
+        "id": "2027:132116:300144000001",
+        "hires": 1,
+        "department_name": "国家金融监督管理总局河南监管局",
+        "education_raw": "仅限硕士研究生",
+        "major_raw": "经济学类（02）",
+        "rule": [
+          "source_declared_gate_code"
+        ],
+        "gates": [
+          "经济学"
+        ]
+      },
+      {
+        "id": "2027:132116:300144030001",
+        "hires": 1,
+        "department_name": "国家金融监督管理总局河南监管局",
+        "education_raw": "仅限硕士研究生",
+        "major_raw": "经济学类（02）",
+        "rule": [
+          "source_declared_gate_code"
+        ],
+        "gates": [
+          "经济学"
+        ]
+      },
+      {
+        "id": "2027:132116:300148035001",
+        "hires": 1,
+        "department_name": "国家金融监督管理总局河南监管局",
+        "education_raw": "仅限本科",
+        "major_raw": "管理学类（12）",
+        "rule": [
+          "source_declared_gate_code"
+        ],
+        "gates": [
+          "管理学"
+        ]
+      },
+      {
+        "id": "2027:132128:300144001001",
+        "hires": 1,
+        "department_name": "国家金融监督管理总局甘肃监管局",
+        "education_raw": "硕士研究生及以上",
+        "major_raw": "经济学类专业（专业代码前两位为02）",
+        "rule": [
+          "source_declared_gate_code"
+        ],
+        "gates": [
+          "经济学类专业"
+        ]
+      },
+      {
+        "id": "2027:132128:300144001002",
+        "hires": 1,
+        "department_name": "国家金融监督管理总局甘肃监管局",
+        "education_raw": "硕士研究生及以上",
+        "major_raw": "经济学类专业（专业代码前两位为02）",
+        "rule": [
+          "source_declared_gate_code"
+        ],
+        "gates": [
+          "经济学类专业"
+        ]
+      },
+      {
+        "id": "2027:160102:300110002002",
+        "hires": 1,
+        "department_name": "上海铁路监督管理局",
+        "education_raw": "本科及以上",
+        "major_raw": "工学学科门类",
+        "rule": [
+          "gate_scope_rule"
+        ],
+        "gates": [
+          "工学"
+        ]
+      }
+    ]
+  },
+  "normalization_rules_used": [
+    {
+      "id": "gate_scope_rule",
+      "rule": "专业要求写作“X门类/学科门类”时，按 X 学科门类节点解析",
+      "basis": {
+        "id": "gate_scope_rule",
+        "rule": "专业要求写作“X门类”或“X学科门类”时，按 X 学科门类节点解析；不据此判定个人可报。",
+        "basis": {
+          "title": "关于教育部2027年度公务员考录职位要求的说明",
+          "authority": "教育部人事司",
+          "date": "2026-10-14",
+          "url": "http://www.moe.gov.cn/s78/A04/tongzhi/202610/t20261014_1454189.html",
+          "applies_to": "教育部 2027 年度考录职位；其门类/一级学科包含语义为国内通行口径",
+          "text": "职位专业要求为学科门类的，即该门类所包含的专业和一级学科均符合要求；专业要求为一级学科的，即该一级学科所包含的二级学科均符合要求。"
+        }
+      },
+      "positions_matched": 69
+    },
+    {
+      "id": "source_declared_gate_code",
+      "rule": "原文自带两位门类代码（如“经济学类（02）”）时，按该门类节点解析",
+      "basis": "position text itself",
+      "positions_matched": 145
+    }
+  ],
+  "residual_breakdown": {
+    "by_reason_combination": [
+      {
+        "reasons": [
+          "agency_category_without_published_membership",
+          "exclusion_list_present",
+          "negative_or_exclusion_present",
+          "no_explicit_code_in_major_column",
+          "no_machine_readable_code_in_major_column",
+          "no_machine_readable_code_in_remarks_column",
+          "open_scope_or_qualifier"
+        ],
+        "positions": 420
+      },
+      {
+        "reasons": [
+          "agency_category_without_published_membership",
+          "category_phrase_without_exact_catalog_node",
+          "no_explicit_code_in_major_column",
+          "no_machine_readable_code_in_major_column",
+          "no_machine_readable_code_in_remarks_column"
+        ],
+        "positions": 93
+      },
+      {
+        "reasons": [
+          "no_explicit_code_in_major_column",
+          "no_machine_readable_code_in_major_column",
+          "no_machine_readable_code_in_remarks_column"
+        ],
+        "positions": 53
+      },
+      {
+        "reasons": [
+          "bachelor_category_name_in_graduate_position",
+          "category_phrase_without_exact_catalog_node",
+          "no_explicit_code_in_major_column",
+          "no_machine_readable_code_in_major_column",
+          "no_machine_readable_code_in_remarks_column"
+        ],
+        "positions": 52
+      },
+      {
+        "reasons": [
+          "no_explicit_code_in_major_column",
+          "no_machine_readable_code_in_major_column",
+          "no_machine_readable_code_in_remarks_column",
+          "open_scope_or_qualifier"
+        ],
+        "positions": 49
+      },
+      {
+        "reasons": [
+          "category_phrase_without_exact_catalog_node",
+          "exclusion_list_present",
+          "negative_or_exclusion_present",
+          "no_explicit_code_in_major_column",
+          "no_machine_readable_code_in_major_column",
+          "no_machine_readable_code_in_remarks_column",
+          "open_scope_or_qualifier"
+        ],
+        "positions": 19
+      },
+      {
+        "reasons": [
+          "name_exists_only_in_other_education_level",
+          "no_explicit_code_in_major_column",
+          "no_machine_readable_code_in_major_column",
+          "no_machine_readable_code_in_remarks_column"
+        ],
+        "positions": 13
+      },
+      {
+        "reasons": [
+          "bachelor_category_name_in_graduate_position",
+          "category_phrase_without_exact_catalog_node",
+          "name_exists_only_in_other_education_level",
+          "no_explicit_code_in_major_column",
+          "no_machine_readable_code_in_major_column",
+          "no_machine_readable_code_in_remarks_column"
+        ],
+        "positions": 9
+      },
+      {
+        "reasons": [
+          "category_phrase_without_exact_catalog_node",
+          "colloquial_gate_name_with_类_suffix",
+          "no_explicit_code_in_major_column",
+          "no_machine_readable_code_in_major_column",
+          "no_machine_readable_code_in_remarks_column"
+        ],
+        "positions": 8
+      },
+      {
+        "reasons": [
+          "code_unresolved_in_loaded_catalogs",
+          "no_machine_readable_code_in_remarks_column"
+        ],
+        "positions": 6
+      },
+      {
+        "reasons": [
+          "agency_category_without_published_membership",
+          "bachelor_category_name_in_graduate_position",
+          "category_phrase_without_exact_catalog_node",
+          "no_explicit_code_in_major_column",
+          "no_machine_readable_code_in_major_column",
+          "no_machine_readable_code_in_remarks_column"
+        ],
+        "positions": 5
+      },
+      {
+        "reasons": [
+          "bachelor_category_name_in_graduate_position",
+          "exclusion_list_present",
+          "negative_or_exclusion_present",
+          "no_explicit_code_in_major_column",
+          "no_machine_readable_code_in_major_column",
+          "no_machine_readable_code_in_remarks_column"
+        ],
+        "positions": 5
+      },
+      {
+        "reasons": [
+          "category_phrase_without_exact_catalog_node",
+          "no_explicit_code_in_major_column",
+          "no_machine_readable_code_in_major_column",
+          "no_machine_readable_code_in_remarks_column"
+        ],
+        "positions": 3
+      },
+      {
+        "reasons": [
+          "bachelor_category_name_in_graduate_position",
+          "category_phrase_without_exact_catalog_node",
+          "no_explicit_code_in_major_column",
+          "no_machine_readable_code_in_major_column",
+          "no_machine_readable_code_in_remarks_column",
+          "open_scope_or_qualifier"
+        ],
+        "positions": 2
+      },
+      {
+        "reasons": [
+          "bachelor_category_name_in_graduate_position",
+          "category_phrase_without_exact_catalog_node",
+          "colloquial_gate_name_with_类_suffix",
+          "no_explicit_code_in_major_column",
+          "no_machine_readable_code_in_major_column",
+          "no_machine_readable_code_in_remarks_column"
+        ],
+        "positions": 2
+      },
+      {
+        "reasons": [
+          "bachelor_category_name_in_graduate_position",
+          "negative_or_exclusion_present",
+          "no_explicit_code_in_major_column",
+          "no_machine_readable_code_in_major_column",
+          "no_machine_readable_code_in_remarks_column"
+        ],
+        "positions": 2
+      },
+      {
+        "reasons": [
+          "bachelor_category_name_in_graduate_position",
+          "no_explicit_code_in_major_column",
+          "no_machine_readable_code_in_major_column",
+          "no_machine_readable_code_in_remarks_column",
+          "open_scope_or_qualifier"
+        ],
+        "positions": 2
+      },
+      {
+        "reasons": [
+          "bachelor_category_name_in_graduate_position",
+          "no_explicit_code_in_major_column",
+          "no_machine_readable_code_in_major_column",
+          "no_machine_readable_code_in_remarks_column"
+        ],
+        "positions": 1
+      },
+      {
+        "reasons": [
+          "no_explicit_code_in_major_column",
+          "no_machine_readable_code_in_major_column"
+        ],
+        "positions": 1
+      },
+      {
+        "reasons": [
+          "category_phrase_without_exact_catalog_node",
+          "code_unresolved_in_loaded_catalogs",
+          "no_machine_readable_code_in_remarks_column"
+        ],
+        "positions": 1
+      }
+    ],
+    "by_department": [
+      {
+        "department_name": "中国人民银行四川省分行",
+        "positions": 42
+      },
+      {
+        "department_name": "中国人民银行广东省分行",
+        "positions": 37
+      },
+      {
+        "department_name": "中国人民银行河南省分行",
+        "positions": 25
+      },
+      {
+        "department_name": "中国人民银行安徽省分行",
+        "positions": 24
+      },
+      {
+        "department_name": "中国人民银行内蒙古自治区分行",
+        "positions": 23
+      },
+      {
+        "department_name": "中国人民银行广西壮族自治区分行",
+        "positions": 22
+      },
+      {
+        "department_name": "中国人民银行云南省分行",
+        "positions": 22
+      },
+      {
+        "department_name": "中国人民银行江苏省分行",
+        "positions": 19
+      },
+      {
+        "department_name": "中国人民银行浙江省分行",
+        "positions": 18
+      },
+      {
+        "department_name": "中国人民银行山东省分行",
+        "positions": 18
+      },
+      {
+        "department_name": "中国人民银行湖南省分行",
+        "positions": 18
+      },
+      {
+        "department_name": "国家金融监督管理总局甘肃监管局",
+        "positions": 18
+      },
+      {
+        "department_name": "中国人民银行黑龙江省分行",
+        "positions": 17
+      },
+      {
+        "department_name": "中国人民银行新疆维吾尔自治区分行",
+        "positions": 17
+      },
+      {
+        "department_name": "河北省气象局",
+        "positions": 17
+      },
+      {
+        "department_name": "中国人民银行福建省分行",
+        "positions": 16
+      },
+      {
+        "department_name": "中国人民银行河北省分行",
+        "positions": 15
+      },
+      {
+        "department_name": "中国人民银行陕西省分行",
+        "positions": 15
+      },
+      {
+        "department_name": "中国人民银行重庆市分行",
+        "positions": 14
+      },
+      {
+        "department_name": "中国人民银行甘肃省分行",
+        "positions": 13
+      }
+    ],
+    "by_education_raw": [
+      {
+        "education_raw": "硕士研究生及以上",
+        "positions": 332
+      },
+      {
+        "education_raw": "本科及以上",
+        "positions": 210
+      },
+      {
+        "education_raw": "仅限本科",
+        "positions": 143
+      },
+      {
+        "education_raw": "仅限硕士研究生",
+        "positions": 54
+      },
+      {
+        "education_raw": "仅限大专",
+        "positions": 7
+      }
+    ],
+    "top_texts": [
+      {
+        "major_raw": "经济金融类（不含统计、国际商务、资产评估、经济与贸易类、国际贸易等专业）",
+        "positions": 420
+      },
+      {
+        "major_raw": "气象类",
+        "positions": 88
+      },
+      {
+        "major_raw": "数学、统计",
+        "positions": 20
+      },
+      {
+        "major_raw": "大学本科为理工科专业，研究生为经济金融类专业（不含统计、国际商务、资产评估、经济与贸易类、国际贸易等专业）",
+        "positions": 19
+      },
+      {
+        "major_raw": "财会类专业（会计、审计、财务管理等专业）",
+        "positions": 16
+      },
+      {
+        "major_raw": "中国语言文学类、新闻传播学类",
+        "positions": 14
+      },
+      {
+        "major_raw": "英语",
+        "positions": 8
+      },
+      {
+        "major_raw": "理学类、工学类",
+        "positions": 8
+      },
+      {
+        "major_raw": "越南语相关专业",
+        "positions": 5
+      },
+      {
+        "major_raw": "政治学类、中国语言文学类、新闻传播学类、网络空间安全类、船舶与海洋工程类",
+        "positions": 4
+      },
+      {
+        "major_raw": "最高学历专业为经济学门类专业以及会计、财务管理、审计相关专业",
+        "positions": 3
+      },
+      {
+        "major_raw": "法学类、法律类",
+        "positions": 3
+      },
+      {
+        "major_raw": "法学类",
+        "positions": 3
+      },
+      {
+        "major_raw": "经济学门类专业",
+        "positions": 3
+      },
+      {
+        "major_raw": "英语相关专业",
+        "positions": 3
+      },
+      {
+        "major_raw": "气象类、数学类、物理学类、地理学类、电子科学与技术类、计算机科学与技术类",
+        "positions": 3
+      },
+      {
+        "major_raw": "法律相关专业",
+        "positions": 2
+      },
+      {
+        "major_raw": "英语及相关专业",
+        "positions": 2
+      },
+      {
+        "major_raw": "经济金融类",
+        "positions": 2
+      },
+      {
+        "major_raw": "会计学类",
+        "positions": 2
+      },
+      {
+        "major_raw": "理工类专业",
+        "positions": 2
+      },
+      {
+        "major_raw": "核相关理工类专业",
+        "positions": 2
+      },
+      {
+        "major_raw": "经济学类",
+        "positions": 2
+      },
+      {
+        "major_raw": "经济学类、管理学类",
+        "positions": 2
+      },
+      {
+        "major_raw": "中国语言文学类、会计类、审计类、网络空间安全类、船舶与海洋工程类",
+        "positions": 2
+      },
+      {
+        "major_raw": "俄语相关专业",
+        "positions": 2
+      },
+      {
+        "major_raw": "国际金融、货币银行学、计量经济学、金融工程、金融数学、金融科技、金融审计、计算金融",
+        "positions": 2
+      },
+      {
+        "major_raw": "经济学类（不含统计、税务、资产评估、区域国别学）",
+        "positions": 2
+      },
+      {
+        "major_raw": "统计类专业",
+        "positions": 2
+      },
+      {
+        "major_raw": "会计学或审计学或财务管理",
+        "positions": 2
+      }
+    ]
+  },
+  "review_scope_stratification": {
+    "positions": 5835,
+    "hires": 8754,
+    "with_catalog_reference": 5089,
+    "without_catalog_reference": 746,
+    "strata": [
+      {
+        "bucket": "has_catalog_reference_still_requires_interpretation",
+        "positions": 5089
+      },
+      {
+        "bucket": "no_catalog_reference",
+        "positions": 746
+      }
+    ],
+    "top_reason_combinations": [
+      {
+        "bucket": "has_catalog_reference_still_requires_interpretation",
+        "requirement_review_reasons": [
+          "unresolved_name_or_expression"
+        ],
+        "positions": 844
+      },
+      {
+        "bucket": "has_catalog_reference_still_requires_interpretation",
+        "requirement_review_reasons": [
+          "multiple_degree_clauses"
+        ],
+        "positions": 679
+      },
+      {
+        "bucket": "has_catalog_reference_still_requires_interpretation",
+        "requirement_review_reasons": [
+          "qualifier_or_open_scope_present"
+        ],
+        "positions": 503
+      },
+      {
+        "bucket": "no_catalog_reference",
+        "requirement_review_reasons": [
+          "negative_condition_present",
+          "parenthetical_scope_requires_review",
+          "qualifier_or_open_scope_present",
+          "unresolved_name_or_expression"
+        ],
+        "positions": 420
+      },
+      {
+        "bucket": "has_catalog_reference_still_requires_interpretation",
+        "requirement_review_reasons": [
+          "multiple_degree_clauses",
+          "parenthetical_scope_requires_review"
+        ],
+        "positions": 402
+      },
+      {
+        "bucket": "has_catalog_reference_still_requires_interpretation",
+        "requirement_review_reasons": [
+          "multiple_degree_clauses",
+          "unresolved_name_or_expression"
+        ],
+        "positions": 387
+      },
+      {
+        "bucket": "has_catalog_reference_still_requires_interpretation",
+        "requirement_review_reasons": [
+          "parenthetical_scope_requires_review"
+        ],
+        "positions": 353
+      },
+      {
+        "bucket": "has_catalog_reference_still_requires_interpretation",
+        "requirement_review_reasons": [
+          "multiple_catalog_name_candidates"
+        ],
+        "positions": 348
+      },
+      {
+        "bucket": "no_catalog_reference",
+        "requirement_review_reasons": [
+          "unresolved_name_or_expression"
+        ],
+        "positions": 236
+      },
+      {
+        "bucket": "has_catalog_reference_still_requires_interpretation",
+        "requirement_review_reasons": [
+          "code_not_in_loaded_catalogs"
+        ],
+        "positions": 197
+      },
+      {
+        "bucket": "has_catalog_reference_still_requires_interpretation",
+        "requirement_review_reasons": [
+          "negative_condition_present",
+          "parenthetical_scope_requires_review"
+        ],
+        "positions": 186
+      },
+      {
+        "bucket": "has_catalog_reference_still_requires_interpretation",
+        "requirement_review_reasons": [
+          "multiple_catalog_name_candidates",
+          "unresolved_name_or_expression"
+        ],
+        "positions": 112
+      },
+      {
+        "bucket": "has_catalog_reference_still_requires_interpretation",
+        "requirement_review_reasons": [
+          "multiple_degree_clauses",
+          "parenthetical_scope_requires_review",
+          "unresolved_name_or_expression"
+        ],
+        "positions": 94
+      },
+      {
+        "bucket": "has_catalog_reference_still_requires_interpretation",
+        "requirement_review_reasons": [
+          "parenthetical_scope_requires_review",
+          "unresolved_name_or_expression"
+        ],
+        "positions": 85
+      },
+      {
+        "bucket": "has_catalog_reference_still_requires_interpretation",
+        "requirement_review_reasons": [
+          "code_not_in_loaded_catalogs",
+          "multiple_degree_clauses"
+        ],
+        "positions": 80
+      }
+    ],
+    "caution": "“有目录候选”只表示至少一处精确代码或名称命中，不表示整条要求已解释完毕，更不构成可报资格。"
+  },
+  "reproduce": [
+    "python3 scripts/build_major_evidence.py",
+    "python3 scripts/verify_major_evidence.py --write-report",
+    "python3 scripts/build_residual_and_agency_reports.py"
+  ],
+  "historical_note": "本文件冻结在第二轮（v2，18,680 / 746）。第三轮结果为 18,698 / 728，见 RESIDUAL_STRATA_20261018.json 与 REVIEW_STATUS_20261018.json；v2 的分层口径与第三轮不同（v2 按 reason_classes，v3 按专业原文），两者不可直接相减。"
+}
