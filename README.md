@@ -33,7 +33,7 @@ npm run score
 npm run render  # 默认 1080p；4K 命令见本项目 remotion/README.md
 ```
 
-**版本提示：** `main` 的可用性以当前合并状态为准。若 V2 尚未集成到 `main`，请从 [V2 源码分支](https://github.com/ProfessorZhi/self-media/tree/claude/sharp-pascal-uq4ccz) 检出，或按项目 README 指定的**完整 commit** 复现；不要只把某个旧版本的 `remotion/` 目录覆盖到新版本数据上。
+**当前主分支：** `main` 已包含 VIDEO-001 的 **V1/V2 Remotion 工程**、官方 2027 逐岗核验和专业证据层，以及完整的项目章程与开源许可。可直接从本 README 的命令运行；若要精确复原历史 V1/V2，请按照 [影片版本表](projects/guokao-data-film/remotion/README.md) 检出**整个仓库**对应提交，而不是只覆盖旧版本的 `remotion/` 子目录。原始政府/第三方附件只保留 URL 与哈希索引，源文件复核需要独立取得。
 
 需要 Node.js/npm、Python + NumPy、Chromium，4K 渲染还需要适当的磁盘/内存。原版 MP4 和 `score.wav` 不是 Git 必须保存的内容；源代码负责生成它们，**不同 OS/浏览器/编码器不承诺字节级相同**。
 
