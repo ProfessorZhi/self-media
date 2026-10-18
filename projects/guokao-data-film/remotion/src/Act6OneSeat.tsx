@@ -40,7 +40,10 @@ export const Act6OneSeat: React.FC = () => {
   }, [model]);
 
   const radius = info ? lerp(0, info.maxD, easeInOutCubic(clamp01((frame - T.ripple[0]) / (T.ripple[1] - T.ripple[0])))) : 0;
-  const dive = easeInOutCubic(clamp01((frame - T.dive[0]) / (T.dive[1] - T.dive[0])));
+  // dive into one seat, then pull back out smoothly for the closing (no layout jump)
+  const diveIn = easeInOutCubic(clamp01((frame - T.dive[0]) / (T.dive[1] - T.dive[0])));
+  const pullBack = easeInOutCubic(clamp01((frame - T.close[0]) / 60));
+  const dive = diveIn * (1 - pullBack);
   const S = Math.exp(lerp(0, Math.log(16), dive));
   const cam = info ? {fx: lerp(960, info.fx, dive), fy: lerp(630, info.fy, dive)} : {fx: 960, fy: 630};
   const proj = (x: number, y: number): [number, number] => [960 + (x - cam.fx) * S, 560 + (y - cam.fy) * S + (1 - dive) * 70];
@@ -65,12 +68,12 @@ export const Act6OneSeat: React.FC = () => {
             const isLaw = info.law[s] === 1;
             const after = clamp01((radius - d) / 120);
             const featured = s === info.featuredSeat;
-            const [x, y] = closeT > 0 ? [x0, y0 + 70 * 0] : proj(x0, y0);
+            const [x, y] = proj(x0, y0);
             let r: number = C.seat[0];
             let g: number = C.seat[1];
             let b: number = C.seat[2];
             let a = appear * (frame >= T.ripple[0] ? lerp(1, isLaw ? 1 : 0.28, after) : 1);
-            let size = 3.5 * (closeT > 0 ? 1 : S);
+            let size = 3.5 * S;
             if (isLaw && hit) {
               r = lerp(r, 236, after);
               g = lerp(g, 120, after);
@@ -85,8 +88,7 @@ export const Act6OneSeat: React.FC = () => {
             }
             if (closeT > 0) {
               // closing: whole field returns, gently lit
-              a = appear * lerp(0.15, 0.42, closeT) * (isLaw ? 1.6 : 1);
-              size = 3.5;
+              a = lerp(a, appear * 0.42 * (isLaw ? 1.6 : 1), closeT);
             }
             p.add(x, y, size, r, g, b, a);
           }

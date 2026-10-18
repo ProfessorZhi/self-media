@@ -16,8 +16,8 @@ export const signedPct = (p: number) => `${p > 0 ? '+' : p < 0 ? '−' : ''}${Ma
 export class Painter {
   buckets = new Map<string, number[]>();
   add(x: number, y: number, size: number, r: number, g: number, b: number, a: number) {
-    if (a <= 0.01 || x < -40 || x > W + 40 || y < -40 || y > H + 40) return;
-    const k = `${Math.round(r / 6) * 6},${Math.round(g / 6) * 6},${Math.round(b / 6) * 6},${(Math.round(a * 20) / 20).toFixed(2)}`;
+    if (a < 0.005 || x < -40 || x > W + 40 || y < -40 || y > H + 40) return;
+    const k = `${Math.round(r / 6) * 6},${Math.round(g / 6) * 6},${Math.round(b / 6) * 6},${(Math.round(a * 100) / 100).toFixed(2)}`;
     let list = this.buckets.get(k);
     if (!list) this.buckets.set(k, (list = []));
     list.push(x - size / 2, y - size / 2, size);

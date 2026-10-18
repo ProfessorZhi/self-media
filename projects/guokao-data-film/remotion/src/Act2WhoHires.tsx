@@ -9,16 +9,18 @@ import {useFilmData, type Model} from './useFilmData';
 
 // Act II "谁在招": field -> sunburst (机构层级, coloured by system) -> system treemap
 // -> camera tour of four systems -> Pareto curve of all 589 departments.
-const TOUR = ['海关', '金融监管', '人民银行', '边检', '铁路公安', '中央及其他'];
+const TOUR = ['税务', '海关', '金融监管', '人民银行', '边检', '铁路公安', '中央及其他'];
 const STOP0 = 366;
-const STOP_LEN = 100; // fly 40 + hold 60
+const FLY = 70; // camera flight between stops — slow enough to read as a glide
+const STOP_LEN = 140; // fly 70 + hold 70
+const TOUR_END = STOP0 + TOUR.length * STOP_LEN + 90; // long, gentle pull back to the overview
 export const T = {
   spiral: [18, 112],
   unroll: [196, 286],
   tourStart: STOP0,
-  tourEnd: STOP0 + TOUR.length * STOP_LEN + 40,
-  pareto: [STOP0 + TOUR.length * STOP_LEN + 50, STOP0 + TOUR.length * STOP_LEN + 140],
-  end: STOP0 + TOUR.length * STOP_LEN + 250,
+  tourEnd: TOUR_END,
+  pareto: [TOUR_END + 10, TOUR_END + 100],
+  end: TOUR_END + 210,
 } as const;
 
 type Structure = ReturnType<typeof buildStructure>;
@@ -26,21 +28,18 @@ type Rect = {x: number; y: number; w: number; h: number};
 type Cam = {S: number; fx: number; fy: number};
 const BASE: [number, number] = [960, 600];
 const OVERVIEW: Cam = {S: 1, fx: BASE[0], fy: BASE[1]};
-/** Frame a rect, but never let the view run off the treemap into empty space. */
-const camFor = (r: Rect, area: Rect): Cam => {
-  const S = Math.min(1500 / r.w, 600 / r.h, 6);
-  const clamp = (v: number, lo: number, hi: number) => (lo > hi ? (lo + hi) / 2 : Math.min(hi, Math.max(lo, v)));
-  const halfW = BASE[0] / S;
-  const fx = clamp(r.x + r.w / 2, area.x + halfW, area.x + area.w - halfW);
-  const fy = clamp(r.y + r.h / 2 - 10, area.y + (BASE[1] - 240) / S, area.y + area.h - (1000 - BASE[1]) / S);
-  return {S, fx, fy};
+/** Centre the target system and zoom so it fills the stage below the heading. */
+const camFor = (r: Rect, _area: Rect): Cam => {
+  const S = Math.max(0.8, Math.min(1560 / r.w, 640 / r.h, 5));
+  // target centre lands at (960, 620): BASE is (960, 600), so shift the focus up by 20/S
+  return {S, fx: r.x + r.w / 2, fy: r.y + r.h / 2 - 20 / S};
 };
 
 function camKeys(st: Structure, famIndex: (n: string) => number) {
   const keys: {f: number; cam: Cam}[] = [{f: STOP0, cam: OVERVIEW}];
   TOUR.forEach((name, k) => {
     const cam = camFor(st.famRects[famIndex(name)], st.area);
-    keys.push({f: STOP0 + k * STOP_LEN + 40, cam}, {f: STOP0 + (k + 1) * STOP_LEN, cam});
+    keys.push({f: STOP0 + k * STOP_LEN + FLY, cam}, {f: STOP0 + (k + 1) * STOP_LEN, cam});
   });
   keys.push({f: T.tourEnd, cam: OVERVIEW});
   return keys;
@@ -52,8 +51,9 @@ function camAt(frame: number, keys: {f: number; cam: Cam}[]): Cam {
     const b = keys[i + 1];
     if (frame <= b.f) {
       const t = easeInOutCubic((frame - a.f) / (b.f - a.f));
-      const both = a.cam.S > 1.01 && b.cam.S > 1.01;
-      const logS = Math.log(a.cam.S) + (Math.log(b.cam.S) - Math.log(a.cam.S)) * t - (both ? 0.75 * Math.sin(Math.PI * t) : 0);
+      // pull back between two different stops only — never while holding on one
+      const both = a.cam !== b.cam && a.cam.S > 1.01 && b.cam.S > 1.01;
+      const logS = Math.log(a.cam.S) + (Math.log(b.cam.S) - Math.log(a.cam.S)) * t - (both ? 0.4 * Math.sin(Math.PI * t) : 0);
       return {S: Math.exp(logS), fx: a.cam.fx + (b.cam.fx - a.cam.fx) * t, fy: a.cam.fy + (b.cam.fy - a.cam.fy) * t};
     }
   }
@@ -65,7 +65,7 @@ const rotation = (frame: number) => 0.0009 * Math.min(frame, T.unroll[1]);
 /** Weight (0..1) of the current tour focus, and which system it is. */
 function focusAt(frame: number, famIndex: (n: string) => number) {
   for (let k = 0; k < TOUR.length; k++) {
-    const arrive = STOP0 + k * STOP_LEN + 40;
+    const arrive = STOP0 + k * STOP_LEN + FLY;
     const leave = STOP0 + (k + 1) * STOP_LEN;
     const w = interpolate(frame, [arrive - 24, arrive - 4, leave, leave + 20], [0, 1, 1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
     if (w > 0) return {fam: famIndex(TOUR[k]), w, k};
@@ -119,7 +119,7 @@ function paint(ctx: CanvasRenderingContext2D, m: Model, st: Structure, frame: nu
     const fam = FAMILY_RGB[fi];
     const rgb = [0, 1, 2].map(c => base[c] + (fam[c] - base[c]) * famT);
     const alpha = focus.fam >= 0 && fi !== focus.fam ? 1 - 0.8 * focus.w : 1;
-    const k = `${q(rgb[0])},${q(rgb[1])},${q(rgb[2])},${(Math.round(alpha * 20) / 20).toFixed(2)}`;
+    const k = `${q(rgb[0])},${q(rgb[1])},${q(rgb[2])},${(Math.round(alpha * 100) / 100).toFixed(2)}`;
     let list = buckets.get(k);
     if (!list) buckets.set(k, (list = []));
     list.push(px - size / 2, py - size / 2, size);
@@ -302,7 +302,9 @@ export const Act2WhoHires: React.FC = () => {
         const levelSeats = model.data.levels.map((_, li) => model.data.positions.filter(r => r[4] === fi && r[1] === li).reduce((t, r) => t + r[2], 0));
         const onlyLevel = levelSeats.findIndex(v => v === fam.seats);
         const note =
-          onlyLevel >= 0 && name !== '边检'
+          name === '税务'
+            ? `占全国 ${pct(fam.seats, total)} · 最多：${shortName(fam.top!.name)}税务局 ${fmt(fam.top!.seats)} 个`
+            : onlyLevel >= 0 && name !== '边检'
             ? `${fam.departments} 个单位全部为${model.data.levels[onlyLevel]}机构 · 最多：${shortName(fam.top!.name)} ${fmt(fam.top!.seats)} 个`
             : name === '边检' && f.borderOfficial.matches
             ? `与国家移民管理局公告一致：${fam.departments} 个单位 · ${fmt(f.borderOfficial.value)} 人 ✓`

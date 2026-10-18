@@ -21,8 +21,10 @@ K = TL['slow']
 # global start frame and length of each block, in film frames
 OFF, LEN = {}, {}
 cur = 0
-for name in TL['order']:
+for i, name in enumerate(TL['order']):
     n = TL[name] if name in ('prologue', 'epilogue') else round(TL['actLocal'][name] * K)
+    if i and name not in TL['seamless']:
+        cur -= TL['crossfade']  # cross-dissolve overlap, as in src/Film.tsx
     OFF[name], LEN[name] = cur, n
     cur += n
 TOTAL_FRAMES = cur
@@ -223,9 +225,9 @@ add(swell(5.0), at('act1', 600), 0.05)
 add(impact(), at('act2'), 0.22)
 add(swell(4.0), at('act2', 18), 0.05)
 add(swell(4.0), at('act2', 196), 0.05)
-for k in range(6):
-    add(felt(midi([52, 50, 48, 50, 47, 45][k])), at('act2', 406 + k * 100), 0.07, pan=0.4 - 0.16 * k)
-add(swell(4.0), at('act2', 1016), 0.05)
+for k in range(7):
+    add(felt(midi([52, 50, 48, 50, 47, 45, 43][k])), at('act2', 436 + k * 140), 0.07, pan=0.45 - 0.15 * k)
+add(swell(4.0), at('act2', 1446), 0.05)
 for k in range(10):
     add(tick(700 + 30 * k), at('act3', 70 + k * 9), 0.035, pan=-0.6 + 0.12 * k)
 add(swell(3.0), at('act3', 330), 0.04)
