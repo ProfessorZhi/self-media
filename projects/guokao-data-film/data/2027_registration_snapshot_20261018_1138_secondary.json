@@ -1,0 +1,266 @@
+{
+  "schema_version": "1.0.0",
+  "title": "2027国考报名统计：2026-10-18 11:38 华图第三方定时快照",
+  "snapshot_time": "2026-10-18T11:38:00+08:00",
+  "source_url": "https://ah.huatu.com/zw/bmrs/",
+  "source_type": "third_party_live_aggregation_snapshot_not_official",
+  "status": "historical_snapshot_not_live",
+  "captured_for_project_date": "2026-10-18",
+  "source_display_label": "华图教育整理！更新时间：2026-10-18 11:38",
+  "warn": [
+    "华图教育网站整理的特定时点报名/审核数据，不是国家公务员局公布的全国最终人数。",
+    "snapshot_time仅引用来源网页标示时刻；未推断各地区采集时间完全同步。",
+    "这是网页省级汇总快照，不是19,426个岗位逐岗位报名记录。不得据总量生成虚假逐岗竞争率。",
+    "报名人数、审核合格人数、无人报名岗位数均会继续变化；本文件保存后不应被标为实时。",
+    "报名÷招录名额与审核合格÷招录名额是不同指标；不是个人录取概率。",
+    "与2026-10-16同源早期快照作变化比较仅反映网页自采统计变化，不能视为官方实时增量。"
+  ],
+  "totals": {
+    "positions": 19426,
+    "planned_seats": 35691,
+    "applicants": 591223,
+    "qualified": 324561,
+    "provinces": 31,
+    "no_applicant_positions_reported": 835,
+    "avg_competition_qualified_per_seat_reported": 9.1
+  },
+  "by_province": [
+    {
+      "province": "安徽",
+      "positions": 702,
+      "planned_seats": 1511,
+      "applicants": 18771,
+      "qualified": 9932
+    },
+    {
+      "province": "北京",
+      "positions": 675,
+      "planned_seats": 1291,
+      "applicants": 20346,
+      "qualified": 12490
+    },
+    {
+      "province": "重庆",
+      "positions": 284,
+      "planned_seats": 461,
+      "applicants": 5718,
+      "qualified": 3973
+    },
+    {
+      "province": "福建",
+      "positions": 686,
+      "planned_seats": 1237,
+      "applicants": 19072,
+      "qualified": 10358
+    },
+    {
+      "province": "甘肃",
+      "positions": 386,
+      "planned_seats": 714,
+      "applicants": 5963,
+      "qualified": 3214
+    },
+    {
+      "province": "广东",
+      "positions": 1516,
+      "planned_seats": 2969,
+      "applicants": 63120,
+      "qualified": 42410
+    },
+    {
+      "province": "广西",
+      "positions": 628,
+      "planned_seats": 1108,
+      "applicants": 22778,
+      "qualified": 12462
+    },
+    {
+      "province": "贵州",
+      "positions": 215,
+      "planned_seats": 367,
+      "applicants": 6454,
+      "qualified": 2964
+    },
+    {
+      "province": "海南",
+      "positions": 263,
+      "planned_seats": 383,
+      "applicants": 8970,
+      "qualified": 5130
+    },
+    {
+      "province": "河北",
+      "positions": 959,
+      "planned_seats": 1767,
+      "applicants": 15031,
+      "qualified": 8869
+    },
+    {
+      "province": "黑龙江",
+      "positions": 588,
+      "planned_seats": 1089,
+      "applicants": 23091,
+      "qualified": 10191
+    },
+    {
+      "province": "河南",
+      "positions": 1066,
+      "planned_seats": 1755,
+      "applicants": 33520,
+      "qualified": 20543
+    },
+    {
+      "province": "湖北",
+      "positions": 791,
+      "planned_seats": 1566,
+      "applicants": 18068,
+      "qualified": 11038
+    },
+    {
+      "province": "湖南",
+      "positions": 584,
+      "planned_seats": 1174,
+      "applicants": 13257,
+      "qualified": 8229
+    },
+    {
+      "province": "江苏",
+      "positions": 926,
+      "planned_seats": 1630,
+      "applicants": 21144,
+      "qualified": 12615
+    },
+    {
+      "province": "江西",
+      "positions": 646,
+      "planned_seats": 1260,
+      "applicants": 16639,
+      "qualified": 8557
+    },
+    {
+      "province": "吉林",
+      "positions": 498,
+      "planned_seats": 1114,
+      "applicants": 18093,
+      "qualified": 8474
+    },
+    {
+      "province": "辽宁",
+      "positions": 726,
+      "planned_seats": 1548,
+      "applicants": 27143,
+      "qualified": 12380
+    },
+    {
+      "province": "内蒙古",
+      "positions": 787,
+      "planned_seats": 1197,
+      "applicants": 21635,
+      "qualified": 11933
+    },
+    {
+      "province": "宁夏",
+      "positions": 137,
+      "planned_seats": 218,
+      "applicants": 3653,
+      "qualified": 1951
+    },
+    {
+      "province": "青海",
+      "positions": 179,
+      "planned_seats": 209,
+      "applicants": 12792,
+      "qualified": 5595
+    },
+    {
+      "province": "山东",
+      "positions": 1223,
+      "planned_seats": 2316,
+      "applicants": 40145,
+      "qualified": 22560
+    },
+    {
+      "province": "上海",
+      "positions": 428,
+      "planned_seats": 711,
+      "applicants": 15064,
+      "qualified": 9086
+    },
+    {
+      "province": "山西",
+      "positions": 614,
+      "planned_seats": 1277,
+      "applicants": 26745,
+      "qualified": 11424
+    },
+    {
+      "province": "陕西",
+      "positions": 357,
+      "planned_seats": 715,
+      "applicants": 8558,
+      "qualified": 5002
+    },
+    {
+      "province": "四川",
+      "positions": 823,
+      "planned_seats": 1650,
+      "applicants": 23625,
+      "qualified": 11829
+    },
+    {
+      "province": "天津",
+      "positions": 183,
+      "planned_seats": 262,
+      "applicants": 4152,
+      "qualified": 3123
+    },
+    {
+      "province": "西藏",
+      "positions": 149,
+      "planned_seats": 190,
+      "applicants": 3739,
+      "qualified": 1769
+    },
+    {
+      "province": "新疆",
+      "positions": 488,
+      "planned_seats": 968,
+      "applicants": 14792,
+      "qualified": 4851
+    },
+    {
+      "province": "云南",
+      "positions": 1187,
+      "planned_seats": 1925,
+      "applicants": 39124,
+      "qualified": 20922
+    },
+    {
+      "province": "浙江",
+      "positions": 732,
+      "planned_seats": 1109,
+      "applicants": 20021,
+      "qualified": 10687
+    }
+  ],
+  "validation": {
+    "province_rows": 31,
+    "sums": {
+      "positions": 19426,
+      "planned_seats": 35691,
+      "applicants": 591223,
+      "qualified": 324561
+    },
+    "matches_source_national_totals": true,
+    "positions_and_seats_match_official_2027_workbook": true,
+    "validations": "self-consistency and comparison to prior official workbook totals only; third-party applicant figures are not independently verified against the official registration system"
+  },
+  "comparison_to_prior_snapshot": {
+    "prior_file": "data/2027_registration_snapshot_20261016_secondary.json",
+    "prior_snapshot_time": "2026-10-16T19:15:00+08:00",
+    "prior_applicants": 357631,
+    "prior_qualified": 97589,
+    "applicants_change": 233592,
+    "qualified_change": 226972
+  }
+}
