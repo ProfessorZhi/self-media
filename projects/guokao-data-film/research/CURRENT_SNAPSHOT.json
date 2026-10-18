@@ -110,7 +110,7 @@
     "conflict_classes_sum_to_entries": true,
     "remark_scope_sum_to_codes": true
   },
-  "generated_at_utc": "2026-10-17T22:26:35.364846+00:00",
+  "generated_at_utc": "2026-10-18T04:22:42.667097+00:00",
   "derived_from": [
     "data/major_evidence_2027/manifest.json",
     "data/major_evidence_2027/position-evidence-*.json",

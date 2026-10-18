@@ -1,0 +1,318 @@
+{
+  "schema_version": "1.0.0",
+  "report_id": "critical-position-field-audit-20261018",
+  "generated_at_utc": "2026-10-18T04:21:09.557611+00:00",
+  "local_date": "2026-10-18",
+  "source": {
+    "manifest": "data/positions_2027/manifest.json",
+    "shards": 23,
+    "sha256": "1a715baf6d106ab82ccc61706190fb72eec8796c06736629c084149df234f26e"
+  },
+  "status": "PASS",
+  "totals": {
+    "positions": 19426,
+    "hires": 35691
+  },
+  "field_map": {
+    "raw_fields": [
+      "部门代码",
+      "部门名称",
+      "用人司局",
+      "机构性质",
+      "招考职位",
+      "职位属性",
+      "职位分布",
+      "职位简介",
+      "职位代码",
+      "机构层级",
+      "考试类别",
+      "招考人数",
+      "专业",
+      "学历",
+      "学位",
+      "政治面貌",
+      "基层工作最低年限",
+      "服务基层项目工作经历",
+      "是否在面试阶段组织专业能力测试",
+      "面试人员比例",
+      "工作地点",
+      "落户地点",
+      "备注",
+      "部门网站",
+      "咨询电话1",
+      "咨询电话2",
+      "咨询电话3"
+    ],
+    "missing_from_manifest": [],
+    "raw_field_count": 27,
+    "classification_fields": [
+      "考试类别",
+      "职位属性",
+      "机构性质",
+      "机构层级",
+      "职位分布"
+    ],
+    "third_party_fields": [
+      "source_csv_province",
+      "source_system_tag"
+    ]
+  },
+  "code_rules": {
+    "department_code": "six digits, leading zeros preserved",
+    "position_code": "twelve digits, leading zeros preserved",
+    "composite_key": "year:department_code:position_code",
+    "position_code_alone_is_unique": false,
+    "distinct_position_codes": 7178
+  },
+  "partitions": {
+    "考试类别": {
+      "distinct_values": 3,
+      "positions": 19426,
+      "hires": 35691,
+      "values": {
+        "中央机关及其省级直属机构综合管理类": {
+          "positions": 1423,
+          "hires": 2690
+        },
+        "市（地）级及以下直属机构综合管理类": {
+          "positions": 3995,
+          "hires": 4789
+        },
+        "行政执法类": {
+          "positions": 14008,
+          "hires": 28212
+        }
+      }
+    },
+    "职位属性": {
+      "distinct_values": 21,
+      "positions": 19426,
+      "hires": 35691,
+      "values": {
+        "公安机关人民警察职位": {
+          "positions": 948,
+          "hires": 1810
+        },
+        "普通职位": {
+          "positions": 15966,
+          "hires": 30639
+        },
+        "特殊专业职位": {
+          "positions": 272,
+          "hires": 404
+        },
+        "证监会计类职位": {
+          "positions": 50,
+          "hires": 146
+        },
+        "证监法律类职位": {
+          "positions": 37,
+          "hires": 89
+        },
+        "证监计算机类职位": {
+          "positions": 15,
+          "hires": 21
+        },
+        "证监财金类职位": {
+          "positions": 40,
+          "hires": 64
+        },
+        "金融监管法律类职位": {
+          "positions": 422,
+          "hires": 490
+        },
+        "金融监管综合类职位": {
+          "positions": 132,
+          "hires": 155
+        },
+        "金融监管计算机类职位": {
+          "positions": 398,
+          "hires": 459
+        },
+        "金融监管财会类职位": {
+          "positions": 409,
+          "hires": 455
+        },
+        "金融监管财经类职位": {
+          "positions": 676,
+          "hires": 872
+        },
+        "非通用语职位（俄语）": {
+          "positions": 1,
+          "hires": 2
+        },
+        "非通用语职位（其他）": {
+          "positions": 47,
+          "hires": 64
+        },
+        "非通用语职位（德语）": {
+          "positions": 1,
+          "hires": 1
+        },
+        "非通用语职位（日语）": {
+          "positions": 1,
+          "hires": 1
+        },
+        "非通用语职位（朝语、韩语）": {
+          "positions": 2,
+          "hires": 3
+        },
+        "非通用语职位（法语）": {
+          "positions": 2,
+          "hires": 4
+        },
+        "非通用语职位（葡萄牙语）": {
+          "positions": 1,
+          "hires": 2
+        },
+        "非通用语职位（西班牙语）": {
+          "positions": 4,
+          "hires": 8
+        },
+        "非通用语职位（阿拉伯语）": {
+          "positions": 2,
+          "hires": 2
+        }
+      }
+    },
+    "机构性质": {
+      "distinct_values": 6,
+      "positions": 19426,
+      "hires": 35691,
+      "values": {
+        "中央党群机关": {
+          "positions": 36,
+          "hires": 49
+        },
+        "中央党群机关参照公务员法管理事业单位": {
+          "positions": 29,
+          "hires": 49
+        },
+        "中央国家行政机关参照公务员法管理事业单位": {
+          "positions": 822,
+          "hires": 924
+        },
+        "中央国家行政机关省级以下直属机构": {
+          "positions": 18193,
+          "hires": 34091
+        },
+        "中央国家行政机关（本级）": {
+          "positions": 312,
+          "hires": 538
+        },
+        "群团机关": {
+          "positions": 34,
+          "hires": 40
+        }
+      }
+    },
+    "机构层级": {
+      "distinct_values": 4,
+      "positions": 19426,
+      "hires": 35691,
+      "values": {
+        "中央": {
+          "positions": 480,
+          "hires": 791
+        },
+        "县（区）级及以下": {
+          "positions": 14005,
+          "hires": 26873
+        },
+        "市（地）级": {
+          "positions": 3963,
+          "hires": 6078
+        },
+        "省（副省）级": {
+          "positions": 978,
+          "hires": 1949
+        }
+      }
+    },
+    "职位分布": {
+      "distinct_values": 2,
+      "positions": 19426,
+      "hires": 35691,
+      "values": {
+        "其他职位": {
+          "positions": 12786,
+          "hires": 23617
+        },
+        "西部地区和艰苦边远地区职位": {
+          "positions": 6640,
+          "hires": 12074
+        }
+      }
+    }
+  },
+  "cross_checks": [
+    {
+      "field": "学历",
+      "matches_committed_aggregate": true
+    },
+    {
+      "field": "学位",
+      "matches_committed_aggregate": true
+    },
+    {
+      "field": "政治面貌",
+      "matches_committed_aggregate": true
+    },
+    {
+      "field": "基层工作最低年限",
+      "matches_committed_aggregate": true
+    },
+    {
+      "field": "服务基层项目工作经历",
+      "matches_committed_aggregate": true
+    },
+    {
+      "field": "是否在面试阶段组织专业能力测试",
+      "matches_committed_aggregate": true
+    },
+    {
+      "field": "面试人员比例",
+      "matches_committed_aggregate": true
+    },
+    {
+      "field": "职位属性",
+      "matches_committed_aggregate": true
+    },
+    {
+      "field": "职位分布",
+      "matches_committed_aggregate": true
+    },
+    {
+      "field": "机构层级",
+      "matches_committed_aggregate": true
+    },
+    {
+      "field": "考试类别",
+      "matches_committed_aggregate": true
+    }
+  ],
+  "third_party_annotations": {
+    "source_csv_province": {
+      "distinct_values": 31,
+      "provenance": "third_party_analysis_annotation",
+      "used_in_official_aggregates": false
+    },
+    "source_system_tag": {
+      "distinct_values": 19,
+      "provenance": "third_party_analysis_annotation",
+      "used_in_official_aggregates": false
+    }
+  },
+  "tests": {
+    "composite_key_unique": true,
+    "code_widths": true,
+    "raw_fields_are_strings": true,
+    "classification_partitions_sum_to_totals": true,
+    "negative_fixture_swapped_classification_detected": true
+  },
+  "notes": [
+    "考试类别、职位属性、机构性质、机构层级、职位分布 are the official columns; source_system_tag 与 source_csv_province 是第三方分析注记，不参与任何官方分组。",
+    "本报告不判断任何个人是否符合报考条件。"
+  ],
+  "errors": []
+}

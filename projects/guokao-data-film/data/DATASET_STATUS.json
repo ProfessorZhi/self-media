@@ -166,6 +166,15 @@
     {
       "path": "../research/GAP_RESOLUTION_CAMPAIGN_20261018.md",
       "role": "human-readable campaign summary"
+    },
+    {
+      "path": "../research/CRITICAL_POSITION_FIELD_AUDIT_20261018.json",
+      "role": "critical field QA: key, code widths, five official classification columns",
+      "result": "PASS: 19,426 positions, 11/11 aggregate cross-checks match, classification partitions sum to totals"
+    },
+    {
+      "path": "../research/CRITICAL_POSITION_FIELD_AUDIT_20261018.md",
+      "role": "human-readable critical-field audit"
     }
   ],
   "legacy": [

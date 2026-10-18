@@ -19,11 +19,97 @@ import argparse
 import collections
 import hashlib
 import json
+import re
 from pathlib import Path
 
 
 def sha256(data):
     return hashlib.sha256(data).hexdigest()
+
+
+NEGATIVE = re.compile(r'不含|不包括|除|不得|不接受|不招')
+
+
+def exclusion_violations(record, major_text):
+    """Exclusion brackets must never feed positive evidence.
+
+    Checks that are decidable from the stored evidence:
+      1. a name recorded as an exclusion may not also appear as a positive hit;
+      2. every parenthetical hit round-trips to its span and the bracket context
+         actually agrees with the is_exclusion flag;
+      3. a record whose only parenthetical hits are exclusions, and which has no
+         other positive evidence, must not be covered.
+    """
+    violations = []
+    excluded = set(record.get('major_excluded_names') or [])
+    hits = record.get('major_parenthetical_names') or []
+    positives = [hit for hit in hits if not hit.get('is_exclusion')]
+    for hit in positives:
+        if hit['name'] in excluded:
+            violations.append(f'excluded_name_used_as_positive:{hit["name"]}')
+    for hit in hits:
+        start, end = hit.get('start'), hit.get('end')
+        if start is None or end is None:
+            violations.append(f'missing_span:{hit["name"]}')
+            continue
+        if major_text[start:end] != hit['name']:
+            violations.append(f'span_mismatch:{hit["name"]}')
+            continue
+        open_index = max(major_text.rfind('（', 0, start), major_text.rfind('(', 0, start))
+        close_index = max(major_text.rfind('）', 0, start), major_text.rfind(')', 0, start))
+        if open_index <= close_index:
+            # Outside any bracket: it may be a positive hit, never an exclusion.
+            if hit.get('is_exclusion'):
+                violations.append(f'exclusion_outside_bracket:{hit["name"]}')
+            continue
+        lead = major_text[max(0, open_index - 16):open_index]
+        inner = major_text[open_index + 1:start]
+        expected = bool(NEGATIVE.search(lead) or NEGATIVE.search(inner[:8]))
+        if expected != bool(hit.get('is_exclusion')):
+            violations.append(f'exclusion_classification_mismatch:{hit["name"]}')
+    other_evidence = any(record.get(key) for key in
+                         ('major_codes', 'major_gate_prefixed_names', 'major_term_name_hits',
+                          'remarks_codes', 'remarks_exact_names'))
+    if hits and not positives and not other_evidence \
+            and not record.get('coverage_before') and record.get('coverage_after'):
+        violations.append('exclusion_only_but_covered')
+    return violations
+
+
+def exclusion_self_test():
+    """A fixture that must fail, and a legal fixture that must not."""
+    excluded_record = {
+        'id': 'fixture:negative',
+        'major_excluded_names': ['国际商务'],
+        'major_parenthetical_names': [
+            {'name': '国际商务', 'is_exclusion': False, 'start': 8, 'end': 12,
+             'resolution': {'status': 'resolved'}},
+        ],
+        'coverage_after': True,
+    }
+    text = '经济金融类（不含国际商务）'
+    assert exclusion_violations(excluded_record, text), 'negative fixture must be flagged'
+
+    legal_record = {
+        'id': 'fixture:positive',
+        'major_excluded_names': ['国际商务'],
+        'major_parenthetical_names': [
+            {'name': '国际商务', 'is_exclusion': True, 'start': 10, 'end': 14,
+             'resolution': {'status': 'resolved'}},
+            {'name': '金融学', 'is_exclusion': False, 'start': 2, 'end': 5,
+             'resolution': {'status': 'resolved'}},
+        ],
+        'coverage_after': True,
+    }
+    legal_text = '金融学（不含国际商务）'
+    # text[10:14] is 国际商务 in the fixture above only if the offsets line up;
+    # recompute them so the fixture stays readable.
+    legal_record['major_parenthetical_names'][0]['start'] = legal_text.index('国际商务')
+    legal_record['major_parenthetical_names'][0]['end'] = legal_text.index('国际商务') + 4
+    legal_record['major_parenthetical_names'][1]['start'] = legal_text.index('金融学')
+    legal_record['major_parenthetical_names'][1]['end'] = legal_text.index('金融学') + 3
+    assert not exclusion_violations(legal_record, legal_text), 'legal fixture must pass'
+    return True
 
 
 def load(project):
@@ -120,9 +206,9 @@ def main():
             assert row[index['备注']][code['start']:code['end']].upper() == code['code'], \
                 f'{record["id"]}: 备注 span does not round-trip for {code["code"]}'
             checks['remarks_code_spans'] += 1
-        for hit in record.get('major_parenthetical_names', []):
-            if hit['is_exclusion']:
-                assert not record['coverage_after'] or True
+        major_text = row[index['专业']]
+        for violation in exclusion_violations(record, major_text):
+            raise AssertionError(f'{record["id"]}: exclusion invariant violated: {violation}')
         if record.get('major_excluded_names'):
             checks['positions_with_exclusion_lists'] += 1
         for conflict in record.get('conflicts', []):

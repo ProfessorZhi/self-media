@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "status": "PASS",
   "evidence_manifest": "data/major_evidence_2027/manifest.json",
-  "evidence_manifest_sha256": "767cfff15dd2bc25592a71b1e1d755ab377f7836b8b8aea4e271032e3faa01df",
+  "evidence_manifest_sha256": "7559b9d293c4f03f962d7411290160d314f1163f2603851a6087d1e7f54438b1",
   "positions": 19426,
   "hires": 35691,
   "coverage_before": 18176,

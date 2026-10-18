@@ -9,6 +9,7 @@
 2. [data/README.md](data/README.md)：现行数据文件与历史资料。
 3. [research/MAJOR_CODE_MATCHING.md](research/MAJOR_CODE_MATCHING.md)：逐岗位专业原文、代码目录与候选关系。
 4. [research/DATA_SOURCES_AND_CHECKS.md](research/DATA_SOURCES_AND_CHECKS.md)：来源版本、官方核验范围。
+5b. [research/CRITICAL_POSITION_FIELD_AUDIT_20261018.md](research/CRITICAL_POSITION_FIELD_AUDIT_20261018.md)：关键字段（键、代码宽度、五个官方分类列）审计。
 5a. [research/GAP_RESOLUTION_CAMPAIGN_20261018.md](research/GAP_RESOLUTION_CAMPAIGN_20261018.md)：本轮取证、冲突成因三分与覆盖变化。
 5. [research/FINAL_EVIDENCE_SCOPE_AUDIT_20261018.json](research/FINAL_EVIDENCE_SCOPE_AUDIT_20261018.json)：范围审计与安全读取口径。
 6. [research/REVIEW_STATUS_20261018.json](research/REVIEW_STATUS_20261018.json) 与 [RESIDUAL_STRATA_20261018.json](research/RESIDUAL_STRATA_20261018.json)：复核分层与残留分层。

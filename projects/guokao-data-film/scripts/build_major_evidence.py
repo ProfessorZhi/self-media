@@ -572,10 +572,13 @@ def parenthetical_names(major_raw, index, scopes):
                 resolution = index.resolve_name(piece, scopes)
                 if resolution['status'] == 'unresolved':
                     continue
+                piece_start = offset + piece_match.start()
+                # When a trailing 等专业 was stripped, the span must shrink with it;
+                # otherwise text[start:end] no longer equals the recorded name.
                 hits.append({
                     'name': piece,
-                    'start': offset + piece_match.start(),
-                    'end': offset + piece_match.end(),
+                    'start': piece_start,
+                    'end': piece_start + len(piece),
                     'resolution': {'status': resolution['status'], 'nodes': resolution['nodes']},
                     'evidence_quality': 'exact_name_inside_parentheses',
                     'is_exclusion': is_exclusion,
@@ -1040,6 +1043,7 @@ def main():
             ],
             'major_parenthetical_names': [
                 {'name': hit['name'], 'is_exclusion': hit['is_exclusion'],
+                 'start': hit.get('start'), 'end': hit.get('end'),
                  'member_in_open_list': hit.get('member_in_open_list', False),
                  'resolution': compact_resolution(hit['resolution'])}
                 for hit in paren_names
