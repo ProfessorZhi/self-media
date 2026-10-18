@@ -46,7 +46,7 @@
 | 上游转换 XLSX（前轮） | 19,426 岗 / 35,691 人 / 27 字段 | 内容差异 0 |
 | 招录机关附件子集（前轮） | 805 岗 / 1,501 人 | 内容差异 0；仍保留为独立证据 |
 
-官方来源为中央机关及其直属机构 2027 年度考试录用公务员专题 `http://bm.scs.gov.cn/kl2027` 的“相关下载”《招考简章.zip`：资源列表 API `http://dl.scs.gov.cn/api/res/8a81f6eca0221f1401a0242759fc0000/1110`，下载 ID `8a81f6d1a129c3d401a133dca26b00d2`。压缩包 SHA-256 `bbe7fb85ac4ab2932672203392ef5f1756a454dab54346f0fb42286a874c1831`，包内工作簿 SHA-256 `6b3da70baabe31a4a202c6b1179040db7003a956bc85c79cd35e3fb739d9520a`。两份原始文件已存入 [data/sources/](data/sources/manifest.json)。
+官方来源为中央机关及其直属机构 2027 年度考试录用公务员专题 `http://bm.scs.gov.cn/kl2027` 的“相关下载”《招考简章.zip`：资源列表 API `http://dl.scs.gov.cn/api/res/8a81f6eca0221f1401a0242759fc0000/1110`，下载 ID `8a81f6d1a129c3d401a133dca26b00d2`。压缩包 SHA-256 `bbe7fb85ac4ab2932672203392ef5f1756a454dab54346f0fb42286a874c1831`，包内工作簿 SHA-256 `6b3da70baabe31a4a202c6b1179040db7003a956bc85c79cd35e3fb739d9520a`。来源文件名、URL、哈希与适用范围见 [data/sources/manifest.json](data/sources/manifest.json)；为开源代码主线减少第三方原件再分发风险，**官方 ZIP 等原始二进制不随公开主分支保存**。如果需要完整逐格重跑，请按 [来源复算说明](data/sources/README.md) 自行下载并核验 SHA-256 后放在指定的本地 `--workspace`。
 
 **这只证明“本次取得的官方工作簿与库内数据逐格一致”，不证明后续有更正，也不证明专业目录本身。** 前轮 805 岗的机关附件核验没有因此作废，但同一批字段的覆盖已由全国工作簿取代。
 
