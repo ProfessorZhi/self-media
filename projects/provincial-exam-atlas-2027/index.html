@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="2027年江苏浙江省考招录规模、地区分布、职位数、江苏机关层级与考试类别交互图谱。数据来源、预留计划和覆盖边界明确披露。">
+<title>2027 江苏 × 浙江省考招录图谱 · Province Atlas</title>
+<style>
+:root { color-scheme:dark;--bg:#0f1715;--panel:#192321;--panel2:#202e2a;--line:#34453d;--ink:#f4f1e8;--muted:#a7b8af;--dim:#7f9990;--js:#f3ae78;--zj:#8bc8ba;--gold:#ead0a3;--shadow:#061310bb; }
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse 70% 40% at 80% 0%,#18382c70,transparent),var(--bg);color:var(--ink);font-family:Inter,"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.55;}
+button,input{font:inherit}button{cursor:pointer}a{color:var(--zj);text-underline-offset:4px}a:hover{color:#c0f0e3}
+.shell{max-width:1250px;margin:0 auto;padding:0 26px 90px}.topbar{height:74px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line)}.brand{font-size:13px;font-weight:800;letter-spacing:.17em;text-transform:uppercase}.brand span{color:var(--gold)}.small{font-size:12px;color:var(--muted)}.topnote{max-width:350px;text-align:right}
+header.hero{padding:66px 0 31px}.overline{color:var(--gold);letter-spacing:.23em;text-transform:uppercase;font-size:12px;font-weight:700}.hero h1{font-family:Georgia,"Noto Serif SC",serif;font-size:clamp(44px,6.1vw,82px);font-weight:500;letter-spacing:-.045em;line-height:1.11;margin:18px 0 22px}.hero h1 em{font-style:normal;color:var(--zj)}.lead{color:var(--muted);font-size:17px;max-width:750px;line-height:1.85}.date{display:inline-flex;border:1px solid var(--line);padding:7px 12px;border-radius:999px;margin-top:10px;font-size:12px;color:var(--muted)}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:22px 0 26px}.metric{background:linear-gradient(140deg,#20332c,#192521);border:1px solid var(--line);border-radius:17px;padding:20px 22px;min-width:0}.metric .label{color:var(--muted);font-size:12px}.metric strong{display:block;font-size:clamp(25px,3.1vw,40px);line-height:1.25;letter-spacing:-.03em;font-variant-numeric:tabular-nums;margin:9px 0 2px}.metric .desc{font-size:12px;color:var(--muted)}.metric.js strong{color:var(--js)}.metric.zj strong{color:var(--zj)}
+.readout{border:1px solid var(--line);border-left:3px solid var(--gold);padding:18px 23px;color:#d7dfd6;background:#1b2a24;border-radius:10px;margin:18px 0 42px}.readout b{color:var(--gold)}
+.sectionhead{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:40px 0 17px}.sectionhead h2{margin:0;font-family:Georgia,"Noto Serif SC",serif;font-size:32px;font-weight:500}.sectionhead p{margin:4px 0 0;color:var(--muted);font-size:13px}.sectionhead .index{color:var(--dim);font-size:12px;letter-spacing:.14em}
+.panel{border:1px solid var(--line);background:var(--panel);border-radius:16px;padding:20px 22px}.toolbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:21px}.seg{display:flex;align-items:center;gap:3px;background:#0b1512;border:1px solid var(--line);padding:4px;border-radius:10px}.seg button{border:0;background:transparent;color:var(--muted);padding:8px 14px;border-radius:7px;font-size:13px}.seg button.active{background:#365a4c;color:white}.search{background:#101b16;border:1px solid var(--line);border-radius:10px;padding:10px 13px;color:var(--ink);outline:0;min-width:150px;flex:1}.search:focus{border-color:var(--zj)}.bare{background:transparent;border:1px solid var(--line);border-radius:10px;color:var(--muted);padding:10px 12px}
+.layout{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(280px,.82fr);gap:18px;align-items:start}.rank{min-height:140px}.rank-row{display:grid;grid-template-columns:24px 110px minmax(90px,1fr) 72px;gap:13px;align-items:center;min-height:39px;border-radius:9px;padding:5px 6px;cursor:pointer}.rank-row:hover,.rank-row.selected{background:#26362f}.idx{font-size:12px;color:var(--dim);text-align:right;font-variant-numeric:tabular-nums}.city{font-size:13px;white-space:nowrap}.tag{font-size:10px;letter-spacing:.08em;margin-right:5px}.tag.js{color:var(--js)}.tag.zj{color:var(--zj)}.track{height:15px;position:relative;border-radius:4px;background:#112019;overflow:hidden}.fill{height:100%;border-radius:4px;transition:width .35s cubic-bezier(.2,.8,.2,1)}.fill.js{background:linear-gradient(90deg,#916047,var(--js))}.fill.zj{background:linear-gradient(90deg,#397e6d,var(--zj))}.number{text-align:right;font-size:13px;font-weight:750;letter-spacing:.01em;font-variant-numeric:tabular-nums}.right{display:flex;flex-direction:column;gap:16px;position:sticky;top:18px}.side-title{font-size:11px;font-weight:750;color:var(--gold);letter-spacing:.16em;text-transform:uppercase}.selectedname{font-family:Georgia,"Noto Serif SC",serif;font-size:28px;margin:8px 0 9px}.mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.mini-grid .v{font-size:24px;font-weight:700;font-variant-numeric:tabular-nums}.mini-grid .l{font-size:12px;color:var(--muted)}.accent{color:var(--zj)}.muted{color:var(--muted)}.hr{height:1px;background:var(--line);margin:16px 0}.side-text{font-size:13px;line-height:1.85;color:var(--muted)}.statusline{font-size:12px;color:var(--gold);margin-top:11px}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:18px}.minirow{display:grid;grid-template-columns:108px 1fr 64px;gap:8px;align-items:center;padding:8px 0;font-size:13px}.minirow .track{height:11px}.label2{font-size:12px;color:#d5e2d7}.dimnote{font-size:12px;color:var(--muted);margin-top:13px}.pills{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}.pill{background:#263831;color:#dcf4e9;border:1px solid #3a5d4e;border-radius:999px;padding:6px 11px;font-size:12px}
+.table{width:100%;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}.table th{text-align:left;font-weight:500;color:var(--muted);border-bottom:1px solid var(--line);padding:12px 8px}.table td{padding:11px 8px;border-bottom:1px solid #293b32}.table td:last-child,.table th:last-child{text-align:right}.table td:nth-child(2),.table th:nth-child(2){text-align:right}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.fact{padding:21px;background:#1b2823;border:1px solid var(--line);border-radius:14px}.fact h3{font-size:15px;margin:0 0 8px;color:var(--gold)}.fact p{font-size:13px;color:var(--muted);line-height:1.9;margin:0}
+.source-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 25px}.source{padding:9px 0;border-bottom:1px solid var(--line);font-size:13px}.source small{font-size:10px;color:var(--muted);margin-right:7px}.foot{padding-top:32px;border-top:1px solid var(--line);color:var(--dim);font-size:12px;margin-top:45px}
+@media(max-width:850px){.metrics{grid-template-columns:repeat(2,1fr)}.layout,.duo,.facts,.source-grid{grid-template-columns:1fr}.right{position:static}.hero{padding-top:42px!important}.topnote{display:none}}
+@media(max-width:530px){.shell{padding:0 13px 60px}.metrics{gap:8px}.metric{padding:14px}.rank-row{grid-template-columns:20px 76px minmax(80px,1fr) 50px;gap:7px}.number{font-size:12px}.sectionhead h2{font-size:26px}.panel{padding:16px 11px}.seg button{padding:7px 10px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;scroll-behavior:auto!important}}
+</style></head>
+<body><div class="shell">
+<div class="topbar"><div class="brand">PROVINCE <span>ATLAS / 2027</span></div><div class="topnote small">江苏 × 浙江｜省考招录图谱 · 基于 2026-11-10 公开数据</div></div>
+<header class="hero">
+<div class="overline">Civil Service Recruitment · Structural Observatory</div>
+<h1>两省之间，<br><em>12,660</em> 个招录计划。</h1>
+<p class="lead">从招录总盘子往下，看地市承接了多少人、多少个职位，再看江苏的机关层级和考试类别结构。每一张图都可切换 <b style="color:var(--ink)">人数 / 职位数</b>，避免把“岗位多”误读为“名额多”。</p>
+<div class="date">数据截点：2026 年 11 月 10 日 · 2027 招录年度 · 原表完整机关层待核</div>
+</header>
+<div class="metrics">
+  <div class="metric js"><div class="label">江苏 · 招录计划</div><strong>8,149</strong><div class="desc">5,725 岗 / 约 1.42 人每岗</div></div>
+  <div class="metric zj"><div class="label">浙江 · 公告总计划</div><strong>4,511</strong><div class="desc">已列岗位 3,298 / 对应 4,223 人</div></div>
+  <div class="metric"><div class="label">两省 · 当前已明确职位</div><strong>9,023</strong><div class="desc">江苏 5,725 + 浙江 3,298</div></div>
+  <div class="metric"><div class="label">浙江 · 公告与在表差额</div><strong>288</strong><div class="desc">与后续专项预留相关；不分配到当前城市或机关</div></div>
+</div>
+<div class="readout"><b>读图原则。</b> 浙江公告总计划 4,511 人包含山区海岛县后续专项招录。当前地市职位表仅对应 4,223 人、3,298 个职位；二者差 288 人，<b>不能把差额视为已发布的具体岗位</b>。江苏地区统计的监狱戒毒岗位按工作地分配，不能再把其专项来源表数值加到地区总数上。</div>
+
+<div class="readout" style="border-left-color:var(--zj)"><b>杭州机关明细已补齐：</b>排除桐庐、淳安、建德后，共 <b>231 个招录单位、417 个职位、596 人</b>。<a href="./hangzhou-agencies.html" style="margin-left:7px">打开杭州部门分布与单位完整名录（附逐单位岗位详情）</a>。该页面依据第三方职位检索索引复算，尚待官方 XLSX 逐岗位校验。</div>
+<section id="regional">
+<div class="sectionhead"><div><div class="index">01 / GEOGRAPHY</div><h2>地市招录分布</h2><p>点击任一地市查看独立统计；搜索、切省份、换指标、排序实时联动。</p></div></div>
+<div class="panel">
+ <div class="toolbar"><div class="seg" id="provinceToggle" aria-label="省份"><button data-p="ALL" class="active">两省</button><button data-p="JS">江苏</button><button data-p="ZJ">浙江</button></div>
+ <div class="seg" id="metricToggle" aria-label="指标"><button data-m="people" class="active">招录人数</button><button data-m="jobs">职位数</button><button data-m="density">单岗人数</button></div>
+ <input class="search" id="citySearch" aria-label="筛选地市名称" placeholder="搜索地市，如苏州 / 杭州">
+ <button class="bare" id="sortButton">从高到低 ↓</button>
+ <button class="bare" id="downloadButton">导出 CSV</button></div>
+ <div class="layout"><div><div id="rank" class="rank" role="list" aria-label="地市排名"></div><div id="rankNote" class="dimnote"></div></div><aside class="right">
+ <div class="panel" style="background:#182a22" id="detail"><div class="side-title">SELECTED LOCALITY</div><div class="selectedname">点击左侧地市</div><p class="side-text">选择具体地区，查看其招录人数、岗位数、占所属省份当前职位表的比例及单岗招录强度。</p></div>
+ <div class="panel"><div class="side-title">READ THIS FIRST</div><div class="hr"></div><p class="side-text">横条展示的是官方职位表相关的 <b>名额与岗位计数</b>，不是报名人数、报名审核通过数或竞争比。</p><p class="side-text">省级机关 / 省属单位没有归属到具体地市，不应误并入南京或杭州。</p></div>
+ </aside></div>
+</div></section>
+
+<section id="structure">
+<div class="sectionhead"><div><div class="index">02 / STRUCTURE</div><h2>江苏机关层级与考试类型</h2><p>不同维度展示同一批 5,725 个职位、8,149 人；不可在维度间相加。第三方重分类数据，待官方原表逐行审计。</p></div></div>
+<div class="duo"><div class="panel"><div class="side-title">行政层级 · 江苏</div><div id="levels"></div><p class="dimnote">县级 + 乡镇合计 5,886 个招录计划，占全省 72.2%；这是层级分布，不等于机构系统分类。</p></div>
+<div class="panel"><div class="side-title">考试类别 · 江苏</div><div id="categories"></div><p class="dimnote">A 综合管理 / B 行政执法 / C 乡镇（为第三方汇总分组）；请以具体职位表和官方报考指南为准。</p></div></div>
+<div class="sectionhead"><div><div class="index">03 / SOURCE TABLES</div><h2>江苏机关来源表拆分</h2><p>独立口径：招录机关按文件来源分组。不是与“地区分布”并列的新名额。</p></div></div>
+<div class="panel"><table class="table"><thead><tr><th>来源表</th><th>职位数</th><th>招录人数</th></tr></thead><tbody id="sourceRows"></tbody><tfoot><tr><th>总计</th><th style="text-align:right">5,725</th><th style="text-align:right">8,149</th></tr></tfoot></table><p class="dimnote">江苏官方提供：省级机关 XLS、13 市 ZIP、省以下垂管 ZIP。第三方按解压后的 15 份有效表复算；省以下垂管文件在本统计中对应监狱戒毒系统。</p></div>
+</section>
+
+<section id="insights">
+<div class="sectionhead"><div><div class="index">04 / FINDINGS</div><h2>如何理解这组数据</h2></div></div>
+<div class="facts">
+  <div class="fact"><h3>苏州是江苏的最大名额池</h3><p>苏州 637 岗、1,485 人，占全省名额约 18.2%，单岗约 2.33 人，明显高于江苏其余地区的均值。排名只代表规模，不能据此推断更容易录取。</p></div>
+  <div class="fact"><h3>浙江重在地市和基层</h3><p>已发布职位表中，杭州 757 人、宁波 524 人、温州 503 人，三地合计 1,784 人，占当前在表名额约 42.2%。公告指出县级以下机关计划接近 4,000 人，但未将预留计划细分到城市。</p></div>
+  <div class="fact"><h3>两省公共科目同日进行</h3><p>江苏报名已于 11 月 9 日 16:00 结束；浙江报名截止 11 月 11 日 17:00。两省均于 2026 年 12 月 6 日举行公共科目笔试，同一考试时段不可兼考。</p></div>
+</div>
+</section>
+
+<section id="limitations">
+<div class="sectionhead"><div><div class="index">05 / DATA GOVERNANCE</div><h2>已完成与尚未完成</h2><p>沿用原国考观测台“数字可追溯”的原则，不将推断结果伪装成逐岗位统计。</p></div></div>
+<div class="panel">
+<div class="pills"><div class="pill">已完成：公告计划核对</div><div class="pill">已完成：两省地市闭合汇总</div><div class="pill">已完成：江苏层级和考试类别初步汇总</div></div>
+<p class="side-text"><b style="color:var(--ink)">下一阶段需正式逐行处理：</b>按招录机关的系统类别（法院、检察院、公安、纪检监察、市场监管、街道乡镇、行政执法、监狱戒毒等）分层；岗位名称、专业要求、学历要求、应届限定、岗位代码、考试类别及可报性筛选；在每个分类上分别统计职位数、招录人数；再以官方原始 XLS/XLSX 复算闭合。</p>
+<p class="side-text"><b style="color:var(--ink)">严格界限：</b>本页面没有完整原始机关—职位记录，不能显示“全省各局系统真实排名”，也不能依据岗位量估算报名热度或个人可报数。江苏考试类别 / 机关层级取第三方汇总，需后续逐行验证。浙江差额 288 是公告计划与当前已载入职位表差额，不是单独可报名岗位。</p>
+</div>
+</section>
+
+<section id="sources"><div class="sectionhead"><div><div class="index">06 / EVIDENCE</div><h2>来源与核验路径</h2></div></div>
+<div class="source-grid" id="sourcesList"></div>
+</section>
+<footer class="foot">PROVINCE ATLAS 2027 · Research Snapshot 2026-11-10 · Independent analysis, not an official recruitment service · Offline HTML, no tracking, no external JavaScript dependencies.</footer>
+</div>
+
+<script id="atlas-data" type="application/json">{"meta":{"edition":"2027","asOf":"2026-11-10","scope":"公开公告与第三方职位汇总的静态快照","warning":"无逐行官方职位表审计；机关系统细分未完成"},"provinces":{"JS":{"name":"江苏","planned":8149,"listed":8149,"jobs":5725,"release":"2026-10-30","registration":"2026-11-03 09:00 — 2026-11-09 16:00","source":"https://www.jszzb.gov.cn/2027ndkslygwyzt/zkgg/art/2026/art_f9d91bae1e764231843f0be62ffadffa.html"},"ZJ":{"name":"浙江","planned":4511,"listed":4223,"jobs":3298,"release":"2026-11-05","registration":"2026-11-06 09:00 — 2026-11-11 17:00","source":"https://www.lysrsks.cn/index/news/detail.html?id=2652"}},"cities":[["JS","苏州",637,1485],["JS","盐城",636,861],["JS","徐州",604,764],["JS","南京",606,744],["JS","连云港",433,590],["JS","南通",442,583],["JS","淮安",378,531],["JS","无锡",372,527],["JS","扬州",404,504],["JS","宿迁",325,430],["JS","常州",291,377],["JS","镇江",278,359],["JS","泰州",258,325],["JS","省级机关",61,69],["ZJ","杭州",550,757],["ZJ","宁波",383,524],["ZJ","温州",400,503],["ZJ","嘉兴",317,404],["ZJ","湖州",157,190],["ZJ","绍兴",271,337],["ZJ","金华",294,391],["ZJ","衢州",165,199],["ZJ","舟山",92,96],["ZJ","台州",355,458],["ZJ","丽水",229,263],["ZJ","省属单位",85,101]],"jsBySource":[["13市职位表",5498,7843],["省级机关表",61,69],["监狱戒毒系统表",166,237]],"jsByLevel":[["省级",61,69],["省以下垂直",166,237],["市级",952,1957],["县级",3594,4650],["乡镇",952,1236]],"jsByCategory":[["A · 综合管理",2767,3097],["B · 行政执法",2006,3816],["C · 乡镇",952,1236]],"sources":[{"label":"江苏公务员局｜2027招录公告","url":"https://www.jszzb.gov.cn/2027ndkslygwyzt/zkgg/art/2026/art_f9d91bae1e764231843f0be62ffadffa.html","kind":"官方"},{"label":"江苏省委组织部｜2027职位简介表","url":"https://www.jszzb.gov.cn/2027ndkslygwyzt/zkgg/art/2026/art_d8bec4f4afcf4cbaa5842b8b611e504f.html","kind":"官方"},{"label":"浙江2027公告转载及官方表下载","url":"https://www.lysrsks.cn/index/news/detail.html?id=2652","kind":"公告转载"},{"label":"浙江官方职位一览表 XLSX","url":"https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/filemanager/1574755/attach/202611/0bd1a702660b439ca6050521a818778c.xlsx","kind":"官方文件"},{"label":"江苏地区逐表汇总及来源表拆分","url":"https://kaoweilai.cn/jiangsu2027.html","kind":"第三方"},{"label":"江苏区域 / 学历汇总","url":"https://www.ynwei.com/index/jobs/series/6?year=2027","kind":"第三方"},{"label":"江苏层级及 A/B/C 考试类型汇总","url":"https://www.gwy.com/jsgwy/415135.html","kind":"第三方"},{"label":"浙江各地市职位数 / 人数汇总","url":"https://zj.gwyzwb.com/bmrs/2027.html","kind":"第三方"}]}</script>
+<script>
+(function(){
+"use strict";
+var D=JSON.parse(document.getElementById("atlas-data").textContent);
+var S={province:"ALL",metric:"people",descending:true,search:"",selected:null};
+var fmt=function(x){return Number(x).toLocaleString("zh-CN",{maximumFractionDigits:2});};
+var pct=function(x){return (x*100).toFixed(1)+"%";};
+var key=function(r){return r[0]+":"+r[1];};
+var val=function(r){return S.metric==="people"?r[3]:(S.metric==="jobs"?r[2]:r[3]/r[2]);};
+function updateButtons(){
+ document.querySelectorAll("#provinceToggle button").forEach(function(b){b.classList.toggle("active",b.dataset.p===S.province);b.setAttribute("aria-pressed",b.dataset.p===S.province);});
+ document.querySelectorAll("#metricToggle button").forEach(function(b){b.classList.toggle("active",b.dataset.m===S.metric);b.setAttribute("aria-pressed",b.dataset.m===S.metric);});
+ document.getElementById("sortButton").textContent=S.descending?"从高到低 ↓":"从低到高 ↑";
+}
+function current(){
+ return D.cities.filter(function(r){return(S.province==="ALL"||r[0]===S.province)&&r[1].indexOf(S.search)!==-1;}).sort(function(a,b){return (val(b)-val(a))*(S.descending?1:-1)||a[1].localeCompare(b[1],"zh");});
+}
+function detail(r){
+ var el=document.getElementById("detail");
+ if(!r){el.innerHTML='<div class="side-title">SELECTED LOCALITY</div><div class="selectedname">点击左侧地市</div><p class="side-text">选择一个地市，查看职位数、人数、单岗规模和全省占比。</p>';return;}
+ var p=D.provinces[r[0]],color=r[0]==="JS"?"var(--js)":"var(--zj)";
+ el.innerHTML='<div class="side-title">DISTRICT PROFILE / '+p.name+'</div>'+
+ '<div class="selectedname" style="color:'+color+'">'+r[1]+'</div>'+
+ '<div class="mini-grid"><div><div class="v">'+fmt(r[3])+'</div><div class="l">计划招录人数</div></div><div><div class="v">'+fmt(r[2])+'</div><div class="l">职位数</div></div><div><div class="v">'+(r[3]/r[2]).toFixed(2)+'</div><div class="l">单职位招录人数</div></div><div><div class="v">'+pct(r[3]/p.listed)+'</div><div class="l">本省在表名额占比</div></div></div>'+
+ '<div class="hr"></div><p class="side-text">'+p.name+'公布职位表共 '+fmt(p.jobs)+' 岗 / '+fmt(p.listed)+' 人；此处地区占比仅以这部分名额为分母。</p>'+
+ (r[0]==="ZJ"?'<div class="statusline">浙江公告总计划另含未细分专项差额，不参与此排名。</div>':'');
+}
+function renderRank(){
+ updateButtons();var rows=current(),max=Math.max(1,...rows.map(val));var el=document.getElementById("rank");el.innerHTML="";
+ rows.forEach(function(r,i){
+  var code=r[0],v=val(r),row=document.createElement("div");row.className="rank-row"+(key(r)===S.selected?" selected":"");row.setAttribute("role","listitem");row.setAttribute("tabindex","0");row.setAttribute("aria-label",D.provinces[code].name+r[1]+" "+fmt(v));
+  row.innerHTML='<span class="idx">'+String(i+1).padStart(2,"0")+'</span>'+
+    '<span class="city"><span class="tag '+(code==="JS"?"js":"zj")+'">'+code+'</span>'+r[1]+'</span>'+
+    '<span class="track"><span class="fill '+(code==="JS"?"js":"zj")+'" style="display:block;width:'+Math.max(1,100*v/max)+'%"></span></span>'+
+    '<span class="number">'+(S.metric==="density"?v.toFixed(2):fmt(v))+'</span>';
+  row.addEventListener("click",function(){S.selected=key(r);renderRank();detail(r);});
+  row.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();row.click();}});
+  el.appendChild(row);
+ });
+ if(!rows.length){el.innerHTML='<div class="muted" style="padding:20px">无匹配地市。</div>';detail(null);}
+ else{var selected=rows.find(function(r){return key(r)===S.selected;})||rows[0];S.selected=key(selected);detail(selected);}
+ document.getElementById("rankNote").textContent="当前显示 "+rows.length+" 个地区 · "+(S.metric==="density"?"单岗人数为人数 ÷ 职位数":"每行展示"+(S.metric==="people"?"招录人数":"职位数"))+" · 江苏省级机关和浙江省属单位单列";
+}
+function barSeries(elid,items,field,color){
+ var el=document.getElementById(elid),total=items.reduce(function(s,r){return s+r[field];},0),max=Math.max(...items.map(function(r){return r[field];}));
+ el.innerHTML=items.map(function(r){
+  return '<div class="minirow"><span class="label2">'+r[0]+'</span><span class="track"><span class="fill" style="display:block;width:'+(100*r[field]/max)+'%;background:'+color+'"></span></span><span class="number">'+fmt(r[field])+'</span></div>';
+ }).join("")+'<p class="dimnote">合计 '+fmt(total)+(field===1?" 个职位":" 人")+' · 点击下方按钮切换口径</p>';
+}
+var structureMetric="people";
+var switchHTML='<div class="seg" style="margin-top:13px"><button class="active" data-s="people">人数</button><button data-s="jobs">职位</button></div>';
+function renderStructure(){
+ document.getElementById("levels").innerHTML=switchHTML+'<div id="levelBars"></div>';
+ document.getElementById("categories").innerHTML=switchHTML+'<div id="categoryBars"></div>';
+ function draw(){
+ var idx=structureMetric==="people"?2:1;
+ barSeries("levelBars",D.jsByLevel,idx,"#f3ae78");
+ barSeries("categoryBars",D.jsByCategory,idx,"#8bc8ba");
+ document.querySelectorAll("#levels .seg button,#categories .seg button").forEach(function(b){b.classList.toggle("active",b.dataset.s===structureMetric);b.setAttribute("aria-pressed",b.dataset.s===structureMetric);});
+ }
+ document.querySelectorAll("#levels .seg button,#categories .seg button").forEach(function(b){b.addEventListener("click",function(){structureMetric=b.dataset.s;draw();});});
+ draw();
+}
+document.getElementById("sourceRows").innerHTML=D.jsBySource.map(function(r){return '<tr><td>'+r[0]+'</td><td>'+fmt(r[1])+'</td><td>'+fmt(r[2])+'</td></tr>';}).join("");
+document.getElementById("sourcesList").innerHTML=D.sources.map(function(s,i){return '<div class="source"><small>'+String(i+1).padStart(2,"0")+' / '+s.kind+'</small><a target="_blank" rel="noopener noreferrer" href="'+s.url+'">'+s.label+'</a></div>';}).join("");
+document.querySelectorAll("#provinceToggle button").forEach(function(b){b.addEventListener("click",function(){S.province=b.dataset.p;S.selected=null;renderRank();});});
+document.querySelectorAll("#metricToggle button").forEach(function(b){b.addEventListener("click",function(){S.metric=b.dataset.m;renderRank();});});
+document.getElementById("citySearch").addEventListener("input",function(e){S.search=e.target.value.trim();S.selected=null;renderRank();});
+document.getElementById("sortButton").addEventListener("click",function(){S.descending=!S.descending;renderRank();});
+document.getElementById("downloadButton").addEventListener("click",function(){
+ var rows=[["省份","地区","职位数","招录人数","单职位人数","省内在表名额占比"]].concat(current().map(function(r){return[D.provinces[r[0]].name,r[1],r[2],r[3],(r[3]/r[2]).toFixed(3),pct(r[3]/D.provinces[r[0]].listed)];}));
+ var csv="\ufeff"+rows.map(function(r){return r.map(function(x){return '"'+String(x).replace(/"/g,'""')+'"';}).join(",");}).join("\r\n");
+ var url=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8"}));var a=document.createElement("a");a.href=url;a.download="2027_江苏浙江省考_地区招录汇总.csv";document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(url);},1000);
+});
+function assert(){
+ ["JS","ZJ"].forEach(function(code){var p=D.provinces[code],rows=D.cities.filter(function(r){return r[0]===code;});if(rows.reduce(function(s,r){return s+r[2];},0)!==p.jobs||rows.reduce(function(s,r){return s+r[3];},0)!==p.listed){throw Error("地区统计无法闭合:"+code);}});
+ ["jsBySource","jsByLevel","jsByCategory"].forEach(function(k){if(D[k].reduce(function(s,r){return s+r[1];},0)!==5725||D[k].reduce(function(s,r){return s+r[2];},0)!==8149){throw Error("江苏分组不闭合:"+k);}});
+}
+assert();renderStructure();renderRank();
+})();
+</script></body></html>
