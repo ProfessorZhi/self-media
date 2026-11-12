@@ -1,0 +1,130 @@
+{
+ "A_pop": {
+  "ref": "l1",
+  "edge": "start",
+  "off": -0.25,
+  "dur": 0.4,
+  "sfx": "bell:81"
+ },
+ "AB_draw": {
+  "ref": "l1",
+  "edge": "start",
+  "off": 0.05,
+  "dur": 1.3,
+  "sfx": "draw"
+ },
+ "AC_draw": {
+  "ref": "l2",
+  "edge": "start",
+  "off": 0.0,
+  "dur": 1.3,
+  "sfx": "draw"
+ },
+ "BC_ghost": {
+  "ref": "l2",
+  "edge": "end",
+  "off": -0.3,
+  "dur": 0.9
+ },
+ "right_angle": {
+  "ref": "l3",
+  "edge": "start",
+  "off": 0.0,
+  "dur": 0.5,
+  "sfx": "tick"
+ },
+ "perp_tag": {
+  "ref": "l3",
+  "edge": "start",
+  "off": 0.25,
+  "dur": 0.5
+ },
+ "D_pop": {
+  "ref": "l4",
+  "edge": "start",
+  "off": -0.15,
+  "dur": 0.4,
+  "sfx": "bell:76"
+ },
+ "AD_draw": {
+  "ref": "l4",
+  "edge": "start",
+  "off": 0.05,
+  "dur": 0.8,
+  "sfx": "draw"
+ },
+ "CD_draw": {
+  "ref": "l4",
+  "edge": "start",
+  "off": 0.45,
+  "dur": 0.7,
+  "sfx": "draw"
+ },
+ "angle120": {
+  "ref": "l4",
+  "edge": "start",
+  "off": 0.9,
+  "dur": 0.5
+ },
+ "proj_drop": {
+  "ref": "l4",
+  "edge": "start",
+  "off": 1.0,
+  "dur": 0.5
+ },
+ "proj_shadow": {
+  "ref": "l4",
+  "edge": "start",
+  "off": 1.35,
+  "dur": 0.6,
+  "sfx": "thump"
+ },
+ "dist_draw": {
+  "ref": "l5",
+  "edge": "start",
+  "off": 0.55,
+  "dur": 0.7,
+  "sfx": "draw"
+ },
+ "xD_label": {
+  "ref": "l5",
+  "edge": "start",
+  "off": 1.15,
+  "dur": 0.4
+ },
+ "formula": {
+  "ref": "l5",
+  "edge": "start",
+  "off": 1.5,
+  "dur": 0.6,
+  "sfx": "chime"
+ },
+ "formula_morph": {
+  "ref": "l6",
+  "edge": "start",
+  "off": -0.35,
+  "dur": 0.6,
+  "sfx": "whoosh"
+ },
+ "min_mark": {
+  "ref": "l6",
+  "edge": "start",
+  "off": 0.35,
+  "dur": 0.5,
+  "sfx": "bell:83"
+ },
+ "sweep": {
+  "ref": "l7",
+  "edge": "start",
+  "off": -0.1,
+  "dur": 3.2,
+  "sfx": "glide"
+ },
+ "question": {
+  "ref": "l8",
+  "edge": "start",
+  "off": 0.25,
+  "dur": 0.6,
+  "sfx": "chime"
+ }
+}

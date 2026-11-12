@@ -1,0 +1,137 @@
+{
+ "tri": {
+  "ref": "a1",
+  "edge": "start",
+  "off": -0.2,
+  "dur": 0.6,
+  "sfx": "whoosh"
+ },
+ "aLab": {
+  "ref": "a1",
+  "edge": "start",
+  "off": 0.3,
+  "dur": 0.4,
+  "sfx": "tick"
+ },
+ "bLab": {
+  "ref": "a1",
+  "edge": "start",
+  "off": 1.0,
+  "dur": 0.4,
+  "sfx": "tick"
+ },
+ "fcos": {
+  "ref": "a2",
+  "edge": "start",
+  "off": 0.3,
+  "dur": 0.5,
+  "sfx": "bell:79"
+ },
+ "feq": {
+  "ref": "a3",
+  "edge": "start",
+  "off": 0.0,
+  "dur": 0.5,
+  "sfx": "bell:83"
+ },
+ "fam": {
+  "ref": "a4",
+  "edge": "start",
+  "off": 0.2,
+  "dur": 0.5,
+  "sfx": "tick"
+ },
+ "fab": {
+  "ref": "a5",
+  "edge": "start",
+  "off": 0.0,
+  "dur": 0.5
+ },
+ "fabBox": {
+  "ref": "a5",
+  "edge": "start",
+  "off": 0.6,
+  "dur": 0.4,
+  "sfx": "stamp"
+ },
+ "clear1": {
+  "ref": "a6",
+  "edge": "start",
+  "off": -0.3,
+  "dur": 0.4
+ },
+ "h": {
+  "ref": "a6",
+  "edge": "start",
+  "off": 0.5,
+  "dur": 0.7,
+  "sfx": "draw"
+ },
+ "base": {
+  "ref": "a8",
+  "edge": "start",
+  "off": 0.1,
+  "dur": 0.8
+ },
+ "fs1": {
+  "ref": "a7",
+  "edge": "start",
+  "off": 0.3,
+  "dur": 0.5,
+  "sfx": "bell:79"
+ },
+ "fs2": {
+  "ref": "a8",
+  "edge": "start",
+  "off": 0.3,
+  "dur": 0.5,
+  "sfx": "bell:81"
+ },
+ "fh": {
+  "ref": "a9",
+  "edge": "start",
+  "off": 0.3,
+  "dur": 0.5
+ },
+ "fhBox": {
+  "ref": "a9",
+  "edge": "start",
+  "off": 1.0,
+  "dur": 0.4,
+  "sfx": "stamp"
+ },
+ "sweep": {
+  "ref": "a10",
+  "edge": "start",
+  "off": -0.1,
+  "dur": 2.0,
+  "sfx": "glide"
+ },
+ "proj": {
+  "ref": "a10",
+  "edge": "start",
+  "off": 0.0,
+  "dur": 0.6,
+  "sfx": "draw"
+ },
+ "res": {
+  "ref": "a11",
+  "edge": "start",
+  "off": 0.3,
+  "dur": 0.5
+ },
+ "resBox": {
+  "ref": "a11",
+  "edge": "start",
+  "off": 1.4,
+  "dur": 0.4,
+  "sfx": "boom"
+ },
+ "eq": {
+  "ref": "a12",
+  "edge": "start",
+  "off": 0.2,
+  "dur": 0.6,
+  "sfx": "chime"
+ }
+}

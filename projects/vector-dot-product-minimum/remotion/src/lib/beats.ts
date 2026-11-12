@@ -1,22 +1,15 @@
-import cfg from '../beats.json';
-import timing from '../timing.json';
+// Shot 01 adapter: the approved shot keeps its original API on top of the global timeline.
+import {BEATS, FPS as F, seg} from './timeline';
 
-type Beat = {ref: string; edge: 'start' | 'end'; off: number; dur: number};
-export const CFG = cfg;
-export const FPS = cfg.fps;
-export const LINES = timing.lines;
+export const FPS = F;
+export const CFG = {sweepDeg: [215, 195] as [number, number]};
+const S = seg('c1') as {start: number; end: number; lines: {id: string; start: number; end: number}[]};
+export const SHOT_DUR = S.end - S.start;
 
-const lineById = Object.fromEntries(timing.lines.map((l) => [l.id, l]));
-
-/** Shot-local [start, end] seconds of a named beat (anchored to a voice line). */
-export function beat(name: keyof typeof cfg.beats): {t0: number; t1: number} {
-  const b = cfg.beats[name] as Beat;
-  const line = lineById[b.ref];
+export function beat(name: string): {t0: number; t1: number} {
+  const b = BEATS.c1[name];
+  const line = S.lines.find((l) => l.id === b.ref);
   if (!line) throw new Error(`beat ${name}: unknown line ${b.ref}`);
-  const t0 = line[b.edge] + b.off;
+  const t0 = line[b.edge] - S.start + b.off;
   return {t0, t1: t0 + b.dur};
 }
-
-export const SHOT_DUR = timing.duration + cfg.shotTail;
-export const SHOT_START = cfg.card.dur - cfg.card.overlap; // global seconds
-export const TRIAL_DUR = SHOT_START + SHOT_DUR;

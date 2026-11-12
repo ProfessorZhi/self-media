@@ -1,0 +1,71 @@
+{
+ "tiles": {
+  "ref": "w1",
+  "edge": "start",
+  "off": 0.0,
+  "dur": 1.2,
+  "sfx": "ticks6"
+ },
+ "circles": {
+  "ref": "w2",
+  "edge": "start",
+  "off": 0.6,
+  "dur": 1.2,
+  "sfx": "chime"
+ },
+ "projs": {
+  "ref": "w3",
+  "edge": "start",
+  "off": 0.6,
+  "dur": 1.0,
+  "sfx": "chime"
+ },
+ "merge": {
+  "ref": "w4",
+  "edge": "start",
+  "off": 0.0,
+  "dur": 1.4,
+  "sfx": "whoosh"
+ },
+ "essence": {
+  "ref": "w4",
+  "edge": "start",
+  "off": 1.0,
+  "dur": 0.6,
+  "sfx": "boom"
+ },
+ "caveat": {
+  "ref": "w5",
+  "edge": "start",
+  "off": 0.0,
+  "dur": 0.6,
+  "sfx": "tick"
+ },
+ "ghost": {
+  "ref": "w5",
+  "edge": "start",
+  "off": 0.6,
+  "dur": 0.8,
+  "sfx": "draw"
+ },
+ "sides": {
+  "ref": "w6",
+  "edge": "start",
+  "off": 0.0,
+  "dur": 0.8,
+  "sfx": "bell:81"
+ },
+ "answer": {
+  "ref": "w7",
+  "edge": "start",
+  "off": 0.0,
+  "dur": 0.6,
+  "sfx": "boom"
+ },
+ "outro": {
+  "ref": "w8",
+  "edge": "start",
+  "off": 0.0,
+  "dur": 1.0
+ }
+}

@@ -1,0 +1,163 @@
+{
+ "intro": {
+  "ref": "b1",
+  "edge": "start",
+  "off": 0.0,
+  "dur": 0.8,
+  "sfx": "bell:86"
+ },
+ "bc": {
+  "ref": "b2",
+  "edge": "start",
+  "off": 0.0,
+  "dur": 0.8,
+  "sfx": "draw"
+ },
+ "f1": {
+  "ref": "b2",
+  "edge": "start",
+  "off": 0.4,
+  "dur": 0.5
+ },
+ "bcLen": {
+  "ref": "b2",
+  "edge": "start",
+  "off": 1.0,
+  "dur": 0.4,
+  "sfx": "tick"
+ },
+ "ang60": {
+  "ref": "b2",
+  "edge": "start",
+  "off": 2.0,
+  "dur": 0.5,
+  "sfx": "bell:79"
+ },
+ "neg": {
+  "ref": "b3",
+  "edge": "start",
+  "off": 0.1,
+  "dur": 0.5,
+  "sfx": "tick"
+ },
+ "side": {
+  "ref": "b4",
+  "edge": "start",
+  "off": 0.0,
+  "dur": 0.8,
+  "sfx": "whoosh"
+ },
+ "f2": {
+  "ref": "b4",
+  "edge": "start",
+  "off": 0.3,
+  "dur": 0.5
+ },
+ "f3": {
+  "ref": "b5",
+  "edge": "start",
+  "off": 0.2,
+  "dur": 0.5,
+  "sfx": "bell:83"
+ },
+ "pulse": {
+  "ref": "b5",
+  "edge": "start",
+  "off": 0.4,
+  "dur": 1.6
+ },
+ "circle": {
+  "ref": "b6",
+  "edge": "start",
+  "off": -0.1,
+  "dur": 1.8,
+  "sfx": "glide"
+ },
+ "f4": {
+  "ref": "b6",
+  "edge": "start",
+  "off": 0.6,
+  "dur": 0.5,
+  "sfx": "chime"
+ },
+ "diam": {
+  "ref": "b7",
+  "edge": "start",
+  "off": 0.5,
+  "dur": 0.8,
+  "sfx": "draw"
+ },
+ "f5": {
+  "ref": "b7",
+  "edge": "start",
+  "off": 0.8,
+  "dur": 0.5
+ },
+ "center": {
+  "ref": "b8",
+  "edge": "start",
+  "off": -0.1,
+  "dur": 0.4,
+  "sfx": "pop"
+ },
+ "radB": {
+  "ref": "b8",
+  "edge": "start",
+  "off": 0.0,
+  "dur": 0.6,
+  "sfx": "draw"
+ },
+ "f6": {
+  "ref": "b8",
+  "edge": "start",
+  "off": 0.2,
+  "dur": 0.5
+ },
+ "f7": {
+  "ref": "b9",
+  "edge": "start",
+  "off": 0.3,
+  "dur": 0.5,
+  "sfx": "tick"
+ },
+ "slide": {
+  "ref": "b10",
+  "edge": "start",
+  "off": -0.1,
+  "dur": 2.0,
+  "sfx": "glide"
+ },
+ "tangent": {
+  "ref": "b10",
+  "edge": "start",
+  "off": 1.4,
+  "dur": 0.7,
+  "sfx": "draw"
+ },
+ "f8": {
+  "ref": "b10",
+  "edge": "start",
+  "off": 1.8,
+  "dur": 0.5
+ },
+ "proj": {
+  "ref": "b11",
+  "edge": "start",
+  "off": 0.0,
+  "dur": 0.6,
+  "sfx": "draw"
+ },
+ "res": {
+  "ref": "b11",
+  "edge": "start",
+  "off": 0.3,
+  "dur": 0.5
+ },
+ "resBox": {
+  "ref": "b11",
+  "edge": "start",
+  "off": 1.0,
+  "dur": 0.4,
+  "sfx": "boom"
+ }
+}

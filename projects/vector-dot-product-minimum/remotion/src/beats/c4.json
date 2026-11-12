@@ -1,0 +1,83 @@
+{
+ "glow": {
+  "ref": "r1",
+  "edge": "start",
+  "off": 0.2,
+  "dur": 1.0,
+  "sfx": "bell:86"
+ },
+ "tri": {
+  "ref": "r1",
+  "edge": "start",
+  "off": 0.4,
+  "dur": 0.6
+ },
+ "f1": {
+  "ref": "r2",
+  "edge": "start",
+  "off": 0.4,
+  "dur": 0.5,
+  "sfx": "bell:79"
+ },
+ "radius": {
+  "ref": "r2",
+  "edge": "start",
+  "off": 1.6,
+  "dur": 0.8,
+  "sfx": "draw"
+ },
+ "f1Box": {
+  "ref": "r2",
+  "edge": "start",
+  "off": 4.0,
+  "dur": 0.4,
+  "sfx": "tick"
+ },
+ "mid": {
+  "ref": "r3",
+  "edge": "start",
+  "off": 0.2,
+  "dur": 0.8,
+  "sfx": "draw"
+ },
+ "f2": {
+  "ref": "r3",
+  "edge": "start",
+  "off": 0.4,
+  "dur": 0.5,
+  "sfx": "bell:81"
+ },
+ "slide": {
+  "ref": "r4",
+  "edge": "start",
+  "off": -0.2,
+  "dur": 1.6,
+  "sfx": "glide"
+ },
+ "dist": {
+  "ref": "r4",
+  "edge": "start",
+  "off": 1.0,
+  "dur": 0.6,
+  "sfx": "draw"
+ },
+ "f3": {
+  "ref": "r4",
+  "edge": "start",
+  "off": 1.3,
+  "dur": 0.5
+ },
+ "res": {
+  "ref": "r5",
+  "edge": "start",
+  "off": 0.1,
+  "dur": 0.5
+ },
+ "resBox": {
+  "ref": "r5",
+  "edge": "start",
+  "off": 0.7,
+  "dur": 0.4,
+  "sfx": "stamp"
+ }
+}

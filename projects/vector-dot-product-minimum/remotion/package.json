@@ -9,7 +9,8 @@
     "test": "node scripts/check_geometry.mjs",
     "studio": "remotion studio",
     "still": "remotion still",
-    "render:trial": "remotion render Shot01Trial out/video002_shot01_trial.mp4 --audio-codec=aac --crf=16 && bash scripts/master.sh out/video002_shot01_trial.mp4"
+    "render": "remotion render Film out/video002_vector_minimum.mp4 --audio-codec=aac --crf=16 && bash scripts/master.sh out/video002_vector_minimum.mp4",
+    "preview": "remotion render Film out/preview.mp4 --scale=0.5 --props={\\\"withAudio\\\":false}"
   },
   "dependencies": {
     "@remotion/cli": "4.0.536",

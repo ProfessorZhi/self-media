@@ -1,0 +1,118 @@
+{
+ "grid": {
+  "ref": "v2",
+  "edge": "start",
+  "off": 0.0,
+  "dur": 1.0,
+  "sfx": "draw"
+ },
+ "f1": {
+  "ref": "v3",
+  "edge": "start",
+  "off": 0.3,
+  "dur": 0.5,
+  "sfx": "bell:79"
+ },
+ "f2": {
+  "ref": "v3",
+  "edge": "start",
+  "off": 2.0,
+  "dur": 0.5,
+  "sfx": "bell:81"
+ },
+ "f3": {
+  "ref": "v4",
+  "edge": "start",
+  "off": 0.0,
+  "dur": 0.5
+ },
+ "circle": {
+  "ref": "v4",
+  "edge": "start",
+  "off": 0.0,
+  "dur": 1.8,
+  "sfx": "glide"
+ },
+ "f3Box": {
+  "ref": "v4",
+  "edge": "start",
+  "off": 1.2,
+  "dur": 0.4,
+  "sfx": "stamp"
+ },
+ "tangent": {
+  "ref": "v5",
+  "edge": "start",
+  "off": 0.0,
+  "dur": 0.7,
+  "sfx": "draw"
+ },
+ "f4": {
+  "ref": "v5",
+  "edge": "start",
+  "off": 0.2,
+  "dur": 0.5,
+  "sfx": "tick"
+ },
+ "clear": {
+  "ref": "v6",
+  "edge": "start",
+  "off": -0.2,
+  "dur": 0.5,
+  "sfx": "whoosh"
+ },
+ "f5": {
+  "ref": "v6",
+  "edge": "start",
+  "off": 0.4,
+  "dur": 0.5
+ },
+ "center": {
+  "ref": "v7",
+  "edge": "start",
+  "off": 0.0,
+  "dur": 0.4,
+  "sfx": "pop"
+ },
+ "z": {
+  "ref": "v7",
+  "edge": "start",
+  "off": 0.3,
+  "dur": 0.8,
+  "sfx": "draw"
+ },
+ "f6": {
+  "ref": "v7",
+  "edge": "start",
+  "off": 0.6,
+  "dur": 0.5,
+  "sfx": "bell:81"
+ },
+ "f7": {
+  "ref": "v8",
+  "edge": "start",
+  "off": 0.4,
+  "dur": 0.5,
+  "sfx": "bell:83"
+ },
+ "spin": {
+  "ref": "v8",
+  "edge": "start",
+  "off": 0.6,
+  "dur": 3.4,
+  "sfx": "glide"
+ },
+ "f8": {
+  "ref": "v9",
+  "edge": "start",
+  "off": 0.3,
+  "dur": 0.5
+ },
+ "resBox": {
+  "ref": "v9",
+  "edge": "start",
+  "off": 1.4,
+  "dur": 0.4,
+  "sfx": "boom"
+ }
+}

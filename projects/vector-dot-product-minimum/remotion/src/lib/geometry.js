@@ -31,3 +31,11 @@ export function angleADCdeg(D) {
 
 // AD·AB = |AB|·x_D = 2·x_D (because AB lies on the x-axis).
 export const dotADAB = (D) => dot(sub(D, A), sub(B, A));
+
+// Method 4 (trig): θ = ∠DAC ∈ (0°, 60°). AD = 4 sin(60° − θ) and AD points at 90° + θ.
+export function dFromTheta(thetaDeg) {
+  const th = (thetaDeg * Math.PI) / 180;
+  const ad = 4 * Math.sin(Math.PI / 3 - th);
+  return {x: ad * Math.cos(Math.PI / 2 + th), y: ad * Math.sin(Math.PI / 2 + th)};
+}
+export const trigDot = (thetaDeg) => 2 - 4 * Math.cos(((2 * thetaDeg - 60) * Math.PI) / 180);

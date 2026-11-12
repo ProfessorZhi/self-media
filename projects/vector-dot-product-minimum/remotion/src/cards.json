@@ -1,0 +1,505 @@
+{
+ "title": {
+  "num": "",
+  "title": [
+   "一道向量最值题",
+   "藏着多少种解法？"
+  ],
+  "sub": "SIX WAYS · ONE PROJECTION",
+  "swell": null,
+  "shapes": [
+   {
+    "type": "tri",
+    "pts": [
+     [
+      1060,
+      920
+     ],
+     [
+      1060,
+      540
+     ],
+     [
+      1560,
+      920
+     ]
+    ],
+    "color": "bYellow",
+    "at": 0.35
+   },
+   {
+    "type": "circle",
+    "x": 1420,
+    "y": 470,
+    "r": 250,
+    "color": "bRed",
+    "at": 0.2,
+    "multiply": true
+   },
+   {
+    "type": "rect",
+    "x": 1060,
+    "y": 824,
+    "w": 96,
+    "h": 96,
+    "color": "bBlue",
+    "at": 0.55
+   },
+   {
+    "type": "line",
+    "x1": 1250,
+    "y1": 760,
+    "x2": 1590,
+    "y2": 180,
+    "w": 8,
+    "color": "bBlack",
+    "at": 0.75
+   },
+   {
+    "type": "circle",
+    "x": 1420,
+    "y": 470,
+    "r": 10,
+    "color": "paper",
+    "at": 0.9
+   }
+  ]
+ },
+ "c1card": {
+  "num": "01",
+  "title": [
+   "把点积变成投影"
+  ],
+  "sub": "DOT PRODUCT → PROJECTION",
+  "swell": {
+   "x": 1385,
+   "y": 500,
+   "r": 235
+  },
+  "shapes": [
+   {
+    "type": "tri",
+    "pts": [
+     [
+      1080,
+      900
+     ],
+     [
+      1080,
+      470
+     ],
+     [
+      1560,
+      900
+     ]
+    ],
+    "color": "bYellow",
+    "at": 0.35,
+    "multiply": true
+   },
+   {
+    "type": "rect",
+    "x": 1080,
+    "y": 804,
+    "w": 96,
+    "h": 96,
+    "color": "bBlue",
+    "at": 0.55
+   },
+   {
+    "type": "line",
+    "x1": 1238,
+    "y1": 754,
+    "x2": 1532,
+    "y2": 246,
+    "w": 8,
+    "color": "bBlack",
+    "at": 0.75
+   }
+  ]
+ },
+ "c2card": {
+  "num": "02",
+  "title": [
+   "解法一 · 面积"
+  ],
+  "sub": "THE SAME AREA, TWICE",
+  "swell": {
+   "x": 1650,
+   "y": 290,
+   "r": 95
+  },
+  "shapes": [
+   {
+    "type": "tri",
+    "pts": [
+     [
+      1080,
+      880
+     ],
+     [
+      1720,
+      880
+     ],
+     [
+      1080,
+      360
+     ]
+    ],
+    "color": "bYellow",
+    "at": 0.3
+   },
+   {
+    "type": "line",
+    "x1": 1080,
+    "y1": 880,
+    "x2": 1395,
+    "y2": 623,
+    "w": 10,
+    "color": "bBlack",
+    "at": 0.7
+   },
+   {
+    "type": "rect",
+    "x": 1080,
+    "y": 900,
+    "w": 640,
+    "h": 20,
+    "color": "bBlue",
+    "at": 0.5
+   }
+  ]
+ },
+ "c3card": {
+  "num": "03",
+  "title": [
+   "解法二 · 直径圆"
+  ],
+  "sub": "A RIGHT ANGLE SEES A DIAMETER",
+  "swell": {
+   "x": 1420,
+   "y": 540,
+   "r": 300
+  },
+  "shapes": [
+   {
+    "type": "tri",
+    "pts": [
+     [
+      1160,
+      690
+     ],
+     [
+      1680,
+      390
+     ],
+     [
+      1270,
+      800
+     ]
+    ],
+    "color": "bYellow",
+    "at": 0.55,
+    "multiply": true
+   },
+   {
+    "type": "line",
+    "x1": 1120,
+    "y1": 713,
+    "x2": 1720,
+    "y2": 367,
+    "w": 8,
+    "color": "bBlack",
+    "at": 0.75
+   },
+   {
+    "type": "rect",
+    "x": 1240,
+    "y": 770,
+    "w": 60,
+    "h": 60,
+    "color": "bBlue",
+    "at": 0.7
+   }
+  ]
+ },
+ "c4card": {
+  "num": "04",
+  "title": [
+   "解法三 · 外接圆"
+  ],
+  "sub": "CIRCUMCIRCLE OF △ADC",
+  "swell": {
+   "x": 1420,
+   "y": 540,
+   "r": 26
+  },
+  "shapes": [
+   {
+    "type": "ring",
+    "x": 1420,
+    "y": 540,
+    "r": 300,
+    "w": 26,
+    "color": "bRed",
+    "at": 0.2
+   },
+   {
+    "type": "tri",
+    "pts": [
+     [
+      1160,
+      690
+     ],
+     [
+      1420,
+      240
+     ],
+     [
+      1680,
+      690
+     ]
+    ],
+    "color": "bYellow",
+    "at": 0.4
+   },
+   {
+    "type": "line",
+    "x1": 1160,
+    "y1": 690,
+    "x2": 1680,
+    "y2": 690,
+    "w": 10,
+    "color": "bBlack",
+    "at": 0.65
+   },
+   {
+    "type": "rect",
+    "x": 1395,
+    "y": 690,
+    "w": 50,
+    "h": 150,
+    "color": "bBlue",
+    "at": 0.8
+   }
+  ]
+ },
+ "c5card": {
+  "num": "05",
+  "title": [
+   "解法四 · 三角函数"
+  ],
+  "sub": "2 − 4cos(2θ − 60°)",
+  "swell": {
+   "x": 1240,
+   "y": 330,
+   "r": 140
+  },
+  "shapes": [
+   {
+    "type": "wave",
+    "x": 1020,
+    "y": 650,
+    "w": 780,
+    "amp": 170,
+    "cycles": 1.0,
+    "stroke": 12,
+    "color": "bBlack",
+    "at": 0.45
+   },
+   {
+    "type": "rect",
+    "x": 1020,
+    "y": 860,
+    "w": 780,
+    "h": 20,
+    "color": "bBlue",
+    "at": 0.6
+   },
+   {
+    "type": "tri",
+    "pts": [
+     [
+      1580,
+      250
+     ],
+     [
+      1760,
+      250
+     ],
+     [
+      1760,
+      430
+     ]
+    ],
+    "color": "bYellow",
+    "at": 0.35
+   }
+  ]
+ },
+ "c6card": {
+  "num": "06",
+  "title": [
+   "解法五、六 · 坐标与向量"
+  ],
+  "sub": "COORDINATES & VECTORS",
+  "swell": {
+   "x": 1450,
+   "y": 470,
+   "r": 200
+  },
+  "shapes": [
+   {
+    "type": "grid",
+    "x": 1050,
+    "y": 250,
+    "w": 640,
+    "h": 600,
+    "step": 80,
+    "color": "bBlack",
+    "at": 0.2
+   },
+   {
+    "type": "arrow",
+    "x1": 1050,
+    "y1": 850,
+    "x2": 1760,
+    "y2": 850,
+    "w": 10,
+    "color": "bBlack",
+    "at": 0.4
+   },
+   {
+    "type": "arrow",
+    "x1": 1050,
+    "y1": 850,
+    "x2": 1050,
+    "y2": 190,
+    "w": 10,
+    "color": "bBlack",
+    "at": 0.5
+   },
+   {
+    "type": "arrow",
+    "x1": 1450,
+    "y1": 470,
+    "x2": 1250,
+    "y2": 470,
+    "w": 10,
+    "color": "bYellow",
+    "at": 0.85
+   }
+  ]
+ },
+ "c7card": {
+  "num": "07",
+  "title": [
+   "六种写法，一个本质"
+  ],
+  "sub": "ONE IDEA BEHIND SIX WAYS",
+  "swell": {
+   "x": 1420,
+   "y": 540,
+   "r": 230
+  },
+  "shapes": [
+   {
+    "type": "rect",
+    "x": 1110,
+    "y": 230,
+    "w": 150,
+    "h": 150,
+    "color": "bBlue",
+    "at": 0.3
+   },
+   {
+    "type": "tri",
+    "pts": [
+     [
+      1500,
+      860
+     ],
+     [
+      1780,
+      860
+     ],
+     [
+      1780,
+      560
+     ]
+    ],
+    "color": "bYellow",
+    "at": 0.45
+   },
+   {
+    "type": "line",
+    "x1": 1060,
+    "y1": 540,
+    "x2": 1790,
+    "y2": 540,
+    "w": 10,
+    "color": "bBlack",
+    "at": 0.7
+   }
+  ]
+ },
+ "end": {
+  "num": "",
+  "title": [
+   "最小值  −2",
+   "选 D"
+  ],
+  "sub": "六种写法 · 一个投影",
+  "swell": null,
+  "final": true,
+  "shapes": [
+   {
+    "type": "circle",
+    "x": 1420,
+    "y": 500,
+    "r": 270,
+    "color": "bRed",
+    "at": 0.2
+   },
+   {
+    "type": "tri",
+    "pts": [
+     [
+      1080,
+      920
+     ],
+     [
+      1080,
+      560
+     ],
+     [
+      1560,
+      920
+     ]
+    ],
+    "color": "bYellow",
+    "at": 0.35,
+    "multiply": true
+   },
+   {
+    "type": "rect",
+    "x": 1080,
+    "y": 824,
+    "w": 96,
+    "h": 96,
+    "color": "bBlue",
+    "at": 0.55
+   },
+   {
+    "type": "line",
+    "x1": 1150,
+    "y1": 500,
+    "x2": 1690,
+    "y2": 500,
+    "w": 8,
+    "color": "bBlack",
+    "at": 0.75
+   }
+  ]
+ }
+}

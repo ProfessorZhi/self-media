@@ -1,6 +1,6 @@
 # VIDEO-002 · 一道向量最值题，藏着多少种解法？
 
-**状态：BUILDING（镜头 01 试片 v0.1）** · v0.1 · 2026-11-12  
+**状态：REVIEW（完整片 v1，候选）** · v0.1 · 2026-11-12  
 **项目编号：VIDEO-002** · slug：vector-dot-product-minimum
 
 把一道高中向量最值选择题从“点积”转换成“投影”，用面积不等式与直径圆两条路线求最小值，再用三角函数验证。
@@ -15,7 +15,7 @@
 - [立项章程](PROJECT_CHARTER.md) · [创意简报](CREATIVE_BRIEF.md) · [制作计划](PRODUCTION_PLAN.md)。
 - [LaTeX 编译说明](latex/README.md) · [来源与许可](reference/SOURCES.md)。
 
-**进度：** [Remotion 工程](remotion/README.md)已完成第 1 镜试片（章节卡加“点积 → 投影”，约 22 秒），配音是试用 TTS。其余镜头、正式配音和发布还没做。本地已验证 XeLaTeX 编译 4 页 PDF，并检查了首图标注；本仓追踪 LaTeX 源码，PDF 供独立交付及审阅。
+**进度：** [Remotion 工程](remotion/README.md)已渲染完整片 v1：4 分 11 秒，开场加七章，六种解法全部讲到，含片头片尾卡。配音是试用 TTS。正式配音、竖版和发布还没做。
 
 ## 本期结构
 

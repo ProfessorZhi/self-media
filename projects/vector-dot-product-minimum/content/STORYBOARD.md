@@ -1,3 +1,5 @@
+> **v1 更新（2026-11-12）：** 实际成片结构见 [`remotion/README.md`](../remotion/README.md) 的结构表，节拍定义在 `remotion/src/beats/`；下方保留 v0.1 分镜作为历史。
+
 # 分镜与屏幕公式 · VIDEO-002 v0.1
 
 | 时间码 | 画面动作 | 屏幕 LaTeX | 目的 |

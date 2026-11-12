@@ -1,0 +1,75 @@
+{
+ "axes": {
+  "ref": "t1",
+  "edge": "start",
+  "off": 0.3,
+  "dur": 1.0,
+  "sfx": "draw"
+ },
+ "theta": {
+  "ref": "t2",
+  "edge": "start",
+  "off": 0.0,
+  "dur": 0.6,
+  "sfx": "bell:79"
+ },
+ "f1": {
+  "ref": "t3",
+  "edge": "start",
+  "off": 0.3,
+  "dur": 0.5,
+  "sfx": "bell:81"
+ },
+ "adGlow": {
+  "ref": "t3",
+  "edge": "start",
+  "off": 0.3,
+  "dur": 1.2
+ },
+ "f2": {
+  "ref": "t4",
+  "edge": "start",
+  "off": 0.3,
+  "dur": 0.5
+ },
+ "curve": {
+  "ref": "t4",
+  "edge": "start",
+  "off": 0.5,
+  "dur": 1.8,
+  "sfx": "draw"
+ },
+ "f3": {
+  "ref": "t5",
+  "edge": "start",
+  "off": 0.3,
+  "dur": 0.5,
+  "sfx": "whoosh"
+ },
+ "sweep": {
+  "ref": "t6",
+  "edge": "start",
+  "off": -0.2,
+  "dur": 3.0,
+  "sfx": "glide"
+ },
+ "f4": {
+  "ref": "t6",
+  "edge": "start",
+  "off": 0.4,
+  "dur": 0.5
+ },
+ "lock": {
+  "ref": "t7",
+  "edge": "start",
+  "off": 0.1,
+  "dur": 0.6,
+  "sfx": "boom"
+ },
+ "f5": {
+  "ref": "t7",
+  "edge": "start",
+  "off": 0.3,
+  "dur": 0.5
+ }
+}

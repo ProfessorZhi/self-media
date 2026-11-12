@@ -1,0 +1,129 @@
+{
+ "frame": {
+  "ref": "h1",
+  "edge": "start",
+  "off": -0.3,
+  "dur": 0.9,
+  "sfx": "draw"
+ },
+ "tag": {
+  "ref": "h1",
+  "edge": "start",
+  "off": 0.1,
+  "dur": 0.5
+ },
+ "cond1": {
+  "ref": "h2",
+  "edge": "start",
+  "off": 0.0,
+  "dur": 0.5
+ },
+ "ab": {
+  "ref": "h2",
+  "edge": "start",
+  "off": 0.1,
+  "dur": 1.0,
+  "sfx": "draw"
+ },
+ "cond2": {
+  "ref": "h2",
+  "edge": "start",
+  "off": 1.1,
+  "dur": 0.5
+ },
+ "ac": {
+  "ref": "h2",
+  "edge": "start",
+  "off": 1.2,
+  "dur": 1.0,
+  "sfx": "draw"
+ },
+ "cond3": {
+  "ref": "h2",
+  "edge": "start",
+  "off": 2.4,
+  "dur": 0.5
+ },
+ "right": {
+  "ref": "h2",
+  "edge": "start",
+  "off": 2.5,
+  "dur": 0.4,
+  "sfx": "tick"
+ },
+ "cond4": {
+  "ref": "h3",
+  "edge": "start",
+  "off": 0.0,
+  "dur": 0.5
+ },
+ "d": {
+  "ref": "h3",
+  "edge": "start",
+  "off": 0.0,
+  "dur": 0.4,
+  "sfx": "bell:76"
+ },
+ "adcd": {
+  "ref": "h3",
+  "edge": "start",
+  "off": 0.15,
+  "dur": 0.8,
+  "sfx": "draw"
+ },
+ "ang": {
+  "ref": "h3",
+  "edge": "start",
+  "off": 0.7,
+  "dur": 0.5,
+  "sfx": "bell:81"
+ },
+ "ask": {
+  "ref": "h4",
+  "edge": "start",
+  "off": 0.2,
+  "dur": 0.6,
+  "sfx": "chime"
+ },
+ "opts": {
+  "ref": "h4",
+  "edge": "start",
+  "off": 1.0,
+  "dur": 1.0,
+  "sfx": "ticks4"
+ },
+ "dim": {
+  "ref": "h5",
+  "edge": "start",
+  "off": -0.2,
+  "dur": 0.5
+ },
+ "brute": {
+  "ref": "h5",
+  "edge": "start",
+  "off": 0.0,
+  "dur": 1.2,
+  "sfx": "whoosh"
+ },
+ "cross": {
+  "ref": "h5",
+  "edge": "start",
+  "off": 0.9,
+  "dur": 0.4,
+  "sfx": "thump"
+ },
+ "six": {
+  "ref": "h6",
+  "edge": "start",
+  "off": 0.2,
+  "dur": 1.6,
+  "sfx": "ticks6"
+ },
+ "proj": {
+  "ref": "h7",
+  "edge": "start",
+  "off": 0.9,
+  "dur": 0.8,
+  "sfx": "boom"
+ }
+}

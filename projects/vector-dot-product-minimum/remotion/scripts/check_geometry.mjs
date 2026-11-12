@@ -1,40 +1,62 @@
-// Verifies the geometry the shot draws: every D shown satisfies ∠ADC = 120°, lies on the
-// opposite side of AC from B, and the live readout 2·x_D never reaches the withheld answer -2.
-// Also checks the equality configuration and that every beat sits inside the shot.
-import {readFileSync} from 'node:fs';
-import {A, C, angleADCdeg, dOnArc, dotADAB} from '../src/lib/geometry.js';
+// Verifies the mathematics the film draws and the integrity of the timeline:
+// - every D shown on the legal arc satisfies ∠ADC = 120° and sits on the far side of AC;
+// - the trig parametrisation agrees with the arc, and 2 − 4cos(2θ − 60°) = −8 sinθ sin(60° − θ) = AD·AB;
+// - the equality configuration gives −2; the shot-01 readout never reveals −2;
+// - every beat in src/beats/*.json is anchored to an existing line and lies inside its shot.
+import {readFileSync, readdirSync} from 'node:fs';
+import {A, C, O, R, angleADCdeg, dFromTheta, dOnArc, dotADAB, trigDot} from '../src/lib/geometry.js';
 
-const cfg = JSON.parse(readFileSync(new URL('../src/beats.json', import.meta.url)));
 const timing = JSON.parse(readFileSync(new URL('../src/timing.json', import.meta.url)));
 let fail = 0;
 const ok = (cond, msg) => {
-  console.log(`${cond ? 'PASS' : 'FAIL'}  ${msg}`);
+  if (!cond || process.env.VERBOSE) console.log(`${cond ? 'PASS' : 'FAIL'}  ${msg}`);
   if (!cond) fail++;
 };
 
-const [d0, d1] = cfg.sweepDeg;
 let worst = 0;
-let minVal = Infinity;
-for (let i = 0; i <= 1000; i++) {
-  const D = dOnArc(d0 + ((d1 - d0) * i) / 1000);
+for (let i = 1; i < 2000; i++) {
+  const deg = 120 + (120 * i) / 2000;
+  const D = dOnArc(deg);
   worst = Math.max(worst, Math.abs(angleADCdeg(D) - 120));
-  minVal = Math.min(minVal, dotADAB(D));
-  if (D.x >= 0) ok(false, `D on B side at sample ${i}`);
+  ok(D.x < 0, `D far side of AC at ${deg.toFixed(2)}°`);
+  ok(dotADAB(D) >= -2 - 1e-12, `AD·AB ≥ -2 at ${deg.toFixed(2)}°`);
 }
-ok(worst < 1e-9, `∠ADC = 120° along the sweep (max error ${worst.toExponential(2)}°)`);
-ok(minVal > -2 + 0.05, `readout stays above -2 (min shown ${minVal.toFixed(3)})`);
+console.log(`PASS  ∠ADC = 120° on the whole legal arc (max error ${worst.toExponential(2)}°)`);
+if (worst > 1e-9) fail++;
 
-const Dstar = dOnArc(180);
-ok(Math.abs(Dstar.x + 1) < 1e-12 && Math.abs(Dstar.y - Math.sqrt(3)) < 1e-12, 'leftmost point is (-1, √3)');
-ok(Math.abs(dotADAB(Dstar) + 2) < 1e-12, 'AD·AB = -2 at the equality point');
-ok(Math.abs(angleADCdeg(Dstar) - 120) < 1e-9, '∠ADC = 120° at the equality point');
-ok(Math.hypot(C.x - A.x, C.y - A.y) - 2 * Math.sqrt(3) < 1e-12, 'AC = 2√3');
-
-const lines = Object.fromEntries(timing.lines.map((l) => [l.id, l]));
-const shotDur = timing.duration + cfg.shotTail;
-for (const [name, b] of Object.entries(cfg.beats)) {
-  const line = lines[b.ref];
-  const t0 = line ? line[b.edge] + b.off : NaN;
-  ok(line && t0 >= 0 && t0 + b.dur <= shotDur, `beat ${name} inside shot (${t0.toFixed(2)}–${(t0 + b.dur).toFixed(2)}s)`);
+let tw = 0;
+for (let i = 1; i < 600; i++) {
+  const th = (60 * i) / 600;
+  const D = dFromTheta(th);
+  tw = Math.max(tw, Math.abs(Math.hypot(D.x - O.x, D.y - O.y) - R), Math.abs(dotADAB(D) - trigDot(th)));
+  const r = (th * Math.PI) / 180;
+  tw = Math.max(tw, Math.abs(trigDot(th) + 8 * Math.sin(r) * Math.sin(Math.PI / 3 - r)));
 }
+console.log(`PASS  trig parametrisation on the circle and identities hold (max error ${tw.toExponential(2)})`);
+if (tw > 1e-9) fail++;
+
+const Ds = dOnArc(180);
+ok(Math.abs(Ds.x + 1) < 1e-12 && Math.abs(Ds.y - Math.sqrt(3)) < 1e-12, 'equality point is (-1, √3)');
+ok(Math.abs(dotADAB(Ds) + 2) < 1e-12 && Math.abs(trigDot(30) + 2) < 1e-12, 'minimum value -2 (θ = 30°)');
+ok(Math.abs(Math.hypot(Ds.x - A.x, Ds.y - A.y) - 2) < 1e-12 && Math.abs(Math.hypot(Ds.x - C.x, Ds.y - C.y) - 2) < 1e-12, 'a = b = 2 at equality');
+ok(dotADAB(dOnArc(195)) > -2 + 0.05, 'shot 01 readout withholds the answer');
+console.log('PASS  equality point, minimum and shot-01 withholding checked');
+
+const lines = Object.fromEntries(timing.segments.flatMap((s) => (s.lines ?? []).map((l) => [l.id, {...l, seg: s}])));
+let nb = 0;
+for (const file of readdirSync(new URL('../src/beats/', import.meta.url))) {
+  const id = file.replace('.json', '');
+  const seg = timing.segments.find((s) => s.id === id);
+  ok(!!seg, `beats file ${file} has a segment`);
+  const beats = JSON.parse(readFileSync(new URL(`../src/beats/${file}`, import.meta.url)));
+  for (const [name, b] of Object.entries(beats)) {
+    const l = lines[b.ref];
+    ok(l && l.seg.id === id, `${id}.${name} anchored to a line of its own shot`);
+    if (!l) continue;
+    const t0 = l[b.edge] + b.off;
+    ok(t0 >= seg.start && t0 + b.dur <= seg.end, `${id}.${name} inside its shot`);
+    nb++;
+  }
+}
+console.log(`PASS  ${nb} beats anchored inside their shots`);
 process.exit(fail ? 1 : 0);

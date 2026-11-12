@@ -1,7 +1,6 @@
 import React from 'react';
 import {AbsoluteFill, useCurrentFrame} from 'remotion';
 import {ArrowHead, Dot, DrawLine, DrawPath, GlowDefs} from '../components/Draw';
-import {Subtitles} from '../components/Subtitles';
 import {Tex} from '../components/Tex';
 import {backOut, easeInOut, easeOut, prog} from '../lib/anim';
 import {beat, CFG, FPS, SHOT_DUR} from '../lib/beats';
@@ -30,7 +29,7 @@ const Label: React.FC<{at: {x: number; y: number}; dx?: number; dy?: number; s: 
 
 export const Shot01Projection: React.FC = () => {
   const t = useCurrentFrame() / FPS;
-  const w = (name: Parameters<typeof beat>[0], ease = easeInOut) => {
+  const w = (name: string, ease = easeInOut) => {
     const b = beat(name);
     return prog(t, b.t0, b.t1, ease);
   };
@@ -187,7 +186,6 @@ export const Shot01Projection: React.FC = () => {
       <div style={{position: 'absolute', left: 120, top: 70, fontSize: 22, letterSpacing: 4, color: T.muted}}>01 · 点积 → 投影</div>
       <div style={{position: 'absolute', right: 120, top: 70, fontSize: 22, letterSpacing: 4, color: T.muted}}>VIDEO-002</div>
 
-      <Subtitles t={t} />
     </AbsoluteFill>
   );
 };
