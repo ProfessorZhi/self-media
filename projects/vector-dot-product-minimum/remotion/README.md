@@ -2,6 +2,14 @@
 
 **状态：REVIEW 候选 · 完整片 v1（2026-11-12）**。完整片约 4 分 11 秒，16:9 1080p。配音是试用 TTS；还没有正式发布。
 
+## 渲染记录
+
+| 版本 | 文件 | 规格 | SHA-256 |
+| --- | --- | --- | --- |
+| v1（源码 `85cdfd7`） | `video002_vector_minimum_master.mp4`，23,959,683 字节 | 1920×1080 · 30fps · 4:11.5 · H.264 + AAC · −16.4 LUFS | `63c02ea5a9ce33e1995e3c5d036e2400c019e0dbdb8a17902bb7814c52b3a05a` |
+
+成片不进 git。计划作为 GitHub Release 附件交付（待上传）。
+
 ## 结构
 
 章节顺序与 [`latex/analysis.tex`](../latex/analysis.tex) 的六种解法编号一一对应。
