@@ -66,6 +66,10 @@ self-media/
 4. **License-aware**：开源的是有权授权的源码。**源网站公开不代表素材属于 MIT。** 不上传凭据、Cookies、受限素材或未经授权的原文。
 5. **Source ≠ release**：提交源码不等于通过审片，更不等于成片正式发布。项目阶段为 `IDEA → PLANNED → BUILDING → REVIEW → PUBLISHED`（或 `ARCHIVED`）。
 
+## Video tools / 视频制作工具
+
+第三方视频创作工具通过 Git Submodules 以固定版本存放在 [`tools/`](tools/README.md)，当前包含 `video-shotcraft`、`video-talkcraft`、`anything2explainer`、`mg-styles-15`。默认不下载全部上游素材；按需初始化即可。**第三方许可证独立于本仓 MIT**，其中两个工具限制商业使用；详情和命令见 [工具说明](tools/README.md)。
+
 ## Open source & contributions / 开放许可
 
 本仓**贡献者拥有授权权利的原创源代码**以 [MIT License](LICENSE) 开放，欢迎学习、修改、引用或创建新作品。请先阅读 [贡献指南](CONTRIBUTING.md)、[来源与素材许可](RIGHTS_AND_SOURCES.md) 和 [安全准则](SECURITY.md)。

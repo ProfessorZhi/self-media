@@ -1,0 +1,15 @@
+[submodule "tools/video-shotcraft"]
+	path = tools/video-shotcraft
+	url = https://github.com/Vincentwei1021/video-shotcraft.git
+
+[submodule "tools/video-talkcraft"]
+	path = tools/video-talkcraft
+	url = https://github.com/Vincentwei1021/video-talkcraft.git
+
+[submodule "tools/anything2explainer"]
+	path = tools/anything2explainer
+	url = https://github.com/Vincentwei1021/anything2explainer.git
+
+[submodule "tools/mg-styles-15"]
+	path = tools/mg-styles-15
+	url = https://github.com/Vincentwei1021/mg-styles-15.git
