@@ -1,0 +1,29 @@
+{
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "card": {"dur": 3.4, "overlap": 0.7},
+  "shotTail": 3.2,
+  "sweepDeg": [215, 195],
+  "beats": {
+    "A_pop":        {"ref": "l1", "edge": "start", "off": -0.25, "dur": 0.4},
+    "AB_draw":      {"ref": "l1", "edge": "start", "off": 0.05,  "dur": 1.3},
+    "AC_draw":      {"ref": "l2", "edge": "start", "off": 0.0,   "dur": 1.3},
+    "BC_ghost":     {"ref": "l2", "edge": "end",   "off": -0.3,  "dur": 0.9},
+    "right_angle":  {"ref": "l3", "edge": "start", "off": 0.0,   "dur": 0.5},
+    "perp_tag":     {"ref": "l3", "edge": "start", "off": 0.25,  "dur": 0.5},
+    "D_pop":        {"ref": "l4", "edge": "start", "off": -0.15, "dur": 0.4},
+    "AD_draw":      {"ref": "l4", "edge": "start", "off": 0.05,  "dur": 0.8},
+    "CD_draw":      {"ref": "l4", "edge": "start", "off": 0.45,  "dur": 0.7},
+    "angle120":     {"ref": "l4", "edge": "start", "off": 0.9,   "dur": 0.5},
+    "proj_drop":    {"ref": "l4", "edge": "start", "off": 1.0,   "dur": 0.5},
+    "proj_shadow":  {"ref": "l4", "edge": "start", "off": 1.35,  "dur": 0.6},
+    "dist_draw":    {"ref": "l5", "edge": "start", "off": 0.55,  "dur": 0.7},
+    "xD_label":     {"ref": "l5", "edge": "start", "off": 1.15,  "dur": 0.4},
+    "formula":      {"ref": "l5", "edge": "start", "off": 1.5,   "dur": 0.6},
+    "formula_morph":{"ref": "l6", "edge": "start", "off": -0.35, "dur": 0.6},
+    "min_mark":     {"ref": "l6", "edge": "start", "off": 0.35,  "dur": 0.5},
+    "sweep":        {"ref": "l7", "edge": "start", "off": -0.1,  "dur": 3.2},
+    "question":     {"ref": "l8", "edge": "start", "off": 0.25,  "dur": 0.6}
+  }
+}

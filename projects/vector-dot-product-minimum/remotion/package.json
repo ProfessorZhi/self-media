@@ -1,0 +1,26 @@
+{
+  "name": "vector-dot-product-minimum",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "voice": "python3 scripts/build_voice.py",
+    "audio": "python3 scripts/compose_audio.py",
+    "test": "node scripts/check_geometry.mjs",
+    "studio": "remotion studio",
+    "still": "remotion still",
+    "render:trial": "remotion render Shot01Trial out/video002_shot01_trial.mp4 --audio-codec=aac --crf=16 && bash scripts/master.sh out/video002_shot01_trial.mp4"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.536",
+    "katex": "0.16.22",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.536"
+  },
+  "devDependencies": {
+    "@types/katex": "0.16.7",
+    "@types/react": "18.3.31",
+    "typescript": "5.9.3"
+  }
+}
