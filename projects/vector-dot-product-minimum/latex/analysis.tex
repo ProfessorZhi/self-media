@@ -36,12 +36,12 @@ AB=2,\quad AC=2\sqrt3,\quad AC\perp AB,\quad \angle ADC=\frac{2\pi}{3}.
 \draw[red!70!black,dashed] (D)--(H);
 \draw[red!70!black,dashed] (O)--(D);
 \draw (0,0) rectangle (.16,.16);
-\foreach \P/\pos in {A/below right,B/below right,C/above left,D/left,O/above right,H/below right}
+\foreach \P/\pos in {A/below left,B/below right,C/above left,D/left,O/above right,H/below right}
  {\fill (\P) circle (1.3pt) node[\pos] {$\P$};}
-\node at (1,-.28) {$AB=2$};
-\node at (.5,3.06) {$AC=2\sqrt3$};
-\node[red!70!black] at (-.5,1.50) {$h=1$};
-\pic[draw,angle radius=.40cm,angle eccentricity=1.45,"$120^\circ$"]{angle=A--D--C};
+\node at (1,-.48) {$AB=2$};
+\node[red!70!black] at (-.55,1.28) {$h=1$};
+\pic[draw,angle radius=.40cm]{angle=A--D--C};
+\node at (-1.50,2.06) {$120^\circ$};
 \end{tikzpicture}
 \end{center}
 
