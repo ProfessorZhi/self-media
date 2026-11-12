@@ -13,8 +13,9 @@
 | ID | Project | 技术及内容 | 阶段 | 源码与说明 |
 | --- | --- | --- | --- | --- |
 | **VIDEO-001** | **席位之间 · 35,691 · A Data Film** | 国考 2027 招录数据电影 · Remotion / React / Canvas / 程序化配乐 | **REVIEW** · V2.1 片名/末幕编号更正已进入源码，待新 MP4 重渲染和正式审片 | [项目主页](projects/guokao-data-film/README.md) · [项目章程](projects/guokao-data-film/PROJECT_CHARTER.md) · [Remotion](projects/guokao-data-film/remotion/README.md) |
+| **VIDEO-002** | **一道向量最值题，藏着多少种解法？** | 高中数学解析 · LaTeX / TikZ · 六解法 | **PLANNED** · 数学稿、口播和分镜初稿，未渲染 | [项目首页](projects/vector-dot-product-minimum/README.md) · [LaTeX](projects/vector-dot-product-minimum/latex/analysis.tex) |
 
-当前仅有这个已登记的独立项目，后续新增视频在 `projects/<slug>/` 立项；**V1/V2 是版本，不是两个项目**。详情见 [项目管理规范](projects/README.md)。
+当前登记 VIDEO-001 与 VIDEO-002 两个独立项目；后续新增视频在 `projects/<slug>/` 立项；**V1/V2 是版本，不是两个项目**。详情见 [项目管理规范](projects/README.md)。
 
 ## Start building / 快速运行
 
