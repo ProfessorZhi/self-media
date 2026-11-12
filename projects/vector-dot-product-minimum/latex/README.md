@@ -9,4 +9,4 @@
     xelatex -interaction=nonstopmode -halt-on-error analysis.tex
     xelatex -interaction=nonstopmode -halt-on-error analysis.tex
 
-生成 analysis.pdf 供审阅。即使编译成功，仍要实际检查每一页公式与 TikZ 标记的视觉排版。视频里的公式以本文件为准，口播和分镜是派生稿；本阶段不等于已制作视频。
+2026-11-12 已在本地 TeX Live 使用 XeLaTeX 实际连续编译两次成功，输出 4 页 PDF；第一版图示有标签拥挤，已调整位置并重新编译、复查首张图。生成 analysis.pdf 供审阅。后续内容改动仍需重新执行上述检查。视频里的公式以本文件为准，口播和分镜是派生稿；本阶段不等于已制作视频。
