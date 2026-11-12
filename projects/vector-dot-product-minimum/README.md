@@ -15,7 +15,7 @@
 - [立项章程](PROJECT_CHARTER.md) · [创意简报](CREATIVE_BRIEF.md) · [制作计划](PRODUCTION_PLAN.md)。
 - [LaTeX 编译说明](latex/README.md) · [来源与许可](reference/SOURCES.md)。
 
-**目前没有完成的内容：** 尚未创建动画工程，尚未渲染 MP4/配音，也未发布。提交的 LaTeX 是供编译审校的源码。
+**目前没有完成的内容：** 尚未创建动画工程，尚未渲染 MP4/配音，也未发布。本地已验证 XeLaTeX 编译 4 页 PDF，并检查了首图标注；本仓追踪 LaTeX 源码，PDF 供独立交付及审阅。
 
 ## 本期结构
 
